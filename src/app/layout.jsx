@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔧</text></svg>" />
         <meta name="baidu-site-verification" content="codeva-WBaVRBwJzY" />
-        <meta name="google-site-verification" content="待补充Google验证码" />
+        <meta name="google-site-verification" content="googlef817775b448da06d" />
       </head>
       <body>{children}</body>
     </html>
