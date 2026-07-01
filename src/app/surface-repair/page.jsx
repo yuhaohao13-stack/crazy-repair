@@ -28,16 +28,16 @@ export default function SurfaceRepair() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">{t('常见维修', 'Common Repairs')}</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {[{title:'屏幕更换',titleEn:'Screen',desc:'Surface Find/Reno/A系列屏幕更换，OLED/LCD。碎裂漏液触摸不灵。'},
-              {title:'电池更换',titleEn:'Battery',desc:'Surface电池不耐用、鼓包、充不进电。原装规格电池。'},
-              {title:'充电口维修',titleEn:'Charging Port',desc:'Type-C口松动、接触不良、只能慢充。'},
-              {title:'主板维修',titleEn:'Motherboard',desc:'不开机、重启、充电IC故障、无服务。芯片级维修。'},
-              {title:'后盖更换',titleEn:'Back Glass',desc:'Surface玻璃后盖碎裂更换。'},
-              {title:'刷机解锁',titleEn:'Flash/Unlock',desc:'系统卡顿、卡LOGO、忘记密码。'}].map((s,i) => (
-              <div key={i} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
+            {[{id:'screen-replacement', title:'屏幕更换', titleEn:'Screen Replacement', desc:'Surface屏幕碎裂漏液。原装品质更换。'},
+              {id:'battery-replacement', title:'电池更换', titleEn:'Battery Replacement', desc:'电池鼓包(通病)，尽快更换。'},
+              {id:'keyboard-repair', title:'键盘盖维修', titleEn:'Type Cover Repair', desc:'键盘盖不灵、触摸板失灵。'},
+              {id:'cleaning', title:'清灰换硅脂', titleEn:'Cleaning & Cooling', desc:'深度清灰散热。'},
+              {id:'os-upgrade', title:'系统重装/升级', titleEn:'OS/Upgrade', desc:'Windows重装、数据备份。'},
+              {id:'other-issues', title:'其他故障', titleEn:'Other Issues', desc:'其他问题免费检测。'}].map((s,i) => (
+              <a key={i} href={`/surface-repair/${s.id}`} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 hover:shadow-md hover:-translate-y-0.5 transition-all block">
                 <h3 className="font-bold text-gray-900 mb-1">{lang==='zh'?s.title:s.titleEn}</h3>
                 <p className="text-sm text-gray-500">{lang==='zh'?s.desc:s.desc}</p>
-              </div>
+              </a>
             ))}
           </div>
           <div className="mt-8 text-center">
