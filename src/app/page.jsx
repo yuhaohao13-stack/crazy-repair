@@ -85,11 +85,12 @@ export default function Home() {
   ]
 
 
+  const yearsActive = new Date().getFullYear() - 2007
   const features = [
     { icon: <SearchCheck size={28} />, title: t('免费检测', 'Free Diagnosis'), desc: t('不修不收费，先检测后报价', 'No charge if you decline') },
     { icon: <ShieldCheck size={28} />, title: t('30天质保', '30-Day Warranty'), desc: t('所有维修享30天质保', 'Warranty on all repairs') },
     { icon: <Clock size={28} />, title: t('快速维修', 'Quick Service'), desc: t('大部分30分钟-2小时取机', 'Most done in 30min-2hrs') },
-    { icon: <Award size={28} />, title: t('2007年至今', 'Since 2007'), desc: t('奋斗在维修一线，专注专业', 'On the repair frontline, dedicated & professional') },
+    { icon: <Award size={28} />, title: t(`${yearsActive}年维修生涯`, `${yearsActive} Years Experience`), desc: t('2007年至今奋斗在维修一线', 'On the repair frontline since 2007') },
   ]
 
   const reviews = [
@@ -114,14 +115,6 @@ export default function Home() {
               <p className="text-blue-100 leading-relaxed text-sm sm:text-base max-w-lg">
                 {t('Crazy维修专注手机、电脑、平板等第三方维修服务，位于威海环翠区西门31号。2007年至今奋斗在维修一线，免费检测，先报价后维修，30天质保。手机碎屏、电池更换、电脑维修、数据恢复，价格透明，诚信经营。', 'Crazy Repair specializes in third-party phone, computer and tablet repair services. Located at West Gate #31, Huancui District, Weihai. On the repair frontline since 2007. Free diagnosis, quote first, 30-day warranty. Screen repair, battery replacement, computer repair, data recovery — transparent pricing, honest service.')}
               </p>
-              <div className="mt-6 flex flex-wrap gap-2">
-                <button onClick={() => setShowContact(true)}
-                  className="bg-white text-blue-600 font-semibold px-5 py-2.5 rounded-xl hover:bg-blue-50 transition-colors shadow-lg text-sm"
-                >{t('📱 微信咨询报价', '📱 WeChat for Quote')}</button>
-                <a href="#brands"
-                  className="border border-white/40 text-white font-medium px-5 py-2.5 rounded-xl hover:bg-white/10 transition-colors text-sm"
-                >{t('选择品牌型号 →', 'Choose Brand →')}</a>
-              </div>
               <div className="flex flex-wrap gap-3 pt-4">
                 <button onClick={() => setShowContact(true)}
                   className="bg-white text-blue-600 font-semibold px-6 py-3 rounded-xl hover:bg-blue-50 transition-colors shadow-lg"
@@ -305,7 +298,7 @@ export default function Home() {
                 <p>{t('所有维修当面完成（特殊主板问题除外），修之前跟你说清楚问题在哪、怎么修、多少钱，你觉得合适再修。修完之后当面测试，确保功能正常再拿走。简单直接，不整虚的。', 'All repairs done on-site (except complex board work). I\'ll explain the issue, the fix, and the cost before starting. You approve first. After repair, we test everything together before you leave. Simple and transparent.')}</p>
                 <div className="flex items-center gap-4 pt-4 text-sm">
                   <div className="bg-blue-50 rounded-xl px-4 py-3 text-center">
-                    <div className="text-2xl font-bold text-blue-600">19</div>
+                    <div className="text-2xl font-bold text-blue-600">{yearsActive}</div>
                     <div className="text-xs text-gray-500">{t('年维修生涯', 'Years on the job')}</div>
                   </div>
                   <div className="bg-blue-50 rounded-xl px-4 py-3 text-center">
