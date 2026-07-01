@@ -274,7 +274,53 @@ const repairServices = {
       { id: 'other-issues', title: '其他故障', titleEn: 'Other Issues', description: '免费检测', descriptionEn: 'Free check', details: '免费检测。', detailsEn: 'Free check.', imageHint: '' },
     ]
   },
-}
 
+
+  'oppo': {
+    brand: 'OPPO', title: 'OPPO 维修', gradient: 'from-green-600 via-green-500 to-green-400',
+    services: [
+      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement', description: '屏幕碎裂漏液触摸不灵。', descriptionEn: 'Cracked screen.', details: 'OPPO手机屏幕更换维修。', detailsEn: 'OPPO screen repair.', imageHint: 'screen' },
+      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: '电池不耐用鼓包。', descriptionEn: 'Battery issues.', details: '换电池是最划算的升级。', detailsEn: 'Battery swap.', imageHint: 'battery' },
+      { id: 'charging-port', title: '充电口维修', titleEn: 'Charging Port', description: 'Type-C松动接触不良。', descriptionEn: 'Type-C issues.', details: '充电口维修。', detailsEn: 'Charging port fix.', imageHint: 'port' },
+      { id: 'motherboard-repair', title: '主板维修', titleEn: 'Motherboard Repair', description: '不开机重启充电IC。', descriptionEn: 'No power.', details: '芯片级维修。', detailsEn: 'Board repair.', imageHint: 'board' },
+      { id: 'other-issues', title: '其他问题', titleEn: 'Other Issues', description: '免费检测。', descriptionEn: 'Free check.', details: '任何问题免费检测。', detailsEn: 'Free check.', imageHint: '' },
+    ]
+  },
+  'vivo': { brand: 'VIVO', title: 'VIVO 维修', gradient: 'from-cyan-700 via-cyan-600 to-cyan-500', services: [
+    { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement', description: '屏幕碎裂漏液触摸不灵。', descriptionEn: 'Cracked screen.', details: 'vivo手机屏幕更换维修。', detailsEn: 'VIVO screen repair.', imageHint: 'screen' },
+    { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: '电池不耐用鼓包。', descriptionEn: 'Battery issues.', details: '换电池是最划算的升级。', detailsEn: 'Battery swap.', imageHint: 'battery' },
+    { id: 'charging-port', title: '充电口维修', titleEn: 'Charging Port', description: 'Type-C松动接触不良。', descriptionEn: 'Type-C issues.', details: '充电口维修。', detailsEn: 'Charging port fix.', imageHint: 'port' },
+    { id: 'motherboard-repair', title: '主板维修', titleEn: 'Motherboard Repair', description: '不开机重启充电IC。', descriptionEn: 'No power.', details: '芯片级维修。', detailsEn: 'Board repair.', imageHint: 'board' },
+    { id: 'other-issues', title: '其他问题', titleEn: 'Other Issues', description: '免费检测。', descriptionEn: 'Free check.', details: '任何问题免费检测。', detailsEn: 'Free check.', imageHint: '' },
+  ] },
+  'oneplus': { brand: 'OnePlus', title: 'OnePlus 维修', gradient: 'from-red-700 via-red-600 to-red-500', services: [
+    { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement', description: '屏幕碎裂漏液触摸不灵。', descriptionEn: 'Cracked screen.', details: 'OnePlus手机屏幕更换维修。', detailsEn: 'OnePlus screen repair.', imageHint: 'screen' },
+    { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: '电池不耐用鼓包。', descriptionEn: 'Battery issues.', details: '换电池是最划算的升级。', detailsEn: 'Battery swap.', imageHint: 'battery' },
+    { id: 'charging-port', title: '充电口维修', titleEn: 'Charging Port', description: 'Type-C松动接触不良。', descriptionEn: 'Type-C issues.', details: '充电口维修。', detailsEn: 'Charging port fix.', imageHint: 'port' },
+    { id: 'motherboard-repair', title: '主板维修', titleEn: 'Motherboard Repair', description: '不开机重启充电IC。', descriptionEn: 'No power.', details: '芯片级维修。', detailsEn: 'Board repair.', imageHint: 'board' },
+    { id: 'other-issues', title: '其他问题', titleEn: 'Other Issues', description: '免费检测。', descriptionEn: 'Free check.', details: '任何问题免费检测。', detailsEn: 'Free check.', imageHint: '' },
+  ] },
+  'honor': { brand: 'Honor', title: '荣耀 维修', gradient: 'from-teal-700 via-teal-600 to-teal-500', services: [
+    { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement', description: '屏幕碎裂漏液触摸不灵。', descriptionEn: 'Cracked screen.', details: '荣耀手机屏幕更换维修。', detailsEn: 'Honor screen repair.', imageHint: 'screen' },
+    { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: '电池不耐用鼓包。', descriptionEn: 'Battery issues.', details: '换电池是最划算的升级。', detailsEn: 'Battery swap.', imageHint: 'battery' },
+    { id: 'charging-port', title: '充电口维修', titleEn: 'Charging Port', description: 'Type-C松动接触不良。', descriptionEn: 'Type-C issues.', details: '充电口维修。', detailsEn: 'Charging port fix.', imageHint: 'port' },
+    { id: 'motherboard-repair', title: '主板维修', titleEn: 'Motherboard Repair', description: '不开机重启充电IC。', descriptionEn: 'No power.', details: '芯片级维修。', detailsEn: 'Board repair.', imageHint: 'board' },
+    { id: 'other-issues', title: '其他问题', titleEn: 'Other Issues', description: '免费检测。', descriptionEn: 'Free check.', details: '任何问题免费检测。', detailsEn: 'Free check.', imageHint: '' },
+  ] },
+  'google': { brand: 'Google Pixel', title: 'Google Pixel 维修', gradient: 'from-gray-700 via-gray-600 to-gray-500', services: [
+    { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement', description: 'Pixel屏幕碎裂漏液触摸不灵。', descriptionEn: 'Pixel cracked screen.', details: 'Google Pixel全系列屏幕更换维修。', detailsEn: 'Google Pixel screen repair.', imageHint: 'screen' },
+    { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: '电池不耐用鼓包。', descriptionEn: 'Battery issues.', details: 'Pixel电池更换。', detailsEn: 'Pixel battery swap.', imageHint: 'battery' },
+    { id: 'charging-port', title: '充电口维修', titleEn: 'Charging Port', description: 'Type-C松动接触不良。', descriptionEn: 'Type-C issues.', details: '充电口维修。', detailsEn: 'Charging port fix.', imageHint: 'port' },
+    { id: 'motherboard-repair', title: '主板维修', titleEn: 'Motherboard Repair', description: '不开机重启充电IC。', descriptionEn: 'No power.', details: '芯片级维修。', detailsEn: 'Board repair.', imageHint: 'board' },
+    { id: 'other-issues', title: '其他问题', titleEn: 'Other Issues', description: '免费检测。', descriptionEn: 'Free check.', details: '任何问题免费检测。', detailsEn: 'Free check.', imageHint: '' },
+  ] },
+  'realme': { brand: 'Realme', title: 'Realme 维修', gradient: 'from-yellow-600 via-amber-500 to-orange-500', services: [
+    { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement', description: '屏幕碎裂漏液触摸不灵。', descriptionEn: 'Cracked screen.', details: 'Realme手机屏幕更换维修。', detailsEn: 'Realme screen repair.', imageHint: 'screen' },
+    { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: '电池不耐用鼓包。', descriptionEn: 'Battery issues.', details: '换电池是最划算的升级。', detailsEn: 'Battery swap.', imageHint: 'battery' },
+    { id: 'charging-port', title: '充电口维修', titleEn: 'Charging Port', description: 'Type-C松动接触不良。', descriptionEn: 'Type-C issues.', details: '充电口维修。', detailsEn: 'Charging port fix.', imageHint: 'port' },
+    { id: 'motherboard-repair', title: '主板维修', titleEn: 'Motherboard Repair', description: '不开机重启充电IC。', descriptionEn: 'No power.', details: '芯片级维修。', detailsEn: 'Board repair.', imageHint: 'board' },
+    { id: 'other-issues', title: '其他问题', titleEn: 'Other Issues', description: '免费检测。', descriptionEn: 'Free check.', details: '任何问题免费检测。', detailsEn: 'Free check.', imageHint: '' },
+  ] },
+}
 
 export { repairServices }
