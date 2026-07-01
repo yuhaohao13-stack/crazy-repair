@@ -11,12 +11,12 @@ export default function SamsungRepair() {
   const t = (zh, en) => lang === 'zh' ? zh : en
 
   const services = [
-    { title: t('屏幕更换', 'Screen Replacement'), price: t('¥150起', 'from $20'), desc: t('Samsung AMOLED屏幕更换。S系列/Z折叠屏/A系列都做。碎裂、漏液、花屏、触摸不灵。', 'Samsung AMOLED screen repair. S/Z fold/A series. Cracked, leaking, flickering, unresponsive touch.') },
-    { title: t('电池更换', 'Battery Service'), price: t('¥80起', 'from $10'), desc: t('Samsung电池不耐用、鼓包、充不进电。原装规格电池，含检测调试。', 'Samsung battery drain, swelling, not charging. OEM spec batteries with testing.') },
-    { title: t('主板维修', 'Motherboard'), price: t('¥150起', 'from $20'), desc: t('不开机、重启、充电IC故障、无服务、WiFi打不开。三星主板芯片级维修。', 'No power, boot loop, charging IC, no service, WiFi dead. Component-level Samsung board repair.') },
-    { title: t('充电口/尾插', 'Charging Port'), price: t('¥80起', 'from $10'), desc: t('充电口松动、接触不良、Type-C不识别、只能一个方向充。', 'Loose port, bad contact, Type-C not recognized, one-way charging only.') },
-    { title: t('摄像头维修', 'Camera'), price: t('¥100起', 'from $15'), desc: t('拍照模糊、闪退、黑屏、对焦失灵。Samsung Galaxy全系前后摄像头更换。', 'Blurry photos, crash, black screen, autofocus fail. Samsung Galaxy front/back camera.') },
-    { title: t('后盖/边框更换', 'Back Glass/Frame'), price: t('¥100起', 'from $15'), desc: t('Samsung玻璃后盖碎裂、中框变形。更换后恢复防水胶。', 'Broken glass back, bent frame. Waterproof sealant restored after replacement.') },
+    { id: 'screen-replacement', title: t('屏幕更换', 'Screen Replacement'), price: t('¥150起', 'from $20'), desc: t('Samsung AMOLED屏幕更换。S系列/Z折叠屏/A系列都做。碎裂、漏液、花屏、触摸不灵。', 'Samsung AMOLED screen repair. S/Z fold/A series. Cracked, leaking, flickering, unresponsive touch.') },
+    { id: 'battery-replacement', title: t('电池更换', 'Battery Service'), price: t('¥80起', 'from $10'), desc: t('Samsung电池不耐用、鼓包、充不进电。原装规格电池，含检测调试。', 'Samsung battery drain, swelling, not charging. OEM spec batteries with testing.') },
+    { id: 'motherboard-repair', title: t('主板维修', 'Motherboard'), price: t('¥150起', 'from $20'), desc: t('不开机、重启、充电IC故障、无服务、WiFi打不开。三星主板芯片级维修。', 'No power, boot loop, charging IC, no service, WiFi dead. Component-level Samsung board repair.') },
+    { id: 'charging-port', title: t('充电口/尾插', 'Charging Port'), price: t('¥80起', 'from $10'), desc: t('充电口松动、接触不良、Type-C不识别、只能一个方向充。', 'Loose port, bad contact, Type-C not recognized, one-way charging only.') },
+    { id: 'camera-repair', title: t('摄像头维修', 'Camera'), price: t('¥100起', 'from $15'), desc: t('拍照模糊、闪退、黑屏、对焦失灵。Samsung Galaxy全系前后摄像头更换。', 'Blurry photos, crash, black screen, autofocus fail. Samsung Galaxy front/back camera.') },
+    { id: 'back-glass', title: t('后盖/边框更换', 'Back Glass/Frame'), price: t('¥100起', 'from $15'), desc: t('Samsung玻璃后盖碎裂、中框变形。更换后恢复防水胶。', 'Broken glass back, bent frame. Waterproof sealant restored after replacement.') },
   ]
 
   return (

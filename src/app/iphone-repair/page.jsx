@@ -11,17 +11,17 @@ export default function iPhoneRepair() {
   const t = (zh, en) => lang === 'zh' ? zh : en
 
   const services = [
-    { icon: <Smartphone size={28} />, title: t('屏幕更换', 'Screen Replacement'), price: t('¥100起', 'from $15'),
+    { id: 'screen-replacement', icon: <Smartphone size={28} />, title: t('屏幕更换', 'Screen Replacement'), price: t('¥100起', 'from $15'),
       desc: t('iPhone 16/15/14/13/12/11/X系列全兼容。OLED原装/LCD高性价比可选。含专业密封胶恢复防水性。30分钟快修。', 'iPhone 16/15/14/13/12/11/X series. OLED OEM or LCD quality options. Waterproof sealant restored. 30min service.') },
-    { icon: <Battery size={28} />, title: t('电池更换', 'Battery Replacement'), price: t('¥80起', 'from $10'),
+    { id: 'battery-replacement', icon: <Battery size={28} />, title: t('电池更换', 'Battery Replacement'), price: t('¥80起', 'from $10'),
       desc: t('原装规格电池，容量达标不虚标。iPhone 6到16全系列电池现货。更换后检测健康度。告别一天三充。', 'OEM spec batteries, accurate capacity. iPhone 6 through 16 in stock. Health check after swap. Say goodbye to battery anxiety.') },
-    { icon: <Droplets size={28} />, title: t('进水维修', 'Water Damage'), price: t('视情况', 'Depends'),
+    { id: 'water-damage', icon: <Droplets size={28} />, title: t('进水维修', 'Water Damage'), price: t('视情况', 'Depends'),
       desc: t('超声波清洗+主板烘干+腐蚀修复。iPhone进水越早送来越好，切勿插电充电！我们有丰富的iPhone进水处理经验。', 'Ultrasonic cleaning + board dry + corrosion repair. Bring ASAP, do NOT charge! Extensive iPhone water damage experience.') },
-    { icon: <Cpu size={28} />, title: t('主板维修', 'Motherboard'), price: t('¥150起', 'from $20'),
+    { id: 'motherboard-repair', icon: <Cpu size={28} />, title: t('主板维修', 'Motherboard'), price: t('¥150起', 'from $20'),
       desc: t('不开机、重启循环、无服务、WiFi蓝牙打不开、面容不可用。芯片级维修，CPU重焊、基带修复、硬盘扩容。', 'No power, boot loop, no service, WiFi/BT dead, Face ID gone. Component-level: CPU reball, baseband fix, storage upgrade.') },
-    { icon: <Camera size={28} />, title: t('摄像头维修', 'Camera Repair'), price: t('¥100起', 'from $15'),
+    { id: 'camera-repair', icon: <Camera size={28} />, title: t('摄像头维修', 'Camera Repair'), price: t('¥100起', 'from $15'),
       desc: t('拍照模糊、闪退、黑屏、对焦失灵。前后摄像头更换。iPhone 15/14/13/12/11/x全系。', 'Blurry photos, app crash, black screen, autofocus fail. Front & back camera replacement. iPhone 15/14/13/12/11/X.') },
-    { icon: <Smartphone size={28} />, title: t('面容/指纹修复', 'Face ID/Touch ID'), price: t('¥120起', 'from $16'),
+    { id: 'face-id', icon: <Smartphone size={28} />, title: t('面容/指纹修复', 'Face ID/Touch ID'), price: t('¥120起', 'from $16'),
       desc: t('面容ID点阵修复、前置摄像头排线。换屏后面容不能用也可修复。iPhone X及以上面容，SE/8及以下指纹。', 'Face ID dot matrix repair, front camera flex. Works after screen swap. Face ID for iPhone X+, Touch ID for SE/8 and below.') },
   ]
 
