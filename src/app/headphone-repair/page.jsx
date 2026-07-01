@@ -13,7 +13,7 @@ export default function HeadphonesRepair() {
     <div className="min-h-screen bg-white">
       <Navbar lang={lang} setLang={setLang} setShowContact={setShowContact} />
       <section className="bg-gradient-to-br from-green-600 via-green-500 to-green-400 text-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-4"><a href="/other-repair" className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-sm font-medium transition-colors"><ArrowLeft size={14} /> {t('其他设备', 'Other Devices')}</a></div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-4"><a href="/other-repair" className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-sm font-medium transition-colors"><ArrowLeft size={15} /> {t('其他设备', 'Other Devices')}</a></div>
                   <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14">
           <h1 className="text-3xl sm:text-5xl font-bold mb-3">{t('Headphones 维修', 'Headphones Repair')}</h1>
           <p className="text-green-100 text-lg mb-4">{t('Headphones 全系列专业维修 | 威海', 'Headphones All Series | Weihai')}</p>

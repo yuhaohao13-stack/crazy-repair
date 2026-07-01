@@ -25,7 +25,7 @@ export default function MacBookRepair() {
     <div className="min-h-screen bg-white">
       <Navbar lang={lang} setLang={setLang} setShowContact={setShowContact} />
       <section className="bg-gradient-to-br from-gray-800 via-gray-700 to-gray-600 text-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-4"><a href="/computer-repair" className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-sm font-medium transition-colors"><ArrowLeft size={14} /> {t('电脑品牌', 'Computer Brands')}</a></div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-4"><a href="/computer-repair" className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-sm font-medium transition-colors"><ArrowLeft size={15} /> {t('电脑品牌', 'Computer Brands')}</a></div>
                   <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
           <div className="max-w-3xl">
             <h1 className="text-3xl sm:text-5xl font-bold mb-4">{t('MacBook 维修', 'MacBook Repair')}</h1>

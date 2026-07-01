@@ -44,7 +44,7 @@ export default function PhoneRepair() {
       <Navbar lang={lang} setLang={setLang} setShowContact={setShowContact} />
 
       <section className="bg-gradient-to-br from-blue-700 via-blue-600 to-blue-500 text-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-4"><a href="/" className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-sm font-medium transition-colors"><ArrowLeft size={14} /> {t('首页', 'Home')}</a></div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-4"><a href="/" className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-sm font-medium transition-colors"><ArrowLeft size={15} /> {t('首页', 'Home')}</a></div>
                   <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14 text-center">
           <h1 className="text-3xl sm:text-5xl font-bold mb-3">{t('手机维修', 'Phone Repair')}</h1>
           <p className="text-blue-200 text-lg">{t('选择您的手机品牌，查看对应的维修服务和价格', 'Select your phone brand to see repair services')}</p>

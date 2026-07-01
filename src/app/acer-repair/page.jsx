@@ -13,7 +13,7 @@ export default function AcerRepair() {
     <div className="min-h-screen bg-white">
       <Navbar lang={lang} setLang={setLang} setShowContact={setShowContact} />
       <section className="bg-gradient-to-br from-green-700 via-green-600 to-green-500 text-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-4"><a href="/computer-repair" className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-sm font-medium transition-colors"><ArrowLeft size={14} /> {t('电脑品牌', 'Computer Brands')}</a></div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-4"><a href="/computer-repair" className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-sm font-medium transition-colors"><ArrowLeft size={15} /> {t('电脑品牌', 'Computer Brands')}</a></div>
                   <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14">
           <h1 className="text-3xl sm:text-5xl font-bold mb-3">{t('Acer 维修', 'Acer Repair')}</h1>
           <p className="text-green-100 text-lg mb-4">{t('Acer 全系列专业维修 | 威海', 'Acer All Series | Weihai')}</p>
