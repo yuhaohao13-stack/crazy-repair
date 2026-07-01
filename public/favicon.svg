@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2563eb"/>
+      <stop offset="100%" style="stop-color:#1d4ed8"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="36" fill="url(#bg)"/>
+  <!-- Wrench icon -->
+  <g transform="translate(100,48)" fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14.7 6.3a3.9 3.9 0 0 0-5.5-5.5L1 9l4 4 9.7-6.7Z"/>
+    <path d="M9 13l-5 5a4 4 0 0 0 5.7 5.7l5-5"/>
+    <circle cx="14.7" cy="6.3" r="1.5" fill="white"/>
+    <circle cx="17.7" cy="3.3" r="1" fill="white"/>
+  </g>
+  <!-- "Crazy" text -->
+  <text x="100" y="108" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="28" fill="white" letter-spacing="3">Crazy</text>
+  <!-- "维修" text -->
+  <text x="100" y="152" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-weight="700" font-size="42" fill="white">维修</text>
+</svg>

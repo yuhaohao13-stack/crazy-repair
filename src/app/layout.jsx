@@ -25,7 +25,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="zh-CN">
       <head>
-        <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔧</text></svg>" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="apple-touch-icon" href="/favicon.svg" />
+        <meta name="apple-mobile-web-app-title" content="Crazy维修" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="theme-color" content="#2563eb" />
         <meta name="baidu-site-verification" content="codeva-lWVEr795Rr" />
         <meta name="google-site-verification" content="googlef817775b448da06d" />
       </head>
