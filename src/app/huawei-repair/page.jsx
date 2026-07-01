@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react'
-import { ChevronDown } from 'lucide-react'
+import { ArrowLeft, ChevronDown } from 'lucide-react'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import ContactModal from '../../components/ContactModal'
@@ -23,7 +23,11 @@ export default function HuaweiRepair() {
     <div className="min-h-screen bg-white">
       <Navbar lang={lang} setLang={setLang} setShowContact={setShowContact} />
       <section className="bg-gradient-to-br from-red-600 via-red-500 to-red-400 text-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
+                  <a href="/phone-repair" className="inline-flex items-center gap-1 text-white/50 hover:text-white text-xs transition-colors ml-4 sm:ml-6 mt-3 sm:mt-4">
+            <ArrowLeft size={10} /> {t('手机品牌', 'Phone Brands')}
+          </a>
+
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
           <div className="max-w-3xl">
             <h1 className="text-3xl sm:text-5xl font-bold mb-4">{t('Huawei 维修', 'Huawei Repair')}</h1>
             <p className="text-xl text-red-100 mb-4">{t('华为 Mate/P/Nova 全系列专业维修 | 威海', 'Huawei Mate/P/Nova All Series | Weihai')}</p>

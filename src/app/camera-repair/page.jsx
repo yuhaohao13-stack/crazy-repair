@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import { ArrowLeft } from 'lucide-react'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import ContactModal from '../../components/ContactModal'
@@ -12,7 +13,11 @@ export default function CameraRepair() {
     <div className="min-h-screen bg-white">
       <Navbar lang={lang} setLang={setLang} setShowContact={setShowContact} />
       <section className="bg-gradient-to-br from-purple-600 via-purple-500 to-purple-400 text-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14">
+                  <a href="/other-repair" className="inline-flex items-center gap-1 text-white/50 hover:text-white text-xs transition-colors ml-4 sm:ml-6 mt-3 sm:mt-4">
+            <ArrowLeft size={10} /> {t('其他设备', 'Other Devices')}
+          </a>
+
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14">
           <h1 className="text-3xl sm:text-5xl font-bold mb-3">{t('Camera 维修', 'Camera Repair')}</h1>
           <p className="text-green-100 text-lg mb-4">{t('Camera 全系列专业维修 | 威海', 'Camera All Series | Weihai')}</p>
           <p className="text-green-100 max-w-2xl">{t('Camera Find、Reno、A系列——屏幕碎了、电池不耐用了、充电口坏了，拿来给我看看。2007年至今奋斗在维修一线。', 'Camera Find, Reno, A series — cracked screen, battery drain, charging port issues. On the job since 2007.')}</p>

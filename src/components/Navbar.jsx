@@ -71,14 +71,14 @@ export default function Navbar({ lang, setLang, setShowContact }) {
     <div className="sticky top-0 z-50 bg-white border-b border-gray-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-12">
-          <div className="flex flex-col items-start shrink-0">
+          <div className="flex items-center gap-2 shrink-0">
             <a href="/" className="flex items-center gap-1.5 hover:opacity-80 transition-opacity">
               <span className="text-lg">🔧</span>
               <span className="font-bold text-sm text-gray-900">Crazy维修</span>
             </a>
             {!isHome && backLabel && (
-              <a href={backLabel.href} className="flex items-center gap-1 text-sm text-blue-500 hover:text-blue-700 transition-colors mt-0.5 ml-0.5">
-                <ArrowLeft size={14} /> {t(backLabel.text, backLabel.textEn)}
+              <a href={backLabel.href} className="flex items-center gap-1 text-xs text-gray-400 hover:text-blue-600 transition-colors ml-1 pl-2 border-l border-gray-200">
+                <ArrowLeft size={12} /> {t(backLabel.text, backLabel.textEn)}
               </a>
             )}
           </div>

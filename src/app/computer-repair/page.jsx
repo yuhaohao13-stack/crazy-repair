@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import { ArrowLeft } from 'lucide-react'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import ContactModal from '../../components/ContactModal'
@@ -40,7 +41,11 @@ export default function ComputerRepair() {
     <div className="min-h-screen bg-white">
       <Navbar lang={lang} setLang={setLang} setShowContact={setShowContact} />
       <section className="bg-gradient-to-br from-gray-800 via-gray-700 to-gray-600 text-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14 text-center">
+                  <a href="/" className="inline-flex items-center gap-1 text-white/50 hover:text-white text-xs transition-colors ml-4 sm:ml-6 mt-3 sm:mt-4">
+            <ArrowLeft size={10} /> {t('首页', 'Home')}
+          </a>
+
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14 text-center">
           <h1 className="text-3xl sm:text-5xl font-bold mb-3">{t('电脑维修', 'Computer Repair')}</h1>
           <p className="text-gray-300 text-lg">{t('选择您的电脑品牌，查看对应的维修服务和价格', 'Select your computer brand')}</p>
         </div>

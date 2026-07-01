@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import { ArrowLeft } from 'lucide-react'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import ContactModal from '../../components/ContactModal'
@@ -12,7 +13,11 @@ export default function VIVORepair() {
     <div className="min-h-screen bg-white">
       <Navbar lang={lang} setLang={setLang} setShowContact={setShowContact} />
       <section className="bg-gradient-to-br from-cyan-700 via-cyan-600 to-cyan-500 text-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14">
+                  <a href="/phone-repair" className="inline-flex items-center gap-1 text-white/50 hover:text-white text-xs transition-colors ml-4 sm:ml-6 mt-3 sm:mt-4">
+            <ArrowLeft size={10} /> {t('手机品牌', 'Phone Brands')}
+          </a>
+
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14">
           <h1 className="text-3xl sm:text-5xl font-bold mb-3">{t('VIVO 维修', 'VIVO Repair')}</h1>
           <p className="text-white/80 text-lg mb-4">{t('VIVO 全系列专业维修 | 威海', 'VIVO All Series | Weihai')}</p>
           <p className="text-white/80 max-w-2xl">{t('VIVO手机——屏幕碎了、电池不耐用了、充电口坏了，拿来给我看看。2007年至今奋斗在维修一线。', 'VIVO phone repair — screen, battery, port. On the job since 2007.')}</p>

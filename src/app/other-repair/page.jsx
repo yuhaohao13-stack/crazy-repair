@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import { ArrowLeft } from 'lucide-react'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import ContactModal from '../../components/ContactModal'
@@ -13,7 +14,11 @@ export default function OtherRepair() {
     <div className="min-h-screen bg-white">
       <Navbar lang={lang} setLang={setLang} setShowContact={setShowContact} />
       <section className="bg-gradient-to-br from-amber-600 via-amber-500 to-yellow-500 text-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14 text-center">
+                  <a href="/" className="inline-flex items-center gap-1 text-white/50 hover:text-white text-xs transition-colors ml-4 sm:ml-6 mt-3 sm:mt-4">
+            <ArrowLeft size={10} /> {t('首页', 'Home')}
+          </a>
+
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14 text-center">
           <h1 className="text-3xl sm:text-5xl font-bold mb-3">{t('其他数码维修', 'Other Device Repair')}</h1>
           <p className="text-amber-100 text-lg">{t('手表、游戏机、耳机、相机、改装', 'Watch, console, earphone, camera, mods')}</p>
         </div>

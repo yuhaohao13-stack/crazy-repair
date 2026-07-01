@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react'
-import { Smartphone, Battery, Cpu, ChevronDown } from 'lucide-react'
+import { ArrowLeft, Smartphone, Battery, Cpu, ChevronDown } from 'lucide-react'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import ContactModal from '../../components/ContactModal'
@@ -23,7 +23,11 @@ export default function SamsungRepair() {
     <div className="min-h-screen bg-white">
       <Navbar lang={lang} setLang={setLang} setShowContact={setShowContact} />
       <section className="bg-gradient-to-br from-purple-700 via-purple-600 to-purple-500 text-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
+                  <a href="/phone-repair" className="inline-flex items-center gap-1 text-white/50 hover:text-white text-xs transition-colors ml-4 sm:ml-6 mt-3 sm:mt-4">
+            <ArrowLeft size={10} /> {t('手机品牌', 'Phone Brands')}
+          </a>
+
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
           <div className="max-w-3xl">
             <h1 className="text-3xl sm:text-5xl font-bold mb-4">{t('Samsung 维修', 'Samsung Repair')}</h1>
             <p className="text-xl text-purple-200 mb-4">{t('三星 Galaxy 全系列专业维修 | 威海', 'Samsung Galaxy All Series | Weihai')}</p>
