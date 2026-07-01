@@ -186,6 +186,9 @@ const repairServices = {
         details: '鸿蒙/HarmonyOS刷机、降级回Android、救砖、解账户锁。\n\n维修时间：约30分钟-1小时。',
         detailsEn: 'HarmonyOS flash, downgrade to Android, unbrick, account unlock.\n\nTime: 30min-1hr.',
         imageHint: 'flash' },
+      { id: 'motherboard-repair', title: '主板维修', titleEn: 'Motherboard Repair', prices: '150¥起 (from $20)', description: '华为不开机、重启、充电IC、无服务、WiFi打不开。芯片级维修。', descriptionEn: 'Huawei no power, boot loop, IC fault. Component-level board repair.', details: '华为/荣耀主板芯片级维修。充电IC、显示IC、不开机、重启、无服务。\n\n维修时间：1-3天。', detailsEn: 'Huawei/Honor component-level board repair. Charging IC, display IC, no power, boot loop.\n\nTime: 1-3 days.', imageHint: 'board' },
+      { id: 'water-damage', title: '进水维修', titleEn: 'Water Damage Repair', prices: '视情况 (Depends)', description: '华为IP68防水机型也会进水。超声波清洗+主板烘干+腐蛀修复。', descriptionEn: 'Huawei IP68 phones can still get wet. Ultrasonic clean + dry + corrosion fix.', details: '进水立刻关机送来，越早处理修复率越高。华为手机进水处理经验丰富。\n\n注意：不要尝试开机或充电，直接送过来。', detailsEn: 'Power off immediately. Bring ASAP for cleaning. We have extensive Huawei water damage experience.\n\nWARNING: Do not turn on or charge. Bring it in immediately.', imageHint: 'water' },
+      { id: 'back-glass', title: '后盖/边框', titleEn: 'Back Glass/Frame', prices: '100¥起 (from $15)', description: '华为玻璃后盖碎裂、中框变形。P系列/Mate系列后盖更换。', descriptionEn: 'Huawei glass back broken, frame bent. P/Mate series back glass replacement.', details: '华为玻璃后盖更换。P系列/Mate系列/Nova系列后盖都有。换后打密封胶恢复防水。\n\n维修时间：约1小时。', detailsEn: 'Huawei glass back replacement for P/Mate/Nova series. Waterproof sealant restored.\n\nTime: ~1hr.', imageHint: 'backglass' },
     ]
   }
 }
