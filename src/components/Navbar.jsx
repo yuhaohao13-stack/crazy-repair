@@ -8,6 +8,7 @@ export default function Navbar({ lang, setLang, setShowContact }) {
   const [showResults, setShowResults] = useState(false)
   const [showSearch, setShowSearch] = useState(false)
   const inputRef = useRef(null)
+  const mobileInputRef = useRef(null)
   const resultsRef = useRef(null)
   const t = (zh, en) => lang === 'zh' ? zh : en
 
