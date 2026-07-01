@@ -5,7 +5,7 @@ export const metadata = {
     default: 'Crazy维修 | 威海手机电脑维修 - 专业快速',
     template: '%s — Crazy维修',
   },
-  description: 'Crazy维修专注手机、电脑、平板等第三方维修服务，位于威海环翠区西门31号。10年维修经验，免费检测，先报价后维修，30天质保。手机碎屏、电池更换、电脑维修、数据恢复，价格透明，诚信经营。',
+  description: 'Crazy维修专注手机、电脑、平板等第三方维修服务，位于威海环翠区西门31号。2007年至今奋斗在维修一线，免费检测，先报价后维修，30天质保。手机碎屏、电池更换、电脑维修、数据恢复，价格透明，诚信经营。',
   keywords: '威海手机维修,威海电脑维修,威海平板维修,威海手机换屏,威海电脑修电脑,威海数码维修,Crazy维修,环翠区维修,威海维修店,威海笔记本维修,威海数据恢复',
   robots: { index: true, follow: true },
   alternates: {
@@ -13,7 +13,7 @@ export const metadata = {
   },
   openGraph: {
     title: 'Crazy维修 | 威海手机电脑维修',
-    description: 'Crazy维修专注手机、电脑、平板等第三方维修服务。10年经验，免费检测，先报价后维修，30天质保。',
+    description: 'Crazy维修专注手机、电脑、平板等第三方维修服务。2007年至今奋斗在维修一线，免费检测，先报价后维修，30天质保。',
     url: 'https://www.crazy-repair.com',
     siteName: 'Crazy维修',
     type: 'website',

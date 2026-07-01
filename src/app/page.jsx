@@ -76,7 +76,7 @@ export default function Home() {
     { icon: <SearchCheck size={28} />, title: t('免费检测', 'Free Diagnosis'), desc: t('不修不收费，先检测后报价', 'No charge if you decline') },
     { icon: <ShieldCheck size={28} />, title: t('30天质保', '30-Day Warranty'), desc: t('所有维修享30天质保', 'Warranty on all repairs') },
     { icon: <Clock size={28} />, title: t('快速维修', 'Quick Service'), desc: t('大部分30分钟-2小时取机', 'Most done in 30min-2hrs') },
-    { icon: <Award size={28} />, title: t('10年经验', '10+ Years Exp'), desc: t('专业技术，诚信经营', 'Expert techs, honest service') },
+    { icon: <Award size={28} />, title: t('2007年至今', 'Since 2007'), desc: t('奋斗在维修一线，专注专业', 'On the repair frontline, dedicated & professional') },
   ]
 
   const reviews = [
@@ -122,7 +122,7 @@ export default function Home() {
               <h1 className="text-3xl sm:text-5xl font-bold leading-tight">{t('Crazy维修', 'Crazy Repair')}</h1>
               <p className="text-xl sm:text-2xl font-semibold text-blue-200">{t('威海专业手机电脑维修', 'Weihai Pro Phone & PC Repair')}</p>
               <p className="text-blue-100 leading-relaxed text-sm sm:text-base max-w-lg">
-                {t('Crazy维修专注手机、电脑、平板等第三方维修服务，位于威海环翠区西门31号。10年维修经验，免费检测，先报价后维修，30天质保。手机碎屏、电池更换、电脑维修、数据恢复，价格透明，诚信经营。', 'Crazy Repair specializes in third-party phone, computer and tablet repair services. Located at West Gate #31, Huancui District, Weihai. 10+ years experience. Free diagnosis, quote first, 30-day warranty. Screen repair, battery replacement, computer repair, data recovery — transparent pricing, honest service.')}
+                {t('Crazy维修专注手机、电脑、平板等第三方维修服务，位于威海环翠区西门31号。2007年至今奋斗在维修一线，免费检测，先报价后维修，30天质保。手机碎屏、电池更换、电脑维修、数据恢复，价格透明，诚信经营。', 'Crazy Repair specializes in third-party phone, computer and tablet repair services. Located at West Gate #31, Huancui District, Weihai. On the repair frontline since 2007. Free diagnosis, quote first, 30-day warranty. Screen repair, battery replacement, computer repair, data recovery — transparent pricing, honest service.')}
               </p>
               <div className="flex flex-wrap gap-3 pt-2">
                 <button onClick={() => setShowContact(true)}
@@ -232,12 +232,12 @@ export default function Home() {
             <div>
               <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">{t('关于 Crazy维修', 'About Crazy Repair')}</h2>
               <div className="space-y-4 text-gray-600 leading-relaxed text-sm sm:text-base">
-                <p>{t('Crazy维修（Crazy-repair）成立于威海环翠区，是一家专注于手机、电脑、平板及各类数码产品维修的专业工作室。10年维修经验，累计服务超过5000位客户。', 'Crazy Repair is a professional repair studio in Huancui, Weihai. 10+ years experience, 5000+ satisfied customers.')}</p>
+                <p>{t('Crazy维修（Crazy-repair）成立于威海环翠区，是一家专注于手机、电脑、平板及各类数码产品维修的专业工作室。2007年至今奋斗在维修一线，累计服务超过5000位客户。', 'Crazy Repair is a professional repair studio in Huancui, Weihai. On the repair frontline since 2007 with 5000+ satisfied customers.')}</p>
                 <p>{t('我们的理念：先查问题，告诉客户真实情况，给出合理报价，修不修客户决定。绝不诱导消费，绝不隐瞒问题。', 'Our philosophy: diagnose first, be honest, give a fair quote. No pressure, no hidden issues.')}</p>
                 <div className="flex items-center gap-4 pt-4 text-sm">
                   <div className="bg-blue-50 rounded-xl px-4 py-3 text-center">
-                    <div className="text-2xl font-bold text-blue-600">10+</div>
-                    <div className="text-xs text-gray-500">{t('年经验', 'Years')}</div>
+                    <div className="text-2xl font-bold text-blue-600">19</div>
+                    <div className="text-xs text-gray-500">{t('年维修生涯', 'Years on the job')}</div>
                   </div>
                   <div className="bg-blue-50 rounded-xl px-4 py-3 text-center">
                     <div className="text-2xl font-bold text-blue-600">5000+</div>
