@@ -14,11 +14,8 @@ export default function TabletRepair() {
     <div className="min-h-screen bg-white">
       <Navbar lang={lang} setLang={setLang} setShowContact={setShowContact} />
       <section className="bg-gradient-to-br from-teal-600 via-teal-500 to-teal-400 text-white">
-                  <a href="/" className="inline-flex items-center gap-1 text-white/50 hover:text-white text-xs transition-colors ml-4 sm:ml-6 mt-3 sm:mt-4">
-            <ArrowLeft size={10} /> {t('首页', 'Home')}
-          </a>
-
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14 text-center">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-4"><a href="/" className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-sm font-medium transition-colors"><ArrowLeft size={14} /> {t('首页', 'Home')}</a></div>
+                  <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14 text-center">
           <h1 className="text-3xl sm:text-5xl font-bold mb-3">{t('平板维修', 'Tablet Repair')}</h1>
           <p className="text-teal-200 text-lg">{t('iPad、安卓平板、电子书维修', 'iPad, Android tablet & e-reader repair')}</p>
         </div>

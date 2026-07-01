@@ -13,11 +13,8 @@ export default function OnePlusRepair() {
     <div className="min-h-screen bg-white">
       <Navbar lang={lang} setLang={setLang} setShowContact={setShowContact} />
       <section className="bg-gradient-to-br from-red-700 via-red-600 to-red-500 text-white">
-                  <a href="/phone-repair" className="inline-flex items-center gap-1 text-white/50 hover:text-white text-xs transition-colors ml-4 sm:ml-6 mt-3 sm:mt-4">
-            <ArrowLeft size={10} /> {t('手机品牌', 'Phone Brands')}
-          </a>
-
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-4"><a href="/phone-repair" className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-sm font-medium transition-colors"><ArrowLeft size={14} /> {t('手机品牌', 'Phone Brands')}</a></div>
+                  <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14">
           <h1 className="text-3xl sm:text-5xl font-bold mb-3">{t('OnePlus 维修', 'OnePlus Repair')}</h1>
           <p className="text-white/80 text-lg mb-4">{t('OnePlus 全系列专业维修 | 威海', 'OnePlus All Series | Weihai')}</p>
           <p className="text-white/80 max-w-2xl">{t('OnePlus手机——屏幕碎了、电池不耐用了、充电口坏了，拿来给我看看。2007年至今奋斗在维修一线。', 'OnePlus phone repair — screen, battery, port. On the job since 2007.')}</p>

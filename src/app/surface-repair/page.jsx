@@ -13,11 +13,8 @@ export default function SurfaceRepair() {
     <div className="min-h-screen bg-white">
       <Navbar lang={lang} setLang={setLang} setShowContact={setShowContact} />
       <section className="bg-gradient-to-br from-gray-700 via-gray-600 to-gray-500 text-white">
-                  <a href="/computer-repair" className="inline-flex items-center gap-1 text-white/50 hover:text-white text-xs transition-colors ml-4 sm:ml-6 mt-3 sm:mt-4">
-            <ArrowLeft size={10} /> {t('电脑品牌', 'Computer Brands')}
-          </a>
-
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-4"><a href="/computer-repair" className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-sm font-medium transition-colors"><ArrowLeft size={14} /> {t('电脑品牌', 'Computer Brands')}</a></div>
+                  <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14">
           <h1 className="text-3xl sm:text-5xl font-bold mb-3">{t('Surface 维修', 'Surface Repair')}</h1>
           <p className="text-green-100 text-lg mb-4">{t('Surface 全系列专业维修 | 威海', 'Surface All Series | Weihai')}</p>
           <p className="text-green-100 max-w-2xl">{t('Surface Find、Reno、A系列——屏幕碎了、电池不耐用了、充电口坏了，拿来给我看看。2007年至今奋斗在维修一线。', 'Surface Find, Reno, A series — cracked screen, battery drain, charging port issues. On the job since 2007.')}</p>
