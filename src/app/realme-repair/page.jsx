@@ -28,16 +28,16 @@ export default function RealmeRepair() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">{t('常见维修', 'Common Repairs')}</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {[{title:'屏幕更换',titleEn:'Screen',desc:'屏幕碎裂、漏液、触摸不灵。OLED/LCD都有。'},
-              {title:'电池更换',titleEn:'Battery',desc:'电池不耐用、鼓包、充不进电。原装规格。'},
-              {title:'充电口维修',titleEn:'Charging Port',desc:'Type-C口松动、接触不良。'},
-              {title:'主板维修',titleEn:'Motherboard',desc:'不开机、重启、充电IC。芯片级维修。'},
+            {[{id:'screen-replacement', title:'屏幕更换',titleEn:'Screen',desc:'屏幕碎裂、漏液、触摸不灵。OLED/LCD都有。'},
+              {id:'battery-replacement', title:'电池更换',titleEn:'Battery',desc:'电池不耐用、鼓包、充不进电。原装规格。'},
+              {id:'charging-port', title:'充电口维修',titleEn:'Charging Port',desc:'Type-C口松动、接触不良。'},
+              {id:'motherboard-repair', title:'主板维修',titleEn:'Motherboard',desc:'不开机、重启、充电IC。芯片级维修。'},
               {title:'后盖更换',titleEn:'Back Glass',desc:'玻璃后盖碎裂更换。'},
               {title:'刷机解锁',titleEn:'Flash/Unlock',desc:'系统卡顿、卡LOGO、忘记密码。'}].map((s,i) => (
-              <div key={i} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
+              <a key={i} href={`/realme-repair/${s.id}`} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 hover:shadow-md hover:-translate-y-0.5 transition-all block">
                 <h3 className="font-bold text-gray-900 mb-1">{lang==='zh'?s.title:s.titleEn}</h3>
                 <p className="text-sm text-gray-500">{lang==='zh'?s.desc:s.desc}</p>
-              </div>
+              </a>
             ))}
           </div>
           <div className="mt-8 text-center">
