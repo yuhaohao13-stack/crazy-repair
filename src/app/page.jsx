@@ -139,8 +139,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== 维修品牌 ===== */}
-      <section className="py-12 bg-gray-50">
+      <section id="brands" className="py-12 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
           <h3 className="text-sm font-semibold text-gray-500 mb-6 uppercase tracking-wider">{t('支持品牌（部分）', 'Brands We Support (partial)')}</h3>
           <div className="flex flex-wrap justify-center gap-4 sm:gap-8 text-gray-400 mb-6">
