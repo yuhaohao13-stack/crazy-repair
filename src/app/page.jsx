@@ -1,9 +1,10 @@
 'use client'
-import { useState } from 'react'
-import { Smartphone, Monitor, Tablet, Wrench, ShieldCheck, Clock, ChevronDown, Star, Award, MapPin, MessageCircle, Phone } from 'lucide-react'
+import { useState, useMemo } from 'react'
+import { Smartphone, Monitor, Tablet, Wrench, ShieldCheck, Clock, ChevronDown, Star, Award, MapPin, MessageCircle, Phone, Search } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import ContactModal from '../components/ContactModal'
+import ModelSearch from '../components/ModelSearch'
 
 export default function Home() {
   const [showContact, setShowContact] = useState(false)
@@ -107,13 +108,16 @@ export default function Home() {
               <p className="text-blue-100 leading-relaxed text-sm sm:text-base max-w-lg">
                 {t('Crazy维修专注手机、电脑、平板等第三方维修服务，位于威海环翠区西门31号。2007年至今奋斗在维修一线，免费检测，先报价后维修，30天质保。手机碎屏、电池更换、电脑维修、数据恢复，价格透明，诚信经营。', 'Crazy Repair specializes in third-party phone, computer and tablet repair services. Located at West Gate #31, Huancui District, Weihai. On the repair frontline since 2007. Free diagnosis, quote first, 30-day warranty. Screen repair, battery replacement, computer repair, data recovery — transparent pricing, honest service.')}
               </p>
-              <div className="flex flex-wrap gap-3 pt-2">
+              <div className="mt-6">
+                <ModelSearch lang={lang} setShowContact={setShowContact} />
+              </div>
+              <div className="flex flex-wrap gap-3 pt-4">
                 <button onClick={() => setShowContact(true)}
                   className="bg-white text-blue-600 font-semibold px-6 py-3 rounded-xl hover:bg-blue-50 transition-colors shadow-lg"
                 >{t('📱 立即咨询', '📱 Contact Now')}</button>
-                <a href="#services"
+                <a href="#brands"
                   className="border border-white/40 text-white font-medium px-6 py-3 rounded-xl hover:bg-white/10 transition-colors"
-                >{t('查看服务 →', 'Our Services →')}</a>
+                >{t('选择品牌 →', 'Choose Brand →')}</a>
               </div>
               <div className="flex items-center gap-4 text-sm text-blue-200 pt-2">
                 <span className="flex items-center gap-1"><MapPin size={14} />{t('环翠区西门31号', 'Huancui Dist, West Gate #31')}</span>
@@ -141,6 +145,24 @@ export default function Home() {
                 <h3 className="font-semibold text-gray-900 text-sm sm:text-base">{f.title}</h3>
                 <p className="text-xs sm:text-sm text-gray-500 mt-1">{f.desc}</p>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== 维修品牌 ===== */}
+      <section className="py-12 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
+          <h3 className="text-sm font-semibold text-gray-500 mb-6 uppercase tracking-wider">{t('支持品牌（部分）', 'Brands We Support (partial)')}</h3>
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-8 text-gray-400 mb-6">
+            {[
+              {n:'Apple', l:'/iphone-repair'},{n:'Samsung', l:'/samsung-repair'},{n:'Huawei', l:'/huawei-repair'},
+              {n:'Xiaomi', l:'/xiaomi-repair'},{n:'OPPO', l:'/'},{n:'vivo', l:'/'},
+              {n:'OnePlus', l:'/'},{n:'Honor', l:'/'},{n:'Google', l:'/'},{n:'Realme', l:'/'},
+              {n:'Dell', l:'/'},{n:'Lenovo', l:'/'},{n:'HP', l:'/'},{n:'ASUS', l:'/'},
+              {n:'Microsoft', l:'/'},{n:'Nintendo', l:'/'},{n:'Sony', l:'/'}
+            ].map((b, i) => (
+              <a key={i} href={b.l} className="text-lg sm:text-xl font-bold text-gray-800 hover:text-blue-600 transition-colors hover:underline">{b.n}</a>
             ))}
           </div>
         </div>
@@ -191,18 +213,6 @@ export default function Home() {
                   </div>
                 )}
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ===== 维修品牌 ===== */}
-      <section className="py-12 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
-          <h3 className="text-sm font-semibold text-gray-500 mb-6 uppercase tracking-wider">{t('支持品牌（部分）', 'Brands We Support (partial)')}</h3>
-          <div className="flex flex-wrap justify-center gap-4 sm:gap-8 text-gray-400 mb-6">
-            {['Apple','Samsung','Huawei','Xiaomi','OPPO','vivo','OnePlus','Honor','Google','Realme','Dell','Lenovo','HP','ASUS','Microsoft','Nintendo','Sony'].map((b, i) => (
-              <span key={i} className="text-lg sm:text-xl font-bold text-gray-800 hover:text-blue-600 transition-colors">{b}</span>
             ))}
           </div>
         </div>
