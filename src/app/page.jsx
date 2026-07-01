@@ -227,23 +227,24 @@ export default function Home() {
             <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
               <h3 className="font-bold text-blue-600 mb-3 text-sm uppercase tracking-wider">{t('📟 iPad 全系列', '📟 iPad Series')}</h3>
               <ul className="space-y-1.5 text-sm text-gray-600">
-                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/" className="hover:text-blue-600 transition-colors">{t('iPad Pro 12.9 (1-7代) / Pro 11 (1-5代)', 'iPad Pro 12.9 (1st-7th) / Pro 11 (1st-5th)')}</a></li>
-                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/" className="hover:text-blue-600 transition-colors">{t('iPad 数字系列 (5-11代)', 'iPad digital (5th-11th)')}</a></li>
-                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/" className="hover:text-blue-600 transition-colors">{t('iPad Air / iPad Mini 全系', 'iPad Air / iPad Mini all')}</a></li>
+                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/iphone-repair" className="hover:text-blue-600 transition-colors">{t('iPad Pro 12.9 (1-7代) / Pro 11 (1-5代)', 'iPad Pro 12.9 (1st-7th) / Pro 11 (1st-5th)')}</a></li>
+                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/iphone-repair" className="hover:text-blue-600 transition-colors">{t('iPad 数字系列 (5-11代)', 'iPad digital (5th-11th)')}</a></li>
+                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/iphone-repair" className="hover:text-blue-600 transition-colors">{t('iPad Air / iPad Mini 全系', 'iPad Air / iPad Mini all')}</a></li>
                 <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/samsung-repair" className="hover:text-blue-600 transition-colors">{t('三星 Galaxy Tab 全系', 'Samsung Galaxy Tab')}</a></li>
-                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/huawei-repair" className="hover:text-blue-600 transition-colors">{t('华为 MatePad / 小米 Pad', 'Huawei MatePad / Xiaomi Pad')}</a></li>
-                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/" className="hover:text-blue-600 transition-colors">{t('Amazon Kindle / Kobo', 'Amazon Kindle / Kobo')}</a></li>
+                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/huawei-repair" className="hover:text-blue-600 transition-colors">{t('华为 MatePad', 'Huawei MatePad')}</a></li>
+                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/xiaomi-repair" className="hover:text-blue-600 transition-colors">{t('小米 Pad', 'Xiaomi Pad')}</a></li>
+                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/other-repair" className="hover:text-blue-600 transition-colors">{t('Amazon Kindle / Kobo 电子书', 'Amazon Kindle / Kobo')}</a></li>
               </ul>
             </div>
             {/* Watch */}
             <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
               <h3 className="font-bold text-blue-600 mb-3 text-sm uppercase tracking-wider">{t('⌚ Apple Watch 系列', '⌚ Apple Watch Series')}</h3>
               <ul className="space-y-1.5 text-sm text-gray-600">
-                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/" className="hover:text-blue-600 transition-colors">{t('Apple Watch Ultra 2 / Ultra (49mm)', 'Apple Watch Ultra 2 / Ultra (49mm)')}</a></li>
-                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/" className="hover:text-blue-600 transition-colors">{t('Apple Watch Series 9/8/7', 'Apple Watch Series 9/8/7')}</a></li>
-                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/" className="hover:text-blue-600 transition-colors">{t('Apple Watch SE/6/5/4', 'Apple Watch SE/6/5/4')}</a></li>
-                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/" className="hover:text-blue-600 transition-colors">{t('Apple Watch Series 3/2/1', 'Apple Watch Series 3/2/1')}</a></li>
-                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/" className="hover:text-blue-600 transition-colors">{t('Samsung Galaxy Watch 全系', 'Samsung Galaxy Watch')}</a></li>
+                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/watch-repair" className="hover:text-blue-600 transition-colors">{t('Apple Watch Ultra 2 / Ultra (49mm)', 'Apple Watch Ultra 2 / Ultra (49mm)')}</a></li>
+                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/watch-repair" className="hover:text-blue-600 transition-colors">{t('Apple Watch Series 9/8/7', 'Apple Watch Series 9/8/7')}</a></li>
+                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/watch-repair" className="hover:text-blue-600 transition-colors">{t('Apple Watch SE/6/5/4', 'Apple Watch SE/6/5/4')}</a></li>
+                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/watch-repair" className="hover:text-blue-600 transition-colors">{t('Apple Watch Series 3/2/1', 'Apple Watch Series 3/2/1')}</a></li>
+                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/samsung-repair" className="hover:text-blue-600 transition-colors">{t('Samsung Galaxy Watch 全系', 'Samsung Galaxy Watch')}</a></li>
               </ul>
             </div>
             {/* Mac */}
@@ -253,10 +254,11 @@ export default function Home() {
                 <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/macbook-repair" className="hover:text-blue-600 transition-colors">{t('MacBook Pro 13/14/16 (全代)', 'MacBook Pro 13/14/16 (all gens)')}</a></li>
                 <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/macbook-repair" className="hover:text-blue-600 transition-colors">{t('MacBook Air 全代', 'MacBook Air all gens')}</a></li>
                 <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/macbook-repair" className="hover:text-blue-600 transition-colors">{t('iMac / Mac Mini / Mac Pro', 'iMac / Mac Mini / Mac Pro')}</a></li>
-                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/#services" className="hover:text-blue-600 transition-colors">{t('联想/Lenovo ThinkPad 全系', 'Lenovo ThinkPad all series')}</a></li>
-                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/#services" className="hover:text-blue-600 transition-colors">{t('Dell XPS / Inspiron / Latitude', 'Dell XPS / Inspiron / Latitude')}</a></li>
-                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/#services" className="hover:text-blue-600 transition-colors">{t('HP Spectre / Pavilion / EliteBook', 'HP Spectre / Pavilion / EliteBook')}</a></li>
-                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/#services" className="hover:text-blue-600 transition-colors">{t('华硕 ASUS / 微软 Surface 全系', 'ASUS / Microsoft Surface all series')}</a></li>
+                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/lenovo-repair" className="hover:text-blue-600 transition-colors">{t('联想/Lenovo ThinkPad 全系', 'Lenovo ThinkPad all series')}</a></li>
+                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/dell-repair" className="hover:text-blue-600 transition-colors">{t('Dell XPS / Inspiron / Latitude', 'Dell XPS / Inspiron / Latitude')}</a></li>
+                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/hp-repair" className="hover:text-blue-600 transition-colors">{t('HP Spectre / Pavilion / EliteBook', 'HP Spectre / Pavilion / EliteBook')}</a></li>
+                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/asus-repair" className="hover:text-blue-600 transition-colors">{t('华硕 ASUS 全系', 'ASUS all series')}</a></li>
+                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/surface-repair" className="hover:text-blue-600 transition-colors">{t('微软 Surface 全系', 'Microsoft Surface all series')}</a></li>
               </ul>
             </div>
           </div>
