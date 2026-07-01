@@ -7,15 +7,6 @@ import ContactModal from '../../../components/ContactModal'
 import { repairServices } from '../../../data/repairServices'
 import { useParams, usePathname } from 'next/navigation'
 
-const imageMap = {
-  screen: ['img_1.jpg','img_3.jpg','img_7.jpg','img_47.jpg','img_60.jpg','img_73.jpg','img_75.jpg','img_78.jpg','img_80.jpg','img_81.jpg','img_82.jpg','img_83.jpg','img_84.jpg','img_85.jpg','img_86.jpg','img_87.jpg'],
-  battery: ['img_4.jpg','img_10.jpg','img_14.jpg','img_19.jpg','img_24.jpg','img_25.jpg','img_30.jpg','img_36.jpg','img_38.jpg','img_39.jpg','img_41.jpg','img_44.jpg','img_45.jpg','img_50.jpg','img_53.jpg'],
-  water: ['img_5.jpg','img_12.jpg','img_15.jpg','img_18.jpg','img_21.jpg','img_27.jpg','img_28.jpg','img_32.jpg','img_33.jpg'],
-  board: ['img_2.png','img_6.png','img_13.jpg','img_48.png','img_52.png','img_57.jpg','img_62.jpg','img_63.jpg','img_64.jpg','img_67.jpg'],
-  camera: ['img_79.png','img_91.jpg','img_92.jpg','img_93.jpg','img_94.jpg','img_95.jpg','img_96.jpg','img_97.jpg'],
-  faceid: ['img_69.jpg','img_70.jpg','img_71.webp'],
-  port: ['img_76.jpg','img_77.jpg'],
-}
 
 const brandConfig = {
   'iphone-repair': { key: 'iphone', label: 'iPhone 维修', labelEn: 'iPhone Repair', gradient: 'from-blue-700 via-blue-600 to-blue-500' },
@@ -52,7 +43,6 @@ export default function ServiceDetail() {
     )
   }
 
-  const images = (imageMap[service.imageHint] || []).slice(0, 6)
 
   return (
     <div className="min-h-screen bg-white">
@@ -86,20 +76,7 @@ export default function ServiceDetail() {
         </div>
       </section>
 
-      {images.length > 0 && (
-        <section className="py-6 bg-gray-50">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            <h2 className="font-bold text-gray-900 mb-3 text-sm">{t('维修案例图片', 'Repair Examples')}</h2>
-            <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-2">
-              {images.map((img, i) => (
-                <div key={i} className="aspect-square rounded-lg overflow-hidden bg-white border border-gray-200 shadow-sm">
-                  <img src={'/images/' + img} alt="" className="w-full h-full object-cover hover:scale-105 transition-transform" loading="lazy" onError={(e) => { e.target.style.display = 'none' }} />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
+      
 
       <section className="py-10 sm:py-14">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">

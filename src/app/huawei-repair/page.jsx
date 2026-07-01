@@ -15,7 +15,7 @@ export default function HuaweiRepair() {
     { id: 'battery-replacement', title: t('电池更换', 'Battery Service'), price: t('¥80起', 'from $10'), desc: t('华为电池不耐用、鼓包、充不进电。原装规格电池，续航恢复。', 'Huawei battery drain, swelling, no charge. OEM spec. Battery life restored.') },
     { id: 'motherboard-repair', title: t('主板维修', 'Motherboard'), price: t('¥150起', 'from $20'), desc: t('华为不开机、重启、充电IC、无服务、WiFi打不开。芯片级维修。', 'Huawei no power, boot loop, IC fault. Component-level board repair.') },
     { id: 'water-damage', title: t('进水维修', 'Water Damage'), price: t('视情况', 'Depends'), desc: t('华为IP68防水机型也会进水。超声波清洗+主板烘干+腐蚀修复。', 'Huawei IP68 phones can still get wet. Ultrasonic clean + dry + corrosion fix.') },
-    { id: 'water-damage', title: t('后盖/边框', 'Back Glass/Frame'), price: t('¥100起', 'from $15'), desc: t('华为玻璃后盖碎裂、中框变形。P系列/Mate系列后盖更换。', 'Huawei glass back broken, frame bent. P/Mate series back glass replacement.') },
+    { id: 'back-glass', title: t('后盖/边框', 'Back Glass/Frame'), price: t('¥100起', 'from $15'), desc: t('华为玻璃后盖碎裂、中框变形。P系列/Mate系列后盖更换。', 'Huawei glass back broken, frame bent. P/Mate series back glass replacement.') },
     { id: 'back-glass', title: t('刷机/解锁', 'Flash/Unlock'), price: t('¥60起', 'from $8'), desc: t('鸿蒙/HarmonyOS刷机、降级、解屏幕锁、救砖。', 'HarmonyOS flash, downgrade, screen unlock, unbrick.') },
   ]
 
