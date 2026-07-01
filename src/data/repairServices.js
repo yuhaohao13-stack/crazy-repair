@@ -10,14 +10,12 @@ const repairServices = {
       { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement',
         description: 'iPhone 屏幕碎裂、漏液、触摸不灵、显示异常？不管是OLED还是LCD，我们都能换。',
         descriptionEn: 'Cracked iPhone screen? Leaking LCD? Unresponsive touch? We replace OLED & LCD screens for all models.',
-        details: '提供原装拆机屏和国产高性价比屏两种选择。换屏前会跟你说清区别，你自己选。所有换屏含专业密封胶，恢复防水性能。换完后当面测试触摸、显示、面容功能。\n\n适用型号：iPhone 16/15/14/13/12/11/X/8/7/6 全系列。\n',
-        detailsEn: 'Two options: OEM pulled screen or high-quality domestic screen. I will explain before you choose. All replacements include waterproof sealant to restore water resistance. Full testing after repair.\n\nModels: iPhone 16/15/14/13/12/11/X/8/7/6 series.\nWarranty: 30 days.',
+        details: '提供原装拆机屏和国产高性价比屏两种选择。换屏前会跟你说清区别，你自己选。所有换屏含专业密封胶，恢复防水性能。换完后当面测试触摸、显示、面容功能。\n\n适用型号：iPhone 16/15/14/13/12/11/X/8/7/6 全系列。        detailsEn: 'Two options: OEM pulled screen or high-quality domestic screen. I will explain before you choose. All replacements include waterproof sealant to restore water resistance. Full testing after repair.\n\nModels: iPhone 16/15/14/13/12/11/X/8/7/6 series.\nWarranty: 30 days.',
         imageHint: 'screen' },
       { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement',
         description: 'iPhone 电池不耐用、一天三充、健康度低于80%、突然关机？换电池是最划算的升级。',
         descriptionEn: 'iPhone battery draining fast? Health below 80%? Random shutdowns? Battery swap is the most cost-effective upgrade.',
-        details: '原装规格电池，容量不虚标。从iPhone 6到16全系列都有现货。更换后检测健康度100%。告别续航焦虑，手机还会变流畅（降频解除）。\n质保：30天。',
-        detailsEn: 'OEM spec batteries with accurate capacity. iPhone 6 through 16 in stock. Health check to 100% after swap. No more battery anxiety + phone feels snappier (throttling removed).',
+        details: '原装规格电池，容量不虚标。从iPhone 6到16全系列都有现货。更换后检测健康度100%。告别续航焦虑，手机还会变流畅（降频解除）。\n        detailsEn: 'OEM spec batteries with accurate capacity. iPhone 6 through 16 in stock. Health check to 100% after swap. No more battery anxiety + phone feels snappier (throttling removed).\n\nWarranty: 30 days.',
         imageHint: 'battery' },
       { id: 'water-damage', title: '进水维修', titleEn: 'Water Damage Repair',
         description: 'iPhone掉水里、进洗衣机、淋雨了？第一时间关机送来，不要充电！',
@@ -28,41 +26,131 @@ const repairServices = {
       { id: 'motherboard-repair', title: '主板维修', titleEn: 'Motherboard Repair',
         description: '不开机、无限重启、无服务、WiFi打不开、面容不可用？可能是主板问题。',
         descriptionEn: 'Wont turn on? Boot loop? No service? WiFi dead? Face ID gone? Could be motherboard related.',
-        details: 'iPhone主板芯片级维修：CPU重焊、硬盘扩容、基带修复、充电IC更换、显示IC维修。不需要换整个主板，针对性修坏掉的部分，费用只有换主板的一半甚至更低。\n\n常见故障：进水不开机、刷机报错、无基带/无串号、重启循环、WiFi灰点。\n\nCommon issues: No power after water, update error, no baseband/IMEI, boot loop, WiFi grayed out.\n\n适用型号：iPhone 15/14/13/12/11/X 全系前后摄像头。\n',
-        detailsEn: 'iPhone front & rear camera replacement/repair. Blurry = dirty lens or damaged module. Black screen = loose flex or IC fault. Autofocus fail = rear camera issue.\n\nModels: iPhone 15/14/13/12/11/X front & rear.\n\niPhone X及以上面容ID修复，iPhone SE/8及以下指纹修复。\n',
-        detailsEn: 'Face ID dot matrix repair, front camera flex replacement. Face ID dying after screen swap is common — usually the dot matrix flex gets damaged during disassembly. Repairable without replacing the whole phone.\n\nFace ID: iPhone X+. Touch ID: iPhone SE/8 and below.\n\n质保：30天。',
-        detailsEn: 'MacBook Pro/Air all models screen replacement. Full assembly swap, backlight repair, flex fix. OEM quality, fully tested.',
+        details: 'iPhone主板芯片级维修：CPU重焊、硬盘扩容、基带修复、充电IC更换、显示IC维修。不需要换整个主板，针对性修坏掉的部分，费用只有换主板的一半甚至更低。\n\n常见故障：进水不开机、刷机报错、无基带/无串号、重启循环、WiFi灰点。        detailsEn: 'Component-level iPhone board repair: CPU reballing, storage upgrade, baseband fix, charging IC swap, display IC repair. No need to replace the whole board — fix only whats broken, at half the cost.\n\nCommon issues: No power after water, update error, no baseband/IMEI, boot loop, WiFi grayed out.',
+        imageHint: 'board' },
+      { id: 'camera-repair', title: '摄像头维修', titleEn: 'Camera Repair',
+        description: '拍照模糊、黑屏、闪退、对焦不了？前后摄像头都能修。',
+        descriptionEn: 'Blurry photos? Black screen? App crashes? Cant focus? Front & back camera fixed.',
+        details: 'iPhone前后摄像头更换/维修。拍照模糊通常是镜头脏或摄像头损坏；黑屏可能是排线松动或摄像头IC故障。对焦不灵最常见于后置摄像头。\n\n适用型号：iPhone 15/14/13/12/11/X 全系前后摄像头。        detailsEn: 'iPhone front & rear camera replacement/repair. Blurry = dirty lens or damaged module. Black screen = loose flex or IC fault. Autofocus fail = rear camera issue.\n\nModels: iPhone 15/14/13/12/11/X front & rear.',
+        imageHint: 'camera' },
+      { id: 'face-id', title: '面容/指纹修复', titleEn: 'Face ID / Touch ID',
+        description: '换完屏幕后面容不能用了？面容ID点阵坏了？指纹Home键不灵了？',
+        descriptionEn: 'Face ID stopped working after screen swap? Dot matrix damaged? Home button/Touch ID not responding?',
+        details: '面容ID点阵修复、前置摄像头排线更换。换屏幕后面容不能用是常见问题——大多是点阵排线在拆机时受损，可以单独修，不需要换整个手机。\n\niPhone X及以上面容ID修复，iPhone SE/8及以下指纹修复。        detailsEn: 'Face ID dot matrix repair, front camera flex replacement. Face ID dying after screen swap is common — usually the dot matrix flex gets damaged during disassembly. Repairable without replacing the whole phone.\n\nFace ID: iPhone X+. Touch ID: iPhone SE/8 and below.',
+        imageHint: 'faceid' },
+      { id: 'charging-port', title: '充电口维修', titleEn: 'Charging Port',
+        description: '充不进电、只能一个方向充、充电慢、接触不良？尾插问题。',
+        descriptionEn: 'Wont charge? Charges one way only? Slow charging? Loose connection? Charging port issue.',
+        details: 'iPhone充电口/尾插维修。常见问题：充电口松动、接触不良、只能一个方向充、不识别数据线。通常是尾插排线损坏或充电IC故障。\n        detailsEn: 'iPhone charging port/flex repair. Common: loose port, one-way charging, cable not recognized. Usually damaged flex or charging IC.\n',
+        imageHint: 'port' },
+    ]
+  },
+  'macbook': {
+    brand: 'Apple',
+    title: 'MacBook 维修',
+    gradient: 'from-gray-800 via-gray-700 to-gray-600',
+    services: [
+      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement',
+        description: 'MacBook屏幕碎了、闪烁、黑屏、有线条？原装品质屏幕更换。',
+        descriptionEn: 'Cracked MacBook screen? Flickering? Black screen? Lines? OEM quality replacement.',
+        details: 'MacBook Pro/Air 全型号屏幕更换。包括屏幕总成更换、背光维修、排线修复。原装品质屏幕，含安装调试。\n        detailsEn: 'MacBook Pro/Air all models screen replacement. Full assembly swap, backlight repair, flex fix. OEM quality, fully tested.\n\nWarranty: 30 days.',
         imageHint: 'screen' },
       { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement',
         description: 'MacBook电池鼓包、不耐用、提示"维修"？尽快更换。',
         descriptionEn: 'MacBook battery swelling? Short life? "Service Recommended"? Replace ASAP.',
-        details: 'MacBook电池更换。电池鼓包有安全隐患，发现鼓包尽快送修。原装规格电池，更换后恢复续航。\n\n注意：电池鼓包不要自行戳破或尝试拆解，有起火风险。\n',
-        detailsEn: 'MacBook battery replacement. Swollen batteries are a fire hazard — replace ASAP. OEM spec, battery life restored.\n\nWARNING: Do not puncture or attempt to remove a swollen battery yourself.\n\n千万不要插电尝试开机！通电进水的主板=短路烧毁=很难修。',
+        details: 'MacBook电池更换。电池鼓包有安全隐患，发现鼓包尽快送修。原装规格电池，更换后恢复续航。\n\n注意：电池鼓包不要自行戳破或尝试拆解，有起火风险。        detailsEn: 'MacBook battery replacement. Swollen batteries are a fire hazard — replace ASAP. OEM spec, battery life restored.\n\nWARNING: Do not puncture or attempt to remove a swollen battery yourself.',
+        imageHint: 'battery' },
+      { id: 'water-damage', title: '进水维修', titleEn: 'Water Damage Repair',
+        description: 'MacBook进水了？立刻拔电源关机送修！不要开机！',
+        descriptionEn: 'MacBook got wet? Unplug and power off NOW! Do NOT turn it on!',
+        details: 'MacBook进水处理经验丰富。进水后立刻断电关机，不要尝试开机。送来后我们会拆机清洁、超声波清洗主板、烘干、修复腐蚀。处理越早修复率越高。\n\n千万不要插电尝试开机！通电进水的主板=短路烧毁=很难修。',
         detailsEn: 'Extensive MacBook water damage experience. Power off immediately. We disassemble, ultrasonic clean, dry, repair corrosion. Early action = high recovery.\n\nNEVER plug in or try to turn on a wet MacBook! Power + water = short circuit = dead board.',
         imageHint: 'water' },
       { id: 'motherboard-repair', title: '主板/逻辑板维修', titleEn: 'Logic Board Repair',
         description: 'MacBook不开机、死机、充电没反应？逻辑板芯片级维修。',
         descriptionEn: 'MacBook no power? Freezes? No charging response? Component-level logic board repair.',
-        details: 'MacBook逻辑板芯片级维修：充电IC、显示芯片、CPU供电、硬盘芯片。比换主板便宜得多。\n\n常见故障：不进系统、五国语言、花屏、充不进电、进液腐蚀。\n\nCommon: No boot, kernel panic, distorted display, no charge, liquid corrosion.\n\n\nS系列换屏费用较高但比官方便宜很多。屏幕闪烁/绿线/紫斑等通病也处理。\n',
-        detailsEn: 'Samsung S/Z/A/M series screen replacement. AMOLED assembly swap with waterproof sealant.\n\nS series screens are expensive but we are much cheaper than Samsung official. Green/purple line fix available.\n\n\n适用Samsung Galaxy S/Z/A全系。\n', detailsEn: 'Blurry photos, crash, black screen, autofocus fail. Front & rear camera replacement.\n\nSamsung Galaxy S/Z/A series.\n\n\n注意：不要尝试开机或充电，直接送过来。', detailsEn: 'Power off immediately. Bring ASAP for cleaning. We have extensive Huawei water damage experience.\n\nWARNING: Do not turn on or charge. Bring it in immediately.', imageHint: 'water' },
-      { id: 'back-glass', title: '后盖/边框', titleEn: 'Back Glass/Frame', description: '华为玻璃后盖碎裂、中框变形。P系列/Mate系列后盖更换。', descriptionEn: 'Huawei glass back broken, frame bent. P/Mate series back glass replacement.', details: '华为玻璃后盖更换。P系列/Mate系列/Nova系列后盖都有。换后打密封胶恢复防水。', imageHint: 'backglass' },
+        details: 'MacBook逻辑板芯片级维修：充电IC、显示芯片、CPU供电、硬盘芯片。比换主板便宜得多。\n\n常见故障：不进系统、五国语言、花屏、充不进电、进液腐蚀。        detailsEn: 'MacBook logic board component-level repair: charging IC, display chip, CPU power, storage chip. Much cheaper than board swap.\n\nCommon: No boot, kernel panic, distorted display, no charge, liquid corrosion.',
+        imageHint: 'board' },
+      { id: 'cleaning', title: '清灰换硅脂/散热', titleEn: 'Cleaning & Cooling', description: 'MacBook风扇狂转、机身发烫、性能下降。深度清灰+换导热硅脂，有效降温10-20°C。', descriptionEn: 'Loud fans, overheating, performance drop. Deep clean + thermal paste, lowers temps 10-20°C.', details: 'MacBook深度拆机清灰、更换导热硅脂，有效降低温度10-20°C，告别风扇狂转。笔记本台式机都做。\n      { id: 'keyboard-repair', title: '键盘/触控板维修', titleEn: 'Keyboard / Trackpad',
+        description: '键盘按键不灵、粘滞、触控板没反应？蝶式键盘通病可修。',
+        descriptionEn: 'Sticky keys? Unresponsive? Trackpad not working? Butterfly keyboard issues fixable.',
+        details: 'MacBook键盘更换、单个按键修复、触控板更换。蝶式键盘（2016-2019款）按键粘滞是设计通病，可以修复。\n        detailsEn: 'MacBook keyboard replacement, single key fix, trackpad replacement. Butterfly keyboard sticky keys (2016-2019) are a known design flaw — fixable.\n',
+        imageHint: 'keyboard' },
     ]
+  },
+  'samsung': {
+    brand: 'Samsung',
+    title: 'Samsung 维修',
+    gradient: 'from-purple-700 via-purple-600 to-purple-500',
+    services: [
+      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement',
+        description: 'Samsung AMOLED屏幕碎裂、绿线、紫斑、触摸不灵？专业换屏。',
+        descriptionEn: 'Samsung AMOLED cracked? Green/purple lines? Touch unresponsive? Pro screen repair.',
+        details: 'Samsung Galaxy S系列/Z折叠屏/A系列/M系列屏幕更换。AMOLED屏幕总成更换，含密封胶恢复防水。\n\nS系列换屏费用较高但比官方便宜很多。屏幕闪烁/绿线/紫斑等通病也处理。        detailsEn: 'Samsung S/Z/A/M series screen replacement. AMOLED assembly swap with waterproof sealant.\n\nS series screens are expensive but we are much cheaper than Samsung official. Green/purple line fix available.',
+        imageHint: 'screen' },
+      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement',
+        description: 'Samsung电池不耐用、鼓包、快充变慢？换电池解决。',
+        descriptionEn: 'Samsung battery drain? Swelling? Fast charging slow? Battery swap fixes it.',
+        details: 'Samsung全系电池更换。鼓包电池必须立即更换，有起火风险。原装规格电池，更换后续航恢复。\n        detailsEn: 'Samsung all series battery replacement. Swollen battery = fire risk, replace immediately. OEM spec, battery life restored.\n',
+        imageHint: 'battery' },
+      { id: 'motherboard-repair', title: '主板维修', titleEn: 'Motherboard Repair', description: 'Samsung不开机、重启、充电IC故障、无服务、WiFi打不开。三星主板芯片级维修。', descriptionEn: 'No power, boot loop, charging IC, no service, WiFi dead. Component-level Samsung board repair.', details: '三星手机主板芯片级维修。不开机、无服务、无序号、充电IC、WiFi灰点。比换主板便宜很多。\n      { id: 'charging-port', title: '充电口/尾插', titleEn: 'Charging Port', description: 'Samsung充电口松动、接触不良、Type-C不识别、只能一个方向充。', descriptionEn: 'Loose port, bad contact, Type-C not recognized, one-way charging only.', details: '充电口松动、接触不良、Type-C不识别、只能一个方向充。尾插小板/排线更换。\n      { id: 'camera-repair', title: '摄像头维修', titleEn: 'Camera Repair', description: '拍照模糊、闪退、黑屏、对焦失灵。Samsung Galaxy全系前后摄像头更换。', descriptionEn: 'Blurry photos, crash, black screen, autofocus fail. Samsung Galaxy front/back camera.', details: '拍照模糊、闪退、黑屏、对焦失灵。前后摄像头更换。\n\n适用Samsung Galaxy S/Z/A全系。      { id: 'back-glass', title: '后盖更换', titleEn: 'Back Glass Replacement',
+        description: 'Samsung玻璃后盖摔碎了？换后盖恢复防水。',
+        descriptionEn: 'Samsung glass back shattered? Replace and restore waterproofing.',
+        details: 'Samsung玻璃后盖更换。S系列/Z系列/A系列后盖都有。更换后打密封胶恢复防水性能。\n        detailsEn: 'Samsung glass back replacement for S/Z/A series. Waterproof sealant restored after replacement.\n',
+        imageHint: 'backglass' },
+    ]
+  },
+  'xiaomi': {
+    brand: 'Xiaomi',
+    title: 'Xiaomi 维修',
+    gradient: 'from-orange-600 via-orange-500 to-yellow-500',
+    services: [
+      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement',
+        description: '小米/Redmi屏幕碎了？OLED/LCD都能换，性价比高。',
+        descriptionEn: 'Xiaomi/Redmi cracked screen? OLED & LCD replacement at great prices.',
+        details: '小米/Redmi 全系列屏幕更换。OLED和LCD屏幕都有。碎裂、漏液、触摸不灵都解决。\n        detailsEn: 'Xiaomi/Redmi all series screen replacement. OLED & LCD. Cracked, leaking, unresponsive touch fixed.\n',
+        imageHint: 'screen' },
+      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement',
+        description: '小米电池不耐用了？换电池满血复活。',
+        descriptionEn: 'Xiaomi battery draining? New battery = like new phone.',
+        details: '小米/Redmi 全系电池更换。原装规格电池，性价比高。\n        detailsEn: 'Xiaomi/Redmi all series battery replacement. OEM spec, great value.\n',
+        imageHint: 'battery' },
+      { id: 'flash-unlock', title: '刷机/解锁', titleEn: 'Flash / Unlock',
+        description: 'MIUI卡顿、卡LOGO、忘记账号？刷机解锁一条龙。',
+        descriptionEn: 'MIUI laggy? Stuck on logo? Forgot account? Flashing & unlocking service.',
+        details: 'MIUI刷机、降级、救砖、解BL锁、刷国际版。刷机前会帮你备份数据。\n        detailsEn: 'MIUI flash, downgrade, unbrick, BL unlock, global ROM. Data backup before flashing.\n',
+        imageHint: 'flash' },
+    ]
+  },
+  'huawei': {
+    brand: 'Huawei',
+    title: 'Huawei 维修',
+    gradient: 'from-red-600 via-red-500 to-red-400',
+    services: [
+      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement',
+        description: '华为Mate/P/Nova屏幕碎了？OLED/LCD都能换。',
+        descriptionEn: 'Huawei Mate/P/Nova cracked screen? OLED & LCD replacement.',
+        details: '华为Mate/P/Nova系列屏幕更换。OLED和LCD屏幕。碎裂漏液触摸不灵。含密封胶恢复防水。\n        detailsEn: 'Huawei Mate/P/Nova series screen replacement. OLED & LCD. Waterproof sealant restored.\n',
+        imageHint: 'screen' },
+      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement',
+        description: '华为电池不耐用了？原装规格电池更换。',
+        descriptionEn: 'Huawei battery draining? OEM spec replacement.',
+        details: '华为Mate/P/Nova全系电池更换。鼓包电池立即更换。续航恢复。\n        detailsEn: 'Huawei Mate/P/Nova battery replacement. Swollen batteries replaced immediately. Battery life restored.\n',
+        imageHint: 'battery' },
+      { id: 'flash-unlock', title: '刷机/解锁', titleEn: 'Flash / Unlock',
+        description: '鸿蒙系统卡顿、卡LOGO、忘记密码？刷机救砖。',
+        descriptionEn: 'HarmonyOS laggy? Stuck on logo? Forgot password? Flashing service.',
+        details: '鸿蒙/HarmonyOS刷机、降级回Android、救砖、解账户锁。\n        detailsEn: 'HarmonyOS flash, downgrade to Android, unbrick, account unlock.\n',
+        imageHint: 'flash' },
+      { id: 'motherboard-repair', title: '主板维修', titleEn: 'Motherboard Repair', description: '华为不开机、重启、充电IC、无服务、WiFi打不开。芯片级维修。', descriptionEn: 'Huawei no power, boot loop, IC fault. Component-level board repair.', details: '华为/荣耀主板芯片级维修。充电IC、显示IC、不开机、重启、无服务。\n      { id: 'water-damage', title: '进水维修', titleEn: 'Water Damage Repair', description: '华为IP68防水机型也会进水。超声波清洗+主板烘干+腐蛀修复。', descriptionEn: 'Huawei IP68 phones can still get wet. Ultrasonic clean + dry + corrosion fix.', details: '进水立刻关机送来，越早处理修复率越高。华为手机进水处理经验丰富。\n\n注意：不要尝试开机或充电，直接送过来。', detailsEn: 'Power off immediately. Bring ASAP for cleaning. We have extensive Huawei water damage experience.\n\nWARNING: Do not turn on or charge. Bring it in immediately.', imageHint: 'water' },
+      { id: 'back-glass', title: '后盖/边框', titleEn: 'Back Glass/Frame', description: '华为玻璃后盖碎裂、中框变形。P系列/Mate系列后盖更换。', descriptionEn: 'Huawei glass back broken, frame bent. P/Mate series back glass replacement.', details: '华为玻璃后盖更换。P系列/Mate系列/Nova系列后盖都有。换后打密封胶恢复防水。\n    ]
   },
   'lenovo': {
     brand: 'Lenovo',
     title: 'Lenovo 维修',
     gradient: 'from-blue-700 via-blue-600 to-blue-500',
     services: [
-      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement', description: '联想屏幕碎裂', descriptionEn: 'Lenovo cracked screen', details: '联想全系列屏幕更换。', imageHint: 'screen' },
-      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: '电池鼓包', descriptionEn: 'Battery swelling', details: '电池更换。', imageHint: 'battery' },
-      { id: 'keyboard-repair', title: '键盘维修', titleEn: 'Keyboard Repair', description: '键盘失灵', descriptionEn: 'Keyboard issues', details: '键盘更换或修复。', imageHint: 'keyboard' },
-      { id: 'cleaning', title: '清灰换硅脂', titleEn: 'Cleaning & Cooling', description: '清灰换硅脂', descriptionEn: 'Deep clean', details: '风扇狂转发热降频。', imageHint: '' },
-      { id: 'os-upgrade', title: '系统重装/升级', titleEn: 'OS/Upgrade', description: '重装系统升级', descriptionEn: 'OS reinstall upgrade', details: '系统重装、加固态。\n\n\n\n\n\n\n\n\n\n碎裂、漏液、花屏、闪烁、触摸不灵、黑屏都能处理。更换后当面测试显示效果。\n\nCracked, leaking, flickering, unresponsive touch, black screen. Tested after repair.', imageHint: 'screen' },
-      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: '联想笔记本电池鼓包不耐用充不进电。原装规格电池。', descriptionEn: 'Lenovo laptop battery swelling, short life, not charging. OEM spec.', details: '笔记本电池鼓包有安全隐患（可能起火），发现鼓包请尽快送修。电池不耐用、一天充几次、充不进电——换电池是最划算的升级。\n\n联想笔记本全系列电池现货。更换后测试健康度，恢复续航。\n\nSwollen battery = fire hazard, replace ASAP. Short battery life, not charging — battery swap is the most cost-effective upgrade.', imageHint: 'battery' },
-      { id: 'keyboard-repair', title: '键盘维修', titleEn: 'Keyboard Repair', description: '联想笔记本按键不灵键盘进水个别键失灵', descriptionEn: 'Lenovo laptop sticky keys, water damage, key failure', details: '联想笔记本键盘更换或修复。\n\n键盘进水后尽快关机送修，不要继续使用。\n\nKeyboard water damage: power off immediately.', imageHint: 'keyboard' },
-      { id: 'cleaning', title: '清灰换硅脂', titleEn: 'Cleaning & Cooling', description: '联想笔记本风扇狂转机身发烫性能下降。深度拆机清灰+换导热硅脂。', descriptionEn: 'Lenovo laptop loud fans, overheating, performance drop. Deep clean + thermal paste.', details: '笔记本用久了内部积灰严重，导致散热不良。风扇狂转、机身烫手、CPU降频、玩游戏卡顿。\n\n深度拆机清灰+更换导热硅脂，有效降低温度10-20°C，恢复性能。游戏本尤其需要定期清灰。\n\nDust buildup causes overheating. Loud fans, hot chassis, CPU throttling, gaming lag. Deep clean + thermal paste lowers 10-20°C. Gaming laptops especially need regular cleaning.', imageHint: '' },
-      { id: 'os-upgrade', title: '系统重装/升级', titleEn: 'OS/Upgrade', description: '联想笔记本系统卡顿重装Windows加装固态硬盘提速内存升级数据备份。', descriptionEn: 'Lenovo laptop slow, Windows reinstall, SSD/RAM upgrade, data backup.', details: '电脑越来越慢？开机几分钟？打开软件转圈？可能是系统垃圾太多、硬盘太慢、内存不够。\n\n提供：Windows系统重装、换固态硬盘（HDD→SSD提速相当明显）、加装内存、系统优化、数据备份迁移。升级前会告知你所有选择。\n\n\nPC slow, slow boot? Windows reinstall, SSD upgrade (HDD to SSD = big speedup), RAM upgrade, system optimization, data backup.', imageHint: '' },
-      { id: 'other-issues', title: '其他故障', titleEn: 'Other Issues', description: '联想笔记本其他问题免费检测先报价后维修加微信咨询。', descriptionEn: 'Lenovo laptop other issues free check, quote first, DM on WeChat.', details: '蓝屏死机、不进系统、WiFi打不开、USB口不认、进液腐蚀、电池不充电……任何联想笔记本问题都可以带来免费检测。\n\n检测后告诉您问题在哪、怎么修、多少钱，修不修您决定。不加钱不强制。', detailsEn: 'Lenovo laptop other issues.\n\nBSOD, crash, no boot, WiFi/USB issues, liquid damage, no charging. Any issue, free check. Diagnosis + quote, you decide. No pressure.', imageHint: '' },
+      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement', description: '联想屏幕碎裂', descriptionEn: 'Lenovo cracked screen', details: '联想全系列屏幕更换。\n      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: '电池鼓包', descriptionEn: 'Battery swelling', details: '电池更换。\n      { id: 'keyboard-repair', title: '键盘维修', titleEn: 'Keyboard Repair', description: '键盘失灵', descriptionEn: 'Keyboard issues', details: '键盘更换或修复。\n      { id: 'cleaning', title: '清灰换硅脂', titleEn: 'Cleaning & Cooling', description: '清灰换硅脂', descriptionEn: 'Deep clean', details: '风扇狂转发热降频。\n      { id: 'os-upgrade', title: '系统重装/升级', titleEn: 'OS/Upgrade', description: '重装系统升级', descriptionEn: 'OS reinstall upgrade', details: '系统重装、加固态。\n      { id: 'other-issues', title: '其他故障', titleEn: 'Other Issues', description: '免费检测', descriptionEn: 'Free check', details: '蓝屏进液免费检测。', detailsEn: 'Free check.', imageHint: '' },
     ]
   },
   'dell': {
@@ -70,12 +158,7 @@ const repairServices = {
     title: 'Dell 维修',
     gradient: 'from-blue-600 via-blue-500 to-blue-400',
     services: [
-      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement', description: '戴尔笔记本屏幕碎裂漏液花屏触摸不灵。原装品质屏幕更换。', descriptionEn: 'Dell laptop cracked screen, leaking, flickering, unresponsive touch. OEM quality replacement.', details: '戴尔笔记本全系列屏幕更换维修。\n\n碎裂、漏液、花屏、闪烁、触摸不灵、黑屏都能处理。更换后当面测试显示效果。\n\nCracked, leaking, flickering, unresponsive touch, black screen. Tested after repair.', imageHint: 'screen' },
-      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: '戴尔笔记本电池鼓包不耐用充不进电。原装规格电池。', descriptionEn: 'Dell laptop battery swelling, short life, not charging. OEM spec.', details: '笔记本电池鼓包有安全隐患（可能起火），发现鼓包请尽快送修。电池不耐用、一天充几次、充不进电——换电池是最划算的升级。\n\n戴尔笔记本全系列电池现货。更换后测试健康度，恢复续航。\n\nSwollen battery = fire hazard, replace ASAP. Short battery life, not charging — battery swap is the most cost-effective upgrade.', imageHint: 'battery' },
-      { id: 'keyboard-repair', title: '键盘维修', titleEn: 'Keyboard Repair', description: '戴尔笔记本按键不灵键盘进水个别键失灵', descriptionEn: 'Dell laptop sticky keys, water damage, key failure', details: '戴尔笔记本键盘更换或修复。\n\n键盘进水后尽快关机送修，不要继续使用。\n\nKeyboard water damage: power off immediately.', imageHint: 'keyboard' },
-      { id: 'cleaning', title: '清灰换硅脂', titleEn: 'Cleaning & Cooling', description: '戴尔笔记本风扇狂转机身发烫性能下降。深度拆机清灰+换导热硅脂。', descriptionEn: 'Dell laptop loud fans, overheating, performance drop. Deep clean + thermal paste.', details: '笔记本用久了内部积灰严重，导致散热不良。风扇狂转、机身烫手、CPU降频、玩游戏卡顿。\n\n深度拆机清灰+更换导热硅脂，有效降低温度10-20°C，恢复性能。游戏本尤其需要定期清灰。\n\nDust buildup causes overheating. Loud fans, hot chassis, CPU throttling, gaming lag. Deep clean + thermal paste lowers 10-20°C. Gaming laptops especially need regular cleaning.', imageHint: '' },
-      { id: 'os-upgrade', title: '系统重装/升级', titleEn: 'OS/Upgrade', description: '戴尔笔记本系统卡顿重装Windows加装固态硬盘提速内存升级数据备份。', descriptionEn: 'Dell laptop slow, Windows reinstall, SSD/RAM upgrade, data backup.', details: '电脑越来越慢？开机几分钟？打开软件转圈？可能是系统垃圾太多、硬盘太慢、内存不够。\n\n提供：Windows系统重装、换固态硬盘（HDD→SSD提速相当明显）、加装内存、系统优化、数据备份迁移。升级前会告知你所有选择。\n\n\nPC slow, slow boot? Windows reinstall, SSD upgrade (HDD to SSD = big speedup), RAM upgrade, system optimization, data backup.', imageHint: '' },
-      { id: 'other-issues', title: '其他故障', titleEn: 'Other Issues', description: '戴尔笔记本其他问题免费检测先报价后维修加微信咨询。', descriptionEn: 'Dell laptop other issues free check, quote first, DM on WeChat.', details: '蓝屏死机、不进系统、WiFi打不开、USB口不认、进液腐蚀、电池不充电……任何戴尔笔记本问题都可以带来免费检测。\n\n检测后告诉您问题在哪、怎么修、多少钱，修不修您决定。不加钱不强制。', detailsEn: 'Dell laptop other issues.\n\nBSOD, crash, no boot, WiFi/USB issues, liquid damage, no charging. Any issue, free check. Diagnosis + quote, you decide. No pressure.', imageHint: '' },
+      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement', description: '戴尔屏幕碎裂', descriptionEn: 'Dell cracked screen', details: '戴尔全系列屏幕更换。\n      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: '电池鼓包', descriptionEn: 'Battery swelling', details: '电池更换。\n      { id: 'keyboard-repair', title: '键盘维修', titleEn: 'Keyboard Repair', description: '键盘失灵', descriptionEn: 'Keyboard issues', details: '键盘更换或修复。\n      { id: 'cleaning', title: '清灰换硅脂', titleEn: 'Cleaning & Cooling', description: '清灰换硅脂', descriptionEn: 'Deep clean', details: '降温降频。\n      { id: 'os-upgrade', title: '系统重装/升级', titleEn: 'OS/Upgrade', description: '重装系统', descriptionEn: 'OS reinstall', details: '系统问题。\n      { id: 'other-issues', title: '其他故障', titleEn: 'Other Issues', description: '免费检测', descriptionEn: 'Free check', details: '蓝屏免费检测。', detailsEn: 'Free check.', imageHint: '' },
     ]
   },
   'hp': {
@@ -83,12 +166,7 @@ const repairServices = {
     title: 'HP 维修',
     gradient: 'from-teal-700 via-teal-600 to-teal-500',
     services: [
-      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement', description: '惠普笔记本屏幕碎裂漏液花屏触摸不灵。原装品质屏幕更换。', descriptionEn: 'HP laptop cracked screen, leaking, flickering, unresponsive touch. OEM quality replacement.', details: '惠普笔记本全系列屏幕更换维修。\n\n碎裂、漏液、花屏、闪烁、触摸不灵、黑屏都能处理。更换后当面测试显示效果。\n\nCracked, leaking, flickering, unresponsive touch, black screen. Tested after repair.', imageHint: 'screen' },
-      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: '惠普笔记本电池鼓包不耐用充不进电。原装规格电池。', descriptionEn: 'HP laptop battery swelling, short life, not charging. OEM spec.', details: '笔记本电池鼓包有安全隐患（可能起火），发现鼓包请尽快送修。电池不耐用、一天充几次、充不进电——换电池是最划算的升级。\n\n惠普笔记本全系列电池现货。更换后测试健康度，恢复续航。\n\nSwollen battery = fire hazard, replace ASAP. Short battery life, not charging — battery swap is the most cost-effective upgrade.', imageHint: 'battery' },
-      { id: 'keyboard-repair', title: '键盘维修', titleEn: 'Keyboard Repair', description: '惠普笔记本按键不灵键盘进水个别键失灵', descriptionEn: 'HP laptop sticky keys, water damage, key failure', details: '惠普笔记本键盘更换或修复。\n\n键盘进水后尽快关机送修，不要继续使用。\n\nKeyboard water damage: power off immediately.', imageHint: 'keyboard' },
-      { id: 'cleaning', title: '清灰换硅脂', titleEn: 'Cleaning & Cooling', description: '惠普笔记本风扇狂转机身发烫性能下降。深度拆机清灰+换导热硅脂。', descriptionEn: 'HP laptop loud fans, overheating, performance drop. Deep clean + thermal paste.', details: '笔记本用久了内部积灰严重，导致散热不良。风扇狂转、机身烫手、CPU降频、玩游戏卡顿。\n\n深度拆机清灰+更换导热硅脂，有效降低温度10-20°C，恢复性能。游戏本尤其需要定期清灰。\n\nDust buildup causes overheating. Loud fans, hot chassis, CPU throttling, gaming lag. Deep clean + thermal paste lowers 10-20°C. Gaming laptops especially need regular cleaning.', imageHint: '' },
-      { id: 'os-upgrade', title: '系统重装/升级', titleEn: 'OS/Upgrade', description: '惠普笔记本系统卡顿重装Windows加装固态硬盘提速内存升级数据备份。', descriptionEn: 'HP laptop slow, Windows reinstall, SSD/RAM upgrade, data backup.', details: '电脑越来越慢？开机几分钟？打开软件转圈？可能是系统垃圾太多、硬盘太慢、内存不够。\n\n提供：Windows系统重装、换固态硬盘（HDD→SSD提速相当明显）、加装内存、系统优化、数据备份迁移。升级前会告知你所有选择。\n\n\nPC slow, slow boot? Windows reinstall, SSD upgrade (HDD to SSD = big speedup), RAM upgrade, system optimization, data backup.', imageHint: '' },
-      { id: 'other-issues', title: '其他故障', titleEn: 'Other Issues', description: '惠普笔记本其他问题免费检测先报价后维修加微信咨询。', descriptionEn: 'HP laptop other issues free check, quote first, DM on WeChat.', details: '蓝屏死机、不进系统、WiFi打不开、USB口不认、进液腐蚀、电池不充电……任何惠普笔记本问题都可以带来免费检测。\n\n检测后告诉您问题在哪、怎么修、多少钱，修不修您决定。不加钱不强制。', detailsEn: 'HP laptop other issues.\n\nBSOD, crash, no boot, WiFi/USB issues, liquid damage, no charging. Any issue, free check. Diagnosis + quote, you decide. No pressure.', imageHint: '' },
+      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement', description: '惠普屏幕碎裂', descriptionEn: 'HP cracked screen', details: '惠普全系列屏幕更换。\n      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: '电池鼓包', descriptionEn: 'Battery issues', details: '电池更换。\n      { id: 'keyboard-repair', title: '键盘维修', titleEn: 'Keyboard Repair', description: '键盘失灵', descriptionEn: 'Keyboard issues', details: '键盘更换或修复。\n      { id: 'cleaning', title: '清灰换硅脂', titleEn: 'Cleaning & Cooling', description: '清灰换硅脂', descriptionEn: 'Deep clean', details: '过热降频清灰。\n      { id: 'os-upgrade', title: '系统重装/升级', titleEn: 'OS/Upgrade', description: '系统重装', descriptionEn: 'OS reinstall', details: '系统问题。\n      { id: 'other-issues', title: '其他故障', titleEn: 'Other Issues', description: '免费检测', descriptionEn: 'Free check', details: '蓝屏不进系统免费检测。', detailsEn: 'Free check.', imageHint: '' },
     ]
   },
   'asus': {
@@ -96,12 +174,7 @@ const repairServices = {
     title: 'ASUS 维修',
     gradient: 'from-cyan-700 via-cyan-600 to-cyan-500',
     services: [
-      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement', description: '华硕笔记本屏幕碎裂漏液花屏触摸不灵。原装品质屏幕更换。', descriptionEn: 'ASUS laptop cracked screen, leaking, flickering, unresponsive touch. OEM quality replacement.', details: '华硕笔记本全系列屏幕更换维修。\n\n碎裂、漏液、花屏、闪烁、触摸不灵、黑屏都能处理。更换后当面测试显示效果。\n\nCracked, leaking, flickering, unresponsive touch, black screen. Tested after repair.', imageHint: 'screen' },
-      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: '华硕笔记本电池鼓包不耐用充不进电。原装规格电池。', descriptionEn: 'ASUS laptop battery swelling, short life, not charging. OEM spec.', details: '笔记本电池鼓包有安全隐患（可能起火），发现鼓包请尽快送修。电池不耐用、一天充几次、充不进电——换电池是最划算的升级。\n\n华硕笔记本全系列电池现货。更换后测试健康度，恢复续航。\n\nSwollen battery = fire hazard, replace ASAP. Short battery life, not charging — battery swap is the most cost-effective upgrade.', imageHint: 'battery' },
-      { id: 'keyboard-repair', title: '键盘维修', titleEn: 'Keyboard Repair', description: '华硕笔记本按键不灵键盘进水个别键失灵', descriptionEn: 'ASUS laptop sticky keys, water damage, key failure', details: '华硕笔记本键盘更换或修复。\n\n键盘进水后尽快关机送修，不要继续使用。\n\nKeyboard water damage: power off immediately.', imageHint: 'keyboard' },
-      { id: 'cleaning', title: '清灰换硅脂', titleEn: 'Cleaning & Cooling', description: '华硕笔记本风扇狂转机身发烫性能下降。深度拆机清灰+换导热硅脂。', descriptionEn: 'ASUS laptop loud fans, overheating, performance drop. Deep clean + thermal paste.', details: '笔记本用久了内部积灰严重，导致散热不良。风扇狂转、机身烫手、CPU降频、玩游戏卡顿。\n\n深度拆机清灰+更换导热硅脂，有效降低温度10-20°C，恢复性能。游戏本尤其需要定期清灰。\n\nDust buildup causes overheating. Loud fans, hot chassis, CPU throttling, gaming lag. Deep clean + thermal paste lowers 10-20°C. Gaming laptops especially need regular cleaning.', imageHint: '' },
-      { id: 'os-upgrade', title: '系统重装/升级', titleEn: 'OS/Upgrade', description: '华硕笔记本系统卡顿重装Windows加装固态硬盘提速内存升级数据备份。', descriptionEn: 'ASUS laptop slow, Windows reinstall, SSD/RAM upgrade, data backup.', details: '电脑越来越慢？开机几分钟？打开软件转圈？可能是系统垃圾太多、硬盘太慢、内存不够。\n\n提供：Windows系统重装、换固态硬盘（HDD→SSD提速相当明显）、加装内存、系统优化、数据备份迁移。升级前会告知你所有选择。\n\n\nPC slow, slow boot? Windows reinstall, SSD upgrade (HDD to SSD = big speedup), RAM upgrade, system optimization, data backup.', imageHint: '' },
-      { id: 'other-issues', title: '其他故障', titleEn: 'Other Issues', description: '华硕笔记本其他问题免费检测先报价后维修加微信咨询。', descriptionEn: 'ASUS laptop other issues free check, quote first, DM on WeChat.', details: '蓝屏死机、不进系统、WiFi打不开、USB口不认、进液腐蚀、电池不充电……任何华硕笔记本问题都可以带来免费检测。\n\n检测后告诉您问题在哪、怎么修、多少钱，修不修您决定。不加钱不强制。', detailsEn: 'ASUS laptop other issues.\n\nBSOD, crash, no boot, WiFi/USB issues, liquid damage, no charging. Any issue, free check. Diagnosis + quote, you decide. No pressure.', imageHint: '' },
+      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement', description: '华硕屏幕碎裂', descriptionEn: 'ASUS cracked screen', details: '华硕屏幕更换。\n      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: '电池鼓包', descriptionEn: 'Battery issues', details: '电池更换。\n      { id: 'cleaning', title: '清灰换硅脂', titleEn: 'Cleaning & Cooling', description: '清灰换硅脂', descriptionEn: 'Deep clean', details: 'ROG游戏本清灰必做。\n      { id: 'keyboard-repair', title: '键盘维修', titleEn: 'Keyboard Repair', description: '键盘失灵', descriptionEn: 'Keyboard issues', details: '键盘更换或修复。\n      { id: 'os-upgrade', title: '系统重装/升级', titleEn: 'OS/Upgrade', description: '重装系统', descriptionEn: 'OS reinstall', details: '系统问题。\n      { id: 'other-issues', title: '其他故障', titleEn: 'Other Issues', description: '免费检测', descriptionEn: 'Free check', details: '蓝屏免费检测。', detailsEn: 'Free check.', imageHint: '' },
     ]
   },
   'acer': {
@@ -109,12 +182,7 @@ const repairServices = {
     title: 'Acer 维修',
     gradient: 'from-green-700 via-green-600 to-green-500',
     services: [
-      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement', description: '宏基笔记本屏幕碎裂漏液花屏触摸不灵。原装品质屏幕更换。', descriptionEn: 'Acer laptop cracked screen, leaking, flickering, unresponsive touch. OEM quality replacement.', details: '宏基笔记本全系列屏幕更换维修。\n\n碎裂、漏液、花屏、闪烁、触摸不灵、黑屏都能处理。更换后当面测试显示效果。\n\nCracked, leaking, flickering, unresponsive touch, black screen. Tested after repair.', imageHint: 'screen' },
-      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: '宏基笔记本电池鼓包不耐用充不进电。原装规格电池。', descriptionEn: 'Acer laptop battery swelling, short life, not charging. OEM spec.', details: '笔记本电池鼓包有安全隐患（可能起火），发现鼓包请尽快送修。电池不耐用、一天充几次、充不进电——换电池是最划算的升级。\n\n宏基笔记本全系列电池现货。更换后测试健康度，恢复续航。\n\nSwollen battery = fire hazard, replace ASAP. Short battery life, not charging — battery swap is the most cost-effective upgrade.', imageHint: 'battery' },
-      { id: 'keyboard-repair', title: '键盘维修', titleEn: 'Keyboard Repair', description: '宏基笔记本按键不灵键盘进水个别键失灵', descriptionEn: 'Acer laptop sticky keys, water damage, key failure', details: '宏基笔记本键盘更换或修复。\n\n键盘进水后尽快关机送修，不要继续使用。\n\nKeyboard water damage: power off immediately.', imageHint: 'keyboard' },
-      { id: 'cleaning', title: '清灰换硅脂', titleEn: 'Cleaning & Cooling', description: '宏基笔记本风扇狂转机身发烫性能下降。深度拆机清灰+换导热硅脂。', descriptionEn: 'Acer laptop loud fans, overheating, performance drop. Deep clean + thermal paste.', details: '笔记本用久了内部积灰严重，导致散热不良。风扇狂转、机身烫手、CPU降频、玩游戏卡顿。\n\n深度拆机清灰+更换导热硅脂，有效降低温度10-20°C，恢复性能。游戏本尤其需要定期清灰。\n\nDust buildup causes overheating. Loud fans, hot chassis, CPU throttling, gaming lag. Deep clean + thermal paste lowers 10-20°C. Gaming laptops especially need regular cleaning.', imageHint: '' },
-      { id: 'os-upgrade', title: '系统重装/升级', titleEn: 'OS/Upgrade', description: '宏基笔记本系统卡顿重装Windows加装固态硬盘提速内存升级数据备份。', descriptionEn: 'Acer laptop slow, Windows reinstall, SSD/RAM upgrade, data backup.', details: '电脑越来越慢？开机几分钟？打开软件转圈？可能是系统垃圾太多、硬盘太慢、内存不够。\n\n提供：Windows系统重装、换固态硬盘（HDD→SSD提速相当明显）、加装内存、系统优化、数据备份迁移。升级前会告知你所有选择。\n\n\nPC slow, slow boot? Windows reinstall, SSD upgrade (HDD to SSD = big speedup), RAM upgrade, system optimization, data backup.', imageHint: '' },
-      { id: 'other-issues', title: '其他故障', titleEn: 'Other Issues', description: '宏基笔记本其他问题免费检测先报价后维修加微信咨询。', descriptionEn: 'Acer laptop other issues free check, quote first, DM on WeChat.', details: '蓝屏死机、不进系统、WiFi打不开、USB口不认、进液腐蚀、电池不充电……任何宏基笔记本问题都可以带来免费检测。\n\n检测后告诉您问题在哪、怎么修、多少钱，修不修您决定。不加钱不强制。', detailsEn: 'Acer laptop other issues.\n\nBSOD, crash, no boot, WiFi/USB issues, liquid damage, no charging. Any issue, free check. Diagnosis + quote, you decide. No pressure.', imageHint: '' },
+      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement', description: '宏基屏幕碎裂', descriptionEn: 'Acer cracked screen', details: '宏基屏幕更换。\n      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: '电池鼓包', descriptionEn: 'Battery swelling', details: '电池更换。\n      { id: 'keyboard-repair', title: '键盘维修', titleEn: 'Keyboard Repair', description: '键盘失灵', descriptionEn: 'Keyboard issues', details: '键盘更换。\n      { id: 'cleaning', title: '清灰换硅脂', titleEn: 'Cleaning & Cooling', description: '清灰换硅脂', descriptionEn: 'Deep clean', details: '散热清洁。\n      { id: 'os-upgrade', title: '系统重装/升级', titleEn: 'OS/Upgrade', description: '重装系统', descriptionEn: 'OS reinstall', details: '系统问题。\n      { id: 'other-issues', title: '其他故障', titleEn: 'Other Issues', description: '免费检测', descriptionEn: 'Free check', details: '其他问题免费检测。', detailsEn: 'Free check.', imageHint: '' },
     ]
   },
   'msi': {
@@ -122,12 +190,7 @@ const repairServices = {
     title: 'MSI 维修',
     gradient: 'from-red-700 via-red-600 to-red-500',
     services: [
-      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement', description: '微星笔记本屏幕碎裂漏液花屏触摸不灵。原装品质屏幕更换。', descriptionEn: 'MSI laptop cracked screen, leaking, flickering, unresponsive touch. OEM quality replacement.', details: '微星笔记本全系列屏幕更换维修。\n\n碎裂、漏液、花屏、闪烁、触摸不灵、黑屏都能处理。更换后当面测试显示效果。\n\nCracked, leaking, flickering, unresponsive touch, black screen. Tested after repair.', imageHint: 'screen' },
-      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: '微星笔记本电池鼓包不耐用充不进电。原装规格电池。', descriptionEn: 'MSI laptop battery swelling, short life, not charging. OEM spec.', details: '笔记本电池鼓包有安全隐患（可能起火），发现鼓包请尽快送修。电池不耐用、一天充几次、充不进电——换电池是最划算的升级。\n\n微星笔记本全系列电池现货。更换后测试健康度，恢复续航。\n\nSwollen battery = fire hazard, replace ASAP. Short battery life, not charging — battery swap is the most cost-effective upgrade.', imageHint: 'battery' },
-      { id: 'keyboard-repair', title: '键盘维修', titleEn: 'Keyboard Repair', description: '微星笔记本按键不灵键盘进水个别键失灵', descriptionEn: 'MSI laptop sticky keys, water damage, key failure', details: '微星笔记本键盘更换或修复。\n\n键盘进水后尽快关机送修，不要继续使用。\n\nKeyboard water damage: power off immediately.', imageHint: 'keyboard' },
-      { id: 'cleaning', title: '清灰换硅脂', titleEn: 'Cleaning & Cooling', description: '微星笔记本风扇狂转机身发烫性能下降。深度拆机清灰+换导热硅脂。', descriptionEn: 'MSI laptop loud fans, overheating, performance drop. Deep clean + thermal paste.', details: '笔记本用久了内部积灰严重，导致散热不良。风扇狂转、机身烫手、CPU降频、玩游戏卡顿。\n\n深度拆机清灰+更换导热硅脂，有效降低温度10-20°C，恢复性能。游戏本尤其需要定期清灰。\n\nDust buildup causes overheating. Loud fans, hot chassis, CPU throttling, gaming lag. Deep clean + thermal paste lowers 10-20°C. Gaming laptops especially need regular cleaning.', imageHint: '' },
-      { id: 'os-upgrade', title: '系统重装/升级', titleEn: 'OS/Upgrade', description: '微星笔记本系统卡顿重装Windows加装固态硬盘提速内存升级数据备份。', descriptionEn: 'MSI laptop slow, Windows reinstall, SSD/RAM upgrade, data backup.', details: '电脑越来越慢？开机几分钟？打开软件转圈？可能是系统垃圾太多、硬盘太慢、内存不够。\n\n提供：Windows系统重装、换固态硬盘（HDD→SSD提速相当明显）、加装内存、系统优化、数据备份迁移。升级前会告知你所有选择。\n\n\nPC slow, slow boot? Windows reinstall, SSD upgrade (HDD to SSD = big speedup), RAM upgrade, system optimization, data backup.', imageHint: '' },
-      { id: 'other-issues', title: '其他故障', titleEn: 'Other Issues', description: '微星笔记本其他问题免费检测先报价后维修加微信咨询。', descriptionEn: 'MSI laptop other issues free check, quote first, DM on WeChat.', details: '蓝屏死机、不进系统、WiFi打不开、USB口不认、进液腐蚀、电池不充电……任何微星笔记本问题都可以带来免费检测。\n\n检测后告诉您问题在哪、怎么修、多少钱，修不修您决定。不加钱不强制。', detailsEn: 'MSI laptop other issues.\n\nBSOD, crash, no boot, WiFi/USB issues, liquid damage, no charging. Any issue, free check. Diagnosis + quote, you decide. No pressure.', imageHint: '' },
+      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement', description: '微星屏幕碎裂', descriptionEn: 'MSI cracked screen', details: '微星屏幕更换。\n      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: '电池鼓包', descriptionEn: 'Battery swelling', details: '电池更换。\n      { id: 'cleaning', title: '清灰换硅脂', titleEn: 'Cleaning & Cooling', description: '清灰换硅脂', descriptionEn: 'Deep clean', details: '游戏本清灰必做。\n      { id: 'keyboard-repair', title: '键盘维修', titleEn: 'Keyboard Repair', description: '键盘失灵', descriptionEn: 'Keyboard issues', details: '键盘更换。\n      { id: 'os-upgrade', title: '系统重装/升级', titleEn: 'OS/Upgrade', description: '重装系统', descriptionEn: 'OS reinstall', details: '系统问题。\n      { id: 'other-issues', title: '其他故障', titleEn: 'Other Issues', description: '免费检测', descriptionEn: 'Free check', details: '免费检测。', detailsEn: 'Free check.', imageHint: '' },
     ]
   },
   'surface': {
@@ -135,12 +198,7 @@ const repairServices = {
     title: 'Surface 维修',
     gradient: 'from-gray-700 via-gray-600 to-gray-500',
     services: [
-      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement', description: '微软Surface笔记本屏幕碎裂漏液花屏触摸不灵。原装品质屏幕更换。', descriptionEn: 'Surface laptop cracked screen, leaking, flickering, unresponsive touch. OEM quality replacement.', details: '微软Surface笔记本全系列屏幕更换维修。\n\n碎裂、漏液、花屏、闪烁、触摸不灵、黑屏都能处理。更换后当面测试显示效果。\n\nCracked, leaking, flickering, unresponsive touch, black screen. Tested after repair.', imageHint: 'screen' },
-      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: '微软Surface笔记本电池鼓包不耐用充不进电。原装规格电池。', descriptionEn: 'Surface laptop battery swelling, short life, not charging. OEM spec.', details: '笔记本电池鼓包有安全隐患（可能起火），发现鼓包请尽快送修。电池不耐用、一天充几次、充不进电——换电池是最划算的升级。\n\n微软Surface笔记本全系列电池现货。更换后测试健康度，恢复续航。\n\nSwollen battery = fire hazard, replace ASAP. Short battery life, not charging — battery swap is the most cost-effective upgrade.', imageHint: 'battery' },
-      { id: 'keyboard-repair', title: '键盘盖维修', titleEn: 'Type Cover Repair', description: 'Surface键盘盖不灵触摸板失灵', descriptionEn: 'Surface keyboard cover not working, trackpad issues', details: 'Surface键盘盖/触摸板更换或修复。键盘盖不灵、触摸板没反应、按键脱落。', imageHint: 'keyboard' },
-      { id: 'cleaning', title: '清灰换硅脂', titleEn: 'Cleaning & Cooling', description: '微软Surface笔记本风扇狂转机身发烫性能下降。深度拆机清灰+换导热硅脂。', descriptionEn: 'Surface laptop loud fans, overheating, performance drop. Deep clean + thermal paste.', details: '笔记本用久了内部积灰严重，导致散热不良。风扇狂转、机身烫手、CPU降频、玩游戏卡顿。\n\n深度拆机清灰+更换导热硅脂，有效降低温度10-20°C，恢复性能。游戏本尤其需要定期清灰。\n\nDust buildup causes overheating. Loud fans, hot chassis, CPU throttling, gaming lag. Deep clean + thermal paste lowers 10-20°C. Gaming laptops especially need regular cleaning.', imageHint: '' },
-      { id: 'os-upgrade', title: '系统重装/升级', titleEn: 'OS/Upgrade', description: '微软Surface笔记本系统卡顿重装Windows加装固态硬盘提速内存升级数据备份。', descriptionEn: 'Surface laptop slow, Windows reinstall, SSD/RAM upgrade, data backup.', details: '电脑越来越慢？开机几分钟？打开软件转圈？可能是系统垃圾太多、硬盘太慢、内存不够。\n\n提供：Windows系统重装、换固态硬盘（HDD→SSD提速相当明显）、加装内存、系统优化、数据备份迁移。升级前会告知你所有选择。\n\n\nPC slow, slow boot? Windows reinstall, SSD upgrade (HDD to SSD = big speedup), RAM upgrade, system optimization, data backup.', imageHint: '' },
-      { id: 'other-issues', title: '其他故障', titleEn: 'Other Issues', description: '微软Surface笔记本其他问题免费检测先报价后维修加微信咨询。', descriptionEn: 'Surface laptop other issues free check, quote first, DM on WeChat.', details: '蓝屏死机、不进系统、WiFi打不开、USB口不认、进液腐蚀、电池不充电……任何微软Surface笔记本问题都可以带来免费检测。\n\n检测后告诉您问题在哪、怎么修、多少钱，修不修您决定。不加钱不强制。', detailsEn: 'Surface laptop other issues.\n\nBSOD, crash, no boot, WiFi/USB issues, liquid damage, no charging. Any issue, free check. Diagnosis + quote, you decide. No pressure.', imageHint: '' },
+      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement', description: 'Surface屏幕碎裂', descriptionEn: 'Surface cracked screen', details: 'Surface Pro/Go/Laptop全系屏幕更换。\n      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: 'Surface电池鼓包', descriptionEn: 'Surface battery swelling', details: 'Surface电池鼓包通病，尽快更换。\n      { id: 'keyboard-repair', title: '键盘盖维修', titleEn: 'Type Cover Repair', description: '键盘盖不灵', descriptionEn: 'Type cover issues', details: 'Surface键盘盖更换或修复。\n      { id: 'cleaning', title: '清灰换硅脂', titleEn: 'Cleaning & Cooling', description: '清灰', descriptionEn: 'Deep clean', details: '清灰散热。\n      { id: 'os-upgrade', title: '系统重装/升级', titleEn: 'OS/Upgrade', description: '重装系统', descriptionEn: 'OS reinstall', details: '系统问题。\n      { id: 'other-issues', title: '其他故障', titleEn: 'Other Issues', description: '免费检测', descriptionEn: 'Free check', details: '其他问题免费检测。', detailsEn: 'Free check.', imageHint: '' },
     ]
   },
   'hasee': {
@@ -148,12 +206,71 @@ const repairServices = {
     title: 'Hasee 维修',
     gradient: 'from-indigo-700 via-indigo-600 to-indigo-500',
     services: [
-      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement', description: '神舟笔记本屏幕碎裂漏液花屏触摸不灵。原装品质屏幕更换。', descriptionEn: 'Hasee laptop cracked screen, leaking, flickering, unresponsive touch. OEM quality replacement.', details: '神舟笔记本全系列屏幕更换维修。\n\n碎裂、漏液、花屏、闪烁、触摸不灵、黑屏都能处理。更换后当面测试显示效果。\n\nCracked, leaking, flickering, unresponsive touch, black screen. Tested after repair.', imageHint: 'screen' },
-      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: '神舟笔记本电池鼓包不耐用充不进电。原装规格电池。', descriptionEn: 'Hasee laptop battery swelling, short life, not charging. OEM spec.', details: '笔记本电池鼓包有安全隐患（可能起火），发现鼓包请尽快送修。电池不耐用、一天充几次、充不进电——换电池是最划算的升级。\n\n神舟笔记本全系列电池现货。更换后测试健康度，恢复续航。\n\nSwollen battery = fire hazard, replace ASAP. Short battery life, not charging — battery swap is the most cost-effective upgrade.', imageHint: 'battery' },
-      { id: 'keyboard-repair', title: '键盘维修', titleEn: 'Keyboard Repair', description: '神舟笔记本按键不灵键盘进水个别键失灵', descriptionEn: 'Hasee laptop sticky keys, water damage, key failure', details: '神舟笔记本键盘更换或修复。\n\n键盘进水后尽快关机送修，不要继续使用。\n\nKeyboard water damage: power off immediately.', imageHint: 'keyboard' },
-      { id: 'cleaning', title: '清灰换硅脂', titleEn: 'Cleaning & Cooling', description: '神舟笔记本风扇狂转机身发烫性能下降。深度拆机清灰+换导热硅脂。', descriptionEn: 'Hasee laptop loud fans, overheating, performance drop. Deep clean + thermal paste.', details: '笔记本用久了内部积灰严重，导致散热不良。风扇狂转、机身烫手、CPU降频、玩游戏卡顿。\n\n深度拆机清灰+更换导热硅脂，有效降低温度10-20°C，恢复性能。游戏本尤其需要定期清灰。\n\nDust buildup causes overheating. Loud fans, hot chassis, CPU throttling, gaming lag. Deep clean + thermal paste lowers 10-20°C. Gaming laptops especially need regular cleaning.', imageHint: '' },
-      { id: 'os-upgrade', title: '系统重装/升级', titleEn: 'OS/Upgrade', description: '神舟笔记本系统卡顿重装Windows加装固态硬盘提速内存升级数据备份。', descriptionEn: 'Hasee laptop slow, Windows reinstall, SSD/RAM upgrade, data backup.', details: '电脑越来越慢？开机几分钟？打开软件转圈？可能是系统垃圾太多、硬盘太慢、内存不够。\n\n提供：Windows系统重装、换固态硬盘（HDD→SSD提速相当明显）、加装内存、系统优化、数据备份迁移。升级前会告知你所有选择。\n\n\nPC slow, slow boot? Windows reinstall, SSD upgrade (HDD to SSD = big speedup), RAM upgrade, system optimization, data backup.', imageHint: '' },
-      { id: 'other-issues', title: '其他故障', titleEn: 'Other Issues', description: '神舟笔记本其他问题免费检测先报价后维修加微信咨询。', descriptionEn: 'Hasee laptop other issues free check, quote first, DM on WeChat.', details: '蓝屏死机、不进系统、WiFi打不开、USB口不认、进液腐蚀、电池不充电……任何神舟笔记本问题都可以带来免费检测。\n\n检测后告诉您问题在哪、怎么修、多少钱，修不修您决定。不加钱不强制。', detailsEn: 'Hasee laptop other issues.\n\nBSOD, crash, no boot, WiFi/USB issues, liquid damage, no charging. Any issue, free check. Diagnosis + quote, you decide. No pressure.', imageHint: '' },
+      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement', description: '神舟屏幕碎裂', descriptionEn: 'Hasee cracked screen', details: '神舟屏幕更换。\n      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: '电池鼓包', descriptionEn: 'Battery swelling', details: '电池更换。\n      { id: 'cleaning', title: '清灰换硅脂', titleEn: 'Cleaning & Cooling', description: '清灰换硅脂', descriptionEn: 'Deep clean', details: '游戏本清灰必做。\n      { id: 'keyboard-repair', title: '键盘维修', titleEn: 'Keyboard Repair', description: '键盘失灵', descriptionEn: 'Keyboard issues', details: '键盘更换。\n      { id: 'os-upgrade', title: '系统重装/升级', titleEn: 'OS/Upgrade', description: '重装系统', descriptionEn: 'OS reinstall', details: '系统问题。\n      { id: 'other-issues', title: '其他故障', titleEn: 'Other Issues', description: '免费检测', descriptionEn: 'Free check', details: '免费检测。', detailsEn: 'Free check.', imageHint: '' },
+    ]
+  },
+  'lenovo': {
+    brand: 'Lenovo',
+    title: 'Lenovo 维修',
+    gradient: 'from-blue-700 via-blue-600 to-blue-500',
+    services: [
+      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement', description: '联想笔记本屏幕碎裂漏液花屏触摸不灵。原装品质屏幕更换。', descriptionEn: 'Lenovo laptop cracked screen, leaking, flickering, unresponsive touch. OEM quality replacement.', details: '联想笔记本全系列屏幕更换维修。\n\n碎裂、漏液、花屏、闪烁、触摸不灵、黑屏都能处理。更换后当面测试显示效果。\n      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: '联想笔记本电池鼓包不耐用充不进电。原装规格电池。', descriptionEn: 'Lenovo laptop battery swelling, short life, not charging. OEM spec.', details: '笔记本电池鼓包有安全隐患（可能起火），发现鼓包请尽快送修。电池不耐用、一天充几次、充不进电——换电池是最划算的升级。\n\n联想笔记本全系列电池现货。更换后测试健康度，恢复续航。\n      { id: 'keyboard-repair', title: '键盘维修', titleEn: 'Keyboard Repair', description: '联想笔记本按键不灵键盘进水个别键失灵', descriptionEn: 'Lenovo laptop sticky keys, water damage, key failure', details: '联想笔记本键盘更换或修复。\n\n键盘进水后尽快关机送修，不要继续使用。\n      { id: 'cleaning', title: '清灰换硅脂', titleEn: 'Cleaning & Cooling', description: '联想笔记本风扇狂转机身发烫性能下降。深度拆机清灰+换导热硅脂。', descriptionEn: 'Lenovo laptop loud fans, overheating, performance drop. Deep clean + thermal paste.', details: '笔记本用久了内部积灰严重，导致散热不良。风扇狂转、机身烫手、CPU降频、玩游戏卡顿。\n\n深度拆机清灰+更换导热硅脂，有效降低温度10-20°C，恢复性能。游戏本尤其需要定期清灰。\n      { id: 'os-upgrade', title: '系统重装/升级', titleEn: 'OS/Upgrade', description: '联想笔记本系统卡顿重装Windows加装固态硬盘提速内存升级数据备份。', descriptionEn: 'Lenovo laptop slow, Windows reinstall, SSD/RAM upgrade, data backup.', details: '电脑越来越慢？开机几分钟？打开软件转圈？可能是系统垃圾太多、硬盘太慢、内存不够。\n\n提供：Windows系统重装、换固态硬盘（HDD→SSD提速相当明显）、加装内存、系统优化、数据备份迁移。升级前会告知你所有选择。\n      { id: 'other-issues', title: '其他故障', titleEn: 'Other Issues', description: '联想笔记本其他问题免费检测先报价后维修加微信咨询。', descriptionEn: 'Lenovo laptop other issues free check, quote first, DM on WeChat.', details: '蓝屏死机、不进系统、WiFi打不开、USB口不认、进液腐蚀、电池不充电……任何联想笔记本问题都可以带来免费检测。\n\n检测后告诉您问题在哪、怎么修、多少钱，修不修您决定。不加钱不强制。', detailsEn: 'Lenovo laptop other issues.\n\nBSOD, crash, no boot, WiFi/USB issues, liquid damage, no charging. Any issue, free check. Diagnosis + quote, you decide. No pressure.', imageHint: '' },
+    ]
+  },
+  'dell': {
+    brand: 'Dell',
+    title: 'Dell 维修',
+    gradient: 'from-blue-600 via-blue-500 to-blue-400',
+    services: [
+      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement', description: '戴尔笔记本屏幕碎裂漏液花屏触摸不灵。原装品质屏幕更换。', descriptionEn: 'Dell laptop cracked screen, leaking, flickering, unresponsive touch. OEM quality replacement.', details: '戴尔笔记本全系列屏幕更换维修。\n\n碎裂、漏液、花屏、闪烁、触摸不灵、黑屏都能处理。更换后当面测试显示效果。\n      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: '戴尔笔记本电池鼓包不耐用充不进电。原装规格电池。', descriptionEn: 'Dell laptop battery swelling, short life, not charging. OEM spec.', details: '笔记本电池鼓包有安全隐患（可能起火），发现鼓包请尽快送修。电池不耐用、一天充几次、充不进电——换电池是最划算的升级。\n\n戴尔笔记本全系列电池现货。更换后测试健康度，恢复续航。\n      { id: 'keyboard-repair', title: '键盘维修', titleEn: 'Keyboard Repair', description: '戴尔笔记本按键不灵键盘进水个别键失灵', descriptionEn: 'Dell laptop sticky keys, water damage, key failure', details: '戴尔笔记本键盘更换或修复。\n\n键盘进水后尽快关机送修，不要继续使用。\n      { id: 'cleaning', title: '清灰换硅脂', titleEn: 'Cleaning & Cooling', description: '戴尔笔记本风扇狂转机身发烫性能下降。深度拆机清灰+换导热硅脂。', descriptionEn: 'Dell laptop loud fans, overheating, performance drop. Deep clean + thermal paste.', details: '笔记本用久了内部积灰严重，导致散热不良。风扇狂转、机身烫手、CPU降频、玩游戏卡顿。\n\n深度拆机清灰+更换导热硅脂，有效降低温度10-20°C，恢复性能。游戏本尤其需要定期清灰。\n      { id: 'os-upgrade', title: '系统重装/升级', titleEn: 'OS/Upgrade', description: '戴尔笔记本系统卡顿重装Windows加装固态硬盘提速内存升级数据备份。', descriptionEn: 'Dell laptop slow, Windows reinstall, SSD/RAM upgrade, data backup.', details: '电脑越来越慢？开机几分钟？打开软件转圈？可能是系统垃圾太多、硬盘太慢、内存不够。\n\n提供：Windows系统重装、换固态硬盘（HDD→SSD提速相当明显）、加装内存、系统优化、数据备份迁移。升级前会告知你所有选择。\n      { id: 'other-issues', title: '其他故障', titleEn: 'Other Issues', description: '戴尔笔记本其他问题免费检测先报价后维修加微信咨询。', descriptionEn: 'Dell laptop other issues free check, quote first, DM on WeChat.', details: '蓝屏死机、不进系统、WiFi打不开、USB口不认、进液腐蚀、电池不充电……任何戴尔笔记本问题都可以带来免费检测。\n\n检测后告诉您问题在哪、怎么修、多少钱，修不修您决定。不加钱不强制。', detailsEn: 'Dell laptop other issues.\n\nBSOD, crash, no boot, WiFi/USB issues, liquid damage, no charging. Any issue, free check. Diagnosis + quote, you decide. No pressure.', imageHint: '' },
+    ]
+  },
+  'hp': {
+    brand: 'HP',
+    title: 'HP 维修',
+    gradient: 'from-teal-700 via-teal-600 to-teal-500',
+    services: [
+      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement', description: '惠普笔记本屏幕碎裂漏液花屏触摸不灵。原装品质屏幕更换。', descriptionEn: 'HP laptop cracked screen, leaking, flickering, unresponsive touch. OEM quality replacement.', details: '惠普笔记本全系列屏幕更换维修。\n\n碎裂、漏液、花屏、闪烁、触摸不灵、黑屏都能处理。更换后当面测试显示效果。\n      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: '惠普笔记本电池鼓包不耐用充不进电。原装规格电池。', descriptionEn: 'HP laptop battery swelling, short life, not charging. OEM spec.', details: '笔记本电池鼓包有安全隐患（可能起火），发现鼓包请尽快送修。电池不耐用、一天充几次、充不进电——换电池是最划算的升级。\n\n惠普笔记本全系列电池现货。更换后测试健康度，恢复续航。\n      { id: 'keyboard-repair', title: '键盘维修', titleEn: 'Keyboard Repair', description: '惠普笔记本按键不灵键盘进水个别键失灵', descriptionEn: 'HP laptop sticky keys, water damage, key failure', details: '惠普笔记本键盘更换或修复。\n\n键盘进水后尽快关机送修，不要继续使用。\n      { id: 'cleaning', title: '清灰换硅脂', titleEn: 'Cleaning & Cooling', description: '惠普笔记本风扇狂转机身发烫性能下降。深度拆机清灰+换导热硅脂。', descriptionEn: 'HP laptop loud fans, overheating, performance drop. Deep clean + thermal paste.', details: '笔记本用久了内部积灰严重，导致散热不良。风扇狂转、机身烫手、CPU降频、玩游戏卡顿。\n\n深度拆机清灰+更换导热硅脂，有效降低温度10-20°C，恢复性能。游戏本尤其需要定期清灰。\n      { id: 'os-upgrade', title: '系统重装/升级', titleEn: 'OS/Upgrade', description: '惠普笔记本系统卡顿重装Windows加装固态硬盘提速内存升级数据备份。', descriptionEn: 'HP laptop slow, Windows reinstall, SSD/RAM upgrade, data backup.', details: '电脑越来越慢？开机几分钟？打开软件转圈？可能是系统垃圾太多、硬盘太慢、内存不够。\n\n提供：Windows系统重装、换固态硬盘（HDD→SSD提速相当明显）、加装内存、系统优化、数据备份迁移。升级前会告知你所有选择。\n      { id: 'other-issues', title: '其他故障', titleEn: 'Other Issues', description: '惠普笔记本其他问题免费检测先报价后维修加微信咨询。', descriptionEn: 'HP laptop other issues free check, quote first, DM on WeChat.', details: '蓝屏死机、不进系统、WiFi打不开、USB口不认、进液腐蚀、电池不充电……任何惠普笔记本问题都可以带来免费检测。\n\n检测后告诉您问题在哪、怎么修、多少钱，修不修您决定。不加钱不强制。', detailsEn: 'HP laptop other issues.\n\nBSOD, crash, no boot, WiFi/USB issues, liquid damage, no charging. Any issue, free check. Diagnosis + quote, you decide. No pressure.', imageHint: '' },
+    ]
+  },
+  'asus': {
+    brand: 'ASUS',
+    title: 'ASUS 维修',
+    gradient: 'from-cyan-700 via-cyan-600 to-cyan-500',
+    services: [
+      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement', description: '华硕笔记本屏幕碎裂漏液花屏触摸不灵。原装品质屏幕更换。', descriptionEn: 'ASUS laptop cracked screen, leaking, flickering, unresponsive touch. OEM quality replacement.', details: '华硕笔记本全系列屏幕更换维修。\n\n碎裂、漏液、花屏、闪烁、触摸不灵、黑屏都能处理。更换后当面测试显示效果。\n      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: '华硕笔记本电池鼓包不耐用充不进电。原装规格电池。', descriptionEn: 'ASUS laptop battery swelling, short life, not charging. OEM spec.', details: '笔记本电池鼓包有安全隐患（可能起火），发现鼓包请尽快送修。电池不耐用、一天充几次、充不进电——换电池是最划算的升级。\n\n华硕笔记本全系列电池现货。更换后测试健康度，恢复续航。\n      { id: 'keyboard-repair', title: '键盘维修', titleEn: 'Keyboard Repair', description: '华硕笔记本按键不灵键盘进水个别键失灵', descriptionEn: 'ASUS laptop sticky keys, water damage, key failure', details: '华硕笔记本键盘更换或修复。\n\n键盘进水后尽快关机送修，不要继续使用。\n      { id: 'cleaning', title: '清灰换硅脂', titleEn: 'Cleaning & Cooling', description: '华硕笔记本风扇狂转机身发烫性能下降。深度拆机清灰+换导热硅脂。', descriptionEn: 'ASUS laptop loud fans, overheating, performance drop. Deep clean + thermal paste.', details: '笔记本用久了内部积灰严重，导致散热不良。风扇狂转、机身烫手、CPU降频、玩游戏卡顿。\n\n深度拆机清灰+更换导热硅脂，有效降低温度10-20°C，恢复性能。游戏本尤其需要定期清灰。\n      { id: 'os-upgrade', title: '系统重装/升级', titleEn: 'OS/Upgrade', description: '华硕笔记本系统卡顿重装Windows加装固态硬盘提速内存升级数据备份。', descriptionEn: 'ASUS laptop slow, Windows reinstall, SSD/RAM upgrade, data backup.', details: '电脑越来越慢？开机几分钟？打开软件转圈？可能是系统垃圾太多、硬盘太慢、内存不够。\n\n提供：Windows系统重装、换固态硬盘（HDD→SSD提速相当明显）、加装内存、系统优化、数据备份迁移。升级前会告知你所有选择。\n      { id: 'other-issues', title: '其他故障', titleEn: 'Other Issues', description: '华硕笔记本其他问题免费检测先报价后维修加微信咨询。', descriptionEn: 'ASUS laptop other issues free check, quote first, DM on WeChat.', details: '蓝屏死机、不进系统、WiFi打不开、USB口不认、进液腐蚀、电池不充电……任何华硕笔记本问题都可以带来免费检测。\n\n检测后告诉您问题在哪、怎么修、多少钱，修不修您决定。不加钱不强制。', detailsEn: 'ASUS laptop other issues.\n\nBSOD, crash, no boot, WiFi/USB issues, liquid damage, no charging. Any issue, free check. Diagnosis + quote, you decide. No pressure.', imageHint: '' },
+    ]
+  },
+  'acer': {
+    brand: 'Acer',
+    title: 'Acer 维修',
+    gradient: 'from-green-700 via-green-600 to-green-500',
+    services: [
+      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement', description: '宏基笔记本屏幕碎裂漏液花屏触摸不灵。原装品质屏幕更换。', descriptionEn: 'Acer laptop cracked screen, leaking, flickering, unresponsive touch. OEM quality replacement.', details: '宏基笔记本全系列屏幕更换维修。\n\n碎裂、漏液、花屏、闪烁、触摸不灵、黑屏都能处理。更换后当面测试显示效果。\n      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: '宏基笔记本电池鼓包不耐用充不进电。原装规格电池。', descriptionEn: 'Acer laptop battery swelling, short life, not charging. OEM spec.', details: '笔记本电池鼓包有安全隐患（可能起火），发现鼓包请尽快送修。电池不耐用、一天充几次、充不进电——换电池是最划算的升级。\n\n宏基笔记本全系列电池现货。更换后测试健康度，恢复续航。\n      { id: 'keyboard-repair', title: '键盘维修', titleEn: 'Keyboard Repair', description: '宏基笔记本按键不灵键盘进水个别键失灵', descriptionEn: 'Acer laptop sticky keys, water damage, key failure', details: '宏基笔记本键盘更换或修复。\n\n键盘进水后尽快关机送修，不要继续使用。\n      { id: 'cleaning', title: '清灰换硅脂', titleEn: 'Cleaning & Cooling', description: '宏基笔记本风扇狂转机身发烫性能下降。深度拆机清灰+换导热硅脂。', descriptionEn: 'Acer laptop loud fans, overheating, performance drop. Deep clean + thermal paste.', details: '笔记本用久了内部积灰严重，导致散热不良。风扇狂转、机身烫手、CPU降频、玩游戏卡顿。\n\n深度拆机清灰+更换导热硅脂，有效降低温度10-20°C，恢复性能。游戏本尤其需要定期清灰。\n      { id: 'os-upgrade', title: '系统重装/升级', titleEn: 'OS/Upgrade', description: '宏基笔记本系统卡顿重装Windows加装固态硬盘提速内存升级数据备份。', descriptionEn: 'Acer laptop slow, Windows reinstall, SSD/RAM upgrade, data backup.', details: '电脑越来越慢？开机几分钟？打开软件转圈？可能是系统垃圾太多、硬盘太慢、内存不够。\n\n提供：Windows系统重装、换固态硬盘（HDD→SSD提速相当明显）、加装内存、系统优化、数据备份迁移。升级前会告知你所有选择。\n      { id: 'other-issues', title: '其他故障', titleEn: 'Other Issues', description: '宏基笔记本其他问题免费检测先报价后维修加微信咨询。', descriptionEn: 'Acer laptop other issues free check, quote first, DM on WeChat.', details: '蓝屏死机、不进系统、WiFi打不开、USB口不认、进液腐蚀、电池不充电……任何宏基笔记本问题都可以带来免费检测。\n\n检测后告诉您问题在哪、怎么修、多少钱，修不修您决定。不加钱不强制。', detailsEn: 'Acer laptop other issues.\n\nBSOD, crash, no boot, WiFi/USB issues, liquid damage, no charging. Any issue, free check. Diagnosis + quote, you decide. No pressure.', imageHint: '' },
+    ]
+  },
+  'msi': {
+    brand: 'MSI',
+    title: 'MSI 维修',
+    gradient: 'from-red-700 via-red-600 to-red-500',
+    services: [
+      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement', description: '微星笔记本屏幕碎裂漏液花屏触摸不灵。原装品质屏幕更换。', descriptionEn: 'MSI laptop cracked screen, leaking, flickering, unresponsive touch. OEM quality replacement.', details: '微星笔记本全系列屏幕更换维修。\n\n碎裂、漏液、花屏、闪烁、触摸不灵、黑屏都能处理。更换后当面测试显示效果。\n      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: '微星笔记本电池鼓包不耐用充不进电。原装规格电池。', descriptionEn: 'MSI laptop battery swelling, short life, not charging. OEM spec.', details: '笔记本电池鼓包有安全隐患（可能起火），发现鼓包请尽快送修。电池不耐用、一天充几次、充不进电——换电池是最划算的升级。\n\n微星笔记本全系列电池现货。更换后测试健康度，恢复续航。\n      { id: 'keyboard-repair', title: '键盘维修', titleEn: 'Keyboard Repair', description: '微星笔记本按键不灵键盘进水个别键失灵', descriptionEn: 'MSI laptop sticky keys, water damage, key failure', details: '微星笔记本键盘更换或修复。\n\n键盘进水后尽快关机送修，不要继续使用。\n      { id: 'cleaning', title: '清灰换硅脂', titleEn: 'Cleaning & Cooling', description: '微星笔记本风扇狂转机身发烫性能下降。深度拆机清灰+换导热硅脂。', descriptionEn: 'MSI laptop loud fans, overheating, performance drop. Deep clean + thermal paste.', details: '笔记本用久了内部积灰严重，导致散热不良。风扇狂转、机身烫手、CPU降频、玩游戏卡顿。\n\n深度拆机清灰+更换导热硅脂，有效降低温度10-20°C，恢复性能。游戏本尤其需要定期清灰。\n      { id: 'os-upgrade', title: '系统重装/升级', titleEn: 'OS/Upgrade', description: '微星笔记本系统卡顿重装Windows加装固态硬盘提速内存升级数据备份。', descriptionEn: 'MSI laptop slow, Windows reinstall, SSD/RAM upgrade, data backup.', details: '电脑越来越慢？开机几分钟？打开软件转圈？可能是系统垃圾太多、硬盘太慢、内存不够。\n\n提供：Windows系统重装、换固态硬盘（HDD→SSD提速相当明显）、加装内存、系统优化、数据备份迁移。升级前会告知你所有选择。\n      { id: 'other-issues', title: '其他故障', titleEn: 'Other Issues', description: '微星笔记本其他问题免费检测先报价后维修加微信咨询。', descriptionEn: 'MSI laptop other issues free check, quote first, DM on WeChat.', details: '蓝屏死机、不进系统、WiFi打不开、USB口不认、进液腐蚀、电池不充电……任何微星笔记本问题都可以带来免费检测。\n\n检测后告诉您问题在哪、怎么修、多少钱，修不修您决定。不加钱不强制。', detailsEn: 'MSI laptop other issues.\n\nBSOD, crash, no boot, WiFi/USB issues, liquid damage, no charging. Any issue, free check. Diagnosis + quote, you decide. No pressure.', imageHint: '' },
+    ]
+  },
+  'surface': {
+    brand: 'Surface',
+    title: 'Surface 维修',
+    gradient: 'from-gray-700 via-gray-600 to-gray-500',
+    services: [
+      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement', description: '微软Surface笔记本屏幕碎裂漏液花屏触摸不灵。原装品质屏幕更换。', descriptionEn: 'Surface laptop cracked screen, leaking, flickering, unresponsive touch. OEM quality replacement.', details: '微软Surface笔记本全系列屏幕更换维修。\n\n碎裂、漏液、花屏、闪烁、触摸不灵、黑屏都能处理。更换后当面测试显示效果。\n      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: '微软Surface笔记本电池鼓包不耐用充不进电。原装规格电池。', descriptionEn: 'Surface laptop battery swelling, short life, not charging. OEM spec.', details: '笔记本电池鼓包有安全隐患（可能起火），发现鼓包请尽快送修。电池不耐用、一天充几次、充不进电——换电池是最划算的升级。\n\n微软Surface笔记本全系列电池现货。更换后测试健康度，恢复续航。\n      { id: 'keyboard-repair', title: '键盘盖维修', titleEn: 'Type Cover Repair', description: 'Surface键盘盖不灵触摸板失灵', descriptionEn: 'Surface keyboard cover not working, trackpad issues', details: 'Surface键盘盖/触摸板更换或修复。键盘盖不灵、触摸板没反应、按键脱落。\n      { id: 'cleaning', title: '清灰换硅脂', titleEn: 'Cleaning & Cooling', description: '微软Surface笔记本风扇狂转机身发烫性能下降。深度拆机清灰+换导热硅脂。', descriptionEn: 'Surface laptop loud fans, overheating, performance drop. Deep clean + thermal paste.', details: '笔记本用久了内部积灰严重，导致散热不良。风扇狂转、机身烫手、CPU降频、玩游戏卡顿。\n\n深度拆机清灰+更换导热硅脂，有效降低温度10-20°C，恢复性能。游戏本尤其需要定期清灰。\n      { id: 'os-upgrade', title: '系统重装/升级', titleEn: 'OS/Upgrade', description: '微软Surface笔记本系统卡顿重装Windows加装固态硬盘提速内存升级数据备份。', descriptionEn: 'Surface laptop slow, Windows reinstall, SSD/RAM upgrade, data backup.', details: '电脑越来越慢？开机几分钟？打开软件转圈？可能是系统垃圾太多、硬盘太慢、内存不够。\n\n提供：Windows系统重装、换固态硬盘（HDD→SSD提速相当明显）、加装内存、系统优化、数据备份迁移。升级前会告知你所有选择。\n      { id: 'other-issues', title: '其他故障', titleEn: 'Other Issues', description: '微软Surface笔记本其他问题免费检测先报价后维修加微信咨询。', descriptionEn: 'Surface laptop other issues free check, quote first, DM on WeChat.', details: '蓝屏死机、不进系统、WiFi打不开、USB口不认、进液腐蚀、电池不充电……任何微软Surface笔记本问题都可以带来免费检测。\n\n检测后告诉您问题在哪、怎么修、多少钱，修不修您决定。不加钱不强制。', detailsEn: 'Surface laptop other issues.\n\nBSOD, crash, no boot, WiFi/USB issues, liquid damage, no charging. Any issue, free check. Diagnosis + quote, you decide. No pressure.', imageHint: '' },
+    ]
+  },
+  'hasee': {
+    brand: 'Hasee',
+    title: 'Hasee 维修',
+    gradient: 'from-indigo-700 via-indigo-600 to-indigo-500',
+    services: [
+      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement', description: '神舟笔记本屏幕碎裂漏液花屏触摸不灵。原装品质屏幕更换。', descriptionEn: 'Hasee laptop cracked screen, leaking, flickering, unresponsive touch. OEM quality replacement.', details: '神舟笔记本全系列屏幕更换维修。\n\n碎裂、漏液、花屏、闪烁、触摸不灵、黑屏都能处理。更换后当面测试显示效果。\n      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: '神舟笔记本电池鼓包不耐用充不进电。原装规格电池。', descriptionEn: 'Hasee laptop battery swelling, short life, not charging. OEM spec.', details: '笔记本电池鼓包有安全隐患（可能起火），发现鼓包请尽快送修。电池不耐用、一天充几次、充不进电——换电池是最划算的升级。\n\n神舟笔记本全系列电池现货。更换后测试健康度，恢复续航。\n      { id: 'keyboard-repair', title: '键盘维修', titleEn: 'Keyboard Repair', description: '神舟笔记本按键不灵键盘进水个别键失灵', descriptionEn: 'Hasee laptop sticky keys, water damage, key failure', details: '神舟笔记本键盘更换或修复。\n\n键盘进水后尽快关机送修，不要继续使用。\n      { id: 'cleaning', title: '清灰换硅脂', titleEn: 'Cleaning & Cooling', description: '神舟笔记本风扇狂转机身发烫性能下降。深度拆机清灰+换导热硅脂。', descriptionEn: 'Hasee laptop loud fans, overheating, performance drop. Deep clean + thermal paste.', details: '笔记本用久了内部积灰严重，导致散热不良。风扇狂转、机身烫手、CPU降频、玩游戏卡顿。\n\n深度拆机清灰+更换导热硅脂，有效降低温度10-20°C，恢复性能。游戏本尤其需要定期清灰。\n      { id: 'os-upgrade', title: '系统重装/升级', titleEn: 'OS/Upgrade', description: '神舟笔记本系统卡顿重装Windows加装固态硬盘提速内存升级数据备份。', descriptionEn: 'Hasee laptop slow, Windows reinstall, SSD/RAM upgrade, data backup.', details: '电脑越来越慢？开机几分钟？打开软件转圈？可能是系统垃圾太多、硬盘太慢、内存不够。\n\n提供：Windows系统重装、换固态硬盘（HDD→SSD提速相当明显）、加装内存、系统优化、数据备份迁移。升级前会告知你所有选择。\n      { id: 'other-issues', title: '其他故障', titleEn: 'Other Issues', description: '神舟笔记本其他问题免费检测先报价后维修加微信咨询。', descriptionEn: 'Hasee laptop other issues free check, quote first, DM on WeChat.', details: '蓝屏死机、不进系统、WiFi打不开、USB口不认、进液腐蚀、电池不充电……任何神舟笔记本问题都可以带来免费检测。\n\n检测后告诉您问题在哪、怎么修、多少钱，修不修您决定。不加钱不强制。', detailsEn: 'Hasee laptop other issues.\n\nBSOD, crash, no boot, WiFi/USB issues, liquid damage, no charging. Any issue, free check. Diagnosis + quote, you decide. No pressure.', imageHint: '' },
     ]
   },
 
