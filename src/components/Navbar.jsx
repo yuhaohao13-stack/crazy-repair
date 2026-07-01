@@ -1,35 +1,9 @@
 'use client'
 import { useState, useRef, useEffect } from 'react'
-import { Search as SearchIcon, X, ArrowLeft } from 'lucide-react'
-import { usePathname } from 'next/navigation'
+import { Search as SearchIcon, X } from 'lucide-react'
 import modelDB from '../data/modelDB'
 
 export default function Navbar({ lang, setLang, setShowContact }) {
-  const pathname = usePathname()
-  const isHome = pathname === '/'
-  
-  // Map paths to back labels
-  const getBackLabel = () => {
-    if (isHome) return ''
-    const path = pathname || ''
-    if (path.startsWith('/iphone-repair')) return { text: '手机维修', textEn: 'Phone Repair', href: '/phone-repair' }
-    if (path.startsWith('/macbook-repair') || path.startsWith('/lenovo-repair') || path.startsWith('/dell-repair') || path.startsWith('/hp-repair') || path.startsWith('/asus-repair') || path.startsWith('/acer-repair') || path.startsWith('/msi-repair') || path.startsWith('/surface-repair') || path.startsWith('/hasee-repair')) return { text: '电脑维修', textEn: 'Computer Repair', href: '/computer-repair' }
-    if (path.startsWith('/samsung-repair')) return { text: '手机维修', textEn: 'Phone Repair', href: '/phone-repair' }
-    if (path.startsWith('/xiaomi-repair')) return { text: '手机维修', textEn: 'Phone Repair', href: '/phone-repair' }
-    if (path.startsWith('/huawei-repair')) return { text: '手机维修', textEn: 'Phone Repair', href: '/phone-repair' }
-    if (path.startsWith('/oppo-repair')) return { text: '手机维修', textEn: 'Phone Repair', href: '/phone-repair' }
-    if (path.startsWith('/vivo-repair')) return { text: '手机维修', textEn: 'Phone Repair', href: '/phone-repair' }
-    if (path.startsWith('/oneplus-repair')) return { text: '手机维修', textEn: 'Phone Repair', href: '/phone-repair' }
-    if (path.startsWith('/honor-repair')) return { text: '手机维修', textEn: 'Phone Repair', href: '/phone-repair' }
-    if (path.startsWith('/google-repair')) return { text: '手机维修', textEn: 'Phone Repair', href: '/phone-repair' }
-    if (path.startsWith('/realme-repair')) return { text: '手机维修', textEn: 'Phone Repair', href: '/phone-repair' }
-    if (path.startsWith('/phone-repair')) return { text: '首页', textEn: 'Home', href: '/' }
-    if (path.startsWith('/computer-repair')) return { text: '首页', textEn: 'Home', href: '/' }
-    if (path.startsWith('/tablet-repair')) return { text: '首页', textEn: 'Home', href: '/' }
-    if (path.startsWith('/other-repair') || path.startsWith('/watch-repair') || path.startsWith('/console-repair') || path.startsWith('/headphone-repair') || path.startsWith('/camera-repair')) return { text: '其他数码维修', textEn: 'Other Repair', href: '/other-repair' }
-    return { text: '首页', textEn: 'Home', href: '/' }
-  }
-  const backLabel = getBackLabel()
   const [query, setQuery] = useState('')
   const [showResults, setShowResults] = useState(false)
   const [showSearch, setShowSearch] = useState(false)
@@ -71,17 +45,10 @@ export default function Navbar({ lang, setLang, setShowContact }) {
     <div className="sticky top-0 z-50 bg-white border-b border-gray-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-12">
-          <div className="flex items-center gap-2 shrink-0">
-            <a href="/" className="flex items-center gap-1.5 hover:opacity-80 transition-opacity">
-              <span className="text-lg">🔧</span>
-              <span className="font-bold text-sm text-gray-900">Crazy维修</span>
-            </a>
-            {!isHome && backLabel && (
-              <a href={backLabel.href} className="flex items-center gap-1 text-xs text-gray-400 hover:text-blue-600 transition-colors ml-1 pl-2 border-l border-gray-200">
-                <ArrowLeft size={12} /> {t(backLabel.text, backLabel.textEn)}
-              </a>
-            )}
-          </div>
+          <a href="/" className="flex items-center gap-1.5 hover:opacity-80 transition-opacity shrink-0">
+            <span className="text-lg">🔧</span>
+            <span className="font-bold text-sm text-gray-900">Crazy维修</span>
+          </a>
 
           {/* Nav links + inline search */}
           <div className="hidden md:flex items-center gap-3 text-xs text-gray-600">
