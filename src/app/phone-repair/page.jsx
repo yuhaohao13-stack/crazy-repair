@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import { ArrowLeft } from 'lucide-react'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import ContactModal from '../../components/ContactModal'
@@ -43,6 +44,9 @@ export default function PhoneRepair() {
       <Navbar lang={lang} setLang={setLang} setShowContact={setShowContact} />
 
       <section className="bg-gradient-to-br from-blue-700 via-blue-600 to-blue-500 text-white">
+                <a href="/" className="inline-flex items-center gap-1 text-white/50 hover:text-white text-xs mb-2 transition-colors">
+                  <ArrowLeft size={12} /> {t('首页', 'Home')}
+                </a>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14 text-center">
           <h1 className="text-3xl sm:text-5xl font-bold mb-3">{t('手机维修', 'Phone Repair')}</h1>
           <p className="text-blue-200 text-lg">{t('选择您的手机品牌，查看对应的维修服务和价格', 'Select your phone brand to see repair services')}</p>
@@ -54,7 +58,7 @@ export default function PhoneRepair() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {brands.map((b, i) => (
               <a key={i} href={b.page}
-                className={`bg-gradient-to-br ${b.gradient} text-white rounded-2xl p-5 hover:shadow-xl hover:-translate-y-1 transition-all shadow-md`}>
+                className={`BACKBTN_placeholder ${b.gradient} text-white rounded-2xl p-5 hover:shadow-xl hover:-translate-y-1 transition-all shadow-md`}>
                 <div className="text-3xl mb-2">{b.icon}</div>
                 <h3 className="font-bold text-lg mb-1">{b.name}</h3>
                 <p className="text-sm text-white/80 mb-2">{b.desc}</p>
