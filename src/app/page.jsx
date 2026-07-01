@@ -22,7 +22,7 @@ export default function Home() {
     {
       icon: <Smartphone size={36} />,
       id: 'phone',
-      link: '/iphone-repair',
+      link: '/phone-repair',
       title: t('手机维修', 'Phone Repair'),
       summary: t('苹果/三星/华为/小米/OPPO/vivo/OnePlus/荣耀/Google Pixel 等全品牌', 'Apple/Samsung/Huawei/Xiaomi/OPPO/vivo/OnePlus/Honor/Google Pixel & more'),
       brands: t('覆盖 iPhone 16/15/14/13 全系，三星 S/Z/A 系列，华为 Mate/P 系列，小米 Redmi 全系，OPPO Find/Reno，vivo X/iQOO，OnePlus，荣耀 Magic/数字/X 系列，Google Pixel 全系列', 'iPhone 16/15/14/13 all series, Samsung S/Z/A series, Huawei Mate/P series, Xiaomi/Redmi all models, OPPO Find/Reno, vivo X/iQOO, OnePlus, Honor Magic/Number/X series, Google Pixel all series'),
@@ -39,7 +39,7 @@ export default function Home() {
     {
       icon: <Monitor size={36} />,
       id: 'pc',
-      link: '/macbook-repair',
+      link: '/computer-repair',
       title: t('电脑维修', 'Computer Repair'),
       summary: t('台式机、笔记本、MacBook、iMac 各类故障', 'Desktop, laptop, MacBook & iMac repair'),
       brands: t('联想/Lenovo/Dell/HP/华硕/ASUS/Apple MacBook(Pro/Air)/iMac/华为 MateBook 全系列 + Surface/小米笔记本', 'Lenovo/Dell/HP/ASUS/Apple MacBook (Pro/Air)/iMac/Huawei MateBook all series + Surface/Xiaomi laptops'),
@@ -56,7 +56,7 @@ export default function Home() {
     {
       icon: <Tablet size={36} />,
       id: 'tablet',
-      link: '/#models',
+      link: '/tablet-repair',
       title: t('平板维修', 'Tablet Repair'),
       summary: t('iPad/安卓平板/电子书全系列', 'iPad/Android tablet/e-reader all series'),
       brands: t('iPad Pro/Air/Mini 全代 + 三星Tab/华为MatePad/小米Pad/荣耀平板 + Kindle电子书', 'iPad Pro/Air/Mini all gens + Samsung Tab/Huawei MatePad/Xiaomi Pad/Honor Pad + Kindle e-reader'),
@@ -72,7 +72,7 @@ export default function Home() {
     {
       icon: <Wrench size={36} />,
       id: 'other',
-      link: '/#contact',
+      link: '/other-repair',
       title: t('其他数码维修', 'Other Device Repair'),
       summary: t('游戏机/手表/耳机/相机/智能家居等', 'Console/Watch/Earphone/Camera/Smart Home'),
       brands: t('Switch/PS5/Apple Watch(Ultra/S8-1)/Samsung Watch/AirPods/相机/Kindle', 'Switch/PS5/Apple Watch(Ultra/S8-1)/Samsung Watch/AirPods/Camera/Kindle'),
