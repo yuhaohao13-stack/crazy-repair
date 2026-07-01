@@ -14,14 +14,15 @@ export default function Home() {
       icon: <Smartphone size={36} />,
       id: 'phone',
       title: t('手机维修', 'Phone Repair'),
-      summary: t('屏幕碎裂、电池亏电、主板故障、进水短路、面容/指纹失灵', 'Screen crack, battery dead, motherboard fault, water damage, Face ID/Touch ID'),
-      brands: t('苹果/三星/华为/小米/OPPO/vivo 全系列', 'Apple/Samsung/Huawei/Xiaomi/OPPO/vivo all models'),
+      summary: t('苹果/三星/华为/小米/OPPO/vivo/OnePlus/荣耀/Google Pixel 等全品牌', 'Apple/Samsung/Huawei/Xiaomi/OPPO/vivo/OnePlus/Honor/Google Pixel & more'),
+      brands: t('覆盖 iPhone 16/15/14/13 全系，三星 S/Z/A 系列，华为 Mate/P 系列，小米 Redmi 全系，OPPO Find/Reno，vivo X/iQOO，OnePlus，荣耀 Magic/数字/X 系列，Google Pixel 全系列', 'iPhone 16/15/14/13 all series, Samsung S/Z/A series, Huawei Mate/P series, Xiaomi/Redmi all models, OPPO Find/Reno, vivo X/iQOO, OnePlus, Honor Magic/Number/X series, Google Pixel all series'),
       details: [
-        { name: t('屏幕更换', 'Screen Replacement'), price: t('100元起', 'from $15'), desc: t('内外屏总成更换，原装品质/国产高性价比可选。含专业密封胶恢复防水性。', 'Full assembly replacement. OEM quality or affordable options. Includes waterproof sealant.') },
-        { name: t('电池更换', 'Battery Replacement'), price: t('80元起', 'from $10'), desc: t('原装品质电池，容量达标不虚标。更换后自动检测健康度，告别续航焦虑。', 'Quality batteries with accurate capacity. Health check after replacement.') },
-        { name: t('进水维修', 'Water Damage Repair'), price: t('视情况定价', 'Depends'), desc: t('超声波清洗+主板烘干+腐蚀修复。进水越早送来修复率越高，切勿自行充电！', 'Ultrasonic cleaning + board drying + corrosion repair. Bring ASAP, do not charge!') },
-        { name: t('主板维修', 'Motherboard Repair'), price: t('150元起', 'from $20'), desc: t('CPU重焊、硬盘扩容、基带维修、不开机、重启循环等疑难故障。', 'CPU reballing, storage upgrade, baseband repair, no power, boot loop.') },
-        { name: t('面容/指纹修复', 'Face ID/Touch ID'), price: t('120元起', 'from $16'), desc: t('面容ID点阵修复、指纹排线更换。更换屏幕后面容不能用也可修复。', 'Dot matrix repair, fingerprint flex replacement. Works after screen swap.') },
+        { name: t('屏幕更换', 'Screen Replacement'), price: t('100元起', 'from $15'), desc: t('内外屏总成更换，原装品质/国产高性价比可选。含专业密封胶恢复防水性。iPhone OLED/三星AMOLED/各种屏幕都做。', 'Full assembly replacement. OEM quality or affordable options. Includes waterproof sealant. iPhone OLED, Samsung AMOLED, all screen types handled.') },
+        { name: t('电池更换', 'Battery Replacement'), price: t('80元起', 'from $10'), desc: t('原装品质电池，容量达标不虚标。更换后自动检测健康度，告别续航焦虑。iPhone/安卓全系列电池现货。', 'Quality batteries with accurate capacity. Health check after replacement. iPhone & Android batteries in stock.') },
+        { name: t('进水维修', 'Water Damage Repair'), price: t('视情况定价', 'Depends'), desc: t('超声波清洗+主板烘干+腐蚀修复。进水越早送来修复率越高，切勿自行充电！iPhone/安卓进水处理经验丰富。', 'Ultrasonic cleaning + board drying + corrosion repair. Bring ASAP, do not charge! Extensive water damage experience on all brands.') },
+        { name: t('主板维修', 'Motherboard Repair'), price: t('150元起', 'from $20'), desc: t('CPU重焊、硬盘扩容、基带维修、不开机、重启循环等疑难故障。苹果/三星/华为主板的芯片级维修。', 'CPU reballing, storage upgrade, baseband repair, no power, boot loop. Component-level board repair for Apple/Samsung/Huawei.') },
+        { name: t('面容/指纹修复', 'Face ID/Touch ID'), price: t('120元起', 'from $16'), desc: t('面容ID点阵修复、指纹排线更换。更换屏幕后面容不能用也可修复。三星超声波指纹、vivo屏下指纹也修。', 'Face ID dot matrix repair, fingerprint flex replacement. Works after screen swap. Samsung ultrasonic & vivo in-display fingerprint too.') },
+        { name: t('摄像头维修', 'Camera Repair'), price: t('100元起', 'from $15'), desc: t('拍照模糊、闪退、黑屏、对焦失灵。iPhone/Samsung/华为等摄像头更换修复。单反镜头清灰也可。', 'Blurry photos, app crash, black screen, autofocus fail. Camera replacement for iPhone/Samsung/Huawei & more.') },
         { name: t('其他问题', 'Other Issues'), price: t('免费检测', 'Free Check'), desc: t('充电口松动、听筒无声、摄像头模糊、感应器失灵、按键不灵、信号差、WiFi连不上、刷机解锁、改双卡……任何问题拿来免费检测。', 'Charging port loose, earpiece silent, blurry camera, sensor fail, button stuck, weak signal, WiFi issue, unlock, dual SIM mod — free check for any issue.') },
       ]
     },
@@ -29,29 +30,30 @@ export default function Home() {
       icon: <Monitor size={36} />,
       id: 'pc',
       title: t('电脑维修', 'Computer Repair'),
-      summary: t('台式机、笔记本、MacBook 各类故障', 'Desktop, laptop & MacBook repair'),
-      brands: t('联想/Dell/HP/华硕/Apple/华为 全系列', 'Lenovo/Dell/HP/ASUS/Apple/Huawei all series'),
+      summary: t('台式机、笔记本、MacBook、iMac 各类故障', 'Desktop, laptop, MacBook & iMac repair'),
+      brands: t('联想/Lenovo/Dell/HP/华硕/ASUS/Apple MacBook(Pro/Air)/iMac/华为 MateBook 全系列 + Surface/小米笔记本', 'Lenovo/Dell/HP/ASUS/Apple MacBook (Pro/Air)/iMac/Huawei MateBook all series + Surface/Xiaomi laptops'),
       details: [
-        { name: t('系统安装', 'OS Installation'), price: t('50元起', 'from $7'), desc: t('Windows/Mac 系统重装、双系统安装、系统崩溃恢复、驱动安装。', 'Windows/Mac reinstall, dual boot, crash recovery, driver setup.') },
-        { name: t('硬件升级', 'Hardware Upgrade'), price: t('30元起（不含配件）', 'from $4'), desc: t('加装固态硬盘提速、内存升级、CPU/显卡更换，免费优化调试。', 'SSD upgrade, RAM upgrade, CPU/GPU swap, free optimization.') },
-        { name: t('清灰换硅脂', 'Cleaning & Paste'), price: t('80元起', 'from $10'), desc: t('深度拆机清灰、更换导热硅脂，有效降低温度10-20°C，告别风扇狂转。', 'Deep clean, thermal paste replacement, lowers temp 10-20°C.') },
-        { name: t('蓝屏/死机检修', 'Blue Screen Fix'), price: t('60元起', 'from $8'), desc: t('蓝屏代码分析、内存/硬盘检测、系统修复、病毒查杀。', 'BSOD analysis, RAM/HDD test, system repair, virus removal.') },
-        { name: t('数据恢复', 'Data Recovery'), price: t('100元起', 'from $15'), desc: t('硬盘损坏、误删文件、格式化恢复、U盘/SD卡数据找回。', 'HDD failure, deleted files, formatted drive, USB/SD card recovery.') },
-        { name: t('其他问题', 'Other Issues'), price: t('免费检测', 'Free Check'), desc: t('键盘失灵、屏幕碎裂、电池不充电、WiFi搜不到、风扇异响、进液腐蚀、苹果笔记本键盘/屏幕通病……免费检测。', 'Keyboard fail, broken screen, battery not charging, no WiFi, fan noise, liquid spill, MacBook keyboard/screen issues — free check.') },
+        { name: t('MacBook 维修', 'MacBook Repair'), price: t('150元起', 'from $20'), desc: t('MacBook Pro/Air 全型号（A1278/A1466/A1706/A1989/A2141/A2337等）。屏幕、键盘、电池、进水、键盘粘滞、不充电通病。', 'MacBook Pro/Air all models (A1278/A1466/A1706/A1989/A2141/A2337 etc). Screen, keyboard, battery, water damage, sticky keys, no charging.') },
+        { name: t('系统安装', 'OS Installation'), price: t('50元起', 'from $7'), desc: t('Windows/Mac 系统重装、双系统安装、系统崩溃恢复、驱动安装、换固态硬盘后系统迁移。', 'Windows/Mac reinstall, dual boot, crash recovery, driver setup, SSD migration.') },
+        { name: t('硬件升级', 'Hardware Upgrade'), price: t('30元起（不含配件）', 'from $4'), desc: t('加装固态硬盘提速、内存升级、CPU/显卡更换，免费优化调试。MacBook 扩容升级也做。', 'SSD upgrade, RAM upgrade, CPU/GPU swap, free optimization. MacBook storage upgrades too.') },
+        { name: t('清灰换硅脂', 'Cleaning & Paste'), price: t('80元起', 'from $10'), desc: t('深度拆机清灰、更换导热硅脂，有效降低温度10-20°C，告别风扇狂转。笔记本台式机都做。', 'Deep clean, thermal paste replacement, lowers temp 10-20°C. Laptop & desktop.') },
+        { name: t('蓝屏/死机检修', 'Blue Screen Fix'), price: t('60元起', 'from $8'), desc: t('蓝屏代码分析、内存/硬盘检测、系统修复、病毒查杀。微软 Surface 系列疑难故障也做。', 'BSOD analysis, RAM/HDD test, system repair, virus removal. Microsoft Surface issues too.') },
+        { name: t('数据恢复', 'Data Recovery'), price: t('100元起', 'from $15'), desc: t('硬盘损坏、误删文件、格式化恢复、U盘/SD卡/固态硬盘数据找回。', 'HDD failure, deleted files, formatted drive, USB/SD card/SSD recovery.') },
+        { name: t('其他问题', 'Other Issues'), price: t('免费检测', 'Free Check'), desc: t('键盘失灵、屏幕碎裂、电池不充电、WiFi搜不到、风扇异响、进液腐蚀、苹果笔记本键盘/屏幕通病……免费检测。', 'Keyboard fail, broken screen, battery not charging, no WiFi, fan noise, liquid spill, MacBook issues — free check.') },
       ]
     },
     {
       icon: <Tablet size={36} />,
       id: 'tablet',
       title: t('平板维修', 'Tablet Repair'),
-      summary: t('iPad/安卓平板全系列', 'iPad & Android tablet all series'),
-      brands: t('苹果iPad/三星Tab/华为MatePad/小米Pad', 'iPad/Samsung Tab/Huawei MatePad/Xiaomi Pad'),
+      summary: t('iPad/安卓平板/电子书全系列', 'iPad/Android tablet/e-reader all series'),
+      brands: t('iPad Pro/Air/Mini 全代 + 三星Tab/华为MatePad/小米Pad/荣耀平板 + Kindle电子书', 'iPad Pro/Air/Mini all gens + Samsung Tab/Huawei MatePad/Xiaomi Pad/Honor Pad + Kindle e-reader'),
       details: [
-        { name: t('屏幕更换', 'Screen Replacement'), price: t('150元起', 'from $20'), desc: t('iPad/平板内外屏更换，支持原彩显示。碎裂、漏液、触摸不灵统统解决。', 'iPad/tablet screen replacement, True Tone support. Cracked, leaking, unresponsive fixed.') },
-        { name: t('电池更换', 'Battery Service'), price: t('120元起', 'from $16'), desc: t('平板电池不耐用、鼓包、充不进电。原装规格电池，更换后恢复续航。', 'Tablet battery swelling, not charging, short battery life. OEM spec replacements.') },
-        { name: t('充电口维修', 'Charging Port Fix'), price: t('80元起', 'from $10'), desc: t('充电口松动、接触不良、只能一个方向充电、尾插小板更换。', 'Loose port, bad contact, one-way charging, flex replacement.') },
-        { name: t('背光/显示故障', 'Display Issues'), price: t('100元起', 'from $15'), desc: t('屏幕暗/闪烁、有线条、花屏、触摸失灵但外屏完好。', 'Dim screen, flickering, lines, distorted display, unresponsive touch.') },
-        { name: t('系统刷机', 'System Flash'), price: t('60元起', 'from $8'), desc: t('平板卡LOGO、忘记密码、系统崩溃、升级变砖，救砖刷机。', 'Tablet stuck on logo, forgot password, system crash, bricked.') },
+        { name: t('iPad 屏幕更换', 'iPad Screen Repair'), price: t('150元起', 'from $20'), desc: t('iPad Pro 12.9/11寸、iPad Air、iPad Mini、iPad 数字系列。内外屏更换，支持原彩显示。碎裂/漏液/触摸不灵。', 'iPad Pro 12.9/11", iPad Air, iPad Mini, iPad digital series. Screen repair with True Tone support. Cracked/leaking/unresponsive.') },
+        { name: t('平板电池更换', 'Tablet Battery'), price: t('120元起', 'from $16'), desc: t('iPad/安卓平板电池不耐用、鼓包、充不进电。原装规格电池，更换后续航恢复。iPad拆机换电池需要专业工具和手艺。', 'iPad/Android tablet battery swelling, not charging, short life. OEM spec replacements. iPad battery swap requires skill & proper tools.') },
+        { name: t('充电口维修', 'Charging Port Fix'), price: t('80元起', 'from $10'), desc: t('平板充电口松动、接触不良、尾插小板/排线更换。', 'Tablet loose port, bad contact, charging flex replacement.') },
+        { name: t('平板进水/主板维修', 'Water/Motherboard'), price: t('150元起', 'from $20'), desc: t('iPad/平板进水清洗、主板芯片级维修、不充电、不开机、重启。', 'iPad/tablet water damage cleaning, component-level board repair, no power, boot loop.') },
+        { name: t('电子书维修', 'E-reader Repair'), price: t('80元起', 'from $10'), desc: t('Kindle/Kobo等电子书屏幕碎裂、电池不耐用、系统卡死。墨水屏更换。', 'Kindle/Kobo e-reader cracked screen, battery issues, system freeze. E-ink screen replacement.') },
         { name: t('其他问题', 'Other Issues'), price: t('免费检测', 'Free Check'), desc: t('Home键不灵、摄像头故障、麦克风无声、扬声器杂音、蓝牙/WiFi打不开、外壳变形……免费检测。', 'Home button, camera fail, no mic, speaker noise, Bluetooth/WiFi won\'t turn on, bent frame — free check.') },
       ]
     },
@@ -59,14 +61,15 @@ export default function Home() {
       icon: <Wrench size={36} />,
       id: 'other',
       title: t('其他数码维修', 'Other Device Repair'),
-      summary: t('游戏机/手表/耳机/相机等', 'Console/Watch/Earphone/Camera etc.'),
-      brands: t('Switch/PS5/Apple Watch/AirPods/相机', 'Switch/PS5/Apple Watch/AirPods/Camera'),
+      summary: t('游戏机/手表/耳机/相机/智能家居等', 'Console/Watch/Earphone/Camera/Smart Home'),
+      brands: t('Switch/PS5/Apple Watch(Ultra/S8-1)/Samsung Watch/AirPods/相机/Kindle', 'Switch/PS5/Apple Watch(Ultra/S8-1)/Samsung Watch/AirPods/Camera/Kindle'),
       details: [
+        { name: t('Apple Watch 维修', 'Apple Watch Repair'), price: t('100元起', 'from $15'), desc: t('Apple Watch Ultra/S8/S7/SE/S6 全系列。屏幕碎裂换玻璃/OLED、电池不耐用、进水故障、表带更换。', 'Apple Watch Ultra/S8/S7/SE/S6 all series. Screen glass/OLED replacement, battery service, water damage, strap swap.') },
         { name: t('游戏机维修', 'Console Repair'), price: t('100元起', 'from $15'), desc: t('Switch/PS4/PS5/Xbox — 手柄漂移、屏幕碎裂、不充电、不开机、散热改造。', 'Switch/PS4/PS5/Xbox — joystick drift, screen repair, no power, cooling mod.') },
-        { name: t('智能手表维修', 'Smartwatch Repair'), price: t('80元起', 'from $10'), desc: t('Apple Watch/Samsung Watch — 屏幕碎裂、电池不耐用、表带更换、进水故障。', 'Apple Watch/Samsung Watch — cracked screen, battery service, band swap, water damage.') },
-        { name: t('耳机维修', 'Earphone Repair'), price: t('60元起', 'from $8'), desc: t('AirPods/耳机 — 电池不耐用、一只不响、充电仓故障、麦克风不灵。', 'AirPods/earphones — battery drain, one side silent, case not charging, mic issue.') },
+        { name: t('智能手表维修', 'Smartwatch Repair'), price: t('80元起', 'from $10'), desc: t('Samsung Watch/Galaxy Watch — 屏幕碎裂、电池不耐用、表带更换、进水故障。', 'Samsung Watch/Galaxy Watch — cracked screen, battery service, band swap, water damage.') },
+        { name: t('耳机维修', 'Earphone Repair'), price: t('60元起', 'from $8'), desc: t('AirPods全系/各类TWS耳机 — 电池不耐用、一只不响、充电仓故障、麦克风不灵。', 'AirPods/TWS earphones — battery drain, one side silent, case not charging, mic issue.') },
         { name: t('相机维修', 'Camera Repair'), price: t('150元起', 'from $20'), desc: t('数码相机/单反 — 镜头故障、CCD/CMOS清洁、快门维修、存储卡数据恢复。', 'Digital camera/DSLR — lens fault, sensor cleaning, shutter repair, SD recovery.') },
-        { name: t('改装配件', 'Custom Mods'), price: t('按项目报价', 'Quote based'), desc: t('手机改双卡、扩容、换色外壳、游戏机改装、散热改造。', 'Dual SIM mod, storage upgrade, shell swap, console mod, cooling upgrade.') },
+        { name: t('改装配件', 'Custom Mods'), price: t('按项目报价', 'Quote based'), desc: t('手机改双卡、扩容、换色外壳、游戏机改装、散热改造。想做啥尽管说来聊。', 'Dual SIM mod, storage upgrade, shell swap, console mod, cooling upgrade. DM us your idea!') },
         { name: t('其他问题', 'Other Issues'), price: t('免费检测', 'Free Check'), desc: t('电子词典、学习机、电子书、GPS导航仪、监控设备、路由器设置……任何数码产品问题都可以带来看看。', 'E-dictionary, learning pad, e-reader, GPS, monitor, router setup — any digital device, bring it in for a free check.') },
       ]
     }
@@ -216,11 +219,73 @@ export default function Home() {
       {/* ===== 维修品牌 ===== */}
       <section className="py-12 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
-          <h3 className="text-sm font-semibold text-gray-500 mb-6 uppercase tracking-wider">{t('支持品牌', 'Brands We Support')}</h3>
-          <div className="flex flex-wrap justify-center gap-6 sm:gap-10 text-gray-400">
-            {['Apple','Samsung','Huawei','Xiaomi','OPPO','vivo','Dell','Lenovo','HP','ASUS'].map((b, i) => (
-              <span key={i} className="text-xl sm:text-2xl font-bold text-gray-800 hover:text-blue-600 transition-colors">{b}</span>
+          <h3 className="text-sm font-semibold text-gray-500 mb-6 uppercase tracking-wider">{t('支持品牌（部分）', 'Brands We Support (partial)')}</h3>
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-8 text-gray-400 mb-6">
+            {['Apple','Samsung','Huawei','Xiaomi','OPPO','vivo','OnePlus','Honor','Google','Realme','Dell','Lenovo','HP','ASUS','Microsoft','Nintendo','Sony'].map((b, i) => (
+              <span key={i} className="text-lg sm:text-xl font-bold text-gray-800 hover:text-blue-600 transition-colors">{b}</span>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== 型号支持 ===== */}
+      <section className="py-12 bg-gray-50 border-t border-gray-100">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">{t('部分型号一览', 'Supported Models (Partial)')}</h2>
+          <p className="text-gray-500 mb-8 max-w-2xl mx-auto">{t('以下仅为部分常见型号，更多机型欢迎微信咨询。没列出来不代表不能修。', 'Listed below are just common models. Not listed doesn\'t mean we can\'t fix it — just ask!')}</p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+            {/* iPhone */}
+            <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+              <h3 className="font-bold text-blue-600 mb-3 text-sm uppercase tracking-wider">{t('📱 iPhone 全系列', '📱 iPhone Series')}</h3>
+              <ul className="space-y-1.5 text-sm text-gray-600">
+                {[t('iPhone 16 Pro Max / Pro / Plus / 16', 'iPhone 16 Pro Max / Pro / Plus / 16'),
+                  t('iPhone 15 Pro Max / Pro / Plus / 15', 'iPhone 15 Pro Max / Pro / Plus / 15'),
+                  t('iPhone 14 Pro Max / Pro / Plus / 14', 'iPhone 14 Pro Max / Pro / Plus / 14'),
+                  t('iPhone 13 Pro Max / Pro / 13 / 13 Mini', 'iPhone 13 Pro Max / Pro / 13 / 13 Mini'),
+                  t('iPhone 12 Pro Max / Pro / 12 / 12 Mini', 'iPhone 12 Pro Max / Pro / 12 / 12 Mini'),
+                  t('iPhone 11 Pro Max / Pro / 11 / SE (2/3)', 'iPhone 11 Pro Max / Pro / 11 / SE (2/3)'),
+                  t('iPhone XS Max / XS / XR / X', 'iPhone XS Max / XS / XR / X'),
+                  t('iPhone 8 Plus / 8 / 7 Plus / 7 / 6s / 6', 'iPhone 8 Plus / 8 / 7 Plus / 7 / 6s / 6')].map((m, i) => <li key={i} className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span>{m}</li>)}
+              </ul>
+            </div>
+            {/* iPad */}
+            <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+              <h3 className="font-bold text-blue-600 mb-3 text-sm uppercase tracking-wider">{t('📟 iPad 全系列', '📟 iPad Series')}</h3>
+              <ul className="space-y-1.5 text-sm text-gray-600">
+                {[t('iPad Pro 12.9 (1-7代) / Pro 11 (1-5代)', 'iPad Pro 12.9 (1st-7th) / Pro 11 (1st-5th)'),
+                  t('iPad 数字系列 (5-11代, 9.7/10.2/10.9寸)', 'iPad digital (5th-11th, 9.7/10.2/10.9")'),
+                  t('iPad Air (2-6代)', 'iPad Air (2nd-6th)'),
+                  t('iPad Mini (4-7代)', 'iPad Mini (4th-7th)'),
+                  t('三星 Galaxy Tab 全系', 'Samsung Galaxy Tab all series'),
+                  t('华为 MatePad / 小米 Pad / 荣耀平板', 'Huawei MatePad / Xiaomi Pad / Honor Pad'),
+                  t('Amazon Kindle / Kobo 电子书', 'Amazon Kindle / Kobo e-reader')].map((m, i) => <li key={i} className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span>{m}</li>)}
+              </ul>
+            </div>
+            {/* Watch */}
+            <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+              <h3 className="font-bold text-blue-600 mb-3 text-sm uppercase tracking-wider">{t('⌚ Apple Watch 系列', '⌚ Apple Watch Series')}</h3>
+              <ul className="space-y-1.5 text-sm text-gray-600">
+                {[t('Apple Watch Ultra 2 / Ultra (49mm)', 'Apple Watch Ultra 2 / Ultra (49mm)'),
+                  t('Apple Watch Series 9/8/7 (41/45mm)', 'Apple Watch Series 9/8/7 (41/45mm)'),
+                  t('Apple Watch Series 6/5/4 (40/44mm)', 'Apple Watch Series 6/5/4 (40/44mm)'),
+                  t('Apple Watch SE (40/44mm)', 'Apple Watch SE (40/44mm)'),
+                  t('Apple Watch Series 3/2/1 (38/42mm)', 'Apple Watch Series 3/2/1 (38/42mm)'),
+                  t('Samsung Galaxy Watch 全系', 'Samsung Galaxy Watch all series')].map((m, i) => <li key={i} className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span>{m}</li>)}
+              </ul>
+            </div>
+            {/* Mac */}
+            <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+              <h3 className="font-bold text-blue-600 mb-3 text-sm uppercase tracking-wider">{t('💻 Mac / PC 系列', '💻 Mac / PC Series')}</h3>
+              <ul className="space-y-1.5 text-sm text-gray-600">
+                {[t('MacBook Pro 13/14/16 (全代)', 'MacBook Pro 13/14/16 (all gens)'),
+                  t('MacBook Air 11/13/15 (全代)', 'MacBook Air 11/13/15 (all gens)'),
+                  t('iMac / Mac Mini / Mac Pro', 'iMac / Mac Mini / Mac Pro'),
+                  t('联想/Lenovo ThinkPad 全系', 'Lenovo ThinkPad all series'),
+                  t('Dell XPS / Inspiron / Latitude', 'Dell XPS / Inspiron / Latitude'),
+                  t('HP Spectre / Pavilion / EliteBook', 'HP Spectre / Pavilion / EliteBook'),
+                  t('华硕 ASUS / 微软 Surface 全系', 'ASUS / Microsoft Surface all series')].map((m, i) => <li key={i} className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span>{m}</li>)}
+              </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -233,7 +298,8 @@ export default function Home() {
               <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">{t('关于 Crazy维修', 'About Crazy Repair')}</h2>
               <div className="space-y-4 text-gray-600 leading-relaxed text-sm sm:text-base">
                 <p>{t('Crazy维修（Crazy-repair）成立于威海环翠区，是一家专注于手机、电脑、平板及各类数码产品维修的专业工作室。2007年至今奋斗在维修一线，累计服务超过5000位客户。', 'Crazy Repair is a professional repair studio in Huancui, Weihai. On the repair frontline since 2007 with 5000+ satisfied customers.')}</p>
-                <p>{t('我们的理念：先查问题，告诉客户真实情况，给出合理报价，修不修客户决定。绝不诱导消费，绝不隐瞒问题。', 'Our philosophy: diagnose first, be honest, give a fair quote. No pressure, no hidden issues.')}</p>
+                <p>{t('我们修的设备覆盖你能想到的大部分品牌——Apple、Samsung、华为、小米、OPPO、vivo、OnePlus、荣耀、Google Pixel、Realme……不管是iPhone屏幕碎了、三星电池不耐用了、华为MatePad摔了、还是MacBook进水了，拿来给我看看。', 'We repair most brands you can think of — Apple, Samsung, Huawei, Xiaomi, OPPO, vivo, OnePlus, Honor, Google Pixel, Realme… Cracked iPhone screen, dying Samsung battery, dropped Huawei MatePad, water-damaged MacBook — bring it in.')}</p>
+                <p>{t('我们的理念：先查问题，告诉客户真实情况，给出合理报价，修不修客户决定。绝不诱导消费，绝不隐瞒问题。不做那种"小病大修"的套路。', 'Our philosophy: diagnose first, be honest, give a fair quote. No pressure, no hidden issues. No "upsell" tricks.')}</p>
                 <div className="flex items-center gap-4 pt-4 text-sm">
                   <div className="bg-blue-50 rounded-xl px-4 py-3 text-center">
                     <div className="text-2xl font-bold text-blue-600">19</div>
