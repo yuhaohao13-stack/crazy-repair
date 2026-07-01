@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react'
-import { ArrowLeft, Smartphone, Battery, Droplets, Cpu, Camera, ChevronDown, Star } from 'lucide-react'
+import { Smartphone, Battery, Droplets, Cpu, Camera, ChevronDown, Star } from 'lucide-react'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import ContactModal from '../../components/ContactModal'
@@ -42,9 +42,6 @@ export default function iPhoneRepair() {
 
       {/* Hero */}
       <section className="bg-gradient-to-br from-blue-700 via-blue-600 to-blue-500 text-white">
-                <a href="/phone-repair" className="inline-flex items-center gap-1 text-white/50 hover:text-white text-xs mb-2 transition-colors">
-                  <ArrowLeft size={12} /> {t('手机品牌', 'Phone Brands')}
-                </a>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
           <div className="max-w-3xl">
             <h1 className="text-3xl sm:text-5xl font-bold mb-4">{t('iPhone 维修', 'iPhone Repair')}</h1>
@@ -127,7 +124,7 @@ export default function iPhoneRepair() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 BACKBTN_placeholder from-blue-700 via-blue-600 to-blue-500 text-white text-center">
+      <section className="py-16 bg-gradient-to-br from-blue-700 via-blue-600 to-blue-500 text-white text-center">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <h2 className="text-2xl sm:text-3xl font-bold mb-4">{t('iPhone 有问题？找我', 'iPhone issues? Hit me up')}</h2>
           <p className="text-blue-200 mb-8">{t('免费检测，先报价后维修。添加微信发张照片就能初步判断。', 'Free diagnosis. Add WeChat, send a photo for a quick assessment.')}</p>

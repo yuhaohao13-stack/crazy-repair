@@ -1,6 +1,5 @@
 'use client'
 import { useState } from 'react'
-import { ArrowLeft } from 'lucide-react'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import ContactModal from '../../components/ContactModal'
@@ -13,9 +12,6 @@ export default function HonorRepair() {
     <div className="min-h-screen bg-white">
       <Navbar lang={lang} setLang={setLang} setShowContact={setShowContact} />
       <section className="bg-gradient-to-br from-teal-700 via-teal-600 to-teal-500 text-white">
-                <a href="/phone-repair" className="inline-flex items-center gap-1 text-white/50 hover:text-white text-xs mb-2 transition-colors">
-                  <ArrowLeft size={12} /> {t('手机品牌', 'Phone Brands')}
-                </a>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14">
           <h1 className="text-3xl sm:text-5xl font-bold mb-3">{t('Honor 维修', 'Honor Repair')}</h1>
           <p className="text-white/80 text-lg mb-4">{t('Honor 全系列专业维修 | 威海', 'Honor All Series | Weihai')}</p>

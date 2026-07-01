@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react'
-import { ArrowLeft, Monitor, Battery, Droplets, Cpu, ChevronDown } from 'lucide-react'
+import { Monitor, Battery, Droplets, Cpu, ChevronDown } from 'lucide-react'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import ContactModal from '../../components/ContactModal'
@@ -25,9 +25,6 @@ export default function MacBookRepair() {
     <div className="min-h-screen bg-white">
       <Navbar lang={lang} setLang={setLang} setShowContact={setShowContact} />
       <section className="bg-gradient-to-br from-gray-800 via-gray-700 to-gray-600 text-white">
-                <a href="/computer-repair" className="inline-flex items-center gap-1 text-white/50 hover:text-white text-xs mb-2 transition-colors">
-                  <ArrowLeft size={12} /> {t('电脑品牌', 'Computer Brands')}
-                </a>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
           <div className="max-w-3xl">
             <h1 className="text-3xl sm:text-5xl font-bold mb-4">{t('MacBook 维修', 'MacBook Repair')}</h1>
@@ -94,7 +91,7 @@ export default function MacBookRepair() {
         </div>
       </section>
 
-      <section className="py-16 BACKBTN_placeholder from-gray-800 via-gray-700 to-gray-600 text-white text-center">
+      <section className="py-16 bg-gradient-to-br from-gray-800 via-gray-700 to-gray-600 text-white text-center">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <h2 className="text-2xl sm:text-3xl font-bold mb-4">{t('MacBook 出问题了？找我', 'MacBook issues? Hit me up')}</h2>
           <p className="text-gray-300 mb-8">{t('免费检测，先报价后维修。', 'Free diagnosis, quote first.')}</p>
