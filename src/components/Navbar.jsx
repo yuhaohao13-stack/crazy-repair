@@ -59,7 +59,7 @@ export default function Navbar({ lang, setLang, setShowContact }) {
             <a href="/macbook-repair" className="hover:text-blue-600 whitespace-nowrap">MacBook</a>
             <a href="/samsung-repair" className="hover:text-blue-600 whitespace-nowrap">Samsung</a>
             <a href="/xiaomi-repair" className="hover:text-blue-600 whitespace-nowrap">Xiaomi</a>
-            <a href="/huawei-repair" className="hover:text-blue-600 whitespace-nowrap">Huawei</a><span className="text-gray-300 mx-1">|</span><a href="https://www.gudaoforum.com" target="_blank" rel="noopener" className="hover:text-blue-600 whitespace-nowrap font-medium">论坛</a>
+            <a href="/huawei-repair" className="hover:text-blue-600 whitespace-nowrap">Huawei</a><span className="text-gray-300 mx-1">|</span><a href="https://www.gudaoforum.com" target="_blank" rel="noopener" className="hover:text-blue-600 whitespace-nowrap font-medium">古道维修论坛</a>
             <span className="text-gray-300">|</span>
             
             {/* Search input - inline after Huawei */}
