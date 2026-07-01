@@ -122,7 +122,7 @@ export default function Navbar({ lang, setLang, setShowContact }) {
           </div>
 
           <div className="flex items-center gap-2">
-            <a href="https://www.gudaoforum.com" target="_blank" rel="noopener" className="text-xs text-gray-500 hover:text-blue-600 mr-1 md:hidden">论坛</a>{/* Mobile search toggle */}
+            <a href="https://www.gudaoforum.com" target="_blank" rel="noopener" className="text-xs text-gray-500 hover:text-blue-600 mr-1 md:hidden">古道维修论坛</a>{/* Mobile search toggle */}
             <button onClick={() => setShowSearch(!showSearch)} className="md:hidden text-gray-500 hover:text-gray-700">
               <SearchIcon size={16} />
             </button>
