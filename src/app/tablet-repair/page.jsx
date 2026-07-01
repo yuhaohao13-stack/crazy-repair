@@ -26,7 +26,7 @@ export default function TabletRepair() {
               <h3 className="font-bold text-lg mb-1">{t('Apple iPad', 'Apple iPad')}</h3>
               <p className="text-sm text-white/80 mb-2">{t('iPad Pro/Air/Mini/数字系列全代维修', 'iPad Pro/Air/Mini/digital all gens')}</p>
               <p className="text-xs text-white/60">{t('屏幕更换、电池、充电口、进水', 'Screen, battery, port, water')}</p>
-              <button onClick={() => setShowContact(true)} className="inline-block mt-3 text-xs bg-white/20 px-3 py-1 rounded-full hover:bg-white/30">{t('📱 微信咨询 →', 'WeChat →')}</button>
+              <a href="/iphone-repair" className="inline-block mt-3 text-xs bg-white/20 px-3 py-1 rounded-full hover:bg-white/30">{t('查看服务 →', 'Services →')}</a>
             </div>
             <div className="bg-gradient-to-br from-purple-600 to-purple-500 text-white rounded-2xl p-5 shadow-md">
               <div className="text-3xl mb-2">📟</div>
@@ -54,14 +54,14 @@ export default function TabletRepair() {
               <h3 className="font-bold text-lg mb-1">{t('OPPO Pad / OnePlus Pad', 'OPPO Pad / OnePlus Pad')}</h3>
               <p className="text-sm text-white/80 mb-2">{t('OPPO Pad/OnePlus Pad维修', 'OPPO Pad/OnePlus Pad repair')}</p>
               <p className="text-xs text-white/60">{t('屏幕、电池、充电口', 'Screen, battery, port')}</p>
-              <button onClick={() => setShowContact(true)} className="inline-block mt-3 text-xs bg-white/20 px-3 py-1 rounded-full hover:bg-white/30">{t('📱 微信咨询 →', 'WeChat →')}</button>
+              <a href="/oppo-repair" className="inline-block mt-3 text-xs bg-white/20 px-3 py-1 rounded-full hover:bg-white/30">{t('查看服务 →', 'Services →')}</a>
             </div>
             <div className="bg-gradient-to-br from-violet-600 to-violet-500 text-white rounded-2xl p-5 shadow-md">
               <div className="text-3xl mb-2">📟</div>
               <h3 className="font-bold text-lg mb-1">{t('联想 Tab / 荣耀平板', 'Lenovo Tab / Honor Pad')}</h3>
               <p className="text-sm text-white/80 mb-2">{t('联想小新Pad/荣耀平板全系', 'Lenovo Pad/Honor Pad all')}</p>
               <p className="text-xs text-white/60">{t('换屏、电池、充电口', 'Screen, battery, port')}</p>
-              <button onClick={() => setShowContact(true)} className="inline-block mt-3 text-xs bg-white/20 px-3 py-1 rounded-full hover:bg-white/30">{t('📱 微信咨询 →', 'WeChat →')}</button>
+              <a href="/lenovo-repair" className="inline-block mt-3 text-xs bg-white/20 px-3 py-1 rounded-full hover:bg-white/30">{t('查看服务 →', 'Services →')}</a>
             </div>
             <div className="bg-gradient-to-br from-amber-600 to-amber-500 text-white rounded-2xl p-5 shadow-md">
               <div className="text-3xl mb-2">📖</div>
