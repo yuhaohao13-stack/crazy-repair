@@ -66,7 +66,6 @@ export default function ServiceDetail() {
           <h1 className="text-2xl sm:text-4xl font-bold mb-2">{lang === 'zh' ? service.title : service.titleEn}</h1>
           <p className="text-base sm:text-lg text-white/90 max-w-2xl">{lang === 'zh' ? service.description : service.descriptionEn}</p>
           <div className="mt-4 flex gap-3">
-            <span className="text-xs font-semibold bg-white/20 px-3 py-1 rounded-full">{service.prices}</span>
             <span className="text-xs text-white/70">{t('免费检测 · 先报价后维修', 'Free check · Quote first')}</span>
           </div>
           <div className="flex flex-wrap gap-3 mt-6">
@@ -81,7 +80,7 @@ export default function ServiceDetail() {
       <section className="py-10 sm:py-14">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-1">{t('服务详情', 'Details')}</h2>
-          <p className="text-xs text-gray-400 mb-5">{t('参考价格', 'Price')}: <span className="font-semibold text-green-600">{service.prices}</span></p>
+          
           <div className="bg-gray-50 rounded-2xl p-5 sm:p-8 border border-gray-100">
             {(lang === 'zh' ? service.details : service.detailsEn).split('\n').filter(Boolean).map((p, i) => (
               <p key={i} className="text-gray-600 text-sm leading-relaxed mb-3 last:mb-0">{p}</p>
@@ -98,7 +97,6 @@ export default function ServiceDetail() {
               <a key={i} href={'/' + brandDir + '/' + s.id} className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-0.5 block transition-all">
                 <div className="flex items-center justify-between mb-1">
                   <h3 className="font-semibold text-gray-900 text-sm">{lang === 'zh' ? s.title : s.titleEn}</h3>
-                  <span className="text-xs font-medium text-green-600 bg-green-50 px-2 py-0.5 rounded shrink-0">{s.prices}</span>
                 </div>
                 <p className="text-xs text-gray-500 line-clamp-2">{lang === 'zh' ? s.description : s.descriptionEn}</p>
               </a>

@@ -11,12 +11,12 @@ export default function XiaomiRepair() {
   const t = (zh, en) => lang === 'zh' ? zh : en
 
   const services = [
-    { id: 'screen-replacement', title: t('屏幕更换', 'Screen Replacement'), price: t('¥100起', 'from $15'), desc: t('小米/Redmi 全系列屏幕，OLED/LCD都有。碎裂、漏液、触摸不灵。', 'Xiaomi/Redmi all series, OLED & LCD. Cracked, leaking, unresponsive touch.') },
-    { id: 'battery-replacement', title: t('电池更换', 'Battery Service'), price: t('¥60起', 'from $8'), desc: t('小米电池不耐用、鼓包、充不进电。原装规格电池，性价比高。', 'Xiaomi battery issues: drain, swelling, no charge. OEM spec, great value.') },
-    { id: 'motherboard-repair', title: t('主板维修', 'Motherboard'), price: t('¥120起', 'from $16'), desc: t('不开机、重启、充电IC、无服务。小米主板芯片级维修，性价比之选。', 'No power, boot loop, IC fault. Cost-effective component-level repair.') },
-    { id: 'charging-port', title: t('充电口维修', 'Charging Port'), price: t('¥60起', 'from $8'), desc: t('Type-C口松动、接触不良、只能慢充。尾插小板更换。', 'Type-C loose, bad contact, slow charge only. Flex replacement.') },
-    { id: 'back-glass', title: t('后盖/边框', 'Back Glass/Frame'), price: t('¥80起', 'from $10'), desc: t('小米玻璃后盖碎裂、中框变形。换后盖恢复防水胶。', 'Broken glass back, bent frame. Waterproof sealant restored.') },
-    { id: 'flash-unlock', title: t('刷机/解锁', 'Flash/Unlock'), price: t('¥50起', 'from $7'), desc: t('MIUI系统卡顿、卡LOGO、忘记账号、解BL锁、刷国际版。', 'MIUI lag, boot loop, account lock, BL unlock, flash global ROM.') },
+    { id: 'screen-replacement', title: t('屏幕更换', 'Screen Replacement'), desc: t('小米/Redmi 全系列屏幕，OLED/LCD都有。碎裂、漏液、触摸不灵。', 'Xiaomi/Redmi all series, OLED & LCD. Cracked, leaking, unresponsive touch.') },
+    { id: 'battery-replacement', title: t('电池更换', 'Battery Service'), desc: t('小米电池不耐用、鼓包、充不进电。原装规格电池，性价比高。', 'Xiaomi battery issues: drain, swelling, no charge. OEM spec, great value.') },
+    { id: 'motherboard-repair', title: t('主板维修', 'Motherboard'), desc: t('不开机、重启、充电IC、无服务。小米主板芯片级维修，性价比之选。', 'No power, boot loop, IC fault. Cost-effective component-level repair.') },
+    { id: 'charging-port', title: t('充电口维修', 'Charging Port'), desc: t('Type-C口松动、接触不良、只能慢充。尾插小板更换。', 'Type-C loose, bad contact, slow charge only. Flex replacement.') },
+    { id: 'back-glass', title: t('后盖/边框', 'Back Glass/Frame'), desc: t('小米玻璃后盖碎裂、中框变形。换后盖恢复防水胶。', 'Broken glass back, bent frame. Waterproof sealant restored.') },
+    { id: 'flash-unlock', title: t('刷机/解锁', 'Flash/Unlock'), desc: t('MIUI系统卡顿、卡LOGO、忘记账号、解BL锁、刷国际版。', 'MIUI lag, boot loop, account lock, BL unlock, flash global ROM.') },
   ]
 
   return (
@@ -46,7 +46,6 @@ export default function XiaomiRepair() {
               <a key={i} href={'/xiaomi-repair/' + s.id} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 hover:shadow-md transition-all block">
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="font-bold text-gray-900">{s.title}</h3>
-                  <span className="text-xs font-semibold text-green-600 bg-green-50 px-2 py-0.5 rounded">{s.price}</span>
                 </div>
                 <p className="text-sm text-gray-500 leading-relaxed">{s.desc}</p>
               </a>

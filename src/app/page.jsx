@@ -9,7 +9,7 @@ function SearchCheck(props) {
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import ContactModal from '../components/ContactModal'
-import ModelSearch from '../components/ModelSearch'
+// Search moved to Navbar
 
 export default function Home() {
   const [showContact, setShowContact] = useState(false)
@@ -114,8 +114,13 @@ export default function Home() {
               <p className="text-blue-100 leading-relaxed text-sm sm:text-base max-w-lg">
                 {t('Crazy维修专注手机、电脑、平板等第三方维修服务，位于威海环翠区西门31号。2007年至今奋斗在维修一线，免费检测，先报价后维修，30天质保。手机碎屏、电池更换、电脑维修、数据恢复，价格透明，诚信经营。', 'Crazy Repair specializes in third-party phone, computer and tablet repair services. Located at West Gate #31, Huancui District, Weihai. On the repair frontline since 2007. Free diagnosis, quote first, 30-day warranty. Screen repair, battery replacement, computer repair, data recovery — transparent pricing, honest service.')}
               </p>
-              <div className="mt-6">
-                <ModelSearch lang={lang} setShowContact={setShowContact} />
+              <div className="mt-6 flex flex-wrap gap-2">
+                <button onClick={() => setShowContact(true)}
+                  className="bg-white text-blue-600 font-semibold px-5 py-2.5 rounded-xl hover:bg-blue-50 transition-colors shadow-lg text-sm"
+                >{t('📱 微信咨询报价', '📱 WeChat for Quote')}</button>
+                <a href="#brands"
+                  className="border border-white/40 text-white font-medium px-5 py-2.5 rounded-xl hover:bg-white/10 transition-colors text-sm"
+                >{t('选择品牌型号 →', 'Choose Brand →')}</a>
               </div>
               <div className="flex flex-wrap gap-3 pt-4">
                 <button onClick={() => setShowContact(true)}
@@ -226,7 +231,7 @@ export default function Home() {
                   t('iPhone 12 Pro Max / Pro / 12 / 12 Mini', 'iPhone 12 Pro Max / Pro / 12 / 12 Mini'),
                   t('iPhone 11 Pro Max / Pro / 11 / SE (2/3)', 'iPhone 11 Pro Max / Pro / 11 / SE (2/3)'),
                   t('iPhone XS Max / XS / XR / X', 'iPhone XS Max / XS / XR / X'),
-                  t('iPhone 8 Plus / 8 / 7 Plus / 7 / 6s / 6', 'iPhone 8 Plus / 8 / 7 Plus / 7 / 6s / 6')].map((m, i) => <li key={i} className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span>{m}</li>)}
+                  t('iPhone 8 Plus / 8 / 7 Plus / 7 / 6s / 6', 'iPhone 8 Plus / 8 / 7 Plus / 7 / 6s / 6')].map((m, i) => <li key={i} className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/iphone-repair" className="hover:text-blue-600 transition-colors">{m}</a></li>)}
               </ul>
             </div>
             {/* iPad */}
@@ -239,7 +244,7 @@ export default function Home() {
                   t('iPad Mini (4-7代)', 'iPad Mini (4th-7th)'),
                   t('三星 Galaxy Tab 全系', 'Samsung Galaxy Tab all series'),
                   t('华为 MatePad / 小米 Pad / 荣耀平板', 'Huawei MatePad / Xiaomi Pad / Honor Pad'),
-                  t('Amazon Kindle / Kobo 电子书', 'Amazon Kindle / Kobo e-reader')].map((m, i) => <li key={i} className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span>{m}</li>)}
+                  t('Amazon Kindle / Kobo 电子书', 'Amazon Kindle / Kobo e-reader')].map((m, i) => <li key={i} className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/" className="hover:text-blue-600 transition-colors">{m}</a></li>)}
               </ul>
             </div>
             {/* Watch */}
@@ -251,7 +256,7 @@ export default function Home() {
                   t('Apple Watch Series 6/5/4 (40/44mm)', 'Apple Watch Series 6/5/4 (40/44mm)'),
                   t('Apple Watch SE (40/44mm)', 'Apple Watch SE (40/44mm)'),
                   t('Apple Watch Series 3/2/1 (38/42mm)', 'Apple Watch Series 3/2/1 (38/42mm)'),
-                  t('Samsung Galaxy Watch 全系', 'Samsung Galaxy Watch all series')].map((m, i) => <li key={i} className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span>{m}</li>)}
+                  t('Samsung Galaxy Watch 全系', 'Samsung Galaxy Watch all series')].map((m, i) => <li key={i} className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/" className="hover:text-blue-600 transition-colors">{m}</a></li>)}
               </ul>
             </div>
             {/* Mac */}
@@ -264,7 +269,7 @@ export default function Home() {
                   t('联想/Lenovo ThinkPad 全系', 'Lenovo ThinkPad all series'),
                   t('Dell XPS / Inspiron / Latitude', 'Dell XPS / Inspiron / Latitude'),
                   t('HP Spectre / Pavilion / EliteBook', 'HP Spectre / Pavilion / EliteBook'),
-                  t('华硕 ASUS / 微软 Surface 全系', 'ASUS / Microsoft Surface all series')].map((m, i) => <li key={i} className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span>{m}</li>)}
+                  t('华硕 ASUS / 微软 Surface 全系', 'ASUS / Microsoft Surface all series')].map((m, i) => <li key={i} className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/macbook-repair" className="hover:text-blue-600 transition-colors">{m}</a></li>)}
               </ul>
             </div>
           </div>

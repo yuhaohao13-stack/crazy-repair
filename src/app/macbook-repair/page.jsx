@@ -11,12 +11,12 @@ export default function MacBookRepair() {
   const t = (zh, en) => lang === 'zh' ? zh : en
 
   const services = [
-    { id: 'screen-replacement', icon: <Monitor size={28} />, title: t('屏幕更换', 'Screen Replacement'), price: t('¥300起', 'from $40'), desc: t('MacBook Pro/Air 屏幕碎裂、闪烁、黑屏、线条。原装品质屏幕，含安装调试。', 'MacBook Pro/Air cracked screen, flickering, black screen, lines. OEM quality, fully tested.') },
-    { id: 'battery-replacement', icon: <Battery size={28} />, title: t('电池更换', 'Battery Replacement'), price: t('¥200起', 'from $28'), desc: t('MacBook电池鼓包、不耐用、不充电、提示"维修"。原装规格电池，更换后恢复续航。', 'MacBook battery swelling, short life, not charging, "Service Recommended". OEM spec replacement.') },
-    { id: 'motherboard-repair', icon: <Cpu size={28} />, title: t('主板/逻辑板维修', 'Logic Board Repair'), price: t('¥200起', 'from $28'), desc: t('不开机、死机、充电芯片故障、进液腐蚀。芯片级维修，比换主板便宜得多。', 'No power, crashes, charging IC fault, liquid damage. Component-level repair, much cheaper than board swap.') },
-    { id: 'water-damage', icon: <Droplets size={28} />, title: t('进水维修', 'Water Damage'), price: t('视情况', 'Depends'), desc: t('MacBook进水后立刻关机送修，修复率很高。千万不要开机尝试！我们处理过大量MacBook进水案例。', 'Power off immediately and bring it in. High recovery rate if caught early. Do NOT try turning it on!') },
-    { id: 'keyboard-repair', icon: <Monitor size={28} />, title: t('键盘/触控板', 'Keyboard/Trackpad'), price: t('¥150起', 'from $20'), desc: t('键盘按键不灵、粘滞、触控板无反馈。MacBook蝶式键盘通病可修复。', 'Sticky keys, unresponsive, trackpad not working. MacBook butterfly keyboard issues fixed.') },
-    { id: 'cleaning', icon: <Cpu size={28} />, title: t('清灰换硅脂/散热', 'Cleaning & Cooling'), price: t('¥100起', 'from $14'), desc: t('风扇狂转、机身发烫、性能下降。深度清灰+换导热硅脂，有效降温10-20°C。', 'Loud fans, overheating, performance drop. Deep clean + thermal paste, lowers temps 10-20°C.') },
+    { id: 'screen-replacement', icon: <Monitor size={28} />, title: t('屏幕更换', 'Screen Replacement'), desc: t('MacBook Pro/Air 屏幕碎裂、闪烁、黑屏、线条。原装品质屏幕，含安装调试。', 'MacBook Pro/Air cracked screen, flickering, black screen, lines. OEM quality, fully tested.') },
+    { id: 'battery-replacement', icon: <Battery size={28} />, title: t('电池更换', 'Battery Replacement'), desc: t('MacBook电池鼓包、不耐用、不充电、提示"维修"。原装规格电池，更换后恢复续航。', 'MacBook battery swelling, short life, not charging, "Service Recommended". OEM spec replacement.') },
+    { id: 'motherboard-repair', icon: <Cpu size={28} />, title: t('主板/逻辑板维修', 'Logic Board Repair'), desc: t('不开机、死机、充电芯片故障、进液腐蚀。芯片级维修，比换主板便宜得多。', 'No power, crashes, charging IC fault, liquid damage. Component-level repair, much cheaper than board swap.') },
+    { id: 'water-damage', icon: <Droplets size={28} />, title: t('进水维修', 'Water Damage'), desc: t('MacBook进水后立刻关机送修，修复率很高。千万不要开机尝试！我们处理过大量MacBook进水案例。', 'Power off immediately and bring it in. High recovery rate if caught early. Do NOT try turning it on!') },
+    { id: 'keyboard-repair', icon: <Monitor size={28} />, title: t('键盘/触控板', 'Keyboard/Trackpad'), desc: t('键盘按键不灵、粘滞、触控板无反馈。MacBook蝶式键盘通病可修复。', 'Sticky keys, unresponsive, trackpad not working. MacBook butterfly keyboard issues fixed.') },
+    { id: 'cleaning', icon: <Cpu size={28} />, title: t('清灰换硅脂/散热', 'Cleaning & Cooling'), desc: t('风扇狂转、机身发烫、性能下降。深度清灰+换导热硅脂，有效降温10-20°C。', 'Loud fans, overheating, performance drop. Deep clean + thermal paste, lowers temps 10-20°C.') },
   ]
 
   const models = ['MacBook Pro 16" M3/M4', 'MacBook Pro 14" M3/M4', 'MacBook Pro 13" A1706/A1989/A2338', 'MacBook Pro 15" A1398/A1707/A1990', 'MacBook Pro 17" A1297', 'MacBook Air 15" M3/M4', 'MacBook Air 13" A1466/A1932/A2337', 'MacBook Air 11" A1370/A1465', 'iMac 21.5/27 全代', 'Mac Mini / Mac Pro']
@@ -49,7 +49,6 @@ export default function MacBookRepair() {
                 <div className="text-gray-600 mb-3">{s.icon}</div>
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="font-bold text-gray-900">{s.title}</h3>
-                  <span className="text-xs font-semibold text-green-600 bg-green-50 px-2 py-0.5 rounded">{s.price}</span>
                 </div>
                 <p className="text-sm text-gray-500 leading-relaxed">{s.desc}</p>
               </a>
