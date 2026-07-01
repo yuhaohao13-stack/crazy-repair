@@ -1,0 +1,208 @@
+// 维修服务配置 - 每个品牌下的服务项目
+// 用于生成动态子页面
+
+const repairServices = {
+  'iphone': {
+    brand: 'Apple',
+    title: 'iPhone 维修',
+    gradient: 'from-blue-700 via-blue-600 to-blue-500',
+    services: [
+      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement',
+        prices: '¥100起 (from $15)',
+        description: 'iPhone 屏幕碎裂、漏液、触摸不灵、显示异常？不管是OLED还是LCD，我们都能换。',
+        descriptionEn: 'Cracked iPhone screen? Leaking LCD? Unresponsive touch? We replace OLED & LCD screens for all models.',
+        details: '提供原装拆机屏和国产高性价比屏两种选择。换屏前会跟你说清区别，你自己选。所有换屏含专业密封胶，恢复防水性能。换完后当面测试触摸、显示、面容功能。\n\n适用型号：iPhone 16/15/14/13/12/11/X/8/7/6 全系列。\n维修时间：约30分钟-1小时。\n质保：30天。',
+        detailsEn: 'Two options: OEM pulled screen or high-quality domestic screen. I will explain before you choose. All replacements include waterproof sealant to restore water resistance. Full testing after repair.\n\nModels: iPhone 16/15/14/13/12/11/X/8/7/6 series.\nTime: ~30min-1hr.\nWarranty: 30 days.',
+        imageHint: 'screen' },
+      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement',
+        prices: '¥80起 (from $10)',
+        description: 'iPhone 电池不耐用、一天三充、健康度低于80%、突然关机？换电池是最划算的升级。',
+        descriptionEn: 'iPhone battery draining fast? Health below 80%? Random shutdowns? Battery swap is the most cost-effective upgrade.',
+        details: '原装规格电池，容量不虚标。从iPhone 6到16全系列都有现货。更换后检测健康度100%。告别续航焦虑，手机还会变流畅（降频解除）。\n\n维修时间：约30分钟。\n质保：30天。',
+        detailsEn: 'OEM spec batteries with accurate capacity. iPhone 6 through 16 in stock. Health check to 100% after swap. No more battery anxiety + phone feels snappier (throttling removed).\n\nTime: ~30min.\nWarranty: 30 days.',
+        imageHint: 'battery' },
+      { id: 'water-damage', title: '进水维修', titleEn: 'Water Damage Repair',
+        prices: '视情况 (Depends)',
+        description: 'iPhone掉水里、进洗衣机、淋雨了？第一时间关机送来，不要充电！',
+        descriptionEn: 'iPhone dropped in water? In the washing machine? Caught in rain? Power off immediately and bring it in. Do NOT charge!',
+        details: '进水维修流程：拆机 → 超声波清洗主板 → 烘干 → 腐蚀修复 → 功能测试。进水越早处理修复率越高。千万不要用吹风机吹或放米缸——这些做法只会让水进得更深。\n\n注意：进水后不要尝试开机或充电，这会导致短路烧主板。直接送过来，我们有丰富的iPhone进水处理经验。',
+        detailsEn: 'Water damage process: Disassemble → Ultrasonic clean → Dry → Corrosion repair → Test. Quick action = high recovery rate. No hair dryer, no rice — these push water deeper.\n\nIMPORTANT: Do not try to turn on or charge a wet iPhone. This causes shorts and board damage. Bring it in as-is.',
+        imageHint: 'water' },
+      { id: 'motherboard-repair', title: '主板维修', titleEn: 'Motherboard Repair',
+        prices: '¥150起 (from $20)',
+        description: '不开机、无限重启、无服务、WiFi打不开、面容不可用？可能是主板问题。',
+        descriptionEn: 'Wont turn on? Boot loop? No service? WiFi dead? Face ID gone? Could be motherboard related.',
+        details: 'iPhone主板芯片级维修：CPU重焊、硬盘扩容、基带修复、充电IC更换、显示IC维修。不需要换整个主板，针对性修坏掉的部分，费用只有换主板的一半甚至更低。\n\n常见故障：进水不开机、刷机报错、无基带/无串号、重启循环、WiFi灰点。\n维修时间：1-3天。',
+        detailsEn: 'Component-level iPhone board repair: CPU reballing, storage upgrade, baseband fix, charging IC swap, display IC repair. No need to replace the whole board — fix only whats broken, at half the cost.\n\nCommon issues: No power after water, update error, no baseband/IMEI, boot loop, WiFi grayed out.\nTime: 1-3 days.',
+        imageHint: 'board' },
+      { id: 'camera-repair', title: '摄像头维修', titleEn: 'Camera Repair',
+        prices: '¥100起 (from $15)',
+        description: '拍照模糊、黑屏、闪退、对焦不了？前后摄像头都能修。',
+        descriptionEn: 'Blurry photos? Black screen? App crashes? Cant focus? Front & back camera fixed.',
+        details: 'iPhone前后摄像头更换/维修。拍照模糊通常是镜头脏或摄像头损坏；黑屏可能是排线松动或摄像头IC故障。对焦不灵最常见于后置摄像头。\n\n适用型号：iPhone 15/14/13/12/11/X 全系前后摄像头。\n维修时间：约1小时。',
+        detailsEn: 'iPhone front & rear camera replacement/repair. Blurry = dirty lens or damaged module. Black screen = loose flex or IC fault. Autofocus fail = rear camera issue.\n\nModels: iPhone 15/14/13/12/11/X front & rear.\nTime: ~1hr.',
+        imageHint: 'camera' },
+      { id: 'face-id', title: '面容/指纹修复', titleEn: 'Face ID / Touch ID',
+        prices: '¥120起 (from $16)',
+        description: '换完屏幕后面容不能用了？面容ID点阵坏了？指纹Home键不灵了？',
+        descriptionEn: 'Face ID stopped working after screen swap? Dot matrix damaged? Home button/Touch ID not responding?',
+        details: '面容ID点阵修复、前置摄像头排线更换。换屏幕后面容不能用是常见问题——大多是点阵排线在拆机时受损，可以单独修，不需要换整个手机。\n\niPhone X及以上面容ID修复，iPhone SE/8及以下指纹修复。\n维修时间：约1-2小时。',
+        detailsEn: 'Face ID dot matrix repair, front camera flex replacement. Face ID dying after screen swap is common — usually the dot matrix flex gets damaged during disassembly. Repairable without replacing the whole phone.\n\nFace ID: iPhone X+. Touch ID: iPhone SE/8 and below.\nTime: 1-2hrs.',
+        imageHint: 'faceid' },
+      { id: 'charging-port', title: '充电口维修', titleEn: 'Charging Port',
+        prices: '¥80起 (from $10)',
+        description: '充不进电、只能一个方向充、充电慢、接触不良？尾插问题。',
+        descriptionEn: 'Wont charge? Charges one way only? Slow charging? Loose connection? Charging port issue.',
+        details: 'iPhone充电口/尾插维修。常见问题：充电口松动、接触不良、只能一个方向充、不识别数据线。通常是尾插排线损坏或充电IC故障。\n\n维修时间：约30分钟-1小时。',
+        detailsEn: 'iPhone charging port/flex repair. Common: loose port, one-way charging, cable not recognized. Usually damaged flex or charging IC.\n\nTime: 30min-1hr.',
+        imageHint: 'port' },
+    ]
+  },
+  'macbook': {
+    brand: 'Apple',
+    title: 'MacBook 维修',
+    gradient: 'from-gray-800 via-gray-700 to-gray-600',
+    services: [
+      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement',
+        prices: '¥300起 (from $40)',
+        description: 'MacBook屏幕碎了、闪烁、黑屏、有线条？原装品质屏幕更换。',
+        descriptionEn: 'Cracked MacBook screen? Flickering? Black screen? Lines? OEM quality replacement.',
+        details: 'MacBook Pro/Air 全型号屏幕更换。包括屏幕总成更换、背光维修、排线修复。原装品质屏幕，含安装调试。\n\n维修时间：1-2天。\n质保：30天。',
+        detailsEn: 'MacBook Pro/Air all models screen replacement. Full assembly swap, backlight repair, flex fix. OEM quality, fully tested.\n\nTime: 1-2 days.\nWarranty: 30 days.',
+        imageHint: 'screen' },
+      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement',
+        prices: '¥200起 (from $28)',
+        description: 'MacBook电池鼓包、不耐用、提示"维修"？尽快更换。',
+        descriptionEn: 'MacBook battery swelling? Short life? "Service Recommended"? Replace ASAP.',
+        details: 'MacBook电池更换。电池鼓包有安全隐患，发现鼓包尽快送修。原装规格电池，更换后恢复续航。\n\n注意：电池鼓包不要自行戳破或尝试拆解，有起火风险。\n维修时间：约1小时。',
+        detailsEn: 'MacBook battery replacement. Swollen batteries are a fire hazard — replace ASAP. OEM spec, battery life restored.\n\nWARNING: Do not puncture or attempt to remove a swollen battery yourself.\nTime: ~1hr.',
+        imageHint: 'battery' },
+      { id: 'water-damage', title: '进水维修', titleEn: 'Water Damage Repair',
+        prices: '视情况 (Depends)',
+        description: 'MacBook进水了？立刻拔电源关机送修！不要开机！',
+        descriptionEn: 'MacBook got wet? Unplug and power off NOW! Do NOT turn it on!',
+        details: 'MacBook进水处理经验丰富。进水后立刻断电关机，不要尝试开机。送来后我们会拆机清洁、超声波清洗主板、烘干、修复腐蚀。处理越早修复率越高。\n\n千万不要插电尝试开机！通电进水的主板=短路烧毁=很难修。',
+        detailsEn: 'Extensive MacBook water damage experience. Power off immediately. We disassemble, ultrasonic clean, dry, repair corrosion. Early action = high recovery.\n\nNEVER plug in or try to turn on a wet MacBook! Power + water = short circuit = dead board.',
+        imageHint: 'water' },
+      { id: 'motherboard-repair', title: '主板/逻辑板维修', titleEn: 'Logic Board Repair',
+        prices: '¥200起 (from $28)',
+        description: 'MacBook不开机、死机、充电没反应？逻辑板芯片级维修。',
+        descriptionEn: 'MacBook no power? Freezes? No charging response? Component-level logic board repair.',
+        details: 'MacBook逻辑板芯片级维修：充电IC、显示芯片、CPU供电、硬盘芯片。比换主板便宜得多。\n\n常见故障：不进系统、五国语言、花屏、充不进电、进液腐蚀。\n维修时间：1-3天。',
+        detailsEn: 'MacBook logic board component-level repair: charging IC, display chip, CPU power, storage chip. Much cheaper than board swap.\n\nCommon: No boot, kernel panic, distorted display, no charge, liquid corrosion.\nTime: 1-3 days.',
+        imageHint: 'board' },
+      { id: 'keyboard-repair', title: '键盘/触控板维修', titleEn: 'Keyboard / Trackpad',
+        prices: '¥150起 (from $20)',
+        description: '键盘按键不灵、粘滞、触控板没反应？蝶式键盘通病可修。',
+        descriptionEn: 'Sticky keys? Unresponsive? Trackpad not working? Butterfly keyboard issues fixable.',
+        details: 'MacBook键盘更换、单个按键修复、触控板更换。蝶式键盘（2016-2019款）按键粘滞是设计通病，可以修复。\n\n维修时间：1-2天。',
+        detailsEn: 'MacBook keyboard replacement, single key fix, trackpad replacement. Butterfly keyboard sticky keys (2016-2019) are a known design flaw — fixable.\n\nTime: 1-2 days.',
+        imageHint: 'keyboard' },
+    ]
+  },
+  'samsung': {
+    brand: 'Samsung',
+    title: 'Samsung 维修',
+    gradient: 'from-purple-700 via-purple-600 to-purple-500',
+    services: [
+      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement',
+        prices: '¥150起 (from $20)',
+        description: 'Samsung AMOLED屏幕碎裂、绿线、紫斑、触摸不灵？专业换屏。',
+        descriptionEn: 'Samsung AMOLED cracked? Green/purple lines? Touch unresponsive? Pro screen repair.',
+        details: 'Samsung Galaxy S系列/Z折叠屏/A系列/M系列屏幕更换。AMOLED屏幕总成更换，含密封胶恢复防水。\n\nS系列换屏费用较高但比官方便宜很多。屏幕闪烁/绿线/紫斑等通病也处理。\n维修时间：约1小时。',
+        detailsEn: 'Samsung S/Z/A/M series screen replacement. AMOLED assembly swap with waterproof sealant.\n\nS series screens are expensive but we are much cheaper than Samsung official. Green/purple line fix available.\nTime: ~1hr.',
+        imageHint: 'screen' },
+      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement',
+        prices: '¥80起 (from $10)',
+        description: 'Samsung电池不耐用、鼓包、快充变慢？换电池解决。',
+        descriptionEn: 'Samsung battery drain? Swelling? Fast charging slow? Battery swap fixes it.',
+        details: 'Samsung全系电池更换。鼓包电池必须立即更换，有起火风险。原装规格电池，更换后续航恢复。\n\n维修时间：约30分钟。',
+        detailsEn: 'Samsung all series battery replacement. Swollen battery = fire risk, replace immediately. OEM spec, battery life restored.\n\nTime: ~30min.',
+        imageHint: 'battery' },
+      { id: 'back-glass', title: '后盖更换', titleEn: 'Back Glass Replacement',
+        prices: '¥100起 (from $15)',
+        description: 'Samsung玻璃后盖摔碎了？换后盖恢复防水。',
+        descriptionEn: 'Samsung glass back shattered? Replace and restore waterproofing.',
+        details: 'Samsung玻璃后盖更换。S系列/Z系列/A系列后盖都有。更换后打密封胶恢复防水性能。\n\n维修时间：约1小时。',
+        detailsEn: 'Samsung glass back replacement for S/Z/A series. Waterproof sealant restored after replacement.\n\nTime: ~1hr.',
+        imageHint: 'backglass' },
+    ]
+  },
+  'xiaomi': {
+    brand: 'Xiaomi',
+    title: 'Xiaomi 维修',
+    gradient: 'from-orange-600 via-orange-500 to-yellow-500',
+    services: [
+      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement',
+        prices: '¥100起 (from $15)',
+        description: '小米/Redmi屏幕碎了？OLED/LCD都能换，性价比高。',
+        descriptionEn: 'Xiaomi/Redmi cracked screen? OLED & LCD replacement at great prices.',
+        details: '小米/Redmi 全系列屏幕更换。OLED和LCD屏幕都有。碎裂、漏液、触摸不灵都解决。\n\n维修时间：约30分钟。',
+        detailsEn: 'Xiaomi/Redmi all series screen replacement. OLED & LCD. Cracked, leaking, unresponsive touch fixed.\n\nTime: ~30min.',
+        imageHint: 'screen' },
+      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement',
+        prices: '¥60起 (from $8)',
+        description: '小米电池不耐用了？换电池满血复活。',
+        descriptionEn: 'Xiaomi battery draining? New battery = like new phone.',
+        details: '小米/Redmi 全系电池更换。原装规格电池，性价比高。\n\n维修时间：约30分钟。',
+        detailsEn: 'Xiaomi/Redmi all series battery replacement. OEM spec, great value.\n\nTime: ~30min.',
+        imageHint: 'battery' },
+      { id: 'flash-unlock', title: '刷机/解锁', titleEn: 'Flash / Unlock',
+        prices: '¥50起 (from $7)',
+        description: 'MIUI卡顿、卡LOGO、忘记账号？刷机解锁一条龙。',
+        descriptionEn: 'MIUI laggy? Stuck on logo? Forgot account? Flashing & unlocking service.',
+        details: 'MIUI刷机、降级、救砖、解BL锁、刷国际版。刷机前会帮你备份数据。\n\n维修时间：约30分钟-1小时。',
+        detailsEn: 'MIUI flash, downgrade, unbrick, BL unlock, global ROM. Data backup before flashing.\n\nTime: 30min-1hr.',
+        imageHint: 'flash' },
+    ]
+  },
+  'huawei': {
+    brand: 'Huawei',
+    title: 'Huawei 维修',
+    gradient: 'from-red-600 via-red-500 to-red-400',
+    services: [
+      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement',
+        prices: '¥120起 (from $16)',
+        description: '华为Mate/P/Nova屏幕碎了？OLED/LCD都能换。',
+        descriptionEn: 'Huawei Mate/P/Nova cracked screen? OLED & LCD replacement.',
+        details: '华为Mate/P/Nova系列屏幕更换。OLED和LCD屏幕。碎裂漏液触摸不灵。含密封胶恢复防水。\n\n维修时间：约30分钟-1小时。',
+        detailsEn: 'Huawei Mate/P/Nova series screen replacement. OLED & LCD. Waterproof sealant restored.\n\nTime: 30min-1hr.',
+        imageHint: 'screen' },
+      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement',
+        prices: '¥80起 (from $10)',
+        description: '华为电池不耐用了？原装规格电池更换。',
+        descriptionEn: 'Huawei battery draining? OEM spec replacement.',
+        details: '华为Mate/P/Nova全系电池更换。鼓包电池立即更换。续航恢复。\n\n维修时间：约30分钟。',
+        detailsEn: 'Huawei Mate/P/Nova battery replacement. Swollen batteries replaced immediately. Battery life restored.\n\nTime: ~30min.',
+        imageHint: 'battery' },
+      { id: 'flash-unlock', title: '刷机/解锁', titleEn: 'Flash / Unlock',
+        prices: '¥60起 (from $8)',
+        description: '鸿蒙系统卡顿、卡LOGO、忘记密码？刷机救砖。',
+        descriptionEn: 'HarmonyOS laggy? Stuck on logo? Forgot password? Flashing service.',
+        details: '鸿蒙/HarmonyOS刷机、降级回Android、救砖、解账户锁。\n\n维修时间：约30分钟-1小时。',
+        detailsEn: 'HarmonyOS flash, downgrade to Android, unbrick, account unlock.\n\nTime: 30min-1hr.',
+        imageHint: 'flash' },
+    ]
+  }
+}
+
+export { repairServices }
+export function getServiceById(brandKey, serviceId) {
+  const brand = repairServices[brandKey]
+  if (!brand) return null
+  return brand.services.find(s => s.id === serviceId) || null
+}
+
+export function getBrandByKey(key) {
+  return repairServices[key] || null
+}
+
+export function getAllBrandServices() {
+  const result = []
+  for (const [brandKey, brand] of Object.entries(repairServices)) {
+    for (const svc of brand.services) {
+      result.push({ brandKey, ...svc })
+    }
+  }
+  return result
+}

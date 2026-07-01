@@ -67,14 +67,14 @@ export default function iPhoneRepair() {
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 text-center">{t('iPhone 维修服务', 'iPhone Repair Services')}</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((s, i) => (
-              <div key={i} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 hover:shadow-md transition-all">
+              <a key={i} href={'/iphone-repair/' + s.id} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 hover:shadow-md transition-all block">
                 <div className="text-blue-600 mb-3">{s.icon}</div>
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="font-bold text-gray-900">{s.title}</h3>
                   <span className="text-xs font-semibold text-green-600 bg-green-50 px-2 py-0.5 rounded">{s.price}</span>
                 </div>
                 <p className="text-sm text-gray-500 leading-relaxed">{s.desc}</p>
-              </div>
+              </a>
             ))}
           </div>
         </div>

@@ -14,7 +14,7 @@ export default function HuaweiRepair() {
     { title: t('屏幕更换', 'Screen Replacement'), price: t('¥120起', 'from $16'), desc: t('华为Mate/P/Nova系列屏幕。OLED/LCD都有。碎裂漏液触摸不灵。含密封胶恢复防水。', 'Huawei Mate/P/Nova series. OLED & LCD. Cracked, leaking, unresponsive. Waterproof sealant restored.') },
     { title: t('电池更换', 'Battery Service'), price: t('¥80起', 'from $10'), desc: t('华为电池不耐用、鼓包、充不进电。原装规格电池，续航恢复。', 'Huawei battery drain, swelling, no charge. OEM spec. Battery life restored.') },
     { title: t('主板维修', 'Motherboard'), price: t('¥150起', 'from $20'), desc: t('华为不开机、重启、充电IC、无服务、WiFi打不开。芯片级维修。', 'Huawei no power, boot loop, IC fault. Component-level board repair.') },
-    { title: t('进水维修', 'Water Damage'), price: t('视情况', 'Depends'), desc: t('华为IP68防水机型也会进水。超声波清洗+主板烘干+腐蚀修复。', 'Huawei IP68 phones can still get wet. Ultrasonic clean + dry + corrosion fix.') },
+    { id: 'water-damage', title: t('进水维修', 'Water Damage'), price: t('视情况', 'Depends'), desc: t('华为IP68防水机型也会进水。超声波清洗+主板烘干+腐蚀修复。', 'Huawei IP68 phones can still get wet. Ultrasonic clean + dry + corrosion fix.') },
     { title: t('后盖/边框', 'Back Glass/Frame'), price: t('¥100起', 'from $15'), desc: t('华为玻璃后盖碎裂、中框变形。P系列/Mate系列后盖更换。', 'Huawei glass back broken, frame bent. P/Mate series back glass replacement.') },
     { title: t('刷机/解锁', 'Flash/Unlock'), price: t('¥60起', 'from $8'), desc: t('鸿蒙/HarmonyOS刷机、降级、解屏幕锁、救砖。', 'HarmonyOS flash, downgrade, screen unlock, unbrick.') },
   ]
@@ -43,13 +43,13 @@ export default function HuaweiRepair() {
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 text-center">{t('Huawei 维修服务', 'Huawei Repair Services')}</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((s, i) => (
-              <div key={i} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 hover:shadow-md transition-all">
+              <a key={i} href={'/huawei-repair/' + s.id} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 hover:shadow-md transition-all block">
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="font-bold text-gray-900">{s.title}</h3>
                   <span className="text-xs font-semibold text-green-600 bg-green-50 px-2 py-0.5 rounded">{s.price}</span>
                 </div>
                 <p className="text-sm text-gray-500 leading-relaxed">{s.desc}</p>
-              </div>
+              </a>
             ))}
           </div>
         </div>
