@@ -1,6 +1,9 @@
 'use client'
 import { useState } from 'react'
-import { Smartphone, Monitor, Tablet, Wrench, ShieldCheck, Clock, MessageCircle, Phone, MapPin, ChevronRight, ChevronDown, Star, Users, Award } from 'lucide-react'
+import { Smartphone, Monitor, Tablet, Wrench, ShieldCheck, Clock, ChevronDown, Star, Award, MapPin, MessageCircle, Phone } from 'lucide-react'
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
+import ContactModal from '../components/ContactModal'
 
 export default function Home() {
   const [showContact, setShowContact] = useState(false)
@@ -92,32 +95,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* ===== 导航栏 ===== */}
-      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-2">
-              <span className="text-2xl">🔧</span>
-              <span className="font-bold text-lg text-gray-900">Crazy维修</span>
-            </div>
-            <div className="hidden sm:flex items-center gap-6 text-sm text-gray-600">
-              <a href="#services" className="hover:text-blue-600 transition-colors">{t('服务项目', 'Services')}</a>
-              <a href="#about" className="hover:text-blue-600 transition-colors">{t('关于我们', 'About')}</a>
-              <a href="#reviews" className="hover:text-blue-600 transition-colors">{t('客户评价', 'Reviews')}</a>
-              <a href="#faq" className="hover:text-blue-600 transition-colors">{t('常见问题', 'FAQ')}</a>
-              <a href="#contact" className="hover:text-blue-600 transition-colors">{t('联系我们', 'Contact')}</a>
-            </div>
-            <div className="flex items-center gap-3">
-              <button onClick={() => setLang(lang === 'zh' ? 'en' : 'zh')}
-                className="text-xs px-2.5 py-1 rounded border border-gray-300 text-gray-500 hover:text-gray-800 transition-colors"
-              >{lang === 'zh' ? 'English' : '中文'}</button>
-              <button onClick={() => setShowContact(true)}
-                className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors shadow-sm"
-              >{t('立即咨询', 'Contact Now')}</button>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Navbar lang={lang} setLang={setLang} setShowContact={setShowContact} />
 
       {/* ===== Hero ===== */}
       <section className="bg-gradient-to-br from-blue-700 via-blue-600 to-blue-500 text-white">
@@ -397,71 +375,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== Footer ===== */}
-      <footer className="bg-gray-900 text-gray-400 py-12">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="grid sm:grid-cols-3 gap-8">
-            <div>
-              <div className="flex items-center gap-2 mb-3"><span className="text-xl">🔧</span><span className="font-bold text-white text-lg">Crazy维修</span></div>
-              <p className="text-sm leading-relaxed">{t('威海环翠区专业数码维修，诚信经营，先检测后维修。', 'Weihai pro digital repair. Honest service, diagnose first.')}</p>
-            </div>
-            <div>
-              <h4 className="font-semibold text-white mb-3">{t('快速链接', 'Quick Links')}</h4>
-              <ul className="space-y-2 text-sm">
-                {[['services','服务项目','Services'],['about','关于我们','About'],['reviews','客户评价','Reviews'],['faq','常见问题','FAQ'],['contact','联系我们','Contact']].map(([id,zh,en],i) => (
-                  <li key={i}><a href={`#${id}`} className="hover:text-white transition-colors">{lang === 'zh' ? zh : en}</a></li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold text-white mb-3">{t('联系方式', 'Contact')}</h4>
-              <ul className="space-y-2 text-sm">
-                <li>{t('微信', 'WeChat')}: crazy-repair</li>
-                <li>WhatsApp: +65 96146709</li>
-                <li>{t('地址', 'Address')}: {t('威海环翠区西门31号', 'Huancui Dist, West Gate #31')}</li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-xs">
-            <p>© 2026 Crazy维修 (Crazy-repair). {t('保留所有权利。', 'All rights reserved.')}</p>
-          </div>
-        </div>
-      </footer>
+      <Footer lang={lang} />
 
-      {/* ===== 联系弹窗 ===== */}
-      {showContact && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onClick={() => setShowContact(false)}>
-          <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-sm w-full shadow-2xl" onClick={e => e.stopPropagation()}>
-            <div className="text-center mb-6">
-              <div className="text-4xl mb-3">🔧</div>
-              <h3 className="text-xl font-bold text-gray-900">{t('联系我们', 'Contact Us')}</h3>
-              <p className="text-sm text-gray-500 mt-1">{t('选择您方便的方式', 'Choose your preferred way')}</p>
-            </div>
-            <div className="space-y-4">
-              <a onClick={(e) => { e.preventDefault(); navigator.clipboard?.writeText('crazy-repair'); window.open('weixin://', '_blank'); }}
-                className="flex items-center gap-4 p-4 rounded-2xl border border-gray-200 hover:border-green-300 hover:bg-green-50 cursor-pointer transition-all"
-              >
-                <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center shrink-0"><MessageCircle size={24} className="text-green-600" /></div>
-                <div className="flex-1"><p className="font-semibold text-gray-900">{t('微信', 'WeChat')}</p><p className="text-xs text-gray-500">crazy-repair（{t('已复制', 'copied')}）</p></div>
-                <ChevronRight size={20} className="text-gray-400" />
-              </a>
-              <a href="https://wa.me/6596146709?text=我想咨询手机电脑维修事宜" target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 rounded-2xl border border-gray-200 hover:border-green-300 hover:bg-green-50 cursor-pointer transition-all"
-              >
-                <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center shrink-0"><Phone size={24} className="text-green-600" /></div>
-                <div className="flex-1"><p className="font-semibold text-gray-900">WhatsApp</p><p className="text-xs text-gray-500">+65 96146709</p></div>
-                <ChevronRight size={20} className="text-gray-400" />
-              </a>
-              <div className="flex items-center gap-4 p-4 rounded-2xl border border-gray-200">
-                <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center shrink-0"><MapPin size={24} className="text-blue-600" /></div>
-                <div className="flex-1"><p className="font-semibold text-gray-900">{t('到店维修', 'Visit Store')}</p><p className="text-xs text-gray-500">{t('威海环翠区西门31号', 'No.31 West Gate, Huancui')}</p></div>
-              </div>
-              <p className="text-center text-xs text-gray-400">{t('点击微信会自动复制微信号，打开微信粘贴添加即可', 'Click WeChat to copy ID, paste in WeChat to add friend')}</p>
-            </div>
-            <button onClick={() => setShowContact(false)} className="mt-6 w-full py-3 rounded-xl bg-gray-100 text-gray-600 font-medium hover:bg-gray-200 transition-colors">{t('关闭', 'Close')}</button>
-          </div>
-        </div>
-      )}
+      <ContactModal show={showContact} setShow={setShowContact} lang={lang} />
     </div>
   )
 }
