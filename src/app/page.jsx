@@ -1,6 +1,11 @@
 'use client'
 import { useState, useMemo } from 'react'
 import { Smartphone, Monitor, Tablet, Wrench, ShieldCheck, Clock, ChevronDown, Star, Award, MapPin, MessageCircle, Phone, Search } from 'lucide-react'
+
+function SearchCheck(props) {
+  return (<svg xmlns="http://www.w3.org/2000/svg" width={props.size||24} height={props.size||24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="m9 11 2 2 4-4"/></svg>)
+}
+
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import ContactModal from '../components/ContactModal'
@@ -79,6 +84,7 @@ export default function Home() {
     }
   ]
 
+
   const features = [
     { icon: <SearchCheck size={28} />, title: t('免费检测', 'Free Diagnosis'), desc: t('不修不收费，先检测后报价', 'No charge if you decline') },
     { icon: <ShieldCheck size={28} />, title: t('30天质保', '30-Day Warranty'), desc: t('所有维修享30天质保', 'Warranty on all repairs') },
@@ -131,21 +137,6 @@ export default function Home() {
                 <p className="text-blue-200 text-sm mt-1">{t('手机 · 电脑 · 平板 · 数码', 'Phone · PC · Tablet · Gadgets')}</p>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== 特色 ===== */}
-      <section className="py-12 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
-            {features.map((f, i) => (
-              <div key={i} className="bg-white rounded-2xl p-4 sm:p-6 text-center shadow-sm border border-gray-100 transition-all hover:-translate-y-1 hover:shadow-md">
-                <div className="text-blue-600 mx-auto mb-3 flex justify-center">{f.icon}</div>
-                <h3 className="font-semibold text-gray-900 text-sm sm:text-base">{f.title}</h3>
-                <p className="text-xs sm:text-sm text-gray-500 mt-1">{f.desc}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -280,6 +271,22 @@ export default function Home() {
         </div>
       </section>
 
+
+      {/* ===== 特色 ===== */}
+      <section className="py-12 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
+            {features.map((f, i) => (
+              <div key={i} className="bg-white rounded-2xl p-4 sm:p-6 text-center shadow-sm border border-gray-100 transition-all hover:-translate-y-1 hover:shadow-md">
+                <div className="text-blue-600 mx-auto mb-3 flex justify-center">{f.icon}</div>
+                <h3 className="font-semibold text-gray-900 text-sm sm:text-base">{f.title}</h3>
+                <p className="text-xs sm:text-sm text-gray-500 mt-1">{f.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ===== 关于我们 ===== */}
       <section id="about" className="py-16 sm:py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -392,6 +399,3 @@ export default function Home() {
   )
 }
 
-function SearchCheck(props) {
-  return (<svg xmlns="http://www.w3.org/2000/svg" width={props.size||24} height={props.size||24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="m9 11 2 2 4-4"/></svg>)
-}
