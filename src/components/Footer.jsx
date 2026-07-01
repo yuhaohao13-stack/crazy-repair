@@ -34,7 +34,7 @@ export default function Footer({ lang }) {
               <li>{t('微信', 'WeChat')}: crazy-repair</li>
               <li>WhatsApp: +65 96146709</li>
               <li>{t('地址', 'Address')}: {t('威海环翠区西门31号', 'Huancui Dist, West Gate #31')}</li>
-              <li>{t('营业时间', 'Hours')}: {t('周一至周日 9:00-20:00', 'Mon-Sun 9:00-20:00')}</li>
+              <li>{t('营业时间', 'Hours')}: {t('周一至周日 8:00-19:00', 'Mon-Sun 8:00-19:00')}</li>
             </ul>
           </div>
         </div>

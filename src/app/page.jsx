@@ -294,8 +294,8 @@ export default function Home() {
                 <p>{t('所有维修当面完成（特殊主板问题除外），修之前跟你说清楚问题在哪、怎么修、多少钱，你觉得合适再修。修完之后当面测试，确保功能正常再拿走。简单直接，不整虚的。', 'All repairs done on-site (except complex board work). I\'ll explain the issue, the fix, and the cost before starting. You approve first. After repair, we test everything together before you leave. Simple and transparent.')}</p>
                 <div className="flex items-center gap-4 pt-4 text-sm">
                   <div className="bg-blue-50 rounded-xl px-4 py-3 text-center">
-                    <div className="text-2xl font-bold text-blue-600">{yearsActive}</div>
-                    <div className="text-xs text-gray-500">{t('年维修生涯', 'Years on the job')}</div>
+                    <div className="text-xs font-bold text-blue-600">{t('2007年至今', 'Since 2007')}</div>
+                    <div className="text-xs text-gray-500">{t('维修生涯', 'On the job')}</div>
                   </div>
                   <div className="bg-blue-50 rounded-xl px-4 py-3 text-center">
                     <div className="text-2xl font-bold text-blue-600">5000+</div>
@@ -314,7 +314,7 @@ export default function Home() {
                 <div className="flex items-start gap-3"><MapPin size={20} className="text-blue-600 shrink-0 mt-0.5" /><div><p className="font-medium text-gray-900">{t('地址', 'Address')}</p><p className="text-sm text-gray-500">{t('威海市环翠区西门31号', 'No.31 West Gate, Huancui, Weihai')}</p></div></div>
                 <div className="flex items-start gap-3"><MessageCircle size={20} className="text-green-500 shrink-0 mt-0.5" /><div><p className="font-medium text-gray-900">{t('微信', 'WeChat')}</p><p className="text-sm text-gray-500">crazy-repair</p></div></div>
                 <div className="flex items-start gap-3"><Phone size={20} className="text-green-500 shrink-0 mt-0.5" /><div><p className="font-medium text-gray-900">WhatsApp</p><p className="text-sm text-gray-500">+65 96146709</p></div></div>
-                <div className="flex items-start gap-3"><Clock size={20} className="text-gray-400 shrink-0 mt-0.5" /><div><p className="font-medium text-gray-900">{t('营业时间', 'Hours')}</p><p className="text-sm text-gray-500">{t('周一至周日 9:00-20:00', 'Mon-Sun 9:00-20:00')}</p></div></div>
+                <div className="flex items-start gap-3"><Clock size={20} className="text-gray-400 shrink-0 mt-0.5" /><div><p className="font-medium text-gray-900">{t('营业时间', 'Hours')}</p><p className="text-sm text-gray-500">{t('周一至周日 8:00-19:00', 'Mon-Sun 8:00-19:00')}</p></div></div>
               </div>
               <button onClick={() => setShowContact(true)} className="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-xl transition-colors">{t('💬 联系我咨询', '💬 Contact for Help')}</button>
             </div>
