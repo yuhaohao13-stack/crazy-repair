@@ -14,8 +14,15 @@ const brandConfig = {
   'samsung-repair': { key: 'samsung', label: 'Samsung 维修', labelEn: 'Samsung Repair', gradient: 'from-purple-700 via-purple-600 to-purple-500' },
   'xiaomi-repair': { key: 'xiaomi', label: 'Xiaomi 维修', labelEn: 'Xiaomi Repair', gradient: 'from-orange-600 via-orange-500 to-yellow-500' },
   'huawei-repair': { key: 'huawei', label: 'Huawei 维修', labelEn: 'Huawei Repair', gradient: 'from-red-600 via-red-500 to-red-400' },
+  'lenovo-repair': { key: 'lenovo', label: 'Lenovo 维修', labelEn: 'Lenovo Repair', gradient: 'from-blue-700 via-blue-600 to-blue-500' },
+  'dell-repair': { key: 'dell', label: '戴尔 维修', labelEn: 'Dell Repair', gradient: 'from-blue-600 via-blue-500 to-blue-400' },
+  'hp-repair': { key: 'hp', label: '惠普 维修', labelEn: 'HP Repair', gradient: 'from-teal-700 via-teal-600 to-teal-500' },
+  'asus-repair': { key: 'asus', label: '华硕 维修', labelEn: 'ASUS Repair', gradient: 'from-cyan-700 via-cyan-600 to-cyan-500' },
+  'acer-repair': { key: 'acer', label: '宏基 维修', labelEn: 'Acer Repair', gradient: 'from-green-700 via-green-600 to-green-500' },
+  'msi-repair': { key: 'msi', label: '微星 维修', labelEn: 'MSI Repair', gradient: 'from-red-700 via-red-600 to-red-500' },
+  'surface-repair': { key: 'surface', label: 'Surface 维修', labelEn: 'Surface Repair', gradient: 'from-gray-700 via-gray-600 to-gray-500' },
+  'hasee-repair': { key: 'hasee', label: '神舟 维修', labelEn: 'Hasee Repair', gradient: 'from-indigo-700 via-indigo-600 to-indigo-500' },
 }
-
 export default function ServiceDetail() {
   const [showContact, setShowContact] = useState(false)
   const [lang, setLang] = useState('zh')

@@ -169,26 +169,111 @@ const repairServices = {
       { id: 'water-damage', title: '进水维修', titleEn: 'Water Damage Repair', description: '华为IP68防水机型也会进水。超声波清洗+主板烘干+腐蛀修复。', descriptionEn: 'Huawei IP68 phones can still get wet. Ultrasonic clean + dry + corrosion fix.', details: '进水立刻关机送来，越早处理修复率越高。华为手机进水处理经验丰富。\n\n注意：不要尝试开机或充电，直接送过来。', detailsEn: 'Power off immediately. Bring ASAP for cleaning. We have extensive Huawei water damage experience.\n\nWARNING: Do not turn on or charge. Bring it in immediately.', imageHint: 'water' },
       { id: 'back-glass', title: '后盖/边框', titleEn: 'Back Glass/Frame', description: '华为玻璃后盖碎裂、中框变形。P系列/Mate系列后盖更换。', descriptionEn: 'Huawei glass back broken, frame bent. P/Mate series back glass replacement.', details: '华为玻璃后盖更换。P系列/Mate系列/Nova系列后盖都有。换后打密封胶恢复防水。\n\n维修时间：约1小时。', detailsEn: 'Huawei glass back replacement for P/Mate/Nova series. Waterproof sealant restored.\n\nTime: ~1hr.', imageHint: 'backglass' },
     ]
-  }
+  },
+  'lenovo': {
+    brand: 'Lenovo',
+    title: 'Lenovo 维修',
+    gradient: 'from-blue-700 via-blue-600 to-blue-500',
+    services: [
+      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement', description: '联想屏幕碎裂', descriptionEn: 'Lenovo cracked screen', details: '联想全系列屏幕更换。\n\n维修时间：约1-2天。', detailsEn: 'Lenovo screen replacement.\n\nTime: 1-2 days.', imageHint: 'screen' },
+      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: '电池鼓包', descriptionEn: 'Battery swelling', details: '电池更换。\n\n维修时间：约1小时。', detailsEn: 'Battery replacement.\n\nTime: ~1hr.', imageHint: 'battery' },
+      { id: 'keyboard-repair', title: '键盘维修', titleEn: 'Keyboard Repair', description: '键盘失灵', descriptionEn: 'Keyboard issues', details: '键盘更换或修复。\n\n维修时间：约1-2小时。', detailsEn: 'Keyboard fix.\n\nTime: 1-2hrs.', imageHint: 'keyboard' },
+      { id: 'cleaning', title: '清灰换硅脂', titleEn: 'Cleaning & Cooling', description: '清灰换硅脂', descriptionEn: 'Deep clean', details: '风扇狂转发热降频。\n\n维修时间：约1小时。', detailsEn: 'Overheating clean.\n\nTime: ~1hr.', imageHint: '' },
+      { id: 'os-upgrade', title: '系统重装/升级', titleEn: 'OS/Upgrade', description: '重装系统升级', descriptionEn: 'OS reinstall upgrade', details: '系统重装、加固态。\n\n维修时间：30分-2小时。', detailsEn: 'OS reinstall, SSD upgrade.\n\nTime: 30min-2hrs.', imageHint: '' },
+      { id: 'other-issues', title: '其他故障', titleEn: 'Other Issues', description: '免费检测', descriptionEn: 'Free check', details: '蓝屏进液免费检测。', detailsEn: 'Free check.', imageHint: '' },
+    ]
+  },
+  'dell': {
+    brand: 'Dell',
+    title: 'Dell 维修',
+    gradient: 'from-blue-600 via-blue-500 to-blue-400',
+    services: [
+      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement', description: '戴尔屏幕碎裂', descriptionEn: 'Dell cracked screen', details: '戴尔全系列屏幕更换。\n\n维修时间：约1-2天。', detailsEn: 'Dell screen replacement.\n\nTime: 1-2 days.', imageHint: 'screen' },
+      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: '电池鼓包', descriptionEn: 'Battery swelling', details: '电池更换。\n\n维修时间：约1小时。', detailsEn: 'Battery replacement.\n\nTime: ~1hr.', imageHint: 'battery' },
+      { id: 'keyboard-repair', title: '键盘维修', titleEn: 'Keyboard Repair', description: '键盘失灵', descriptionEn: 'Keyboard issues', details: '键盘更换或修复。\n\n维修时间：约1-2小时。', detailsEn: 'Keyboard fix.\n\nTime: 1-2hrs.', imageHint: 'keyboard' },
+      { id: 'cleaning', title: '清灰换硅脂', titleEn: 'Cleaning & Cooling', description: '清灰换硅脂', descriptionEn: 'Deep clean', details: '降温降频。\n\n维修时间：约1小时。', detailsEn: 'Overheating clean.\n\nTime: ~1hr.', imageHint: '' },
+      { id: 'os-upgrade', title: '系统重装/升级', titleEn: 'OS/Upgrade', description: '重装系统', descriptionEn: 'OS reinstall', details: '系统问题。\n\n维修时间：30分-2小时。', detailsEn: 'OS issues.\n\nTime: 30min-2hrs.', imageHint: '' },
+      { id: 'other-issues', title: '其他故障', titleEn: 'Other Issues', description: '免费检测', descriptionEn: 'Free check', details: '蓝屏免费检测。', detailsEn: 'Free check.', imageHint: '' },
+    ]
+  },
+  'hp': {
+    brand: 'HP',
+    title: 'HP 维修',
+    gradient: 'from-teal-700 via-teal-600 to-teal-500',
+    services: [
+      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement', description: '惠普屏幕碎裂', descriptionEn: 'HP cracked screen', details: '惠普全系列屏幕更换。\n\n维修时间：约1-2天。', detailsEn: 'HP screen replacement.\n\nTime: 1-2 days.', imageHint: 'screen' },
+      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: '电池鼓包', descriptionEn: 'Battery issues', details: '电池更换。\n\n维修时间：约1小时。', detailsEn: 'Battery replacement.\n\nTime: ~1hr.', imageHint: 'battery' },
+      { id: 'keyboard-repair', title: '键盘维修', titleEn: 'Keyboard Repair', description: '键盘失灵', descriptionEn: 'Keyboard issues', details: '键盘更换或修复。\n\n维修时间：约1-2小时。', detailsEn: 'Keyboard fix.\n\nTime: 1-2hrs.', imageHint: 'keyboard' },
+      { id: 'cleaning', title: '清灰换硅脂', titleEn: 'Cleaning & Cooling', description: '清灰换硅脂', descriptionEn: 'Deep clean', details: '过热降频清灰。\n\n维修时间：约1小时。', detailsEn: 'Overheating fix.\n\nTime: ~1hr.', imageHint: '' },
+      { id: 'os-upgrade', title: '系统重装/升级', titleEn: 'OS/Upgrade', description: '系统重装', descriptionEn: 'OS reinstall', details: '系统问题。\n\n维修时间：30分-2小时。', detailsEn: 'OS issues.\n\nTime: 30min-2hrs.', imageHint: '' },
+      { id: 'other-issues', title: '其他故障', titleEn: 'Other Issues', description: '免费检测', descriptionEn: 'Free check', details: '蓝屏不进系统免费检测。', detailsEn: 'Free check.', imageHint: '' },
+    ]
+  },
+  'asus': {
+    brand: 'ASUS',
+    title: 'ASUS 维修',
+    gradient: 'from-cyan-700 via-cyan-600 to-cyan-500',
+    services: [
+      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement', description: '华硕屏幕碎裂', descriptionEn: 'ASUS cracked screen', details: '华硕屏幕更换。\n\n维修时间：约1-2天。', detailsEn: 'ASUS screen replacement.\n\nTime: 1-2 days.', imageHint: 'screen' },
+      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: '电池鼓包', descriptionEn: 'Battery issues', details: '电池更换。\n\n维修时间：约1小时。', detailsEn: 'Battery replacement.\n\nTime: ~1hr.', imageHint: 'battery' },
+      { id: 'cleaning', title: '清灰换硅脂', titleEn: 'Cleaning & Cooling', description: '清灰换硅脂', descriptionEn: 'Deep clean', details: 'ROG游戏本清灰必做。\n\n维修时间：约1小时。', detailsEn: 'ROG gaming laptop cleaning.\n\nTime: ~1hr.', imageHint: '' },
+      { id: 'keyboard-repair', title: '键盘维修', titleEn: 'Keyboard Repair', description: '键盘失灵', descriptionEn: 'Keyboard issues', details: '键盘更换或修复。\n\n维修时间：约1-2小时。', detailsEn: 'Keyboard fix.\n\nTime: 1-2hrs.', imageHint: 'keyboard' },
+      { id: 'os-upgrade', title: '系统重装/升级', titleEn: 'OS/Upgrade', description: '重装系统', descriptionEn: 'OS reinstall', details: '系统问题。\n\n维修时间：30分-2小时。', detailsEn: 'OS issues.\n\nTime: 30min-2hrs.', imageHint: '' },
+      { id: 'other-issues', title: '其他故障', titleEn: 'Other Issues', description: '免费检测', descriptionEn: 'Free check', details: '蓝屏免费检测。', detailsEn: 'Free check.', imageHint: '' },
+    ]
+  },
+  'acer': {
+    brand: 'Acer',
+    title: 'Acer 维修',
+    gradient: 'from-green-700 via-green-600 to-green-500',
+    services: [
+      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement', description: '宏基屏幕碎裂', descriptionEn: 'Acer cracked screen', details: '宏基屏幕更换。\n\n维修时间：约1-2天。', detailsEn: 'Acer screen replacement.\n\nTime: 1-2 days.', imageHint: 'screen' },
+      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: '电池鼓包', descriptionEn: 'Battery swelling', details: '电池更换。\n\n维修时间：约1小时。', detailsEn: 'Battery replacement.\n\nTime: ~1hr.', imageHint: 'battery' },
+      { id: 'keyboard-repair', title: '键盘维修', titleEn: 'Keyboard Repair', description: '键盘失灵', descriptionEn: 'Keyboard issues', details: '键盘更换。\n\n维修时间：约1-2小时。', detailsEn: 'Keyboard fix.\n\nTime: 1-2hrs.', imageHint: 'keyboard' },
+      { id: 'cleaning', title: '清灰换硅脂', titleEn: 'Cleaning & Cooling', description: '清灰换硅脂', descriptionEn: 'Deep clean', details: '散热清洁。\n\n维修时间：约1小时。', detailsEn: 'Cooling clean.\n\nTime: ~1hr.', imageHint: '' },
+      { id: 'os-upgrade', title: '系统重装/升级', titleEn: 'OS/Upgrade', description: '重装系统', descriptionEn: 'OS reinstall', details: '系统问题。\n\n维修时间：30分-2小时。', detailsEn: 'OS issues.\n\nTime: 30min-2hrs.', imageHint: '' },
+      { id: 'other-issues', title: '其他故障', titleEn: 'Other Issues', description: '免费检测', descriptionEn: 'Free check', details: '其他问题免费检测。', detailsEn: 'Free check.', imageHint: '' },
+    ]
+  },
+  'msi': {
+    brand: 'MSI',
+    title: 'MSI 维修',
+    gradient: 'from-red-700 via-red-600 to-red-500',
+    services: [
+      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement', description: '微星屏幕碎裂', descriptionEn: 'MSI cracked screen', details: '微星屏幕更换。\n\n维修时间：约1-2天。', detailsEn: 'MSI screen replacement.\n\nTime: 1-2 days.', imageHint: 'screen' },
+      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: '电池鼓包', descriptionEn: 'Battery swelling', details: '电池更换。\n\n维修时间：约1小时。', detailsEn: 'Battery replacement.\n\nTime: ~1hr.', imageHint: 'battery' },
+      { id: 'cleaning', title: '清灰换硅脂', titleEn: 'Cleaning & Cooling', description: '清灰换硅脂', descriptionEn: 'Deep clean', details: '游戏本清灰必做。\n\n维修时间：约1小时。', detailsEn: 'Gaming laptop cleaning.\n\nTime: ~1hr.', imageHint: '' },
+      { id: 'keyboard-repair', title: '键盘维修', titleEn: 'Keyboard Repair', description: '键盘失灵', descriptionEn: 'Keyboard issues', details: '键盘更换。\n\n维修时间：约1-2小时。', detailsEn: 'Keyboard fix.\n\nTime: 1-2hrs.', imageHint: 'keyboard' },
+      { id: 'os-upgrade', title: '系统重装/升级', titleEn: 'OS/Upgrade', description: '重装系统', descriptionEn: 'OS reinstall', details: '系统问题。\n\n维修时间：30分-2小时。', detailsEn: 'OS issues.\n\nTime: 30min-2hrs.', imageHint: '' },
+      { id: 'other-issues', title: '其他故障', titleEn: 'Other Issues', description: '免费检测', descriptionEn: 'Free check', details: '免费检测。', detailsEn: 'Free check.', imageHint: '' },
+    ]
+  },
+  'surface': {
+    brand: 'Surface',
+    title: 'Surface 维修',
+    gradient: 'from-gray-700 via-gray-600 to-gray-500',
+    services: [
+      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement', description: 'Surface屏幕碎裂', descriptionEn: 'Surface cracked screen', details: 'Surface Pro/Go/Laptop全系屏幕更换。\n\n维修时间：约1-2天。', detailsEn: 'Surface screen replacement.\n\nTime: 1-2 days.', imageHint: 'screen' },
+      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: 'Surface电池鼓包', descriptionEn: 'Surface battery swelling', details: 'Surface电池鼓包通病，尽快更换。\n\n维修时间：约1-2天。', detailsEn: 'Surface battery swelling common issue.\n\nTime: 1-2 days.', imageHint: 'battery' },
+      { id: 'keyboard-repair', title: '键盘盖维修', titleEn: 'Type Cover Repair', description: '键盘盖不灵', descriptionEn: 'Type cover issues', details: 'Surface键盘盖更换或修复。\n\n维修时间：约1小时。', detailsEn: 'Surface keyboard cover fix.\n\nTime: ~1hr.', imageHint: 'keyboard' },
+      { id: 'cleaning', title: '清灰换硅脂', titleEn: 'Cleaning & Cooling', description: '清灰', descriptionEn: 'Deep clean', details: '清灰散热。\n\n维修时间：约1小时。', detailsEn: 'Cooling clean.\n\nTime: ~1hr.', imageHint: '' },
+      { id: 'os-upgrade', title: '系统重装/升级', titleEn: 'OS/Upgrade', description: '重装系统', descriptionEn: 'OS reinstall', details: '系统问题。\n\n维修时间：30分-2小时。', detailsEn: 'OS issues.\n\nTime: 30min-2hrs.', imageHint: '' },
+      { id: 'other-issues', title: '其他故障', titleEn: 'Other Issues', description: '免费检测', descriptionEn: 'Free check', details: '其他问题免费检测。', detailsEn: 'Free check.', imageHint: '' },
+    ]
+  },
+  'hasee': {
+    brand: 'Hasee',
+    title: 'Hasee 维修',
+    gradient: 'from-indigo-700 via-indigo-600 to-indigo-500',
+    services: [
+      { id: 'screen-replacement', title: '屏幕更换', titleEn: 'Screen Replacement', description: '神舟屏幕碎裂', descriptionEn: 'Hasee cracked screen', details: '神舟屏幕更换。\n\n维修时间：约1-2天。', detailsEn: 'Hasee screen replacement.\n\nTime: 1-2 days.', imageHint: 'screen' },
+      { id: 'battery-replacement', title: '电池更换', titleEn: 'Battery Replacement', description: '电池鼓包', descriptionEn: 'Battery swelling', details: '电池更换。\n\n维修时间：约1小时。', detailsEn: 'Battery replacement.\n\nTime: ~1hr.', imageHint: 'battery' },
+      { id: 'cleaning', title: '清灰换硅脂', titleEn: 'Cleaning & Cooling', description: '清灰换硅脂', descriptionEn: 'Deep clean', details: '游戏本清灰必做。\n\n维修时间：约1小时。', detailsEn: 'Gaming laptop cleaning.\n\nTime: ~1hr.', imageHint: '' },
+      { id: 'keyboard-repair', title: '键盘维修', titleEn: 'Keyboard Repair', description: '键盘失灵', descriptionEn: 'Keyboard issues', details: '键盘更换。\n\n维修时间：约1-2小时。', detailsEn: 'Keyboard fix.\n\nTime: 1-2hrs.', imageHint: 'keyboard' },
+      { id: 'os-upgrade', title: '系统重装/升级', titleEn: 'OS/Upgrade', description: '重装系统', descriptionEn: 'OS reinstall', details: '系统问题。\n\n维修时间：30分-2小时。', detailsEn: 'OS issues.\n\nTime: 30min-2hrs.', imageHint: '' },
+      { id: 'other-issues', title: '其他故障', titleEn: 'Other Issues', description: '免费检测', descriptionEn: 'Free check', details: '免费检测。', detailsEn: 'Free check.', imageHint: '' },
+    ]
+  },
 }
 
 export { repairServices }
-export function getServiceById(brandKey, serviceId) {
-  const brand = repairServices[brandKey]
-  if (!brand) return null
-  return brand.services.find(s => s.id === serviceId) || null
-}
-
-export function getBrandByKey(key) {
-  return repairServices[key] || null
-}
-
-export function getAllBrandServices() {
-  const result = []
-  for (const [brandKey, brand] of Object.entries(repairServices)) {
-    for (const svc of brand.services) {
-      result.push({ brandKey, ...svc })
-    }
-  }
-  return result
-}
