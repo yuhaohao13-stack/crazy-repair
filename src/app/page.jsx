@@ -199,9 +199,9 @@ export default function Home() {
             <h4 className="text-xs font-bold text-gray-400 mb-4 text-center uppercase tracking-widest">{t('🎮 其他', '🎮 Other')}</h4>
             <div className="flex flex-wrap justify-center gap-3 sm:gap-5">
               {[
-                {n:'Nintendo', cn:'任天堂', l:'/'},
-                {n:'Sony', cn:'索尼', l:'/'},
-                {n:'Amazon Kindle', cn:'亚马逊', l:'/'},
+                {n:'Nintendo', cn:'任天堂', l:'/nintendo-repair'},
+                {n:'Sony', cn:'索尼', l:'/sony-repair'},
+                {n:'Amazon Kindle', cn:'亚马逊', l:'/kindle-repair'},
               ].map((b, i) => (
                 <a key={i} href={b.l} className="text-center px-3 py-2 rounded-xl bg-white border border-gray-100 shadow-sm hover:shadow-md hover:border-blue-200 hover:-translate-y-0.5 transition-all">
                   <div className="text-sm sm:text-base font-bold text-gray-800">{b.n}</div>
