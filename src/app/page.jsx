@@ -144,18 +144,72 @@ export default function Home() {
       </section>
 
       <section id="brands" className="py-12 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
-          <h3 className="text-sm font-semibold text-gray-500 mb-6 uppercase tracking-wider">{t('支持品牌（部分）', 'Brands We Support (partial)')}</h3>
-          <div className="flex flex-wrap justify-center gap-4 sm:gap-8 text-gray-400 mb-6">
-            {[
-              {n:'Apple', l:'/iphone-repair'},{n:'Samsung', l:'/samsung-repair'},{n:'Huawei', l:'/huawei-repair'},
-              {n:'Xiaomi', l:'/xiaomi-repair'},{n:'OPPO', l:'/'},{n:'vivo', l:'/'},
-              {n:'OnePlus', l:'/'},{n:'Honor', l:'/'},{n:'Google', l:'/'},{n:'Realme', l:'/'},
-              {n:'Dell', l:'/'},{n:'Lenovo', l:'/'},{n:'HP', l:'/'},{n:'ASUS', l:'/'},
-              {n:'Microsoft', l:'/'},{n:'Nintendo', l:'/'},{n:'Sony', l:'/'}
-            ].map((b, i) => (
-              <a key={i} href={b.l} className="text-lg sm:text-xl font-bold text-gray-800 hover:text-blue-600 transition-colors hover:underline">{b.n}</a>
-            ))}
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <h3 className="text-sm font-semibold text-gray-500 mb-8 text-center uppercase tracking-wider">{t('支持品牌（部分）', 'Brands We Support (partial)')}</h3>
+          
+          {/* 手机品牌 */}
+          <div className="mb-8">
+            <h4 className="text-xs font-bold text-gray-400 mb-4 text-center uppercase tracking-widest">{t('📱 手机品牌', '📱 Phone Brands')}</h4>
+            <div className="flex flex-wrap justify-center gap-3 sm:gap-5">
+              {[
+                {n:'Apple', cn:'苹果', l:'/iphone-repair'},
+                {n:'Samsung', cn:'三星', l:'/samsung-repair'},
+                {n:'Huawei', cn:'华为', l:'/huawei-repair'},
+                {n:'Xiaomi', cn:'小米', l:'/xiaomi-repair'},
+                {n:'OPPO', cn:'OPPO', l:'/oppo-repair'},
+                {n:'vivo', cn:'vivo', l:'/vivo-repair'},
+                {n:'OnePlus', cn:'一加', l:'/oneplus-repair'},
+                {n:'Honor', cn:'荣耀', l:'/honor-repair'},
+                {n:'Google', cn:'谷歌', l:'/google-repair'},
+                {n:'Realme', cn:'真我', l:'/realme-repair'},
+              ].map((b, i) => (
+                <a key={i} href={b.l} className="text-center px-3 py-2 rounded-xl bg-white border border-gray-100 shadow-sm hover:shadow-md hover:border-blue-200 hover:-translate-y-0.5 transition-all">
+                  <div className="text-sm sm:text-base font-bold text-gray-800">{b.n}</div>
+                  <div className="text-xs text-gray-400 mt-0.5">{b.cn}</div>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* 电脑品牌 */}
+          <div className="mb-8">
+            <h4 className="text-xs font-bold text-gray-400 mb-4 text-center uppercase tracking-widest">{t('💻 电脑品牌', '💻 Computer Brands')}</h4>
+            <div className="flex flex-wrap justify-center gap-3 sm:gap-5">
+              {[
+                {n:'Apple Mac', cn:'苹果', l:'/macbook-repair'},
+                {n:'Lenovo', cn:'联想', l:'/lenovo-repair'},
+                {n:'Dell', cn:'戴尔', l:'/dell-repair'},
+                {n:'HP', cn:'惠普', l:'/hp-repair'},
+                {n:'ASUS', cn:'华硕', l:'/asus-repair'},
+                {n:'Acer', cn:'宏基', l:'/acer-repair'},
+                {n:'MSI', cn:'微星', l:'/msi-repair'},
+                {n:'Surface', cn:'微软', l:'/surface-repair'},
+                {n:'Huawei', cn:'华为', l:'/huawei-repair'},
+              ].map((b, i) => (
+                <a key={i} href={b.l} className="text-center px-3 py-2 rounded-xl bg-white border border-gray-100 shadow-sm hover:shadow-md hover:border-blue-200 hover:-translate-y-0.5 transition-all">
+                  <div className="text-sm sm:text-base font-bold text-gray-800">{b.n}</div>
+                  <div className="text-xs text-gray-400 mt-0.5">{b.cn}</div>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* 其他品牌 */}
+          <div>
+            <h4 className="text-xs font-bold text-gray-400 mb-4 text-center uppercase tracking-widest">{t('🎮 其他', '🎮 Other')}</h4>
+            <div className="flex flex-wrap justify-center gap-3 sm:gap-5">
+              {[
+                {n:'Nintendo', cn:'任天堂', l:'/'},
+                {n:'Sony', cn:'索尼', l:'/'},
+                {n:'Amazon Kindle', cn:'亚马逊', l:'/'},
+              ].map((b, i) => (
+                <a key={i} href={b.l} className="text-center px-3 py-2 rounded-xl bg-white border border-gray-100 shadow-sm hover:shadow-md hover:border-blue-200 hover:-translate-y-0.5 transition-all">
+                  <div className="text-sm sm:text-base font-bold text-gray-800">{b.n}</div>
+                  <div className="text-xs text-gray-400 mt-0.5">{b.cn}</div>
+                </a>
+              ))}
+            </div>
+          </div>
           </div>
         </div>
       </section>
