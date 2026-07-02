@@ -11,20 +11,20 @@ export default function DellRepair() {
   const t = (zh, en) => lang === 'zh' ? zh : en
 
   const services = [
-    { id: 'screen-replacement', icon: <Monitor size={28} />, title: t('屏幕更换', 'Screen Replacement'), desc: t('Dell XPS/Inspiron/Latitude/Alienware 屏幕碎裂、漏液、花屏、黑屏、线条。原装品质LCD/OLED，含安装调试。', 'Dell XPS/Inspiron/Latitude/Alienware cracked screen, leaking, flickering, black screen, lines. OEM quality LCD/OLED, fully tested.') },
-    { id: 'battery-replacement', icon: <Battery size={28} />, title: t('电池更换', 'Battery Replacement'), desc: t('Dell电池鼓包、不耐用、不充电、续航大幅下降。原装规格电池，更换后恢复续航。XPS/Inspiron/Latitude全系。', 'Dell battery swelling, short life, not charging, poor runtime. OEM spec. XPS/Inspiron/Latitude all series.') },
-    { id: 'keyboard-repair', icon: <Monitor size={28} />, title: t('键盘维修', 'Keyboard Repair'), desc: t('按键不灵、进水后粘连、个别键失灵。Dell笔记本键盘更换，含背光/Dell标志设计。', 'Sticky keys, water damage, individual key failure. Dell laptop keyboard replacement, backlit/Dell logo design.') },
-    { id: 'motherboard-repair', icon: <Cpu size={28} />, title: t('主板/芯片级维修', 'Motherboard Repair'), desc: t('不开机、死机、充电芯片故障、进液腐蚀。芯片级维修，比换主板便宜得多。Alienware游戏本主板维修。', 'No power, crashes, charging IC fault, liquid damage. Component-level repair. Alienware gaming laptop board repair.') },
-    { id: 'cleaning', icon: <Cpu size={28} />, title: t('清灰换硅脂', 'Cleaning & Cooling'), desc: t('风扇狂转、机身发烫、游戏降频。深度拆机清灰+换导热硅脂，Dell/Alienware游戏本散热改善显著。', 'Loud fans, overheating, game throttling. Deep clean + thermal paste swap. Major improvement for Dell/Alienware gaming laptops.') },
-    { id: 'os-upgrade', icon: <Monitor size={28} />, title: t('系统/升级', 'OS & Upgrade'), desc: t('Windows重装/升级、加装M.2固态、内存升级、数据备份迁移。帮您挑最划算的升级方案。', 'Windows reinstall/upgrade, M.2 SSD install, RAM upgrade, data backup & migration. Best upgrade plan for your budget.') },
+    { id: 'screen-replacement', icon: <Monitor size={28} />, title: t('屏幕更换', 'Screen Replacement'), desc: t('Dell XPS 16/14/Inspiron/Latitude/Alienware 屏幕碎裂、漏液、花屏、黑屏、线条。原装品质LCD/OLED/高刷屏，含安装调试，30分钟快修。XPS 4K OLED屏可换。', 'Dell XPS 16/14/Inspiron/Latitude/Alienware cracked screen, leaking, flickering, black screen, lines. OEM quality LCD/OLED/high-refresh screen, fully tested. XPS 4K OLED available.') },
+    { id: 'battery-replacement', icon: <Battery size={28} />, title: t('电池更换', 'Battery Replacement'), desc: t('Dell电池鼓包、不耐用、不充电、续航大幅下降。原装规格大容量电池，更换后恢复续航。XPS/Inspiron/Latitude 2025全系。', 'Dell battery swelling, short life, not charging, poor runtime. OEM spec high-capacity battery. XPS/Inspiron/Latitude 2025 all series.') },
+    { id: 'keyboard-repair', icon: <Monitor size={28} />, title: t('键盘维修', 'Keyboard Repair'), desc: t('按键不灵、进水后粘连、个别键失灵、Alienware AlienFX RGB不亮。Dell笔记本键盘更换，含背光/单键RGB。', 'Sticky keys, water damage, individual key failure, Alienware AlienFX RGB not working. Dell laptop keyboard replacement, backlit/per-key RGB.') },
+    { id: 'motherboard-repair', icon: <Cpu size={28} />, title: t('主板/芯片级维修', 'Motherboard Repair'), desc: t('不开机、死机、充电芯片故障、进液腐蚀。芯片级维修，比换主板便宜70%以上。XPS/Alienware游戏本主板维修，经验丰富。', 'No power, crashes, charging IC fault, liquid damage. Component-level repair, 70%+ cheaper than board replacement. XPS/Alienware gaming board repair, extensive experience.') },
+    { id: 'cleaning', icon: <Cpu size={28} />, title: t('清灰换硅脂', 'Cleaning & Cooling'), desc: t('风扇狂转、机身发烫、游戏降频掉帧。深度拆机清灰+换顶级导热硅脂，Dell G系列/Alienware散热改善显著，有效降温10-15°C。', 'Loud fans, overheating, game frame drops. Deep clean + premium thermal paste. Major improvement for Dell G series/Alienware gaming laptops. Effective 10-15°C temp drop.') },
+    { id: 'os-upgrade', icon: <Monitor size={28} />, title: t('系统/升级', 'OS & Upgrade'), desc: t('Windows重装/升级、加装M.2 NVMe固态、内存升级到128GB、数据备份迁移。Dell XPS/Alienware最优升级方案。', 'Windows reinstall/upgrade, M.2 NVMe SSD install, RAM upgrade up to 128GB, data backup & migration. Best upgrade plan for Dell XPS/Alienware.') },
   ]
 
   const models = [
-    t('XPS 16 / XPS 15 / XPS 14 / XPS 13', 'XPS 16 / XPS 15 / XPS 14 / XPS 13'),
-    t('Inspiron 16 Plus / 16 / 15 / 14', 'Inspiron 16 Plus / 16 / 15 / 14'),
-    t('Latitude 7650 / 7550 / 7450 / 7350', 'Latitude 7650 / 7550 / 7450 / 7350'),
-    t('Alienware M18 / M16 R2 / X16 / X14', 'Alienware M18 / M16 R2 / X16 / X14'),
-    t('G系列游戏本 G15 / G16', 'G series G15 / G16'),
+    t('XPS 16 (2024) / XPS 15 / XPS 14 (2024) / XPS 13', 'XPS 16 (2024) / XPS 15 / XPS 14 (2024) / XPS 13'),
+    t('Inspiron 16 Plus / 16 / 15 / 14 (2025系列)', 'Inspiron 16 Plus / 16 / 15 / 14 (2025 series)'),
+    t('Latitude 7650 / 7550 / 7450 / 7350 (2025)', 'Latitude 7650 / 7550 / 7450 / 7350 (2025)'),
+    t('Alienware M18 R2 / M16 R2 / X16 R2 / X14', 'Alienware M18 R2 / M16 R2 / X16 R2 / X14'),
+    t('G系列游戏本 G16 (2024) / G15', 'G series G16 (2024) / G15'),
     t('Precision 工作站系列', 'Precision workstation series'),
     t('Dell台式机 / 一体机', 'Dell desktop / all-in-one'),
   ]
@@ -40,7 +40,7 @@ export default function DellRepair() {
             <h1 className="text-3xl sm:text-5xl font-bold mb-4">{t('Dell 维修', 'Dell Repair')}</h1>
             <p className="text-xl text-blue-200 mb-4">{t('Dell XPS/Inspiron/Alienware 全系列专业维修 | 威海', 'Dell XPS/Inspiron/Alienware All Series | Weihai')}</p>
             <p className="text-blue-100 leading-relaxed">
-              {t('Dell XPS轻薄旗舰、Inspiron家用全能、Alienware顶级游戏本、Latitude商用本——屏幕碎了、电池鼓包了、游戏本发热降频了，拿来给我看看。Dell笔记本芯片级维修，比官方便宜。2007年至今奋斗在维修一线。', 'Dell XPS flagship ultrabooks, Inspiron all-rounders, Alienware gaming beasts, Latitude business laptops — cracked screen, swollen battery, gaming throttle, we fix it all. Dell component-level board repair, cheaper than official. On the job since 2007.')}
+              {t('Dell XPS轻薄旗舰、Inspiron家用全能、Alienware顶级游戏本、Latitude商用本——屏幕碎了、电池鼓包了、游戏本发热降频了，拿来给我看看。Dell笔记本芯片级维修，比官方便宜。2007年至今奋斗在维修一线。XPS 16/14 (2024)、Inspiron 2025系列、Latitude 2025系列清灰换硅脂、换OLED屏、升级固态内存，一站式搞定。', 'Dell XPS flagship ultrabooks, Inspiron all-rounders, Alienware gaming beasts, Latitude business laptops — cracked screen, swollen battery, gaming throttle, we fix it all. Dell component-level board repair, cheaper than official. On the job since 2007. XPS 16/14 (2024), Inspiron 2025 series, Latitude 2025 series — cleaning, OLED screen swap, SSD/RAM upgrades, all in one place.')}
             </p>
             <div className="flex flex-wrap gap-3 mt-6">
               <button onClick={() => setShowContact(true)} className="bg-white text-blue-600 font-semibold px-6 py-3 rounded-xl hover:bg-blue-50 transition-colors shadow-lg">{t('📱 微信咨询', '📱 WeChat')}</button>

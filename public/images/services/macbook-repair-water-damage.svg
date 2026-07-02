@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  
+  <!-- 装饰圆点 -->
+  <circle cx="100" cy="100" r="80" fill="#9ca3af" opacity="0.05"/>
+  <circle cx="650" cy="500" r="120" fill="#9ca3af" opacity="0.05"/>
+  <circle cx="700" cy="100" r="50" fill="#9ca3af" opacity="0.08"/>
+  
+  <!-- 品牌标识 -->
+  <g transform="translate(400, 35)">
+    <rect x="-100" y="-18" width="200" height="36" rx="18" fill="#9ca3af" opacity="0.2"/>
+    <text text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="bold" fill="#9ca3af" dy="4">Apple MacBook (苹果)</text>
+  </g>
+  
+  <!-- 设备主体 -->
+  <g transform="translate(400,280)">
+    <!-- 屏幕 -->
+    <rect x="-140" y="-150" width="280" height="200" rx="12" fill="#1f2937" stroke="#9ca3af" stroke-width="2"/>
+    <rect x="-125" y="-135" width="250" height="170" rx="8" fill="#111827"/>
+    <!-- 屏幕内容 -->
+    <rect x="-90" y="-100" width="180" height="30" rx="5" fill="#374151"/>
+    <rect x="-90" y="-55" width="80" height="15" rx="3" fill="#374151"/>
+    <rect x="-90" y="-30" width="120" height="15" rx="3" fill="#374151"/>
+    <rect x="-90" y="-5" width="60" height="15" rx="3" fill="#374151"/>
+    <!-- 旋转轴 -->
+    <rect x="-130" y="50" width="260" height="12" rx="4" fill="#374151"/>
+    <!-- 键盘底座 -->
+    <rect x="-150" y="58" width="300" height="150" rx="10" fill="#1f2937" stroke="#9ca3af" stroke-width="1.5"/>
+    <rect x="-130" y="75" width="260" height="110" rx="6" fill="#111827"/>
+    <!-- 键盘格 -->
+    <rect x="-120" y="80" width="25" height="13" rx="2" fill="#374151"/><rect x="-90" y="80" width="25" height="13" rx="2" fill="#374151"/><rect x="-60" y="80" width="25" height="13" rx="2" fill="#374151"/><rect x="-30" y="80" width="25" height="13" rx="2" fill="#374151"/><rect x="0" y="80" width="25" height="13" rx="2" fill="#374151"/><rect x="30" y="80" width="25" height="13" rx="2" fill="#374151"/><rect x="60" y="80" width="25" height="13" rx="2" fill="#374151"/><rect x="90" y="80" width="25" height="13" rx="2" fill="#374151"/><rect x="120" y="80" width="25" height="13" rx="2" fill="#374151"/><rect x="-120" y="98" width="25" height="13" rx="2" fill="#374151"/><rect x="-90" y="98" width="25" height="13" rx="2" fill="#374151"/><rect x="-60" y="98" width="25" height="13" rx="2" fill="#374151"/><rect x="-30" y="98" width="25" height="13" rx="2" fill="#374151"/><rect x="0" y="98" width="25" height="13" rx="2" fill="#374151"/><rect x="30" y="98" width="25" height="13" rx="2" fill="#374151"/><rect x="60" y="98" width="25" height="13" rx="2" fill="#374151"/><rect x="90" y="98" width="25" height="13" rx="2" fill="#374151"/><rect x="120" y="98" width="25" height="13" rx="2" fill="#374151"/><rect x="-120" y="116" width="25" height="13" rx="2" fill="#374151"/><rect x="-90" y="116" width="25" height="13" rx="2" fill="#374151"/><rect x="-60" y="116" width="25" height="13" rx="2" fill="#374151"/><rect x="-30" y="116" width="25" height="13" rx="2" fill="#374151"/><rect x="0" y="116" width="25" height="13" rx="2" fill="#374151"/><rect x="30" y="116" width="25" height="13" rx="2" fill="#374151"/><rect x="60" y="116" width="25" height="13" rx="2" fill="#374151"/><rect x="90" y="116" width="25" height="13" rx="2" fill="#374151"/><rect x="120" y="116" width="25" height="13" rx="2" fill="#374151"/><rect x="-120" y="134" width="25" height="13" rx="2" fill="#374151"/><rect x="-90" y="134" width="25" height="13" rx="2" fill="#374151"/><rect x="-60" y="134" width="25" height="13" rx="2" fill="#374151"/><rect x="-30" y="134" width="25" height="13" rx="2" fill="#374151"/><rect x="0" y="134" width="25" height="13" rx="2" fill="#374151"/><rect x="30" y="134" width="25" height="13" rx="2" fill="#374151"/><rect x="60" y="134" width="25" height="13" rx="2" fill="#374151"/><rect x="90" y="134" width="25" height="13" rx="2" fill="#374151"/><rect x="120" y="134" width="25" height="13" rx="2" fill="#374151"/><rect x="-120" y="152" width="25" height="13" rx="2" fill="#374151"/><rect x="-90" y="152" width="25" height="13" rx="2" fill="#374151"/><rect x="-60" y="152" width="25" height="13" rx="2" fill="#374151"/><rect x="-30" y="152" width="25" height="13" rx="2" fill="#374151"/><rect x="0" y="152" width="25" height="13" rx="2" fill="#374151"/><rect x="30" y="152" width="25" height="13" rx="2" fill="#374151"/><rect x="60" y="152" width="25" height="13" rx="2" fill="#374151"/><rect x="90" y="152" width="25" height="13" rx="2" fill="#374151"/><rect x="120" y="152" width="25" height="13" rx="2" fill="#374151"/>
+    <!-- 触摸板 -->
+    <rect x="-40" y="155" width="80" height="40" rx="5" fill="#374151"/>
+  </g>
+  
+  <!-- 维修覆盖层 -->
+  <g transform="translate(400,130)">
+    <!-- 水滴 -->
+    <path d="M0,-55 C20,-40 25,-15 0,5 C-25,-15 -20,-40 0,-55Z" fill="#60a5fa" opacity="0.8"/>
+    <path d="M-40,-30 C-20,-25 -15,-5 -40,15 C-65,-5 -60,-25 -40,-30Z" fill="#60a5fa" opacity="0.5" transform="rotate(-30, -40, -10)"/>
+    <path d="M40,-25 C55,-15 55,5 40,20 C25,5 25,-15 40,-25Z" fill="#60a5fa" opacity="0.5" transform="rotate(30, 40, 0)"/>
+    <!-- 禁止符号 -->
+    <circle cx="0" cy="-10" r="30" fill="none" stroke="#ef4444" stroke-width="3" opacity="0.8"/>
+    <line x1="-20" y1="-30" x2="20" y2="10" stroke="#ef4444" stroke-width="3" opacity="0.8"/>
+    <g transform="translate(0, 100)">
+      <rect x="-80" y="-15" width="160" height="30" rx="8" fill="#9ca3af" opacity="0.9"/>
+      <text text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="bold" fill="white" dy="5">💧 进水维修 Water</text>
+    </g>
+  </g>
+  
+  <!-- 底部信息 -->
+  <g transform="translate(400, 565)">
+    <text text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#64748b">进水维修 · Water Damage Repair</text>
+    <text text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#475569" y="16">Crazy维修 · 免费检测 · 30天质保 · 2007年至今</text>
+  </g>
+</svg>

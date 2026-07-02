@@ -2,6 +2,11 @@
 // 每个条目包含品牌、型号、常见故障、对应页面链接
 const modelDB = [
   // === Apple iPhone ===
+  { brand: 'Apple', model: 'iPhone 17 Pro Max', page: '/iphone-repair', issues: ['换屏', '换电池', '摄像头维修', '面容修复'] },
+  { brand: 'Apple', model: 'iPhone 17 Pro', page: '/iphone-repair', issues: ['换屏', '换电池', '面容修复', '主板维修'] },
+  { brand: 'Apple', model: 'iPhone 17', page: '/iphone-repair', issues: ['换屏', '换电池', '面容修复'] },
+  { brand: 'Apple', model: 'iPhone 17 Air', page: '/iphone-repair', issues: ['换屏', '换电池', '面容修复'] },
+  { brand: 'Apple', model: 'iPhone 16e', page: '/iphone-repair', issues: ['换屏', '换电池', '面容修复', '主板维修'] },
   { brand: 'Apple', model: 'iPhone 16 Pro Max', page: '/iphone-repair', issues: ['换屏', '换电池', '摄像头维修', '主板维修'] },
   { brand: 'Apple', model: 'iPhone 16 Pro', page: '/iphone-repair', issues: ['换屏', '换电池', '摄像头维修'] },
   { brand: 'Apple', model: 'iPhone 16 Plus', page: '/iphone-repair', issues: ['换屏', '换电池'] },
@@ -41,6 +46,12 @@ const modelDB = [
   { brand: 'Apple', model: 'iPhone 6', page: '/iphone-repair', issues: ['换屏', '换电池', '触摸IC维修'] },
 
   // === Apple MacBook ===
+  { brand: 'Apple', model: 'MacBook Pro M5 14"', page: '/macbook-repair', issues: ['屏幕更换', '电池更换', '进水维修'] },
+  { brand: 'Apple', model: 'MacBook Pro M5 16"', page: '/macbook-repair', issues: ['屏幕更换', '电池更换', '进水维修'] },
+  { brand: 'Apple', model: 'MacBook Air M4 13"', page: '/macbook-repair', issues: ['屏幕更换', '电池更换'] },
+  { brand: 'Apple', model: 'MacBook Air M4 15"', page: '/macbook-repair', issues: ['屏幕更换', '电池更换'] },
+  { brand: 'Apple', model: 'MacBook Pro M4 Pro 14"', page: '/macbook-repair', issues: ['屏幕更换', '电池更换', '主板维修'] },
+  { brand: 'Apple', model: 'MacBook Pro M4 Max 16"', page: '/macbook-repair', issues: ['屏幕更换', '电池更换', '主板维修'] },
   { brand: 'Apple', model: 'MacBook Pro M4 14"', page: '/macbook-repair', issues: ['屏幕更换', '电池更换', '进水维修'] },
   { brand: 'Apple', model: 'MacBook Pro M4 16"', page: '/macbook-repair', issues: ['屏幕更换', '电池更换', '进水维修'] },
   { brand: 'Apple', model: 'MacBook Pro M3 14"', page: '/macbook-repair', issues: ['屏幕更换', '电池更换', '主板维修'] },
@@ -56,6 +67,11 @@ const modelDB = [
   { brand: 'Apple', model: 'MacBook Pro 15" A1398', page: '/macbook-repair', issues: ['屏幕更换', '电池鼓包', '显卡维修', '独显门'] },
 
   // === Apple iPad ===
+  { brand: 'Apple', model: 'iPad Pro 13" M4', page: '/', issues: ['屏幕碎', '电池不耐用', '充电口坏'] },
+  { brand: 'Apple', model: 'iPad Pro 11" M4', page: '/', issues: ['屏幕碎', '电池不耐用'] },
+  { brand: 'Apple', model: 'iPad Air M3', page: '/', issues: ['屏幕碎', '电池不耐用'] },
+  { brand: 'Apple', model: 'iPad Mini 7', page: '/', issues: ['屏幕碎', '电池不耐用'] },
+  { brand: 'Apple', model: 'iPad 10代', page: '/', issues: ['屏幕碎', '电池不耐用', '充电口坏'] },
   { brand: 'Apple', model: 'iPad Pro 12.9"', page: '/', issues: ['屏幕碎', '电池不耐用', '充电口坏'] },
   { brand: 'Apple', model: 'iPad Pro 11"', page: '/', issues: ['屏幕碎', '电池不耐用'] },
   { brand: 'Apple', model: 'iPad Air', page: '/', issues: ['屏幕碎', '电池不耐用', 'Home键不灵'] },
@@ -63,6 +79,13 @@ const modelDB = [
   { brand: 'Apple', model: 'iPad 数字系列', page: '/', issues: ['屏幕碎', '电池不耐用', 'Home键不灵'] },
 
   // === Samsung ===
+  { brand: 'Samsung', model: 'Galaxy S25 Ultra', page: '/samsung-repair', issues: ['屏幕更换', 'AMOLED维修', '电池更换', '后盖更换', '摄像头维修'] },
+  { brand: 'Samsung', model: 'Galaxy S25 Plus', page: '/samsung-repair', issues: ['屏幕更换', '电池更换', '后盖更换'] },
+  { brand: 'Samsung', model: 'Galaxy S25', page: '/samsung-repair', issues: ['屏幕更换', '电池更换'] },
+  { brand: 'Samsung', model: 'Galaxy Z Fold 7', page: '/samsung-repair', issues: ['内屏更换', '外屏更换', '铰链维修', '电池更换'] },
+  { brand: 'Samsung', model: 'Galaxy Z Flip 7', page: '/samsung-repair', issues: ['内屏更换', '外屏更换', '铰链维修', '电池更换'] },
+  { brand: 'Samsung', model: 'Galaxy A56', page: '/samsung-repair', issues: ['屏幕更换', '电池更换'] },
+  { brand: 'Samsung', model: 'Galaxy A36', page: '/samsung-repair', issues: ['屏幕更换', '电池更换'] },
   { brand: 'Samsung', model: 'Galaxy S24 Ultra', page: '/samsung-repair', issues: ['屏幕更换', 'AMOLED维修', '电池更换', '后盖更换', '摄像头维修'] },
   { brand: 'Samsung', model: 'Galaxy S24 Plus', page: '/samsung-repair', issues: ['屏幕更换', '电池更换', '后盖更换'] },
   { brand: 'Samsung', model: 'Galaxy S24', page: '/samsung-repair', issues: ['屏幕更换', '电池更换'] },
@@ -87,6 +110,13 @@ const modelDB = [
   { brand: 'Samsung', model: 'Galaxy Note 10', page: '/samsung-repair', issues: ['屏幕更换', '电池更换'] },
 
   // === Huawei ===
+  { brand: 'Huawei', model: 'Mate 70 Pro', page: '/huawei-repair', issues: ['屏幕更换', '电池更换', '后盖更换', '摄像头维修'] },
+  { brand: 'Huawei', model: 'Mate 70', page: '/huawei-repair', issues: ['屏幕更换', '电池更换'] },
+  { brand: 'Huawei', model: 'Pura 70 Ultra', page: '/huawei-repair', issues: ['屏幕更换', '电池更换', '摄像头维修', '后盖更换'] },
+  { brand: 'Huawei', model: 'Pura 70 Pro', page: '/huawei-repair', issues: ['屏幕更换', '电池更换', '摄像头维修'] },
+  { brand: 'Huawei', model: 'Pura 70', page: '/huawei-repair', issues: ['屏幕更换', '电池更换'] },
+  { brand: 'Huawei', model: 'Nova 13 Pro', page: '/huawei-repair', issues: ['屏幕更换', '电池更换'] },
+  { brand: 'Huawei', model: 'Nova 13', page: '/huawei-repair', issues: ['屏幕更换', '电池更换'] },
   { brand: 'Huawei', model: 'Mate 60 Pro', page: '/huawei-repair', issues: ['屏幕更换', '电池更换', '后盖更换'] },
   { brand: 'Huawei', model: 'Mate 60', page: '/huawei-repair', issues: ['屏幕更换', '电池更换'] },
   { brand: 'Huawei', model: 'Mate 50 Pro', page: '/huawei-repair', issues: ['屏幕更换', '电池更换', '主板维修'] },
@@ -107,6 +137,11 @@ const modelDB = [
   { brand: 'Huawei', model: 'MatePad Air', page: '/', issues: ['屏幕碎', '电池不耐用'] },
 
   // === Xiaomi / Redmi ===
+  { brand: 'Xiaomi', model: 'Xiaomi 15 Ultra', page: '/xiaomi-repair', issues: ['屏幕更换', '电池更换', '摄像头维修', '刷机'] },
+  { brand: 'Xiaomi', model: 'Xiaomi 15 Pro', page: '/xiaomi-repair', issues: ['屏幕更换', '电池更换', '摄像头维修'] },
+  { brand: 'Xiaomi', model: 'Xiaomi 15', page: '/xiaomi-repair', issues: ['屏幕更换', '电池更换'] },
+  { brand: 'Xiaomi', model: 'Redmi Note 14 Pro', page: '/xiaomi-repair', issues: ['屏幕更换', '电池更换', '后盖更换'] },
+  { brand: 'Xiaomi', model: 'Redmi Note 14', page: '/xiaomi-repair', issues: ['屏幕更换', '电池更换'] },
   { brand: 'Xiaomi', model: 'Xiaomi 14 Ultra', page: '/xiaomi-repair', issues: ['屏幕更换', '电池更换', '摄像头维修', '刷机'] },
   { brand: 'Xiaomi', model: 'Xiaomi 14 Pro', page: '/xiaomi-repair', issues: ['屏幕更换', '电池更换', '摄像头维修'] },
   { brand: 'Xiaomi', model: 'Xiaomi 14', page: '/xiaomi-repair', issues: ['屏幕更换', '电池更换'] },
@@ -126,15 +161,25 @@ const modelDB = [
   { brand: 'Xiaomi', model: 'Redmi 9/10', page: '/xiaomi-repair', issues: ['屏幕更换', '电池更换', '刷机解锁'] },
 
   // === OPPO ===
+  { brand: 'OPPO', model: 'Find N5', page: '/', issues: ['内屏更换', '外屏更换', '铰链维修', '电池更换'] },
+  { brand: 'OPPO', model: 'Find X8 Pro', page: '/', issues: ['屏幕更换', '电池更换', '摄像头维修'] },
+  { brand: 'OPPO', model: 'Find X8', page: '/', issues: ['屏幕更换', '电池更换'] },
   { brand: 'OPPO', model: 'Find X7 Ultra', page: '/', issues: ['屏幕更换', '电池更换', '摄像头维修'] },
   { brand: 'OPPO', model: 'Find X7', page: '/', issues: ['屏幕更换', '电池更换'] },
   { brand: 'OPPO', model: 'Find X6 Pro', page: '/', issues: ['屏幕更换', '电池更换', '后盖更换'] },
+  { brand: 'OPPO', model: 'Reno 13 Pro', page: '/', issues: ['屏幕更换', '电池更换', '后盖更换'] },
+  { brand: 'OPPO', model: 'Reno 13', page: '/', issues: ['屏幕更换', '电池更换'] },
   { brand: 'OPPO', model: 'Reno 12 Pro', page: '/', issues: ['屏幕更换', '电池更换', '后盖更换'] },
   { brand: 'OPPO', model: 'Reno 12', page: '/', issues: ['屏幕更换', '电池更换'] },
   { brand: 'OPPO', model: 'Reno 11', page: '/', issues: ['屏幕更换', '电池更换'] },
   { brand: 'OPPO', model: 'OPPO A系列', page: '/', issues: ['屏幕更换', '电池更换', '充电口维修'] },
 
   // === VIVO / iQOO ===
+  { brand: 'VIVO', model: 'X200 Pro', page: '/', issues: ['屏幕更换', '电池更换', '摄像头维修'] },
+  { brand: 'VIVO', model: 'X200', page: '/', issues: ['屏幕更换', '电池更换'] },
+  { brand: 'VIVO', model: 'iQOO 15', page: '/', issues: ['屏幕更换', '电池更换', '主板维修'] },
+  { brand: 'VIVO', model: 'V40 Pro', page: '/', issues: ['屏幕更换', '电池更换'] },
+  { brand: 'VIVO', model: 'V40', page: '/', issues: ['屏幕更换', '电池更换'] },
   { brand: 'VIVO', model: 'X100 Pro', page: '/', issues: ['屏幕更换', '电池更换', '摄像头维修'] },
   { brand: 'VIVO', model: 'X100', page: '/', issues: ['屏幕更换', '电池更换'] },
   { brand: 'VIVO', model: 'X90 Pro', page: '/', issues: ['屏幕更换', '电池更换', '后盖更换'] },
@@ -144,12 +189,17 @@ const modelDB = [
   { brand: 'VIVO', model: 'iQOO Neo 9', page: '/', issues: ['屏幕更换', '电池更换'] },
 
   // === OnePlus ===
+  { brand: 'OnePlus', model: 'OnePlus 13', page: '/', issues: ['屏幕更换', '电池更换', '摄像头维修'] },
+  { brand: 'OnePlus', model: 'OnePlus 13R', page: '/', issues: ['屏幕更换', '电池更换', '摄像头维修'] },
   { brand: 'OnePlus', model: 'OnePlus 12', page: '/', issues: ['屏幕更换', '电池更换', '摄像头维修'] },
   { brand: 'OnePlus', model: 'OnePlus 11', page: '/', issues: ['屏幕更换', '电池更换'] },
   { brand: 'OnePlus', model: 'OnePlus Open', page: '/', issues: ['内屏更换', '外屏更换', '电池更换'] },
   { brand: 'OnePlus', model: 'OnePlus Nord', page: '/', issues: ['屏幕更换', '电池更换'] },
 
   // === Google Pixel ===
+  { brand: 'Google', model: 'Pixel 10 Pro', page: '/', issues: ['屏幕更换', '电池更换', '摄像头维修'] },
+  { brand: 'Google', model: 'Pixel 10', page: '/', issues: ['屏幕更换', '电池更换'] },
+  { brand: 'Google', model: 'Pixel 9 Pro Fold', page: '/', issues: ['内屏更换', '外屏更换', '电池更换'] },
   { brand: 'Google', model: 'Pixel 9 Pro', page: '/', issues: ['屏幕更换', '电池更换', '摄像头维修'] },
   { brand: 'Google', model: 'Pixel 9', page: '/', issues: ['屏幕更换', '电池更换'] },
   { brand: 'Google', model: 'Pixel 8 Pro', page: '/', issues: ['屏幕更换', '电池更换', '摄像头维修'] },
@@ -157,6 +207,11 @@ const modelDB = [
   { brand: 'Google', model: 'Pixel 7 Pro', page: '/', issues: ['屏幕更换', '电池更换', '后盖更换'] },
 
   // === Honor ===
+  { brand: 'Honor', model: 'Magic 7 Pro', page: '/', issues: ['屏幕更换', '电池更换', '摄像头维修'] },
+  { brand: 'Honor', model: 'Magic 7', page: '/', issues: ['屏幕更换', '电池更换'] },
+  { brand: 'Honor', model: 'Magic V4', page: '/', issues: ['内屏更换', '外屏更换', '电池更换'] },
+  { brand: 'Honor', model: 'Honor 300 Pro', page: '/', issues: ['屏幕更换', '电池更换'] },
+  { brand: 'Honor', model: 'Honor 300', page: '/', issues: ['屏幕更换', '电池更换'] },
   { brand: 'Honor', model: 'Magic 6 Pro', page: '/', issues: ['屏幕更换', '电池更换', '摄像头维修'] },
   { brand: 'Honor', model: 'Magic V3', page: '/', issues: ['内屏更换', '外屏更换', '电池更换'] },
   { brand: 'Honor', model: 'Magic 5 Pro', page: '/', issues: ['屏幕更换', '电池更换'] },
@@ -166,38 +221,72 @@ const modelDB = [
   { brand: 'Honor', model: 'Honor X9a', page: '/', issues: ['屏幕更换', '电池更换'] },
   { brand: 'Honor', model: 'Honor X7b', page: '/', issues: ['屏幕更换', '电池更换'] },
 
+  // === Realme ===
+  { brand: 'Realme', model: 'Realme GT 8', page: '/', issues: ['屏幕更换', '电池更换', '主板维修'] },
+  { brand: 'Realme', model: 'Realme GT Neo 6', page: '/', issues: ['屏幕更换', '电池更换'] },
+  { brand: 'Realme', model: 'Realme 14 Pro+', page: '/', issues: ['屏幕更换', '电池更换'] },
+  { brand: 'Realme', model: 'Realme 14', page: '/', issues: ['屏幕更换', '电池更换'] },
+
+  // === Realme (existing placeholder removed - now have specific models) ===
+
   // === 电脑品牌 ===
+  { brand: 'Lenovo', model: 'ThinkPad X1 Carbon Gen 13', page: '/', issues: ['屏幕更换', '电池更换', '键盘更换', '系统重装'] },
+  { brand: 'Lenovo', model: 'ThinkPad X1 Carbon Gen 14', page: '/', issues: ['屏幕更换', '电池更换', '键盘更换', '系统重装'] },
+  { brand: 'Lenovo', model: 'ThinkPad T14 Gen 5', page: '/', issues: ['屏幕更换', '电池更换', '键盘更换', '内存升级', '清灰'] },
+  { brand: 'Lenovo', model: '小新Pro 2025', page: '/', issues: ['屏幕更换', '电池更换', '系统重装', '固态升级'] },
+  { brand: 'Lenovo', model: '拯救者Y9000P 2025', page: '/', issues: ['清灰换硅脂', '电池更换', '屏幕更换', '散热改造'] },
+  { brand: 'Lenovo', model: '拯救者Y7000P 2025', page: '/', issues: ['清灰换硅脂', '电池更换', '屏幕更换'] },
   { brand: 'Lenovo', model: 'ThinkPad X1 Carbon', page: '/', issues: ['屏幕更换', '电池更换', '键盘更换', '系统重装'] },
   { brand: 'Lenovo', model: 'ThinkPad T系列', page: '/', issues: ['屏幕更换', '电池更换', '键盘更换', '内存升级', '清灰'] },
   { brand: 'Lenovo', model: '小新系列', page: '/', issues: ['屏幕更换', '电池更换', '系统重装', '固态升级'] },
   { brand: 'Lenovo', model: '拯救者系列', page: '/', issues: ['清灰换硅脂', '电池更换', '屏幕更换', '散热改造'] },
+  { brand: 'Dell', model: 'XPS 16 2025', page: '/', issues: ['屏幕更换', '电池更换', '键盘更换', '进液维修'] },
+  { brand: 'Dell', model: 'XPS 14 2025', page: '/', issues: ['屏幕更换', '电池更换'] },
   { brand: 'Dell', model: 'XPS 13/15', page: '/', issues: ['屏幕更换', '电池更换', '键盘更换', '进液维修'] },
+  { brand: 'Dell', model: 'Alienware m18 2025', page: '/', issues: ['清灰换硅脂', '屏幕更换', '散热改造'] },
   { brand: 'Dell', model: 'Inspiron系列', page: '/', issues: ['屏幕更换', '电池更换', '系统重装', '清灰'] },
   { brand: 'Dell', model: 'Latitude系列', page: '/', issues: ['电池更换', '键盘更换', '固态升级'] },
+  { brand: 'HP', model: 'Spectre x360 2025', page: '/', issues: ['屏幕更换', '电池更换', '触摸屏维修'] },
+  { brand: 'HP', model: '暗影精灵 2025', page: '/', issues: ['清灰换硅脂', '屏幕更换', '电池更换', '散热改造'] },
   { brand: 'HP', model: 'Spectre x360', page: '/', issues: ['屏幕更换', '电池更换', '触摸屏维修'] },
   { brand: 'HP', model: 'Pavilion系列', page: '/', issues: ['电池更换', '屏幕更换', '系统重装', '清灰'] },
   { brand: 'HP', model: 'EliteBook系列', page: '/', issues: ['屏幕更换', '电池更换', '键盘更换'] },
+  { brand: 'ASUS', model: 'ROG 枪神8 Plus 2025', page: '/', issues: ['清灰换硅脂', '屏幕更换', '电池更换', '散热改造'] },
+  { brand: 'ASUS', model: '天选Air 2025', page: '/', issues: ['清灰换硅脂', '屏幕更换', '电池更换', '系统重装'] },
   { brand: 'ASUS', model: 'ROG 枪神系列', page: '/', issues: ['清灰换硅脂', '屏幕更换', '电池更换', '散热改造'] },
   { brand: 'ASUS', model: '天选系列', page: '/', issues: ['清灰换硅脂', '屏幕更换', '电池更换', '系统重装'] },
   { brand: 'ASUS', model: 'Vivobook系列', page: '/', issues: ['屏幕更换', '电池更换', '系统重装'] },
+  { brand: 'Acer', model: 'Nitro 2025', page: '/', issues: ['清灰换硅脂', '屏幕更换', '电池更换'] },
+  { brand: 'Acer', model: 'Predator 2025', page: '/', issues: ['清灰换硅脂', '屏幕更换', '散热改造'] },
+  { brand: 'MSI', model: 'Stealth 18 2025', page: '/', issues: ['清灰换硅脂', '屏幕更换', '散热改造'] },
+  { brand: 'MSI', model: 'Raider 2025', page: '/', issues: ['清灰换硅脂', '屏幕更换', '电池更换'] },
+  { brand: 'Microsoft', model: 'Surface Pro 11', page: '/', issues: ['屏幕更换', '电池更换', '充电口维修'] },
+  { brand: 'Microsoft', model: 'Surface Laptop 6', page: '/', issues: ['屏幕更换', '电池更换', '键盘维修'] },
+  { brand: 'Microsoft', model: 'Surface Pro 10', page: '/', issues: ['屏幕更换', '电池更换'] },
   { brand: 'Microsoft', model: 'Surface Pro 9', page: '/', issues: ['屏幕更换', '电池更换', '充电口维修'] },
   { brand: 'Microsoft', model: 'Surface Pro 8', page: '/', issues: ['屏幕更换', '电池鼓包', '充电故障'] },
   { brand: 'Microsoft', model: 'Surface Laptop', page: '/', issues: ['屏幕更换', '电池更换', '键盘维修'] },
+  { brand: 'Hasee', model: '战神T8 Pro 2025', page: '/', issues: ['清灰换硅脂', '屏幕更换', '电池更换'] },
   { brand: 'Huawei', model: 'MateBook X Pro', page: '/', issues: ['屏幕更换', '电池更换', '系统重装'] },
   { brand: 'Huawei', model: 'MateBook 14', page: '/', issues: ['屏幕更换', '电池更换'] },
 
   // === 游戏机 / 手表 ===
+  { brand: 'Nintendo', model: 'Switch 2', page: '/', issues: ['屏幕更换', '手柄漂移', '电池更换', '充电口维修'] },
   { brand: 'Nintendo', model: 'Switch OLED', page: '/', issues: ['屏幕更换', '手柄漂移', '电池更换', '充电口维修'] },
   { brand: 'Nintendo', model: 'Switch', page: '/', issues: ['屏幕更换', '手柄漂移', '电池更换', '充电口维修'] },
+  { brand: 'Sony', model: 'PS5 Pro', page: '/', issues: ['清灰', '散热改造', '手柄漂移'] },
   { brand: 'Sony', model: 'PS5', page: '/', issues: ['手柄漂移', '清灰', '散热改造', '光驱维修'] },
   { brand: 'Sony', model: 'PS4', page: '/', issues: ['手柄漂移', '清灰', '换硅脂', '光驱维修'] },
+  { brand: 'Apple', model: 'Apple Watch Ultra 3', page: '/', issues: ['屏幕更换', '电池更换'] },
   { brand: 'Apple', model: 'Apple Watch Ultra 2', page: '/', issues: ['屏幕更换', '电池更换', '表带更换'] },
+  { brand: 'Apple', model: 'Apple Watch Series 10', page: '/', issues: ['屏幕更换', '电池更换'] },
   { brand: 'Apple', model: 'Apple Watch Series 9', page: '/', issues: ['屏幕更换', '电池更换', '进水维修'] },
   { brand: 'Apple', model: 'Apple Watch Series 8', page: '/', issues: ['屏幕更换', '电池更换'] },
   { brand: 'Apple', model: 'Apple Watch SE', page: '/', issues: ['屏幕更换', '电池更换'] },
   { brand: 'Apple', model: 'AirPods Pro 2', page: '/', issues: ['电池不耐用', '一只不响', '充电仓故障'] },
   { brand: 'Apple', model: 'AirPods Pro', page: '/', issues: ['电池不耐用', '一只不响', '充电仓故障'] },
   { brand: 'Apple', model: 'AirPods 3', page: '/', issues: ['电池不耐用', '一只不响'] },
+  { brand: 'Samsung', model: 'Galaxy Watch 7', page: '/', issues: ['屏幕更换', '电池更换'] },
   { brand: 'Samsung', model: 'Galaxy Watch 6', page: '/', issues: ['屏幕更换', '电池更换'] },
   { brand: 'Amazon', model: 'Kindle Paperwhite', page: '/', issues: ['屏幕碎裂', '电池不耐用', '系统卡死'] },
   { brand: 'Amazon', model: 'Kindle Oasis', page: '/', issues: ['屏幕碎裂', '电池不耐用'] },

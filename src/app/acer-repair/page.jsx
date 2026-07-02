@@ -11,19 +11,21 @@ export default function AcerRepair() {
   const t = (zh, en) => lang === 'zh' ? zh : en
 
   const services = [
-    { id: 'screen-replacement', icon: <Monitor size={28} />, title: t('屏幕更换', 'Screen Replacement'), desc: t('Acer Predator/Nitro/Swift/Aspire 屏幕碎裂、漏液、花屏。原装品质LCD/OLED。含安装调试。', 'Acer Predator/Nitro/Swift/Aspire cracked screen, leaking, flickering. OEM quality LCD/OLED, fully tested.') },
-    { id: 'battery-replacement', icon: <Battery size={28} />, title: t('电池更换', 'Battery Replacement'), desc: t('Acer电池鼓包、不耐用、不充电。原装规格电池。Predator/Nitro/Swift/Aspire全系。', 'Acer battery swelling, short life, not charging. OEM spec. Predator/Nitro/Swift/Aspire all series.') },
-    { id: 'keyboard-repair', icon: <Monitor size={28} />, title: t('键盘维修', 'Keyboard Repair'), desc: t('按键不灵、进水粘连、个别键失灵。Acer笔记本键盘更换，含背光/多彩RGB。', 'Sticky keys, water damage, individual key failure. Acer laptop keyboard replacement, backlit/RGB.') },
-    { id: 'motherboard-repair', icon: <Cpu size={28} />, title: t('主板/芯片级维修', 'Motherboard Repair'), desc: t('不开机、死机、充电芯片故障、进液腐蚀。芯片级维修，比换主板便宜得多。', 'No power, crashes, charging IC fault, liquid damage. Component-level repair.') },
-    { id: 'cleaning', icon: <Cpu size={28} />, title: t('清灰换硅脂', 'Cleaning & Cooling'), desc: t('风扇异响、发热降频。Predator/Nitro游戏本深度拆机清灰+换导热硅脂，有效降温10-15°C。', 'Fan noise, overheating, throttling. Predator/Nitro deep clean + thermal paste. Effective 10-15°C temp drop.') },
-    { id: 'os-upgrade', icon: <Monitor size={28} />, title: t('系统/升级', 'OS & Upgrade'), desc: t('Windows重装、加装M.2固态、内存升级。帮您选最划算的升级方案。', 'Windows reinstall, M.2 SSD install, RAM upgrade. Best upgrade plan.') },
+    { id: 'screen-replacement', icon: <Monitor size={28} />, title: t('屏幕更换', 'Screen Replacement'), desc: t('Acer Predator Helios Neo/Nitro/Swift Go/Aspire 屏幕碎裂、漏液、花屏、黑屏、线条。原装品质LCD/OLED/高刷屏，含安装调试，30分钟快修。', 'Acer Predator Helios Neo/Nitro/Swift Go/Aspire cracked screen, leaking, flickering, black screen, lines. OEM quality LCD/OLED/high-refresh screen, fully tested. 30-min quick fix.') },
+    { id: 'battery-replacement', icon: <Battery size={28} />, title: t('电池更换', 'Battery Replacement'), desc: t('Acer电池鼓包、不耐用、不充电、续航断崖式下降。原装规格电池。Predator Helios/Nitro/Swift Go/Aspire全系。', 'Acer battery swelling, short life, not charging, sudden battery drain. OEM spec battery. Predator Helios/Nitro/Swift Go/Aspire all series.') },
+    { id: 'keyboard-repair', icon: <Monitor size={28} />, title: t('键盘维修', 'Keyboard Repair'), desc: t('按键不灵、进水粘连、个别键失灵、背光不亮。Acer笔记本键盘更换，含Predator多彩RGB/单键背光。', 'Sticky keys, water damage, individual key failure, backlight not working. Acer laptop keyboard replacement, Predator per-key RGB/backlit.') },
+    { id: 'motherboard-repair', icon: <Cpu size={28} />, title: t('主板/芯片级维修', 'Motherboard Repair'), desc: t('不开机、死机、充电芯片故障、进液腐蚀。Predator/Nitro游戏本芯片级维修，比换主板便宜得多。', 'No power, crashes, charging IC fault, liquid damage. Predator/Nitro gaming laptop component-level repair. Much cheaper than board swap.') },
+    { id: 'cleaning', icon: <Cpu size={28} />, title: t('清灰换硅脂', 'Cleaning & Cooling'), desc: t('风扇异响、发热降频、游戏掉帧。Predator Helios Neo/Nitro游戏本深度拆机清灰+换顶级导热硅脂，有效降温10-15°C。', 'Fan noise, overheating, game frame drops. Predator Helios Neo/Nitro gaming laptop deep clean + premium thermal paste. Effective 10-15°C temp drop.') },
+    { id: 'os-upgrade', icon: <Monitor size={28} />, title: t('系统/升级', 'OS & Upgrade'), desc: t('Windows重装/升级、加装M.2 NVMe固态、内存升级到64GB。Acer Predator/Nitro高性价比升级方案推荐。', 'Windows reinstall/upgrade, M.2 NVMe SSD install, RAM upgrade up to 64GB. Best value upgrades for Acer Predator/Nitro.') },
   ]
 
   const models = [
-    t('Predator Helios 18 / Helios 16 / Neo 16', 'Predator Helios 18 / Helios 16 / Neo 16'),
-    t('Nitro V 16 / V 15 / 17 / 16', 'Nitro V 16 / V 15 / 17 / 16'),
-    t('Swift Go 14 / Swift Go 16 / Swift 14', 'Swift Go 14 / Swift Go 16 / Swift 14'),
-    t('Aspire Vero 16 / Aspire 3 / 5 / 7', 'Aspire Vero 16 / Aspire 3 / 5 / 7'),
+    t('Predator Helios Neo 16 / Helios 18 (2024)', 'Predator Helios Neo 16 / Helios 18 (2024)'),
+    t('Predator Helios 16 / Helios 18', 'Predator Helios 16 / Helios 18'),
+    t('Swift Go 14 / Swift Go 16 (2024-2025)', 'Swift Go 14 / Swift Go 16 (2024-2025)'),
+    t('Swift 14 / Swift Edge 16', 'Swift 14 / Swift Edge 16'),
+    t('Nitro V 16 / V 15 / 17', 'Nitro V 16 / V 15 / 17'),
+    t('Aspire 5 / Aspire 3 / Aspire Vero 16 2025系列', 'Aspire 5 / Aspire 3 / Aspire Vero 16 2025 series'),
     t('TravelMate / Spin 5 / Spin 3', 'TravelMate / Spin 5 / Spin 3'),
     t('ConceptD 创作者系列', 'ConceptD creator series'),
     t('Acer台式机 / 一体机', 'Acer desktop / all-in-one'),
@@ -39,7 +41,7 @@ export default function AcerRepair() {
             <h1 className="text-3xl sm:text-5xl font-bold mb-4">{t('Acer 维修', 'Acer Repair')}</h1>
             <p className="text-xl text-green-200 mb-4">{t('宏碁 Predator/Nitro/Swift 全系列专业维修 | 威海', 'Acer Predator/Nitro/Swift All Series | Weihai')}</p>
             <p className="text-green-100 leading-relaxed">
-              {t('Acer Predator顶级游戏本、Nitro性价比游戏本、Swift轻薄本、Aspire家用本——屏幕碎了、电池鼓包了、游戏本降频了，拿来给我看看。Acer笔记本价格亲民，维修费也更实惠。2007年至今奋斗在维修一线。', 'Acer Predator flagship gaming, Nitro budget gaming, Swift ultrabooks, Aspire home laptops — cracked screen, swollen battery, game throttling, we fix it all. Acer laptops are budget-friendly, so are our repairs. On the job since 2007.')}
+              {t('Acer Predator Helios Neo旗舰游戏本、Nitro性价比游戏本、Swift Go轻薄本、Aspire家用本——屏幕碎了、电池鼓包了、游戏本降频了，拿来给我看看。Acer笔记本价格亲民，维修费也更实惠。2007年至今奋斗在维修一线。Predator Helios Neo 16/18 (2024)、Swift Go 14/16 (2024-2025)、Aspire 2025系列清灰换硅脂、换高刷屏、升级固态内存，一站式搞定。', 'Acer Predator Helios Neo flagship gaming, Nitro budget gaming, Swift Go ultrabooks, Aspire home laptops — cracked screen, swollen battery, game throttling, we fix it all. Acer laptops are budget-friendly, so are our repairs. On the job since 2007. Predator Helios Neo 16/18 (2024), Swift Go 14/16 (2024-2025), Aspire 2025 series — cleaning, high-refresh screen swap, SSD/RAM upgrades, all in one place.')}
             </p>
             <div className="flex flex-wrap gap-3 mt-6">
               <button onClick={() => setShowContact(true)} className="bg-white text-green-600 font-semibold px-6 py-3 rounded-xl hover:bg-green-50 transition-colors shadow-lg">{t('📱 微信咨询', '📱 WeChat')}</button>

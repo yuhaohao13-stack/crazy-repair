@@ -11,21 +11,21 @@ export default function LenovoRepair() {
   const t = (zh, en) => lang === 'zh' ? zh : en
 
   const services = [
-    { id: 'screen-replacement', icon: <Monitor size={28} />, title: t('屏幕更换', 'Screen Replacement'), desc: t('联想ThinkPad/Yoga/小新/拯救者 屏幕碎裂、漏液、花屏。原装品质LCD/OLED。含安装调试。', 'Lenovo ThinkPad/Yoga/Xiaoxin/Legion cracked screen, leaking, flickering. OEM quality LCD/OLED, fully tested.') },
-    { id: 'battery-replacement', icon: <Battery size={28} />, title: t('电池更换', 'Battery Replacement'), desc: t('联想电池鼓包、不耐用、不充电。原装规格电池。ThinkPad X1/T/P系列、小新、Yoga、拯救者全系。', 'Lenovo battery swelling, short life, not charging. OEM spec. ThinkPad X1/T/P, Xiaoxin, Yoga, Legion all series.') },
-    { id: 'keyboard-repair', icon: <Monitor size={28} />, title: t('键盘维修', 'Keyboard Repair'), desc: t('ThinkPad经典键盘按键不灵、小红点(TrackPoint)失效、背光键盘维修。', 'ThinkPad classic keyboard sticky keys, TrackPoint not working, backlight keyboard repair.') },
-    { id: 'motherboard-repair', icon: <Cpu size={28} />, title: t('主板/芯片级维修', 'Motherboard Repair'), desc: t('不开机、死机、充电芯片故障、进液腐蚀。芯片级维修，比换主板便宜得多。ThinkPad主板维修经验丰富。', 'No power, crashes, charging IC fault, liquid damage. Component-level repair. Extensive ThinkPad board repair experience.') },
-    { id: 'cleaning', icon: <Cpu size={28} />, title: t('清灰换硅脂', 'Cleaning & Cooling'), desc: t('风扇异响、发热降频。拯救者/Yoga轻薄本深度清灰+换导热硅脂，有效降温。', 'Fan noise, overheating, throttling. Legion/Yoga deep clean + thermal paste swap. Effective cooling improvement.') },
-    { id: 'os-upgrade', icon: <Monitor size={28} />, title: t('系统/升级', 'OS & Upgrade'), desc: t('Windows重装、加装M.2固态、内存升级。ThinkPad BIOS升级/设置。帮您选最划算方案。', 'Windows reinstall, M.2 SSD install, RAM upgrade. ThinkPad BIOS update/config. Best upgrade plan.') },
+    { id: 'screen-replacement', icon: <Monitor size={28} />, title: t('屏幕更换', 'Screen Replacement'), desc: t('联想ThinkPad/Yoga Pro/小新/拯救者 屏幕碎裂、漏液、花屏、黑屏。原装品质LCD/OLED/高刷屏，含安装调试，30分钟快修。Yoga 4K OLED屏可换。', 'Lenovo ThinkPad/Yoga Pro/Xiaoxin/Legion cracked screen, leaking, flickering, black screen. OEM quality LCD/OLED/high-refresh screen, fully tested. Yoga 4K OLED available.') },
+    { id: 'battery-replacement', icon: <Battery size={28} />, title: t('电池更换', 'Battery Replacement'), desc: t('联想电池鼓包、不耐用、不充电、续航断崖式下降。原装规格大容量电池。ThinkPad X1/T/P系列、小新、Yoga Pro、拯救者全系。', 'Lenovo battery swelling, short life, not charging, sudden battery drain. OEM spec high-capacity battery. ThinkPad X1/T/P, Xiaoxin, Yoga Pro, Legion all series.') },
+    { id: 'keyboard-repair', icon: <Monitor size={28} />, title: t('键盘维修', 'Keyboard Repair'), desc: t('ThinkPad经典键盘按键不灵、小红点(TrackPoint)失效、背光不亮。拯救者 Legion TrueStrike RGB键盘更换。', 'ThinkPad classic keyboard sticky keys, TrackPoint not working, backlight not working. Legion TrueStrike RGB keyboard replacement.') },
+    { id: 'motherboard-repair', icon: <Cpu size={28} />, title: t('主板/芯片级维修', 'Motherboard Repair'), desc: t('不开机、死机、充电芯片故障、进液腐蚀。芯片级维修，比换主板便宜70%以上。ThinkPad/拯救者主板维修经验丰富。', 'No power, crashes, charging IC fault, liquid damage. Component-level repair, 70%+ cheaper than board replacement. Extensive ThinkPad/Legion board repair experience.') },
+    { id: 'cleaning', icon: <Cpu size={28} />, title: t('清灰换硅脂', 'Cleaning & Cooling'), desc: t('风扇异响、发热降频、游戏掉帧。拯救者/Yoga Pro深度拆机清灰+换顶级导热硅脂，有效降温10-15°C。', 'Fan noise, overheating, game frame drops. Legion/Yoga Pro deep clean + premium thermal paste. Effective 10-15°C temp drop.') },
+    { id: 'os-upgrade', icon: <Monitor size={28} />, title: t('系统/升级', 'OS & Upgrade'), desc: t('Windows重装/升级、加装M.2 NVMe固态、内存升级到64GB。ThinkPad BIOS升级/设置。帮您选最划算的升级方案。', 'Windows reinstall/upgrade, M.2 NVMe SSD install, RAM upgrade up to 64GB. ThinkPad BIOS update/config. Best upgrade plan for your budget.') },
   ]
 
   const models = [
-    t('ThinkPad X1 Carbon Gen 13 / Gen 12 / Gen 11', 'ThinkPad X1 Carbon Gen 13 / Gen 12 / Gen 11'),
-    t('ThinkPad T16 / T14s / T14 / P16s / P14s', 'ThinkPad T16 / T14s / T14 / P16s / P14s'),
-    t('Yoga Pro 9i / Yoga 9i / Yoga Slim 7i', 'Yoga Pro 9i / Yoga 9i / Yoga Slim 7i'),
-    t('拯救者 Legion 9i / Pro 7i / 5i / Slim 5', 'Legion 9i / Pro 7i / 5i / Slim 5'),
+    t('ThinkPad X1 Carbon Gen 13 (2025) / Gen 12 / Gen 11', 'ThinkPad X1 Carbon Gen 13 (2025) / Gen 12 / Gen 11'),
+    t('ThinkPad T16 Gen 4 / T14s Gen 6 / T14 Gen 5', 'ThinkPad T16 Gen 4 / T14s Gen 6 / T14 Gen 5'),
+    t('Yoga Pro 9i (2025) / Yoga 9i / Yoga Slim 7i', 'Yoga Pro 9i (2025) / Yoga 9i / Yoga Slim 7i'),
+    t('拯救者 Legion 9i (2025) / Pro 7i / 5i / Slim 5', 'Legion 9i (2025) / Pro 7i / 5i / Slim 5'),
     t('小新 Pro 16 / Pro 14 / Air 15 / Air 14', 'Xiaoxin Pro 16 / Pro 14 / Air 15 / Air 14'),
-    t('ThinkBook 16p / 14+ / 16+', 'ThinkBook 16p / 14+ / 16+'),
+    t('ThinkBook 16p Gen 5 / 14+ / 16+', 'ThinkBook 16p Gen 5 / 14+ / 16+'),
     t('联想台式机 / 一体机', 'Lenovo desktop / all-in-one'),
   ]
 
@@ -39,7 +39,7 @@ export default function LenovoRepair() {
             <h1 className="text-3xl sm:text-5xl font-bold mb-4">{t('Lenovo 维修', 'Lenovo Repair')}</h1>
             <p className="text-xl text-blue-200 mb-4">{t('联想 ThinkPad/拯救者/Yoga/小新 全系列专业维修 | 威海', 'Lenovo ThinkPad/Legion/Yoga/Xiaoxin All Series | Weihai')}</p>
             <p className="text-blue-100 leading-relaxed">
-              {t('联想ThinkPad商用本、拯救者/小新电竞&全能本、Yoga高端轻薄本——屏幕碎了、电池鼓包了、ThinkPad小红点不灵了、拯救者降频了，拿来给我看看。联想笔记本芯片级维修，比联想想官方便宜。2007年至今奋斗在维修一线。', 'Lenovo ThinkPad business, Legion gaming, Xiaoxin all-rounders, Yoga premium ultrabooks — cracked screen, swollen battery, TrackPoint issues, Legion throttling, we fix it all. Lenovo component-level board repair. On the job since 2007.')}
+              {t('联想ThinkPad商用本、拯救者/小新电竞&全能本、Yoga高端轻薄本——屏幕碎了、电池鼓包了、ThinkPad小红点不灵了、拯救者降频了，拿来给我看看。联想笔记本芯片级维修，比联想起官方便宜。2007年至今奋斗在维修一线。ThinkPad X1 Carbon Gen 13 (2025)、Yoga Pro 9i 2025、Legion 9i 2025系列清灰换硅脂、换OLED屏、升级固态内存，一站式搞定。', 'Lenovo ThinkPad business, Legion gaming, Xiaoxin all-rounders, Yoga premium ultrabooks — cracked screen, swollen battery, TrackPoint issues, Legion throttling, we fix it all. Lenovo component-level board repair. On the job since 2007. ThinkPad X1 Carbon Gen 13 (2025), Yoga Pro 9i 2025, Legion 9i 2025 — cleaning, OLED screen swap, SSD/RAM upgrades, all in one place.')}
             </p>
             <div className="flex flex-wrap gap-3 mt-6">
               <button onClick={() => setShowContact(true)} className="bg-white text-blue-600 font-semibold px-6 py-3 rounded-xl hover:bg-blue-50 transition-colors shadow-lg">{t('📱 微信咨询', '📱 WeChat')}</button>

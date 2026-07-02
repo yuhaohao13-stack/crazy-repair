@@ -98,7 +98,7 @@ export default function ServiceDetail() {
               </div>
             ) : (
               <img
-                src={'/images/services/' + brandDir + '-' + serviceId + '.jpg'}
+                src={'/images/services/' + brandDir + '-' + serviceId + '.svg'}
                 alt={lang === 'zh' ? (brand.brand + ' ' + service.title) : (brand.brand + ' ' + service.titleEn)}
                 className="w-full h-full object-cover"
                 onError={() => setImgError(true)}

@@ -11,19 +11,19 @@ export default function HPRepair() {
   const t = (zh, en) => lang === 'zh' ? zh : en
 
   const services = [
-    { id: 'screen-replacement', icon: <Monitor size={28} />, title: t('屏幕更换', 'Screen Replacement'), desc: t('HP Spectre/Envy/Pavilion 屏幕碎裂、漏液、花屏。原装品质LCD/OLED。含安装调试。', 'HP Spectre/Envy/Pavilion cracked screen, leaking, flickering. OEM quality LCD/OLED, fully tested.') },
-    { id: 'battery-replacement', icon: <Battery size={28} />, title: t('电池更换', 'Battery Replacement'), desc: t('HP电池鼓包、不耐用、不充电。原装规格电池。Spectre/Envy/Pavilion/暗影精灵全系。', 'HP battery swelling, short life, not charging. OEM spec. Spectre/Envy/Pavilion/OMEN all series.') },
-    { id: 'keyboard-repair', icon: <Monitor size={28} />, title: t('键盘维修', 'Keyboard Repair'), desc: t('HP笔记本按键不灵、进水粘连、个别键失灵。含背光键盘更换。', 'HP laptop sticky keys, water damage, individual key failure. Backlit keyboard replacement.') },
-    { id: 'motherboard-repair', icon: <Cpu size={28} />, title: t('主板/芯片级维修', 'Motherboard Repair'), desc: t('不开机、死机、充电芯片故障、进液腐蚀。芯片级维修，比换主板便宜得多。暗影精灵游戏本主板维修。', 'No power, crashes, charging IC fault, liquid damage. Component-level repair. OMEN gaming laptop board repair.') },
-    { id: 'cleaning', icon: <Cpu size={28} />, title: t('清灰换硅脂', 'Cleaning & Cooling'), desc: t('风扇异响、发热降频。HP笔记本深度拆机清灰+换导热硅脂，有效降温。', 'Fan noise, overheating, throttling. HP laptop deep clean + thermal paste. Effective cooling improvement.') },
-    { id: 'os-upgrade', icon: <Monitor size={28} />, title: t('系统/升级', 'OS & Upgrade'), desc: t('Windows重装、加装M.2固态、内存升级。帮您选最划算的升级方案。', 'Windows reinstall, M.2 SSD install, RAM upgrade. Best upgrade plan.') },
+    { id: 'screen-replacement', icon: <Monitor size={28} />, title: t('屏幕更换', 'Screen Replacement'), desc: t('HP Spectre x360/Envy/Pavilion/暗影精灵 屏幕碎裂、漏液、花屏、黑屏。原装品质LCD/OLED/高刷屏，含安装调试，30分钟快修。Spectre 3K2K OLED屏可换。', 'HP Spectre x360/Envy/Pavilion/OMEN cracked screen, leaking, flickering, black screen. OEM quality LCD/OLED/high-refresh screen, fully tested. Spectre 3K2K OLED available.') },
+    { id: 'battery-replacement', icon: <Battery size={28} />, title: t('电池更换', 'Battery Replacement'), desc: t('HP电池鼓包、不耐用、不充电、续航断崖式下降。原装规格大容量电池。Spectre/Envy/Pavilion Plus/暗影精灵全系。', 'HP battery swelling, short life, not charging, sudden battery drain. OEM spec high-capacity battery. Spectre/Envy/Pavilion Plus/OMEN all series.') },
+    { id: 'keyboard-repair', icon: <Monitor size={28} />, title: t('键盘维修', 'Keyboard Repair'), desc: t('HP笔记本按键不灵、进水粘连、个别键失灵、背光不亮。HP笔记本键盘更换，含Spectre x360背光/暗影精灵4区RGB。', 'HP laptop sticky keys, water damage, individual key failure, backlight not working. HP laptop keyboard replacement, Spectre backlit/OMEN 4-zone RGB.') },
+    { id: 'motherboard-repair', icon: <Cpu size={28} />, title: t('主板/芯片级维修', 'Motherboard Repair'), desc: t('不开机、死机、充电芯片故障、进液腐蚀。芯片级维修，比换主板便宜70%以上。暗影精灵/Envy游戏本主板维修经验丰富。', 'No power, crashes, charging IC fault, liquid damage. Component-level repair, 70%+ cheaper than board replacement. OMEN/Envy gaming board repair, extensive experience.') },
+    { id: 'cleaning', icon: <Cpu size={28} />, title: t('清灰换硅脂', 'Cleaning & Cooling'), desc: t('风扇异响、发热降频、游戏掉帧。HP笔记本深度拆机清灰+换顶级导热硅脂，暗影精灵/Envy有效降温10-15°C。', 'Fan noise, overheating, game frame drops. HP laptop deep clean + premium thermal paste. OMEN/Envy effective 10-15°C temp drop.') },
+    { id: 'os-upgrade', icon: <Monitor size={28} />, title: t('系统/升级', 'OS & Upgrade'), desc: t('Windows重装/升级、加装M.2 NVMe固态、内存升级。HP Spectre/Envy最优升级方案推荐。', 'Windows reinstall/upgrade, M.2 NVMe SSD install, RAM upgrade. Best upgrade plan for HP Spectre/Envy.') },
   ]
 
   const models = [
-    t('Spectre x360 16 / x360 14 / Folio', 'Spectre x360 16 / x360 14 / Folio'),
-    t('Envy 16 / Envy 15 / Envy x360 15', 'Envy 16 / Envy 15 / Envy x360 15'),
-    t('Pavilion Plus 16 / 15 / Aero 13', 'Pavilion Plus 16 / 15 / Aero 13'),
-    t('暗影精灵 OMEN 17 / 16 / Transcend', 'OMEN 17 / 16 / Transcend'),
+    t('Spectre x360 16 / x360 14 (2024)', 'Spectre x360 16 / x360 14 (2024)'),
+    t('Envy 16 / Envy 15 / Envy x360 (2025系列)', 'Envy 16 / Envy 15 / Envy x360 (2025 series)'),
+    t('Pavilion Plus 16 / 15 / Aero 13 (2025)', 'Pavilion Plus 16 / 15 / Aero 13 (2025)'),
+    t('暗影精灵 OMEN 17 / 16 / Transcend 14', 'OMEN 17 / 16 / Transcend 14'),
     t('EliteBook 800/1000 商用系列', 'EliteBook 800/1000 business series'),
     t('ProBook / ZBook 工作站', 'ProBook / ZBook workstation'),
     t('HP台式机 / 一体机', 'HP desktop / all-in-one'),
@@ -39,7 +39,7 @@ export default function HPRepair() {
             <h1 className="text-3xl sm:text-5xl font-bold mb-4">{t('HP 维修', 'HP Repair')}</h1>
             <p className="text-xl text-teal-200 mb-4">{t('HP Spectre/Envy/暗影精灵 全系列专业维修 | 威海', 'HP Spectre/Envy/OMEN All Series | Weihai')}</p>
             <p className="text-teal-100 leading-relaxed">
-              {t('HP Spectre 360高端翻转本、Envy创意本、暗影精灵游戏本、Pavilion家用系列——屏幕碎了、电池鼓包了、进液开不了机了，拿来给我看看。HP笔记本芯片级维修，比惠普官方便宜。2007年至今奋斗在维修一线。', 'HP Spectre high-end convertibles, Envy creator laptops, OMEN gaming, Pavilion home series — cracked screen, swollen battery, liquid damage, we fix it all. HP component-level board repair. On the job since 2007.')}
+              {t('HP Spectre x360高端翻转本、Envy创意本、暗影精灵游戏本、Pavilion Plus家用系列——屏幕碎了、电池鼓包了、进液开不了机了，拿来给我看看。HP笔记本芯片级维修，比惠普官方便宜。2007年至今奋斗在维修一线。Spectre x360 2024、Pavilion Plus 2025、Envy 2025系列清灰换硅脂、换OLED屏、升级固态内存，一站式搞定。', 'HP Spectre x360 high-end convertibles, Envy creator laptops, OMEN gaming, Pavilion Plus home series — cracked screen, swollen battery, liquid damage, we fix it all. HP component-level board repair. On the job since 2007. Spectre x360 2024, Pavilion Plus 2025, Envy 2025 series — cleaning, OLED screen swap, SSD/RAM upgrades, all in one place.')}
             </p>
             <div className="flex flex-wrap gap-3 mt-6">
               <button onClick={() => setShowContact(true)} className="bg-white text-teal-600 font-semibold px-6 py-3 rounded-xl hover:bg-teal-50 transition-colors shadow-lg">{t('📱 微信咨询', '📱 WeChat')}</button>
