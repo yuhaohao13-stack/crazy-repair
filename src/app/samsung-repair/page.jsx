@@ -66,6 +66,9 @@ export default function SamsungRepair() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((s, i) => (
               <a key={i} href={'/samsung-repair/' + s.id} className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-md transition-all group block">
+                <div className="relative w-full aspect-[16/9] bg-gray-100 overflow-hidden">
+                  <img src={'/images/services/samsung-repair-' + s.id + '.svg'} alt={t(s.title, s.titleEn)} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                </div>
                 <div className="p-6">
                   <div className="flex items-center gap-3 mb-3">
                     <div className="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center text-purple-600 text-lg shrink-0">
