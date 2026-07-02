@@ -1,39 +1,60 @@
 'use client'
 import { useState } from 'react'
-import { ArrowLeft, Smartphone, Battery, Cpu, ChevronDown } from 'lucide-react'
+import { ArrowLeft, Smartphone, Battery, Droplets, Cpu, Camera, ChevronDown } from 'lucide-react'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import ContactModal from '../../components/ContactModal'
+import Image from 'next/image'
 
 export default function SamsungRepair() {
   const [showContact, setShowContact] = useState(false)
   const [lang, setLang] = useState('zh')
   const t = (zh, en) => lang === 'zh' ? zh : en
-
+  
   const services = [
-    { id: 'screen-replacement', title: t('屏幕更换', 'Screen Replacement'), desc: t('Samsung AMOLED屏幕更换。S系列/Z折叠屏/A系列都做。碎裂、漏液、花屏、触摸不灵。', 'Samsung AMOLED screen repair. S/Z fold/A series. Cracked, leaking, flickering, unresponsive touch.') },
-    { id: 'battery-replacement', title: t('电池更换', 'Battery Service'), desc: t('Samsung电池不耐用、鼓包、充不进电。原装规格电池，含检测调试。', 'Samsung battery drain, swelling, not charging. OEM spec batteries with testing.') },
-    { id: 'motherboard-repair', title: t('主板维修', 'Motherboard'), desc: t('不开机、重启、充电IC故障、无服务、WiFi打不开。三星主板芯片级维修。', 'No power, boot loop, charging IC, no service, WiFi dead. Component-level Samsung board repair.') },
-    { id: 'charging-port', title: t('充电口/尾插', 'Charging Port'), desc: t('充电口松动、接触不良、Type-C不识别、只能一个方向充。', 'Loose port, bad contact, Type-C not recognized, one-way charging only.') },
-    { id: 'camera-repair', title: t('摄像头维修', 'Camera'), desc: t('拍照模糊、闪退、黑屏、对焦失灵。Samsung Galaxy全系前后摄像头更换。', 'Blurry photos, crash, black screen, autofocus fail. Samsung Galaxy front/back camera.') },
-    { id: 'back-glass', title: t('后盖/边框更换', 'Back Glass/Frame'), desc: t('Samsung玻璃后盖碎裂、中框变形。更换后恢复防水胶。', 'Broken glass back, bent frame. Waterproof sealant restored after replacement.') },
+    {id:'screen-replacement', title:'屏幕更换', titleEn:'Screen Replacement', img:'/images/samsung-repair-1.jpg', desc:'Samsung全系列屏幕更换。S系列OLED原装屏，折叠屏Z Fold6/Flip6/5/4/3内屏外屏均可修复。30分钟快修。', descEn:'Samsung full series screen. S series OLED. Foldable Z Fold6/Flip6/5/4/3 inner & outer.'},
+    {id:'battery-replacement', title:'电池更换', titleEn:'Battery Replacement', img:'/images/samsung-repair-2.jpg', desc:'Samsung原装规格电池，S25到S21全系列电池现货。A系列、Note系列、Z系列电池均有货。', descEn:'Samsung OEM batteries. S25 through S21, A series, Note, Z Fold/Flip series in stock.'},
+    {id:'water-damage', title:'进水维修', titleEn:'Water Damage', img:'/images/samsung-repair-3.jpg', desc:'超声波清洗+主板烘干+腐蚀修复。Samsung进水处理，IP68防水机型进水后仍需及时处理。', descEn:'Ultrasonic cleaning + board dry + corrosion repair. IP68 water resistance degrades over time.'},
+    {id:'motherboard-repair', title:'主板维修', titleEn:'Motherboard Repair', img:'/images/samsung-repair-4.jpg', desc:'不开机、重启循环、WiFi/蓝牙打不开。芯片级维修，Samsung全系列主板。', descEn:'No power, boot loop, WiFi/BT dead. Component-level repair for all Samsung models.'},
+    {id:'camera-repair', title:'摄像头维修', titleEn:'Camera Repair', img:'/images/samsung-repair-5.jpg', desc:'拍照模糊、黑屏、闪烁。S系列高像素摄像头更换维修，前置/后置均可。', descEn:'Blurry photos, black screen. S series high-res camera, front & back repair.'},
+    {id:'charging-port', title:'充电口维修', titleEn:'Charging Port', img:'/images/samsung-repair-6.jpg', desc:'充不进电、充电慢、Type-C接口松动。Samsung全系列Type-C充电口更换。', descEn:'Wont charge, slow charging, loose USB-C port. Full series charging port repair.'}
+  ]
+  
+  const models = [
+      t('Galaxy S25 Ultra / S25+ / S25', 'Galaxy S25 Ultra / S25+ / S25'),
+      t('Galaxy S24 FE / S24 Ultra / S24+ / S24', 'Galaxy S24 FE / S24 Ultra / S24+ / S24'),
+      t('Galaxy S23 Ultra / S23+ / S23 / S23 FE', 'Galaxy S23 Ultra / S23+ / S23 / S23 FE'),
+      t('Galaxy S22 Ultra / S22+ / S22', 'Galaxy S22 Ultra / S22+ / S22'),
+      t('Galaxy S21 Ultra / S21+ / S21 / S21 FE', 'Galaxy S21 Ultra / S21+ / S21 / S21 FE'),
+      t('Galaxy Z Fold6 / Z Fold5 / Z Fold4 / Z Fold3', 'Galaxy Z Fold6 / Z Fold5 / Z Fold4 / Z Fold3'),
+      t('Galaxy Z Flip6 / Z Flip5 / Z Flip4 / Z Flip3', 'Galaxy Z Flip6 / Z Flip5 / Z Flip4 / Z Flip3'),
+      t('Galaxy A56 / A55 / A36 / A35 / A26 / A25 / A16', 'Galaxy A56 / A55 / A36 / A35 / A26 / A25 / A16'),
+      t('Galaxy Note20 Ultra / Note20', 'Galaxy Note20 Ultra / Note20')
   ]
 
   return (
     <div className="min-h-screen bg-white">
       <Navbar lang={lang} setLang={setLang} setShowContact={setShowContact} />
-      <section className="bg-gradient-to-br from-purple-700 via-purple-600 to-purple-500 text-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-4"><a href="/phone-repair" className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-sm font-medium transition-colors"><ArrowLeft size={15} /> {t('手机品牌', 'Phone Brands')}</a></div>
-                  <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
+      <section className="bg-gradient-to-br from-blue-700 via-blue-600 to-blue-500 text-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-4">
+          <a href="/phone-repair" className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-sm font-medium transition-colors">
+            <ArrowLeft size={15} /> {t('手机品牌', 'Phone Brands')}
+          </a>
+        </div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
           <div className="max-w-3xl">
             <h1 className="text-3xl sm:text-5xl font-bold mb-4">{t('Samsung 维修', 'Samsung Repair')}</h1>
-            <p className="text-xl text-purple-200 mb-4">{t('三星 Galaxy 全系列专业维修 | 威海', 'Samsung Galaxy All Series | Weihai')}</p>
-            <p className="text-purple-100 leading-relaxed">
-              {t('Samsung Galaxy S系列/Z折叠屏/A系列/M系列——屏幕、电池、主板、摄像头，我们都能修。三星AMOLED屏幕更换是我们的强项。2007年至今奋斗在维修一线。', 'Samsung Galaxy S/Z/A/M series — screens, batteries, motherboards, cameras, we do it all. AMOLED screen replacement is our specialty. On the job since 2007.')}
+            <p className="text-blue-200 text-xl mb-4">{t('三星 Galaxy 全系列专业维修 | 威海环翠区', 'Samsung Galaxy Repair for All Models | Weihai')}</p>
+            <p className="text-blue-100 leading-relaxed">
+              {t('三星手机换屏、换电池、修主板、折叠屏修复。Galaxy S25到S21全系列，Z Fold/Flip折叠屏内外屏均可修。2007年至今奋斗在维修一线。', 'Samsung screen replacement, battery, motherboard, foldable display repair. S25 through S21 series, Z Fold/Flip. Since 2007.')}
             </p>
             <div className="flex flex-wrap gap-3 mt-6">
-              <button onClick={() => setShowContact(true)} className="bg-white text-purple-600 font-semibold px-6 py-3 rounded-xl hover:bg-purple-50 transition-colors shadow-lg">{t('📱 微信咨询', '📱 WeChat')}</button>
-              <a href="https://wa.me/6596146709?text=我的Samsung手机需要维修" target="_blank" className="bg-green-500 text-white font-semibold px-6 py-3 rounded-xl hover:bg-green-600 transition-colors shadow-lg">{t('💬 WhatsApp咨询', '💬 WhatsApp')}</a>
+              <button onClick={() => setShowContact(true)} className="bg-white text-blue-600 font-semibold px-6 py-3 rounded-xl hover:bg-blue-50 transition-colors shadow-lg">
+                {t('📱 微信咨询维修', '📱 WeChat for Repair')}
+              </button>
+              <a href="https://wa.me/6596146709?text=我的Samsung Repair需要维修" target="_blank" className="bg-green-500 text-white font-semibold px-6 py-3 rounded-xl hover:bg-green-600 transition-colors shadow-lg">
+                {t('💬 WhatsApp咨询', '💬 WhatsApp')}
+              </a>
             </div>
           </div>
         </div>
@@ -41,72 +62,47 @@ export default function SamsungRepair() {
 
       <section className="py-16 sm:py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 text-center">{t('Samsung 维修服务', 'Samsung Repair Services')}</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 text-center">{t('维修服务', 'Repair Services')}</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((s, i) => (
-              <a key={i} href={'/samsung-repair/' + s.id} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 hover:shadow-md transition-all block">
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="font-bold text-gray-900">{s.title}</h3>
+              <div key={i} className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-md transition-all group">
+                <div className="relative h-48 bg-gray-100">
+                  <Image src={s.img} alt={t(s.title, s.titleEn)} fill className="object-cover group-hover:scale-105 transition-transform duration-300" sizes="(max-width:768px)100vw,33vw" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                  <div className="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1.5 text-blue-600 font-bold text-sm">{t(s.title, s.titleEn)}</div>
                 </div>
-                <p className="text-sm text-gray-500 leading-relaxed">{s.desc}</p>
-              </a>
+                <div className="p-5">
+                  <p className="text-sm text-gray-500 leading-relaxed">{t(s.desc, s.descEn)}</p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       <section className="py-12 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">{t('常见故障', 'Common Issues')}</h2>
-          <div className="grid sm:grid-cols-3 gap-6 text-left max-w-4xl mx-auto">
-            <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
-              <h3 className="font-bold text-purple-600 mb-2">{t('📱 屏幕故障', '📱 Screen Issues')}</h3>
-              <p className="text-sm text-gray-500">{t('Samsung AMOLED屏幕是手机里最贵的部件之一。Galaxy S系列换屏费用较高但比官方便宜很多。屏幕闪烁/绿线/紫斑等通病我们也处理。', 'Samsung AMOLED screens are expensive. Galaxy S series screen repair is cheaper than official. Green/purple line fix available.')}</p>
-            </div>
-            <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
-              <h3 className="font-bold text-purple-600 mb-2">{t('🔋 电池问题', '🔋 Battery Issues')}</h3>
-              <p className="text-sm text-gray-500">{t('Samsung电池用久了自然衰减。快充导致电池损耗加快也是常见问题。鼓包电池必须立即更换，有安全隐患。', 'Samsung batteries degrade over time. Fast charging speeds up wear. Swollen batteries = immediate replacement needed.')}</p>
-            </div>
-            <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
-              <h3 className="font-bold text-purple-600 mb-2">{t('💧 进水/主板', '💧 Water/Board')}</h3>
-              <p className="text-sm text-gray-500">{t('Samsung旗舰机有IP68防水但进水案例不少。尾插腐蚀、充电IC烧毁、不开机是常见进水后遗症。', 'Samsung flagships have IP68 but water damage still happens. Corroded ports, dead charging IC, no power are common after water exposure.')}</p>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">{t('支持型号', 'Supported Models')}</h2>
+          <div className="max-w-2xl mx-auto bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
+            <div className="grid grid-cols-2 gap-3">
+              {models.map((m, i) => (
+                <div key={i} className="flex items-center gap-2 text-sm"><span className="text-blue-500 shrink-0">▸</span><span className="text-gray-700">{m}</span></div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-16 sm:py-20">
+      <section className="py-16 bg-gradient-to-br from-blue-700 via-blue-600 to-blue-500 text-white text-center">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 text-center">{t('常见问题', 'FAQ')}</h2>
-          <div className="space-y-4">
-            {[
-              { q: t('Samsung换屏多少钱？', 'Samsung screen replacement cost?'), a: t('S系列¥200起，A系列¥150起，Z折叠系列会贵一些。具体加微信发型号查询。', 'S series from ¥200, A series from ¥150, Z fold series more. DM for exact quote.') },
-              { q: t('折叠屏能修吗？', 'Can you fix foldable screens?'), a: t('能修。Samsung Z Flip/Z Fold系列的内屏和外屏我们都能换。折叠屏维修需要更高精度，我们经验足够。', 'Yes. Z Flip/Z Fold inner & outer screens. Foldable repair needs precision work — we have the experience.') },
-              { q: t('三星电池鼓包危险吗？', 'Is swollen Samsung battery dangerous?'), a: t('非常危险。鼓包电池可能起火。不要继续用，尽快送过来换。不要尝试自己戳破或拆解。', 'Very dangerous. Fire risk. Stop using immediately, bring it in. Do not try to puncture or remove yourself.') },
-            ].map((faq, i) => (
-              <details key={i} className="group bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-                <summary className="flex items-center justify-between p-4 sm:p-5 cursor-pointer list-none">
-                  <span className="font-medium text-gray-900 text-sm sm:text-base">{faq.q}</span>
-                  <ChevronDown size={18} className="text-gray-400 group-open:rotate-180 transition-transform" />
-                </summary>
-                <div className="px-4 sm:px-5 pb-4 sm:pb-5"><p className="text-gray-500 text-sm leading-relaxed">{faq.a}</p></div>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-gradient-to-br from-purple-700 via-purple-600 to-purple-500 text-white text-center">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-4">{t('Samsung 出问题了？找我', 'Samsung issues? Contact me')}</h2>
-          <p className="text-purple-200 mb-8">{t('免费检测，先报价后维修。', 'Free diagnosis, quote first.')}</p>
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4">{t('有问题？找我', 'Issues? Hit me up')}</h2>
+          <p className="text-blue-200 mb-8">{t('免费检测，先报价后维修。添加微信发张照片就能初步判断。', 'Free diagnosis. Add WeChat, send a photo for a quick assessment.')}</p>
           <div className="flex flex-wrap justify-center gap-4">
-            <button onClick={() => setShowContact(true)} className="bg-white text-purple-600 font-semibold px-8 py-4 rounded-xl hover:bg-purple-50 transition-colors shadow-lg text-lg">{t('📱 微信咨询', '📱 WeChat')}</button>
-            <a href="https://wa.me/6596146709?text=我的Samsung手机需要维修" target="_blank" className="bg-green-500 text-white font-semibold px-8 py-4 rounded-xl hover:bg-green-600 transition-colors shadow-lg text-lg">{t('💬 WhatsApp咨询', '💬 WhatsApp')}</a>
+            <button onClick={() => setShowContact(true)} className="bg-white text-blue-600 font-semibold px-8 py-4 rounded-xl hover:bg-blue-50 transition-colors shadow-lg text-lg">{t('📱 微信咨询', '📱 WeChat')}</button>
+            <a href="https://wa.me/6596146709?text=需要维修" target="_blank" className="bg-green-500 text-white font-semibold px-8 py-4 rounded-xl hover:bg-green-600 transition-colors shadow-lg text-lg">{t('💬 WhatsApp咨询', '💬 WhatsApp')}</a>
           </div>
         </div>
       </section>
-
       <Footer lang={lang} />
       <ContactModal show={showContact} setShow={setShowContact} lang={lang} />
     </div>

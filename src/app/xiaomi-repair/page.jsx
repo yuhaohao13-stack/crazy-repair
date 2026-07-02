@@ -29,7 +29,7 @@ export default function XiaomiRepair() {
             <h1 className="text-3xl sm:text-5xl font-bold mb-4">{t('Xiaomi 维修', 'Xiaomi Repair')}</h1>
             <p className="text-xl text-orange-100 mb-4">{t('小米/Redmi 全系列专业维修 | 威海', 'Xiaomi/Redmi All Series | Weihai')}</p>
             <p className="text-orange-100 leading-relaxed">
-              {t('小米、Redmi、Poco——性价比手机我们也给性价比维修。屏幕、电池、主板、刷机解锁，统统搞定。比小米官方售后便宜，质量同样可靠。2007年至今奋斗在维修一线。', 'Xiaomi, Redmi, Poco — budget-friendly repairs for budget-friendly phones. Screens, batteries, boards, flashing. Cheaper than Xiaomi official, same quality. On the job since 2007.')}
+              {t('小米16/15 Ultra、Redmi Note 14、Poco全系列——屏幕、电池、主板、刷机解锁，统统搞定。比小米官方售后便宜，质量同样可靠。擅长小米主板芯片级维修和红米性价比维修。2007年至今奋斗在维修一线。', 'Xiaomi 16/15 Ultra, Redmi Note 14, Poco series — screens, batteries, boards, flashing, all covered. Cheaper than Xiaomi official, same quality. Specialized in Xiaomi motherboard repair and Redmi value repairs. On the job since 2007.')}
             </p>
             <div className="flex flex-wrap gap-3 mt-6">
               <button onClick={() => setShowContact(true)} className="bg-white text-orange-600 font-semibold px-6 py-3 rounded-xl hover:bg-orange-50 transition-colors shadow-lg">{t('📱 微信咨询', '📱 WeChat')}</button>
@@ -51,6 +51,33 @@ export default function XiaomiRepair() {
                 <p className="text-sm text-gray-500 leading-relaxed">{s.desc}</p>
               </a>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 型号支持 */}
+      <section className="py-12 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">{t('支持型号', 'Supported Models')}</h2>
+          <div className="max-w-xl mx-auto bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
+            <div className="grid grid-cols-2 gap-3">
+              {[
+                t('小米 16 / 15 Ultra / 15 Pro / 15', 'Xiaomi 16 / 15 Ultra / 15 Pro / 15'),
+                t('小米 14 Ultra / 14 Pro / 14 / 14T', 'Xiaomi 14 Ultra / 14 Pro / 14 / 14T'),
+                t('Redmi Note 14 Pro+ / Pro / 14', 'Redmi Note 14 Pro+ / Pro / 14'),
+                t('Redmi K80 Pro / K80 / K70 Ultra / K70', 'Redmi K80 Pro / K80 / K70 Ultra / K70'),
+                t('Redmi Turbo 4 / Turbo 3 / Note 13 Pro', 'Redmi Turbo 4 / Turbo 3 / Note 13 Pro'),
+                t('Poco F7 Pro / F7 / X7 Pro / M7 Pro', 'Poco F7 Pro / F7 / X7 Pro / M7 Pro'),
+                t('小米 Mix Flip / Fold 4 / Pad 7 Pro', 'Xiaomi Mix Flip / Fold 4 / Pad 7 Pro'),
+                t('Redmi Pad Pro / SE', 'Redmi Pad Pro / SE'),
+              ].map((m, i) => (
+                <div key={i} className="flex items-center gap-2 text-sm">
+                  <span className="text-orange-500">▸</span>
+                  <span className="text-gray-700">{m}</span>
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-gray-400 mt-4 text-center">{t('没找到你的型号？加微信问我', 'Model not listed? DM me on WeChat')}</p>
           </div>
         </div>
       </section>

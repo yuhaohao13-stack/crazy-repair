@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react'
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeft, Monitor, Battery, Cpu, ChevronDown } from 'lucide-react'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import ContactModal from '../../components/ContactModal'
@@ -9,39 +9,107 @@ export default function DellRepair() {
   const [showContact, setShowContact] = useState(false)
   const [lang, setLang] = useState('zh')
   const t = (zh, en) => lang === 'zh' ? zh : en
+
+  const services = [
+    { id: 'screen-replacement', icon: <Monitor size={28} />, title: t('屏幕更换', 'Screen Replacement'), desc: t('Dell XPS/Inspiron/Latitude/Alienware 屏幕碎裂、漏液、花屏、黑屏、线条。原装品质LCD/OLED，含安装调试。', 'Dell XPS/Inspiron/Latitude/Alienware cracked screen, leaking, flickering, black screen, lines. OEM quality LCD/OLED, fully tested.') },
+    { id: 'battery-replacement', icon: <Battery size={28} />, title: t('电池更换', 'Battery Replacement'), desc: t('Dell电池鼓包、不耐用、不充电、续航大幅下降。原装规格电池，更换后恢复续航。XPS/Inspiron/Latitude全系。', 'Dell battery swelling, short life, not charging, poor runtime. OEM spec. XPS/Inspiron/Latitude all series.') },
+    { id: 'keyboard-repair', icon: <Monitor size={28} />, title: t('键盘维修', 'Keyboard Repair'), desc: t('按键不灵、进水后粘连、个别键失灵。Dell笔记本键盘更换，含背光/Dell标志设计。', 'Sticky keys, water damage, individual key failure. Dell laptop keyboard replacement, backlit/Dell logo design.') },
+    { id: 'motherboard-repair', icon: <Cpu size={28} />, title: t('主板/芯片级维修', 'Motherboard Repair'), desc: t('不开机、死机、充电芯片故障、进液腐蚀。芯片级维修，比换主板便宜得多。Alienware游戏本主板维修。', 'No power, crashes, charging IC fault, liquid damage. Component-level repair. Alienware gaming laptop board repair.') },
+    { id: 'cleaning', icon: <Cpu size={28} />, title: t('清灰换硅脂', 'Cleaning & Cooling'), desc: t('风扇狂转、机身发烫、游戏降频。深度拆机清灰+换导热硅脂，Dell/Alienware游戏本散热改善显著。', 'Loud fans, overheating, game throttling. Deep clean + thermal paste swap. Major improvement for Dell/Alienware gaming laptops.') },
+    { id: 'os-upgrade', icon: <Monitor size={28} />, title: t('系统/升级', 'OS & Upgrade'), desc: t('Windows重装/升级、加装M.2固态、内存升级、数据备份迁移。帮您挑最划算的升级方案。', 'Windows reinstall/upgrade, M.2 SSD install, RAM upgrade, data backup & migration. Best upgrade plan for your budget.') },
+  ]
+
+  const models = [
+    t('XPS 16 / XPS 15 / XPS 14 / XPS 13', 'XPS 16 / XPS 15 / XPS 14 / XPS 13'),
+    t('Inspiron 16 Plus / 16 / 15 / 14', 'Inspiron 16 Plus / 16 / 15 / 14'),
+    t('Latitude 7650 / 7550 / 7450 / 7350', 'Latitude 7650 / 7550 / 7450 / 7350'),
+    t('Alienware M18 / M16 R2 / X16 / X14', 'Alienware M18 / M16 R2 / X16 / X14'),
+    t('G系列游戏本 G15 / G16', 'G series G15 / G16'),
+    t('Precision 工作站系列', 'Precision workstation series'),
+    t('Dell台式机 / 一体机', 'Dell desktop / all-in-one'),
+  ]
+
   return (
     <div className="min-h-screen bg-white">
       <Navbar lang={lang} setLang={setLang} setShowContact={setShowContact} />
+      {/* Hero */}
       <section className="bg-gradient-to-br from-blue-600 via-blue-500 to-blue-400 text-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-4"><a href="/computer-repair" className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-sm font-medium transition-colors"><ArrowLeft size={15} /> {t('电脑品牌', 'Computer Brands')}</a></div>
-                  <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14">
-          <h1 className="text-3xl sm:text-5xl font-bold mb-3">{t('Dell 维修', 'Dell Repair')}</h1>
-          <p className="text-green-100 text-lg mb-4">{t('Dell 全系列专业维修 | 威海', 'Dell All Series | Weihai')}</p>
-          <p className="text-green-100 max-w-2xl">{t('Dell Find、Reno、A系列——屏幕碎了、电池不耐用了、充电口坏了，拿来给我看看。2007年至今奋斗在维修一线。', 'Dell Find, Reno, A series — cracked screen, battery drain, charging port issues. On the job since 2007.')}</p>
-          <div className="flex gap-3 mt-6">
-            <button onClick={() => setShowContact(true)} className="bg-white text-blue-600 font-semibold px-5 py-2.5 rounded-xl hover:bg-blue-50 shadow-lg">{t('📱 微信咨询', '📱 WeChat')}</button>
-            <a href="https://wa.me/6596146709?text=Dell手机需要维修" target="_blank" className="bg-green-500 text-white font-semibold px-5 py-2.5 rounded-xl hover:bg-green-600 shadow-lg">{t('💬 WhatsApp', '💬 WhatsApp')}</a>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
+          <div className="max-w-3xl">
+            <h1 className="text-3xl sm:text-5xl font-bold mb-4">{t('Dell 维修', 'Dell Repair')}</h1>
+            <p className="text-xl text-blue-200 mb-4">{t('Dell XPS/Inspiron/Alienware 全系列专业维修 | 威海', 'Dell XPS/Inspiron/Alienware All Series | Weihai')}</p>
+            <p className="text-blue-100 leading-relaxed">
+              {t('Dell XPS轻薄旗舰、Inspiron家用全能、Alienware顶级游戏本、Latitude商用本——屏幕碎了、电池鼓包了、游戏本发热降频了，拿来给我看看。Dell笔记本芯片级维修，比官方便宜。2007年至今奋斗在维修一线。', 'Dell XPS flagship ultrabooks, Inspiron all-rounders, Alienware gaming beasts, Latitude business laptops — cracked screen, swollen battery, gaming throttle, we fix it all. Dell component-level board repair, cheaper than official. On the job since 2007.')}
+            </p>
+            <div className="flex flex-wrap gap-3 mt-6">
+              <button onClick={() => setShowContact(true)} className="bg-white text-blue-600 font-semibold px-6 py-3 rounded-xl hover:bg-blue-50 transition-colors shadow-lg">{t('📱 微信咨询', '📱 WeChat')}</button>
+              <a href="https://wa.me/6596146709?text=我的Dell电脑需要维修" target="_blank" className="bg-green-500 text-white font-semibold px-6 py-3 rounded-xl hover:bg-green-600 transition-colors shadow-lg">{t('💬 WhatsApp咨询', '💬 WhatsApp')}</a>
+            </div>
           </div>
         </div>
       </section>
-      <section className="py-14">
+      {/* 服务列表 */}
+      <section className="py-16 sm:py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">{t('常见维修', 'Common Repairs')}</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {[{id:'screen-replacement', title:'屏幕更换', titleEn:'Screen Replacement', desc:'屏幕碎裂、漏液、花屏。原装品质屏幕更换。'},
-              {id:'battery-replacement', title:'电池更换', titleEn:'Battery Replacement', desc:'电池鼓包、不耐用、充不进电。原装规格电池。'},
-              {id:'keyboard-repair', title:'键盘维修', titleEn:'Keyboard Repair', desc:'按键不灵、键盘进水、个别键失灵。'},
-              {id:'cleaning', title:'清灰换硅脂', titleEn:'Cleaning & Cooling', desc:'深度拆机清灰+换导热硅脂。游戏本必做。'},
-              {id:'os-upgrade', title:'系统重装/升级', titleEn:'OS/Upgrade', desc:'Windows重装、加装固态、内存升级、数据备份。'},
-              {id:'other-issues', title:'其他故障', titleEn:'Other Issues', desc:'其他问题免费检测，加微信咨询。'}].map((s,i) => (
-              <a key={i} href={`/dell-repair/${s.id}`} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 hover:shadow-md hover:-translate-y-0.5 transition-all block">
-                <h3 className="font-bold text-gray-900 mb-1">{lang==='zh'?s.title:s.titleEn}</h3>
-                <p className="text-sm text-gray-500">{lang==='zh'?s.desc:s.desc}</p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 text-center">{t('Dell 维修服务', 'Dell Repair Services')}</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((s, i) => (
+              <a key={i} href={'/dell-repair/' + s.id} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 hover:shadow-md transition-all block">
+                <div className="text-blue-600 mb-3">{s.icon}</div>
+                <h3 className="font-bold text-gray-900 mb-2">{s.title}</h3>
+                <p className="text-sm text-gray-500 leading-relaxed">{s.desc}</p>
               </a>
             ))}
           </div>
-          <div className="mt-8 text-center">
-            <button onClick={() => setShowContact(true)} className="bg-blue-600 text-white font-semibold px-8 py-3 rounded-xl hover:bg-blue-700 shadow-md">{t('📱 联系维修', '📱 Contact for Repair')}</button>
+        </div>
+      </section>
+      {/* 型号支持 */}
+      <section className="py-12 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">{t('支持型号', 'Supported Models')}</h2>
+          <div className="max-w-xl mx-auto bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
+            <div className="grid grid-cols-2 gap-3">
+              {models.map((m, i) => (
+                <div key={i} className="flex items-center gap-2 text-sm">
+                  <span className="text-blue-500">▸</span>
+                  <span className="text-gray-700">{m}</span>
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-gray-400 mt-4 text-center">{t('没找到你的型号？加微信问我', 'Model not listed? DM me on WeChat')}</p>
+          </div>
+        </div>
+      </section>
+      {/* 常见问题 */}
+      <section className="py-16 sm:py-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 text-center">{t('常见问题', 'FAQ')}</h2>
+          <div className="space-y-4">
+            {[
+              { q: t('Dell外星人维修贵吗？', 'Alienware repair expensive?'), a: t('外星人本子配件确实贵一些，但比戴尔官方便宜很多。清灰换硅脂¥80起，换屏¥300起。具体加微信报价。', 'Alienware parts cost more, but still way cheaper than Dell official. Cleaning from ¥80, screen from ¥300. DM for quote.') },
+              { q: t('Dell XPS屏幕摄像头位置有条线怎么办？', 'Dell XPS line at camera notch?'), a: t('XPS 16/15的InfinityEdge屏幕确实有个通病——排线问题导致的竖线。可以修复排线不用换整个屏幕，¥150起。', 'XPS 16/15 InfinityEdge screens have a known flex cable issue causing lines. We can repair the flex, no need to replace the whole screen. From ¥150.') },
+              { q: t('游戏本清灰换硅脂有效果吗？', 'Does cleaning gaming laptop help?'), a: t('非常有效。Dell G系列/Alienware用久了风扇会积很多灰，散热效率下降30%以上。清灰换硅脂后温度可以降10-20°C。', 'Very effective. Dell G series/Alienware fans clog with dust over time, reducing cooling by 30%+. After cleaning, temps drop 10-20°C.') },
+            ].map((faq, i) => (
+              <details key={i} className="group bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+                <summary className="flex items-center justify-between p-4 sm:p-5 cursor-pointer list-none">
+                  <span className="font-medium text-gray-900 text-sm sm:text-base">{faq.q}</span>
+                  <ChevronDown size={18} className="text-gray-400 group-open:rotate-180 transition-transform" />
+                </summary>
+                <div className="px-4 sm:px-5 pb-4 sm:pb-5"><p className="text-gray-500 text-sm leading-relaxed">{faq.a}</p></div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+      {/* CTA */}
+      <section className="py-16 bg-gradient-to-br from-blue-600 via-blue-500 to-blue-400 text-white text-center">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4">{t('Dell 出问题了？找我', 'Dell issues? Contact me')}</h2>
+          <p className="text-blue-200 mb-8">{t('免费检测，先报价后维修。', 'Free diagnosis, quote first.')}</p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <button onClick={() => setShowContact(true)} className="bg-white text-blue-600 font-semibold px-8 py-4 rounded-xl hover:bg-blue-50 transition-colors shadow-lg text-lg">{t('📱 微信咨询', '📱 WeChat')}</button>
+            <a href="https://wa.me/6596146709?text=我的Dell电脑需要维修" target="_blank" className="bg-green-500 text-white font-semibold px-8 py-4 rounded-xl hover:bg-green-600 transition-colors shadow-lg text-lg">{t('💬 WhatsApp咨询', '💬 WhatsApp')}</a>
           </div>
         </div>
       </section>

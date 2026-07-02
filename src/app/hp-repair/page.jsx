@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react'
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeft, Monitor, Battery, Cpu, ChevronDown } from 'lucide-react'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import ContactModal from '../../components/ContactModal'
@@ -9,39 +9,102 @@ export default function HPRepair() {
   const [showContact, setShowContact] = useState(false)
   const [lang, setLang] = useState('zh')
   const t = (zh, en) => lang === 'zh' ? zh : en
+
+  const services = [
+    { id: 'screen-replacement', icon: <Monitor size={28} />, title: t('屏幕更换', 'Screen Replacement'), desc: t('HP Spectre/Envy/Pavilion 屏幕碎裂、漏液、花屏。原装品质LCD/OLED。含安装调试。', 'HP Spectre/Envy/Pavilion cracked screen, leaking, flickering. OEM quality LCD/OLED, fully tested.') },
+    { id: 'battery-replacement', icon: <Battery size={28} />, title: t('电池更换', 'Battery Replacement'), desc: t('HP电池鼓包、不耐用、不充电。原装规格电池。Spectre/Envy/Pavilion/暗影精灵全系。', 'HP battery swelling, short life, not charging. OEM spec. Spectre/Envy/Pavilion/OMEN all series.') },
+    { id: 'keyboard-repair', icon: <Monitor size={28} />, title: t('键盘维修', 'Keyboard Repair'), desc: t('HP笔记本按键不灵、进水粘连、个别键失灵。含背光键盘更换。', 'HP laptop sticky keys, water damage, individual key failure. Backlit keyboard replacement.') },
+    { id: 'motherboard-repair', icon: <Cpu size={28} />, title: t('主板/芯片级维修', 'Motherboard Repair'), desc: t('不开机、死机、充电芯片故障、进液腐蚀。芯片级维修，比换主板便宜得多。暗影精灵游戏本主板维修。', 'No power, crashes, charging IC fault, liquid damage. Component-level repair. OMEN gaming laptop board repair.') },
+    { id: 'cleaning', icon: <Cpu size={28} />, title: t('清灰换硅脂', 'Cleaning & Cooling'), desc: t('风扇异响、发热降频。HP笔记本深度拆机清灰+换导热硅脂，有效降温。', 'Fan noise, overheating, throttling. HP laptop deep clean + thermal paste. Effective cooling improvement.') },
+    { id: 'os-upgrade', icon: <Monitor size={28} />, title: t('系统/升级', 'OS & Upgrade'), desc: t('Windows重装、加装M.2固态、内存升级。帮您选最划算的升级方案。', 'Windows reinstall, M.2 SSD install, RAM upgrade. Best upgrade plan.') },
+  ]
+
+  const models = [
+    t('Spectre x360 16 / x360 14 / Folio', 'Spectre x360 16 / x360 14 / Folio'),
+    t('Envy 16 / Envy 15 / Envy x360 15', 'Envy 16 / Envy 15 / Envy x360 15'),
+    t('Pavilion Plus 16 / 15 / Aero 13', 'Pavilion Plus 16 / 15 / Aero 13'),
+    t('暗影精灵 OMEN 17 / 16 / Transcend', 'OMEN 17 / 16 / Transcend'),
+    t('EliteBook 800/1000 商用系列', 'EliteBook 800/1000 business series'),
+    t('ProBook / ZBook 工作站', 'ProBook / ZBook workstation'),
+    t('HP台式机 / 一体机', 'HP desktop / all-in-one'),
+  ]
+
   return (
     <div className="min-h-screen bg-white">
       <Navbar lang={lang} setLang={setLang} setShowContact={setShowContact} />
       <section className="bg-gradient-to-br from-teal-700 via-teal-600 to-teal-500 text-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-4"><a href="/computer-repair" className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-sm font-medium transition-colors"><ArrowLeft size={15} /> {t('电脑品牌', 'Computer Brands')}</a></div>
-                  <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14">
-          <h1 className="text-3xl sm:text-5xl font-bold mb-3">{t('HP 维修', 'HP Repair')}</h1>
-          <p className="text-green-100 text-lg mb-4">{t('HP 全系列专业维修 | 威海', 'HP All Series | Weihai')}</p>
-          <p className="text-green-100 max-w-2xl">{t('HP Find、Reno、A系列——屏幕碎了、电池不耐用了、充电口坏了，拿来给我看看。2007年至今奋斗在维修一线。', 'HP Find, Reno, A series — cracked screen, battery drain, charging port issues. On the job since 2007.')}</p>
-          <div className="flex gap-3 mt-6">
-            <button onClick={() => setShowContact(true)} className="bg-white text-teal-600 font-semibold px-5 py-2.5 rounded-xl hover:bg-teal-50 shadow-lg">{t('📱 微信咨询', '📱 WeChat')}</button>
-            <a href="https://wa.me/6596146709?text=HP手机需要维修" target="_blank" className="bg-green-500 text-white font-semibold px-5 py-2.5 rounded-xl hover:bg-green-600 shadow-lg">{t('💬 WhatsApp', '💬 WhatsApp')}</a>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
+          <div className="max-w-3xl">
+            <h1 className="text-3xl sm:text-5xl font-bold mb-4">{t('HP 维修', 'HP Repair')}</h1>
+            <p className="text-xl text-teal-200 mb-4">{t('HP Spectre/Envy/暗影精灵 全系列专业维修 | 威海', 'HP Spectre/Envy/OMEN All Series | Weihai')}</p>
+            <p className="text-teal-100 leading-relaxed">
+              {t('HP Spectre 360高端翻转本、Envy创意本、暗影精灵游戏本、Pavilion家用系列——屏幕碎了、电池鼓包了、进液开不了机了，拿来给我看看。HP笔记本芯片级维修，比惠普官方便宜。2007年至今奋斗在维修一线。', 'HP Spectre high-end convertibles, Envy creator laptops, OMEN gaming, Pavilion home series — cracked screen, swollen battery, liquid damage, we fix it all. HP component-level board repair. On the job since 2007.')}
+            </p>
+            <div className="flex flex-wrap gap-3 mt-6">
+              <button onClick={() => setShowContact(true)} className="bg-white text-teal-600 font-semibold px-6 py-3 rounded-xl hover:bg-teal-50 transition-colors shadow-lg">{t('📱 微信咨询', '📱 WeChat')}</button>
+              <a href="https://wa.me/6596146709?text=我的HP电脑需要维修" target="_blank" className="bg-green-500 text-white font-semibold px-6 py-3 rounded-xl hover:bg-green-600 transition-colors shadow-lg">{t('💬 WhatsApp咨询', '💬 WhatsApp')}</a>
+            </div>
           </div>
         </div>
       </section>
-      <section className="py-14">
+      <section className="py-16 sm:py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">{t('常见维修', 'Common Repairs')}</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {[{id:'screen-replacement', title:'屏幕更换', titleEn:'Screen Replacement', desc:'屏幕碎裂、漏液、花屏。原装品质屏幕更换。'},
-              {id:'battery-replacement', title:'电池更换', titleEn:'Battery Replacement', desc:'电池鼓包、不耐用、充不进电。原装规格电池。'},
-              {id:'keyboard-repair', title:'键盘维修', titleEn:'Keyboard Repair', desc:'按键不灵、键盘进水、个别键失灵。'},
-              {id:'cleaning', title:'清灰换硅脂', titleEn:'Cleaning & Cooling', desc:'深度拆机清灰+换导热硅脂。游戏本必做。'},
-              {id:'os-upgrade', title:'系统重装/升级', titleEn:'OS/Upgrade', desc:'Windows重装、加装固态、内存升级、数据备份。'},
-              {id:'other-issues', title:'其他故障', titleEn:'Other Issues', desc:'其他问题免费检测，加微信咨询。'}].map((s,i) => (
-              <a key={i} href={`/hp-repair/${s.id}`} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 hover:shadow-md hover:-translate-y-0.5 transition-all block">
-                <h3 className="font-bold text-gray-900 mb-1">{lang==='zh'?s.title:s.titleEn}</h3>
-                <p className="text-sm text-gray-500">{lang==='zh'?s.desc:s.desc}</p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 text-center">{t('HP 维修服务', 'HP Repair Services')}</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((s, i) => (
+              <a key={i} href={'/hp-repair/' + s.id} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 hover:shadow-md transition-all block">
+                <div className="text-teal-600 mb-3">{s.icon}</div>
+                <h3 className="font-bold text-gray-900 mb-2">{s.title}</h3>
+                <p className="text-sm text-gray-500 leading-relaxed">{s.desc}</p>
               </a>
             ))}
           </div>
-          <div className="mt-8 text-center">
-            <button onClick={() => setShowContact(true)} className="bg-blue-600 text-white font-semibold px-8 py-3 rounded-xl hover:bg-blue-700 shadow-md">{t('📱 联系维修', '📱 Contact for Repair')}</button>
+        </div>
+      </section>
+      <section className="py-12 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">{t('支持型号', 'Supported Models')}</h2>
+          <div className="max-w-xl mx-auto bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
+            <div className="grid grid-cols-2 gap-3">
+              {models.map((m, i) => (
+                <div key={i} className="flex items-center gap-2 text-sm">
+                  <span className="text-teal-500">▸</span>
+                  <span className="text-gray-700">{m}</span>
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-gray-400 mt-4 text-center">{t('没找到你的型号？加微信问我', 'Model not listed? DM me on WeChat')}</p>
+          </div>
+        </div>
+      </section>
+      <section className="py-16 sm:py-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 text-center">{t('常见问题', 'FAQ')}</h2>
+          <div className="space-y-4">
+            {[
+              { q: t('暗影精灵清灰多少钱？', 'HP OMEN cleaning cost?'), a: t('暗影精灵/光影精灵清灰换硅脂¥80起。游戏本建议每6-12个月清一次，有效延长寿命。', 'OMEN/Victus cleaning + thermal paste from ¥80. Gaming laptops should be cleaned every 6-12 months.') },
+              { q: t('HP Spectre x360屏幕能修吗？', 'HP Spectre x360 screen repair?'), a: t('能修。Spectre系列的4K OLED屏比较贵，但我们能做。Spectre x360 14/16换屏¥350起。', 'Yes. Spectre 4K OLED screens are expensive but we can handle them. x360 14/16 screen from ¥350.') },
+              { q: t('HP笔记本电池鼓包能继续用吗？', 'HP laptop swollen battery still usable?'), a: t('不能！电池鼓包有起火爆炸风险。尽快送过来换掉，换之前尽量减少使用。', 'No! Swollen batteries risk fire/explosion. Bring it in ASAP for replacement. Minimize usage.') },
+            ].map((faq, i) => (
+              <details key={i} className="group bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+                <summary className="flex items-center justify-between p-4 sm:p-5 cursor-pointer list-none">
+                  <span className="font-medium text-gray-900 text-sm sm:text-base">{faq.q}</span>
+                  <ChevronDown size={18} className="text-gray-400 group-open:rotate-180 transition-transform" />
+                </summary>
+                <div className="px-4 sm:px-5 pb-4 sm:pb-5"><p className="text-gray-500 text-sm leading-relaxed">{faq.a}</p></div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="py-16 bg-gradient-to-br from-teal-700 via-teal-600 to-teal-500 text-white text-center">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4">{t('HP 出问题了？找我', 'HP issues? Contact me')}</h2>
+          <p className="text-teal-200 mb-8">{t('免费检测，先报价后维修。', 'Free diagnosis, quote first.')}</p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <button onClick={() => setShowContact(true)} className="bg-white text-teal-600 font-semibold px-8 py-4 rounded-xl hover:bg-teal-50 transition-colors shadow-lg text-lg">{t('📱 微信咨询', '📱 WeChat')}</button>
+            <a href="https://wa.me/6596146709?text=我的HP电脑需要维修" target="_blank" className="bg-green-500 text-white font-semibold px-8 py-4 rounded-xl hover:bg-green-600 transition-colors shadow-lg text-lg">{t('💬 WhatsApp咨询', '💬 WhatsApp')}</a>
           </div>
         </div>
       </section>

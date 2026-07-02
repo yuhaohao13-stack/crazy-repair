@@ -16,7 +16,7 @@ export default function HuaweiRepair() {
     { id: 'motherboard-repair', title: t('主板维修', 'Motherboard'), desc: t('华为不开机、重启、充电IC、无服务、WiFi打不开。芯片级维修。', 'Huawei no power, boot loop, IC fault. Component-level board repair.') },
     { id: 'water-damage', title: t('进水维修', 'Water Damage'), desc: t('华为IP68防水机型也会进水。超声波清洗+主板烘干+腐蚀修复。', 'Huawei IP68 phones can still get wet. Ultrasonic clean + dry + corrosion fix.') },
     { id: 'back-glass', title: t('后盖/边框', 'Back Glass/Frame'), desc: t('华为玻璃后盖碎裂、中框变形。P系列/Mate系列后盖更换。', 'Huawei glass back broken, frame bent. P/Mate series back glass replacement.') },
-    { id: 'flash-unlock', title: t('刷机/解锁', 'Flash/Unlock'), desc: t('鸿蒙/HarmonyOS刷机、降级、解屏幕锁、救砖。', 'HarmonyOS flash, downgrade, screen unlock, unbrick.') },
+    { id: 'flash-unlock', title: t('刷机/解锁', 'Flash/Unlock'), desc: t('鸿蒙/HarmonyOS刷机、降级回Android、解屏幕锁、救砖、解华为账号锁。Pura/Mate/nova全系列。', 'HarmonyOS flash, downgrade to Android, screen unlock, unbrick, Huawei account unlock. Pura/Mate/nova full series.') },
   ]
 
   return (
@@ -29,7 +29,7 @@ export default function HuaweiRepair() {
             <h1 className="text-3xl sm:text-5xl font-bold mb-4">{t('Huawei 维修', 'Huawei Repair')}</h1>
             <p className="text-xl text-red-100 mb-4">{t('华为 Mate/P/Nova 全系列专业维修 | 威海', 'Huawei Mate/P/Nova All Series | Weihai')}</p>
             <p className="text-red-100 leading-relaxed">
-              {t('华为、荣耀手机维修。屏幕坏了、电池不耐用了、进水了、刷机卡LOGO了——都能搞定。2007年至今奋斗在维修一线，经验丰富。', 'Huawei & Honor phone repair. Cracked screen, battery drain, water damage, boot loop — we handle it all. On the job since 2007.')}
+              {t('华为Pura 80/Mate 70/nova 14 全系列维修。屏幕坏了、电池不耐用了、进水了、鸿蒙刷机卡LOGO了——都能搞定。擅长华为主板芯片级维修。2007年至今奋斗在维修一线。', 'Huawei Pura 80/Mate 70/nova 14 all series repair. Cracked screen, battery drain, water damage, HarmonyOS boot loop — we handle it all. Specialized in Huawei component-level board repair. On the job since 2007.')}
             </p>
             <div className="flex flex-wrap gap-3 mt-6">
               <button onClick={() => setShowContact(true)} className="bg-white text-red-600 font-semibold px-6 py-3 rounded-xl hover:bg-red-50 transition-colors shadow-lg">{t('📱 微信咨询', '📱 WeChat')}</button>
@@ -51,6 +51,33 @@ export default function HuaweiRepair() {
                 <p className="text-sm text-gray-500 leading-relaxed">{s.desc}</p>
               </a>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 型号支持 */}
+      <section className="py-12 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">{t('支持型号', 'Supported Models')}</h2>
+          <div className="max-w-xl mx-auto bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
+            <div className="grid grid-cols-2 gap-3">
+              {[
+                t('Pura 80 Ultra / Pro / 80', 'Pura 80 Ultra / Pro / 80'),
+                t('Mate 70 Pro+ / Pro / 70 / XT', 'Mate 70 Pro+ / Pro / 70 / XT'),
+                t('Pura 70 Ultra / Pro / 70', 'Pura 70 Ultra / Pro / 70'),
+                t('nova 14 Ultra / Pro / 14', 'nova 14 Ultra / Pro / 14'),
+                t('Mate 60 Pro+ / Pro / 60 / X5 (折叠)', 'Mate 60 Pro+ / Pro / 60 / X5 (foldable)'),
+                t('P60 Pro / P60 / P50 Pro / P50', 'P60 Pro / P60 / P50 Pro / P50'),
+                t('nova 13 / 12 / 11 / 12 Ultra', 'nova 13 / 12 / 11 / 12 Ultra'),
+                t('MatePad Pro / Air / SE 全系', 'MatePad Pro / Air / SE series'),
+              ].map((m, i) => (
+                <div key={i} className="flex items-center gap-2 text-sm">
+                  <span className="text-red-500">▸</span>
+                  <span className="text-gray-700">{m}</span>
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-gray-400 mt-4 text-center">{t('没找到你的型号？加微信问我', 'Model not listed? DM me on WeChat')}</p>
           </div>
         </div>
       </section>
