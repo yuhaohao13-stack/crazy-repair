@@ -57,18 +57,12 @@ export default function OPPORepair() {
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 text-center">{t('OPPO 维修服务', 'OPPO Repair Services')}</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((s, i) => (
-              <a key={i} href={'/oppo-repair/' + s.id} className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-md transition-all group block">
-                <div className="relative w-full aspect-[16/9] bg-gray-100 overflow-hidden">
-                  <img src={'/images/services/oppo-repair-' + s.id + '.svg'} alt={s.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+              <a key={i} href={'/oppo-repair/' + s.id} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 hover:shadow-md transition-all block">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 rounded-xl bg-green-50 flex items-center justify-center text-green-600 text-lg shrink-0">{s.icon}</div>
+                  <h3 className="font-bold text-gray-900 text-lg">{s.title}</h3>
                 </div>
-                <div className="p-5">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="w-10 h-10 rounded-xl bg-green-50 flex items-center justify-center text-green-600 text-lg shrink-0">{s.icon}</div>
-                    <h3 className="font-bold text-gray-900 text-lg">{s.title}</h3>
-                  </div>
-                  <p className="text-sm text-gray-500 leading-relaxed">{s.desc}</p>
-                  <div className="mt-3 text-green-600 text-xs font-medium flex items-center gap-1">{t('查看详情 →', 'View Details →')}</div>
-                </div>
+                <p className="text-sm text-gray-500 leading-relaxed">{s.desc}</p>
               </a>
             ))}
           </div>
