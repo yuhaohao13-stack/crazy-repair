@@ -118,4 +118,3 @@ export default function XiaomiRepair() {
       <ContactModal show={showContact} setShow={setShowContact} lang={lang} />
     </div>
   )
-}

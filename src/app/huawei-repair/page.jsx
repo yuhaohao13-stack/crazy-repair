@@ -118,4 +118,3 @@ export default function HuaweiRepair() {
       <ContactModal show={showContact} setShow={setShowContact} lang={lang} />
     </div>
   )
-}
