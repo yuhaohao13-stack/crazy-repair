@@ -71,7 +71,7 @@ export default function ServiceDetail() {
   const brand = repairServices[info.key]
   const service = brand?.services.find(s => s.id === serviceId)
 
-  // 获取该品牌的兼容型号列表
+  // 获取该品牌的支持机型列表
   const filterInfo = brandDirModelFilter[brandDir]
   const brandModels = useMemo(() => {
     if (!filterInfo) return []
@@ -153,7 +153,7 @@ export default function ServiceDetail() {
                 onClick={() => setShowModels(!showModels)}
               >
                 <h2 className="text-xl sm:text-2xl font-bold text-gray-900">
-                  {t('兼容型号 (' + brandModels.length + '款)', 'Compatible Models (' + brandModels.length + ')')}
+                  {t('支持机型 (' + brandModels.length + '款)', 'Compatible Models (' + brandModels.length + ')')}
                 </h2>
                 <ChevronDown
                   size={20}
