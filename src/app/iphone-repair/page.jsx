@@ -4,7 +4,6 @@ import { ArrowLeft, Smartphone, Battery, Droplets, Cpu, Camera, ChevronDown } fr
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import ContactModal from '../../components/ContactModal'
-import Image from 'next/image'
 
 export default function IphoneRepair() {
   const [showContact, setShowContact] = useState(false)
@@ -12,12 +11,12 @@ export default function IphoneRepair() {
   const t = (zh, en) => lang === 'zh' ? zh : en
   
   const services = [
-    {id:'screen-replacement', title:'屏幕更换', titleEn:'Screen Replacement', img:'/images/iphone-repair-1.jpg', desc:'iPhone 16/15/14/13/12/11/X系列全兼容。OLED原装屏/LCD高性价比屏可选。含专业密封胶恢复防水性。30分钟快修。', descEn:'iPhone 16/15/14/13/12/11/X series. OEM OLED or LCD options. Waterproof sealant restored. 30min.'},
-    {id:'battery-replacement', title:'电池更换', titleEn:'Battery Replacement', img:'/images/iphone-repair-2.jpg', desc:'原装规格电池，容量达标不虚标。iPhone 6到16全系列电池现货。更换后检测健康度。告别一天三充。', descEn:'OEM spec batteries. iPhone 6 through 16 in stock. Health check after swap.'},
-    {id:'water-damage', title:'进水维修', titleEn:'Water Damage', img:'/images/iphone-repair-3.jpg', desc:'超声波清洗+主板烘干+腐蚀修复。进水越早送来越好，切勿插电充电！丰富的iPhone进水处理经验。', descEn:'Ultrasonic cleaning + board dry + corrosion repair. Bring ASAP, do NOT charge! Extensive water damage experience.'},
-    {id:'motherboard-repair', title:'主板维修', titleEn:'Motherboard Repair', img:'/images/iphone-repair-4.jpg', desc:'不开机、重启循环、无服务、WiFi蓝牙打不开、面容不可用。芯片级维修，CPU重焊、基带修复、硬盘扩容。', descEn:'No power, boot loop, no service, WiFi/BT dead, Face ID gone. Component-level repair.'},
-    {id:'camera-repair', title:'摄像头维修', titleEn:'Camera Repair', img:'/images/iphone-repair-5.jpg', desc:'拍照模糊、闪退、黑屏、对焦失灵。前后摄像头更换。iPhone 15/14/13/12/11/X全系。', descEn:'Blurry photos, app crash, black screen, autofocus fail. Front & back camera replacement.'},
-    {id:'face-id', title:'面容/指纹修复', titleEn:'Face ID/Touch ID', img:'/images/iphone-repair-6.jpg', desc:'面容ID点阵修复、前置摄像头排线。换屏后面容不能用也可修复。iPhone X及以上面容，SE/8及以下指纹。', descEn:'Face ID dot matrix repair. Works after screen swap. iPhone X+, SE/8 and below.'}
+    {id:'screen-replacement', title:'屏幕更换', titleEn:'Screen Replacement', desc:'iPhone 16/15/14/13/12/11/X系列全兼容。OLED原装屏/LCD高性价比屏可选。含专业密封胶恢复防水性。30分钟快修。', descEn:'iPhone 16/15/14/13/12/11/X series. OEM OLED or LCD options. Waterproof sealant restored. 30min.'},
+    {id:'battery-replacement', title:'电池更换', titleEn:'Battery Replacement', desc:'原装规格电池，容量达标不虚标。iPhone 6到16全系列电池现货。更换后检测健康度。告别一天三充。', descEn:'OEM spec batteries. iPhone 6 through 16 in stock. Health check after swap.'},
+    {id:'water-damage', title:'进水维修', titleEn:'Water Damage', desc:'超声波清洗+主板烘干+腐蚀修复。进水越早送来越好，切勿插电充电！丰富的iPhone进水处理经验。', descEn:'Ultrasonic cleaning + board dry + corrosion repair. Bring ASAP, do NOT charge! Extensive water damage experience.'},
+    {id:'motherboard-repair', title:'主板维修', titleEn:'Motherboard Repair', desc:'不开机、重启循环、无服务、WiFi蓝牙打不开、面容不可用。芯片级维修，CPU重焊、基带修复、硬盘扩容。', descEn:'No power, boot loop, no service, WiFi/BT dead, Face ID gone. Component-level repair.'},
+    {id:'camera-repair', title:'摄像头维修', titleEn:'Camera Repair', desc:'拍照模糊、闪退、黑屏、对焦失灵。前后摄像头更换。iPhone 15/14/13/12/11/X全系。', descEn:'Blurry photos, app crash, black screen, autofocus fail. Front & back camera replacement.'},
+    {id:'face-id', title:'面容/指纹修复', titleEn:'Face ID/Touch ID', desc:'面容ID点阵修复、前置摄像头排线。换屏后面容不能用也可修复。iPhone X及以上面容，SE/8及以下指纹。', descEn:'Face ID dot matrix repair. Works after screen swap. iPhone X+, SE/8 and below.'}
   ]
   
   const models = [
@@ -52,7 +51,7 @@ export default function IphoneRepair() {
               <button onClick={() => setShowContact(true)} className="bg-white text-blue-600 font-semibold px-6 py-3 rounded-xl hover:bg-blue-50 transition-colors shadow-lg">
                 {t('📱 微信咨询维修', '📱 WeChat for Repair')}
               </button>
-              <a href="https://wa.me/6596146709?text=我的iPhone Repair需要维修" target="_blank" className="bg-green-500 text-white font-semibold px-6 py-3 rounded-xl hover:bg-green-600 transition-colors shadow-lg">
+              <a href="https://wa.me/6596146709?text=我的iPhone需要维修" target="_blank" className="bg-green-500 text-white font-semibold px-6 py-3 rounded-xl hover:bg-green-600 transition-colors shadow-lg">
                 {t('💬 WhatsApp咨询', '💬 WhatsApp')}
               </a>
             </div>
@@ -65,16 +64,18 @@ export default function IphoneRepair() {
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 text-center">{t('维修服务', 'Repair Services')}</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((s, i) => (
-              <div key={i} className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-md transition-all group">
-                <div className="relative h-48 bg-gray-100">
-                  <Image src={s.img} alt={t(s.title, s.titleEn)} fill className="object-cover group-hover:scale-105 transition-transform duration-300" sizes="(max-width:768px)100vw,33vw" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-                  <div className="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1.5 text-blue-600 font-bold text-sm">{t(s.title, s.titleEn)}</div>
-                </div>
-                <div className="p-5">
+              <a key={i} href={'/iphone-repair/' + s.id} className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-md transition-all group block">
+                <div className="p-6">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 text-lg shrink-0">
+                      {['🔧','🔋','💧','🔬','📷','👤'][i] || '🔧'}
+                    </div>
+                    <h3 className="font-bold text-gray-900 text-lg">{t(s.title, s.titleEn)}</h3>
+                  </div>
                   <p className="text-sm text-gray-500 leading-relaxed">{t(s.desc, s.descEn)}</p>
+                  <div className="mt-4 text-blue-600 text-xs font-medium flex items-center gap-1">{t('查看详情 →', 'View Details →')}</div>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
