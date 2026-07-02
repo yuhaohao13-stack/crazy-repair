@@ -82,6 +82,19 @@ export default function ServiceDetail() {
         </div>
       </section>
 
+      {/* 品牌服务对应配图 */}
+      <section className="pt-8 pb-2">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] rounded-2xl overflow-hidden bg-gray-900 shadow-lg">
+            <img
+              src={'/images/services/' + brandDir + '-' + serviceId + '.svg'}
+              alt={lang === 'zh' ? (brand.brand + ' ' + service.title) : (brand.brand + ' ' + service.titleEn)}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+      </section>
+
       <section className="py-10 sm:py-14">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
 
