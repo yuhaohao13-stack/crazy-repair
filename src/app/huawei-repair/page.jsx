@@ -23,7 +23,7 @@ export default function HuaweiRepair() {
     <div className="min-h-screen bg-white">
       <Navbar lang={lang} setLang={setLang} setShowContact={setShowContact} />
       <section className="bg-gradient-to-br from-red-600 via-red-500 to-red-400 text-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-4"><a href="/phone-repair" className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-sm font-medium transition-colors"><ArrowLeft size={15} /> {t('手机品牌', 'Phone Brands')}</a></div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-4 flex items-center gap-2 text-sm"><a href="/" className="text-white/60 hover:text-white transition-colors">{t("首页", "Home")}</a><span className="text-white/30">/</span><a href="/phone-repair" className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-sm font-medium transition-colors"><ArrowLeft size={15} /> {t('手机品牌', 'Phone Brands')}</a></div>
                   <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
           <div className="max-w-3xl">
             <h1 className="text-3xl sm:text-5xl font-bold mb-4">{t('Huawei 维修', 'Huawei Repair')}</h1>

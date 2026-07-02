@@ -36,7 +36,9 @@ export default function SamsungRepair() {
     <div className="min-h-screen bg-white">
       <Navbar lang={lang} setLang={setLang} setShowContact={setShowContact} />
       <section className="bg-gradient-to-br from-purple-700 via-purple-600 to-purple-500 text-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-4">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-4 flex items-center gap-2 text-sm">
+          <a href="/" className="text-white/60 hover:text-white transition-colors">{t("首页", "Home")}</a>
+          <span className="text-white/30">/</span>
           <a href="/phone-repair" className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-sm font-medium transition-colors">
             <ArrowLeft size={15} /> {t('手机品牌', 'Phone Brands')}
           </a>

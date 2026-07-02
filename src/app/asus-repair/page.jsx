@@ -13,7 +13,7 @@ export default function ASUSRepair() {
     <div className="min-h-screen bg-white">
       <Navbar lang={lang} setLang={setLang} setShowContact={setShowContact} />
       <section className="bg-gradient-to-br from-cyan-700 via-cyan-600 to-cyan-500 text-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-4"><a href="/computer-repair" className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-sm font-medium transition-colors"><ArrowLeft size={15} /> {t('电脑品牌', 'Computer Brands')}</a></div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-4 flex items-center gap-2 text-sm"><a href="/" className="text-white/60 hover:text-white transition-colors">{t("首页", "Home")}</a><span className="text-white/30">/</span><a href="/computer-repair" className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-sm font-medium transition-colors"><ArrowLeft size={15} /> {t('电脑品牌', 'Computer Brands')}</a></div>
                   <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14">
           <h1 className="text-3xl sm:text-5xl font-bold mb-3">{t('ASUS 维修', 'ASUS Repair')}</h1>
           <p className="text-green-100 text-lg mb-4">{t('ASUS 全系列专业维修 | 威海', 'ASUS All Series | Weihai')}</p>
