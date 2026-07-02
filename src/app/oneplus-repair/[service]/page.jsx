@@ -22,16 +22,11 @@ const brandConfig = {
   'msi-repair': { key: 'msi', label: '微星 维修', labelEn: 'MSI Repair', gradient: 'from-red-700 via-red-600 to-red-500' },
   'surface-repair': { key: 'surface', label: 'Surface 维修', labelEn: 'Surface Repair', gradient: 'from-gray-700 via-gray-600 to-gray-500' },
   'hasee-repair': { key: 'hasee', label: '神舟 维修', labelEn: 'Hasee Repair', gradient: 'from-indigo-700 via-indigo-600 to-indigo-500' },
-  'oppo-repair': { key: 'oppo', label: 'OPPO 维修', labelEn: 'OPPO Repair', gradient: 'from-green-600 via-green-500 to-green-400' },
-  'vivo-repair': { key: 'vivo', label: 'VIVO 维修', labelEn: 'VIVO Repair', gradient: 'from-cyan-700 via-cyan-600 to-cyan-500' },
-  'oneplus-repair': { key: 'oneplus', label: 'OnePlus 维修', labelEn: 'OnePlus Repair', gradient: 'from-red-700 via-red-600 to-red-500' },
-  'honor-repair': { key: 'honor', label: '荣耀 维修', labelEn: 'Honor Repair', gradient: 'from-teal-700 via-teal-600 to-teal-500' },
-  'google-repair': { key: 'google', label: 'Google Pixel 维修', labelEn: 'Google Pixel Repair', gradient: 'from-gray-700 via-gray-600 to-gray-500' },
-  'realme-repair': { key: 'realme', label: 'Realme 维修', labelEn: 'Realme Repair', gradient: 'from-yellow-600 via-amber-500 to-orange-500' },
 }
 export default function ServiceDetail() {
   const [showContact, setShowContact] = useState(false)
   const [lang, setLang] = useState('zh')
+  const [imgError, setImgError] = useState(false)
   const params = useParams()
   const pathname = usePathname()
   const t = (zh, en) => lang === 'zh' ? zh : en
@@ -92,6 +87,25 @@ export default function ServiceDetail() {
 
       <section className="py-10 sm:py-14">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          {/* 品牌+服务对应的维修图片 */}
+          <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] rounded-2xl overflow-hidden mb-8 shadow-md bg-gray-100">
+            {imgError ? (
+              <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-600 to-blue-800">
+                <div className="text-center text-white px-6">
+                  <div className="text-lg sm:text-2xl font-bold">{lang === 'zh' ? (brand.brand + ' ' + service.title) : (brand.brand + ' ' + service.titleEn)}</div>
+                  <div className="text-sm text-blue-200 mt-2">{t('Crazy维修 · 专业维修', 'Crazy Repair · Pro Service')}</div>
+                </div>
+              </div>
+            ) : (
+              <img
+                src={'/images/services/' + brandDir + '-' + serviceId + '.jpg'}
+                alt={lang === 'zh' ? (brand.brand + ' ' + service.title) : (brand.brand + ' ' + service.titleEn)}
+                className="w-full h-full object-cover"
+                onError={() => setImgError(true)}
+              />
+            )}
+          </div>
+
           <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-1">{t('服务详情', 'Details')}</h2>
           
           <div className="bg-gray-50 rounded-2xl p-5 sm:p-8 border border-gray-100">

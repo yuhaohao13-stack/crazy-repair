@@ -26,6 +26,7 @@ const brandConfig = {
 export default function ServiceDetail() {
   const [showContact, setShowContact] = useState(false)
   const [lang, setLang] = useState('zh')
+  const [imgError, setImgError] = useState(false)
   const params = useParams()
   const pathname = usePathname()
   const t = (zh, en) => lang === 'zh' ? zh : en
@@ -86,6 +87,25 @@ export default function ServiceDetail() {
 
       <section className="py-10 sm:py-14">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          {/* 品牌+服务对应的维修图片 */}
+          <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] rounded-2xl overflow-hidden mb-8 shadow-md bg-gray-100">
+            {imgError ? (
+              <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-600 to-blue-800">
+                <div className="text-center text-white px-6">
+                  <div className="text-lg sm:text-2xl font-bold">{lang === 'zh' ? (brand.brand + ' ' + service.title) : (brand.brand + ' ' + service.titleEn)}</div>
+                  <div className="text-sm text-blue-200 mt-2">{t('Crazy维修 · 专业维修', 'Crazy Repair · Pro Service')}</div>
+                </div>
+              </div>
+            ) : (
+              <img
+                src={'/images/services/' + brandDir + '-' + serviceId + '.jpg'}
+                alt={lang === 'zh' ? (brand.brand + ' ' + service.title) : (brand.brand + ' ' + service.titleEn)}
+                className="w-full h-full object-cover"
+                onError={() => setImgError(true)}
+              />
+            )}
+          </div>
+
           <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-1">{t('服务详情', 'Details')}</h2>
           
           <div className="bg-gray-50 rounded-2xl p-5 sm:p-8 border border-gray-100">
