@@ -11,12 +11,12 @@ export default function OPPORepair() {
   const t = (zh, en) => lang === 'zh' ? zh : en
 
   const services = [
-    { id: 'screen-replacement', title: t('屏幕更换', 'Screen Replacement'), desc: t('OPPO Find/Reno/A系列屏幕更换，OLED/LCD都有。碎裂漏液触摸不灵。含专业密封胶恢复防水性能。', 'OPPO Find/Reno/A series screen replacement. OLED & LCD. Cracked, leaking, unresponsive. Waterproof sealant restored.') },
-    { id: 'battery-replacement', title: t('电池更换', 'Battery Service'), desc: t('OPPO电池不耐用、鼓包、充不进电。原装规格电池，更换后检测健康度。支持OPPO 80W/100W超级闪充兼容。', 'OPPO battery drain, swelling, no charge. OEM spec batteries, health check after swap. Compatible with 80W/100W SuperVOOC.') },
-    { id: 'charging-port', title: t('充电口/尾插', 'Charging Port'), desc: t('Type-C口松动、接触不良、只能慢充。尾插小板/VOOC闪充不触发维修。', 'Loose port, bad contact, slow charge only. Flex replacement, VOOC fast charge not triggering.') },
-    { id: 'motherboard-repair', title: t('主板维修', 'Motherboard'), desc: t('不开机、重启循环、充电IC故障、无服务、WiFi打不开。OPPO主板芯片级维修，比换主板便宜得多。', 'No power, boot loop, charging IC fault, no service, WiFi dead. Component-level OPPO board repair.') },
-    { id: 'camera-repair', title: t('摄像头维修', 'Camera Repair'), desc: t('拍照模糊、闪退、黑屏、对焦失灵。Find系列潜望长焦镜头维修。前后摄像头更换全系列。', 'Blurry photos, crash, black screen, autofocus fail. Find series periscope lens repair. Front & back camera replacement.') },
-    { id: 'back-glass', title: t('后盖/边框', 'Back Glass/Frame'), desc: t('OPPO玻璃后盖碎裂、中框变形。更换后恢复防水胶。Reno系列星环设计后盖可换。', 'Broken glass back, bent frame. Waterproof sealant restored. Reno series star ring design back available.') },
+    { id: 'screen-replacement', icon:'🔧', title: t('屏幕更换', 'Screen Replacement'), desc: t('OPPO Find/Reno/A系列屏幕更换，OLED/LCD都有。碎裂漏液触摸不灵。含专业密封胶恢复防水性能。', 'OPPO Find/Reno/A series screen replacement. OLED & LCD. Cracked, leaking, unresponsive. Waterproof sealant restored.') },
+    { id: 'battery-replacement', icon:'🔋', title: t('电池更换', 'Battery Service'), desc: t('OPPO电池不耐用、鼓包、充不进电。原装规格电池，更换后检测健康度。支持OPPO 80W/100W超级闪充兼容。', 'OPPO battery drain, swelling, no charge. OEM spec batteries, health check after swap. Compatible with 80W/100W SuperVOOC.') },
+    { id: 'charging-port', icon:'🔌', title: t('充电口/尾插', 'Charging Port'), desc: t('Type-C口松动、接触不良、只能慢充。尾插小板/VOOC闪充不触发维修。', 'Loose port, bad contact, slow charge only. Flex replacement, VOOC fast charge not triggering.') },
+    { id: 'motherboard-repair', icon:'🔬', title: t('主板维修', 'Motherboard'), desc: t('不开机、重启循环、充电IC故障、无服务、WiFi打不开。OPPO主板芯片级维修，比换主板便宜得多。', 'No power, boot loop, charging IC fault, no service, WiFi dead. Component-level OPPO board repair.') },
+    { id: 'camera-repair', icon:'📷', title: t('摄像头维修', 'Camera Repair'), desc: t('拍照模糊、闪退、黑屏、对焦失灵。Find系列潜望长焦镜头维修。前后摄像头更换全系列。', 'Blurry photos, crash, black screen, autofocus fail. Find series periscope lens repair. Front & back camera replacement.') },
+    { id: 'back-glass', icon:'🔄', title: t('后盖/边框', 'Back Glass/Frame'), desc: t('OPPO玻璃后盖碎裂、中框变形。更换后恢复防水胶。Reno系列星环设计后盖可换。', 'Broken glass back, bent frame. Waterproof sealant restored. Reno series star ring design back available.') },
   ]
 
   const models = [

@@ -11,12 +11,12 @@ export default function RealmeRepair() {
   const t = (zh, en) => lang === 'zh' ? zh : en
 
   const services = [
-    { id: 'screen-replacement', title: t('屏幕更换', 'Screen Replacement'), desc: t('Realme全系列屏幕更换。GT系列OLED高端屏，数字系列/Narzo系列LCD/OLED。碎裂漏液触摸不灵。', 'Realme full series screen replacement. GT series OLED, number/Narzo series LCD/OLED. Cracked, leaking, unresponsive.') },
-    { id: 'battery-replacement', title: t('电池更换', 'Battery Service'), desc: t('Realme电池不耐用、鼓包、充不进电。原装规格电池，支持Dart闪充兼容。', 'Realme battery drain, swelling, no charge. OEM spec, Dart fast charge compatible.') },
-    { id: 'charging-port', title: t('充电口/尾插', 'Charging Port'), desc: t('Type-C口松动、Dart闪充不触发、接触不良、只能慢充。尾插小板维修。', 'Loose port, Dart charge not triggering, bad contact. Flex board repair.') },
-    { id: 'motherboard-repair', title: t('主板维修', 'Motherboard'), desc: t('不开机、重启、充电IC故障、无服务。Realme主板芯片级维修，OPPO系兼容低价。', 'No power, boot loop, IC fault, no service. Realme component-level board repair, OPPO platform compatible.') },
-    { id: 'back-glass', title: t('后盖更换', 'Back Glass'), desc: t('Realme玻璃/素皮后盖碎裂更换。GT系列传奇设计后盖可更换。', 'Broken glass/vegan leather back. GT series legendary design back available.') },
-    { id: 'flash-unlock', title: t('刷机/解锁', 'Flash/Unlock'), desc: t('RealmeUI刷机、降级、解账户锁、救砖、刷国际版。', 'RealmeUI flash, downgrade, account unlock, unbrick, flash global ROM.') },
+    { id: 'screen-replacement', icon:'🔧', title: t('屏幕更换', 'Screen Replacement'), desc: t('Realme全系列屏幕更换。GT系列OLED高端屏，数字系列/Narzo系列LCD/OLED。碎裂漏液触摸不灵。', 'Realme full series screen replacement. GT series OLED, number/Narzo series LCD/OLED. Cracked, leaking, unresponsive.') },
+    { id: 'battery-replacement', icon:'🔋', title: t('电池更换', 'Battery Service'), desc: t('Realme电池不耐用、鼓包、充不进电。原装规格电池，支持Dart闪充兼容。', 'Realme battery drain, swelling, no charge. OEM spec, Dart fast charge compatible.') },
+    { id: 'charging-port', icon:'🔌', title: t('充电口/尾插', 'Charging Port'), desc: t('Type-C口松动、Dart闪充不触发、接触不良、只能慢充。尾插小板维修。', 'Loose port, Dart charge not triggering, bad contact. Flex board repair.') },
+    { id: 'motherboard-repair', icon:'🔬', title: t('主板维修', 'Motherboard'), desc: t('不开机、重启、充电IC故障、无服务。Realme主板芯片级维修，OPPO系兼容低价。', 'No power, boot loop, IC fault, no service. Realme component-level board repair, OPPO platform compatible.') },
+    { id: 'back-glass', icon:'🔄', title: t('后盖更换', 'Back Glass'), desc: t('Realme玻璃/素皮后盖碎裂更换。GT系列传奇设计后盖可更换。', 'Broken glass/vegan leather back. GT series legendary design back available.') },
+    { id: 'flash-unlock', icon:'⚡', title: t('刷机/解锁', 'Flash/Unlock'), desc: t('RealmeUI刷机、降级、解账户锁、救砖、刷国际版。', 'RealmeUI flash, downgrade, account unlock, unbrick, flash global ROM.') },
   ]
 
   const models = [

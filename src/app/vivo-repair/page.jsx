@@ -11,12 +11,12 @@ export default function VIVORepair() {
   const t = (zh, en) => lang === 'zh' ? zh : en
 
   const services = [
-    { id: 'screen-replacement', title: t('屏幕更换', 'Screen Replacement'), desc: t('VIVO X/Y/iQOO系列屏幕更换，OLED/LCD都有。碎裂漏液触摸不灵。含密封胶恢复防水。', 'VIVO X/Y/iQOO series screen replacement. OLED & LCD. Cracked, leaking, unresponsive. Waterproof sealant.') },
-    { id: 'battery-replacement', title: t('电池更换', 'Battery Service'), desc: t('VIVO电池不耐用、鼓包、充不进电。原装规格电池，支持VIVO 120W/80W闪充兼容。', 'VIVO battery drain, swelling, no charge. OEM spec, compatible with 120W/80W FlashCharge.') },
-    { id: 'charging-port', title: t('充电口/尾插', 'Charging Port'), desc: t('Type-C口松动、接触不良、只能慢充、闪充不触发。尾插小板维修。', 'Loose port, bad contact, slow charge, FlashCharge not triggering. Flex board repair.') },
-    { id: 'motherboard-repair', title: t('主板维修', 'Motherboard'), desc: t('不开机、重启循环、充电IC故障、无服务。VIVO/iQOO主板芯片级维修，擅长CPU重焊。', 'No power, boot loop, charging IC fault, no service. VIVO/iQOO component-level repair, CPU reballing.') },
-    { id: 'camera-repair', title: t('摄像头维修', 'Camera Repair'), desc: t('拍照模糊、闪退、黑屏。X系列蔡司/微云台摄像头维修。前后摄像头更换。', 'Blurry photos, crash, black screen. X series Zeiss/gimbal camera repair. Front & back camera replacement.') },
-    { id: 'fingerprint', title: t('屏下指纹维修', 'Screen Fingerprint'), desc: t('屏下指纹不灵敏、无法录入、失效。超声波/光学屏下指纹传感器维修或校准。', 'Under-display fingerprint unresponsive, can\'t enroll, failed. Ultrasonic/optical sensor repair or calibration.') },
+    { id: 'screen-replacement', icon:'🔧', title: t('屏幕更换', 'Screen Replacement'), desc: t('VIVO X/Y/iQOO系列屏幕更换，OLED/LCD都有。碎裂漏液触摸不灵。含密封胶恢复防水。', 'VIVO X/Y/iQOO series screen replacement. OLED & LCD. Cracked, leaking, unresponsive. Waterproof sealant.') },
+    { id: 'battery-replacement', icon:'🔋', title: t('电池更换', 'Battery Service'), desc: t('VIVO电池不耐用、鼓包、充不进电。原装规格电池，支持VIVO 120W/80W闪充兼容。', 'VIVO battery drain, swelling, no charge. OEM spec, compatible with 120W/80W FlashCharge.') },
+    { id: 'charging-port', icon:'🔌', title: t('充电口/尾插', 'Charging Port'), desc: t('Type-C口松动、接触不良、只能慢充、闪充不触发。尾插小板维修。', 'Loose port, bad contact, slow charge, FlashCharge not triggering. Flex board repair.') },
+    { id: 'motherboard-repair', icon:'🔬', title: t('主板维修', 'Motherboard'), desc: t('不开机、重启循环、充电IC故障、无服务。VIVO/iQOO主板芯片级维修，擅长CPU重焊。', 'No power, boot loop, charging IC fault, no service. VIVO/iQOO component-level repair, CPU reballing.') },
+    { id: 'camera-repair', icon:'📷', title: t('摄像头维修', 'Camera Repair'), desc: t('拍照模糊、闪退、黑屏。X系列蔡司/微云台摄像头维修。前后摄像头更换。', 'Blurry photos, crash, black screen. X series Zeiss/gimbal camera repair. Front & back camera replacement.') },
+    { id: 'fingerprint', icon:'🔧', title: t('屏下指纹维修', 'Screen Fingerprint'), desc: t('屏下指纹不灵敏、无法录入、失效。超声波/光学屏下指纹传感器维修或校准。', 'Under-display fingerprint unresponsive, can\'t enroll, failed. Ultrasonic/optical sensor repair or calibration.') },
   ]
 
   const models = [

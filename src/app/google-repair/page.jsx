@@ -11,12 +11,12 @@ export default function GoogleRepair() {
   const t = (zh, en) => lang === 'zh' ? zh : en
 
   const services = [
-    { id: 'screen-replacement', title: t('屏幕更换', 'Screen Replacement'), desc: t('Google Pixel全系列OLED屏幕更换。碎裂漏液触摸不灵。含密封胶恢复防水。', 'Google Pixel all series OLED screen. Cracked, leaking, unresponsive. Waterproof sealant restored.') },
-    { id: 'battery-replacement', title: t('电池更换', 'Battery Service'), desc: t('Pixel电池不耐用、鼓包、充不进电。原装规格电池。Pixel 6/7/8/9/10全系支持。', 'Pixel battery drain, swelling, no charge. OEM spec. Pixel 6/7/8/9/10 all series.') },
-    { id: 'charging-port', title: t('充电口/尾插', 'Charging Port'), desc: t('Type-C口松动、接触不良、只能慢充。无线充电不工作也可以检测维修。', 'Loose port, bad contact, slow charge only. Wireless charging not working — we can diagnose that too.') },
-    { id: 'camera-repair', title: t('摄像头维修', 'Camera Repair'), desc: t('Pixel系列相机模糊、闪退、黑屏。Google计算摄影模组维修。前后摄像头更换。', 'Pixel camera blurry, crash, black screen. Google computational photography module repair. Front & back camera.') },
-    { id: 'motherboard-repair', title: t('主板维修', 'Motherboard'), desc: t('不开机、重启、充电IC故障、无服务。Google Tensor芯片主板芯片级维修。', 'No power, boot loop, IC fault, no service. Google Tensor SoC board component-level repair.') },
-    { id: 'software-issues', title: t('系统/刷机', 'Software/Flash'), desc: t('Pixel系统卡顿、卡LOGO、OTA更新失败、救砖、解FRP锁。刷回原厂系统。', 'Pixel lag, boot loop, OTA fail, unbrick, FRP unlock. Flash back to stock.') },
+    { id: 'screen-replacement', icon:'🔧', title: t('屏幕更换', 'Screen Replacement'), desc: t('Google Pixel全系列OLED屏幕更换。碎裂漏液触摸不灵。含密封胶恢复防水。', 'Google Pixel all series OLED screen. Cracked, leaking, unresponsive. Waterproof sealant restored.') },
+    { id: 'battery-replacement', icon:'🔋', title: t('电池更换', 'Battery Service'), desc: t('Pixel电池不耐用、鼓包、充不进电。原装规格电池。Pixel 6/7/8/9/10全系支持。', 'Pixel battery drain, swelling, no charge. OEM spec. Pixel 6/7/8/9/10 all series.') },
+    { id: 'charging-port', icon:'🔌', title: t('充电口/尾插', 'Charging Port'), desc: t('Type-C口松动、接触不良、只能慢充。无线充电不工作也可以检测维修。', 'Loose port, bad contact, slow charge only. Wireless charging not working — we can diagnose that too.') },
+    { id: 'camera-repair', icon:'📷', title: t('摄像头维修', 'Camera Repair'), desc: t('Pixel系列相机模糊、闪退、黑屏。Google计算摄影模组维修。前后摄像头更换。', 'Pixel camera blurry, crash, black screen. Google computational photography module repair. Front & back camera.') },
+    { id: 'motherboard-repair', icon:'🔬', title: t('主板维修', 'Motherboard'), desc: t('不开机、重启、充电IC故障、无服务。Google Tensor芯片主板芯片级维修。', 'No power, boot loop, IC fault, no service. Google Tensor SoC board component-level repair.') },
+    { id: 'software-issues', icon:'🔧', title: t('系统/刷机', 'Software/Flash'), desc: t('Pixel系统卡顿、卡LOGO、OTA更新失败、救砖、解FRP锁。刷回原厂系统。', 'Pixel lag, boot loop, OTA fail, unbrick, FRP unlock. Flash back to stock.') },
   ]
 
   const models = [

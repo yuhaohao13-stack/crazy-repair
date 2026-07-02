@@ -11,12 +11,12 @@ export default function OnePlusRepair() {
   const t = (zh, en) => lang === 'zh' ? zh : en
 
   const services = [
-    { id: 'screen-replacement', title: t('屏幕更换', 'Screen Replacement'), desc: t('OnePlus全系列OLED屏幕更换。碎裂漏液触摸不灵。含密封胶恢复防水。一加标志性的三段式按键保留。', 'OnePlus full series OLED screen. Cracked, leaking, unresponsive. Waterproof sealant restored. Alert slider preserved.') },
-    { id: 'battery-replacement', title: t('电池更换', 'Battery Service'), desc: t('OnePlus电池不耐用、鼓包、充不进电。原装规格电池，支持100W SUPERVOOC闪充。', 'OnePlus battery drain, swelling, no charge. OEM spec, compatible with 100W SUPERVOOC.') },
-    { id: 'charging-port', title: t('充电口/尾插', 'Charging Port'), desc: t('Type-C口松动、SUPERVOOC闪充不触发、接触不良。尾插小板维修或更换。', 'Loose port, SUPERVOOC not triggering, bad contact. Flex board repair or replacement.') },
-    { id: 'motherboard-repair', title: t('主板维修', 'Motherboard'), desc: t('不开机、重启循环、充电IC故障、无服务。OnePlus主板芯片级维修，OPPO系兼容。', 'No power, boot loop, charging IC fault, no service. OnePlus component-level board repair, OPPO platform compatible.') },
-    { id: 'camera-repair', title: t('摄像头维修', 'Camera Repair'), desc: t('拍照模糊、闪退、黑屏。哈苏一加影像系统维修。前后摄像头更换。', 'Blurry photos, crash, black screen. Hasselblad OnePlus imaging system repair. Front & back camera replacement.') },
-    { id: 'back-glass', title: t('后盖更换', 'Back Glass'), desc: t('一加玻璃后盖碎裂、陶瓷/素皮后盖修复。更换后恢复防水胶。', 'Broken glass back, ceramic/vegan leather back repair. Waterproof sealant restored.') },
+    { id: 'screen-replacement', icon:'🔧', title: t('屏幕更换', 'Screen Replacement'), desc: t('OnePlus全系列OLED屏幕更换。碎裂漏液触摸不灵。含密封胶恢复防水。一加标志性的三段式按键保留。', 'OnePlus full series OLED screen. Cracked, leaking, unresponsive. Waterproof sealant restored. Alert slider preserved.') },
+    { id: 'battery-replacement', icon:'🔋', title: t('电池更换', 'Battery Service'), desc: t('OnePlus电池不耐用、鼓包、充不进电。原装规格电池，支持100W SUPERVOOC闪充。', 'OnePlus battery drain, swelling, no charge. OEM spec, compatible with 100W SUPERVOOC.') },
+    { id: 'charging-port', icon:'🔌', title: t('充电口/尾插', 'Charging Port'), desc: t('Type-C口松动、SUPERVOOC闪充不触发、接触不良。尾插小板维修或更换。', 'Loose port, SUPERVOOC not triggering, bad contact. Flex board repair or replacement.') },
+    { id: 'motherboard-repair', icon:'🔬', title: t('主板维修', 'Motherboard'), desc: t('不开机、重启循环、充电IC故障、无服务。OnePlus主板芯片级维修，OPPO系兼容。', 'No power, boot loop, charging IC fault, no service. OnePlus component-level board repair, OPPO platform compatible.') },
+    { id: 'camera-repair', icon:'📷', title: t('摄像头维修', 'Camera Repair'), desc: t('拍照模糊、闪退、黑屏。哈苏一加影像系统维修。前后摄像头更换。', 'Blurry photos, crash, black screen. Hasselblad OnePlus imaging system repair. Front & back camera replacement.') },
+    { id: 'back-glass', icon:'🔄', title: t('后盖更换', 'Back Glass'), desc: t('一加玻璃后盖碎裂、陶瓷/素皮后盖修复。更换后恢复防水胶。', 'Broken glass back, ceramic/vegan leather back repair. Waterproof sealant restored.') },
   ]
 
   const models = [

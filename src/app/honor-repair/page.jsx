@@ -11,12 +11,12 @@ export default function HonorRepair() {
   const t = (zh, en) => lang === 'zh' ? zh : en
 
   const services = [
-    { id: 'screen-replacement', title: t('屏幕更换', 'Screen Replacement'), desc: t('荣耀全系列屏幕更换。Magic系列四曲屏/折叠屏，数字系列OLED，X系列LCD。碎裂漏液触摸不灵。含密封胶恢复防水。', 'Honor full series screen. Magic quad-curved/foldable, number series OLED, X series LCD. Cracked, leaking, unresponsive. Waterproof sealant.') },
-    { id: 'battery-replacement', title: t('电池更换', 'Battery Service'), desc: t('荣耀电池不耐用、鼓包、充不进电。原装规格电池，支持100W有线+无线充电兼容。', 'Honor battery drain, swelling, no charge. OEM spec, 100W wired + wireless charge compatible.') },
-    { id: 'charging-port', title: t('充电口/尾插', 'Charging Port'), desc: t('Type-C口松动、荣耀100W超级快充不触发、接触不良。尾插小板维修。', 'Loose port, 100W SuperCharge not triggering, bad contact. Flex board repair.') },
-    { id: 'motherboard-repair', title: t('主板维修', 'Motherboard'), desc: t('不开机、重启循环、充电IC故障、无服务。荣耀主板芯片级维修，华为系维修经验通用。', 'No power, boot loop, charging IC fault, no service. Honor component-level board repair, Huawei platform experience applies.') },
-    { id: 'camera-repair', title: t('摄像头维修', 'Camera Repair'), desc: t('拍照模糊、闪退、黑屏。Magic系列鹰眼相机/潜望长焦维修。前后摄像头更换。', 'Blurry photos, crash, black screen. Magic series Eagle Eye camera/periscope zoom repair. Front & back camera.') },
-    { id: 'back-glass', title: t('后盖/边框', 'Back Glass/Frame'), desc: t('荣耀玻璃后盖碎裂、中框变形。Magic系列星环设计后盖更换。', 'Broken glass back, bent frame. Magic series star ring design back replacement.') },
+    { id: 'screen-replacement', icon:'🔧', title: t('屏幕更换', 'Screen Replacement'), desc: t('荣耀全系列屏幕更换。Magic系列四曲屏/折叠屏，数字系列OLED，X系列LCD。碎裂漏液触摸不灵。含密封胶恢复防水。', 'Honor full series screen. Magic quad-curved/foldable, number series OLED, X series LCD. Cracked, leaking, unresponsive. Waterproof sealant.') },
+    { id: 'battery-replacement', icon:'🔋', title: t('电池更换', 'Battery Service'), desc: t('荣耀电池不耐用、鼓包、充不进电。原装规格电池，支持100W有线+无线充电兼容。', 'Honor battery drain, swelling, no charge. OEM spec, 100W wired + wireless charge compatible.') },
+    { id: 'charging-port', icon:'🔌', title: t('充电口/尾插', 'Charging Port'), desc: t('Type-C口松动、荣耀100W超级快充不触发、接触不良。尾插小板维修。', 'Loose port, 100W SuperCharge not triggering, bad contact. Flex board repair.') },
+    { id: 'motherboard-repair', icon:'🔬', title: t('主板维修', 'Motherboard'), desc: t('不开机、重启循环、充电IC故障、无服务。荣耀主板芯片级维修，华为系维修经验通用。', 'No power, boot loop, charging IC fault, no service. Honor component-level board repair, Huawei platform experience applies.') },
+    { id: 'camera-repair', icon:'📷', title: t('摄像头维修', 'Camera Repair'), desc: t('拍照模糊、闪退、黑屏。Magic系列鹰眼相机/潜望长焦维修。前后摄像头更换。', 'Blurry photos, crash, black screen. Magic series Eagle Eye camera/periscope zoom repair. Front & back camera.') },
+    { id: 'back-glass', icon:'🔄', title: t('后盖/边框', 'Back Glass/Frame'), desc: t('荣耀玻璃后盖碎裂、中框变形。Magic系列星环设计后盖更换。', 'Broken glass back, bent frame. Magic series star ring design back replacement.') },
   ]
 
   const models = [
