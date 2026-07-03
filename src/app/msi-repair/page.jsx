@@ -17,6 +17,7 @@ export default function MSIRepair() {
     { id: 'motherboard-repair', icon: <Cpu size={28} />, title: t('主板/芯片级维修', 'Motherboard Repair'), desc: t('不开机、死机、充电芯片故障、进液腐蚀。MSI游戏本主板芯片级维修，比换主板便宜得多。Titan旗舰主板维修。', 'No power, crashes, charging IC fault, liquid damage. Component-level repair for MSI gaming boards. Much cheaper than board swap. Titan flagship board repair.') },
     { id: 'cleaning', icon: <Cpu size={28} />, title: t('清灰换硅脂', 'Cleaning & Cooling'), desc: t('风扇狂转、机身发烫、游戏降频掉帧。MSI Raider/Titan深度拆机清灰+换顶级导热硅脂，有效降温10-15°C。', 'Loud fans, overheating, game throttling. MSI Raider/Titan deep clean + premium thermal paste. Effective 10-15°C temp drop.') },
     { id: 'os-upgrade', icon: <Monitor size={28} />, title: t('系统/升级', 'OS & Upgrade'), desc: t('Windows重装、加装M.2 NVMe固态、内存升级。MSI Center设置优化。帮您选最划算的升级方案。', 'Windows reinstall, M.2 NVMe SSD install, RAM upgrade. MSI Center config. Best upgrade plan.') },
+    { id: 'other-issues', icon: '🔍', title: t('其他故障', 'Other Issues'), desc: t('免费检测，不修不收费。', 'Free check, no charge if no repair.') },
   ]
 
   const models = [

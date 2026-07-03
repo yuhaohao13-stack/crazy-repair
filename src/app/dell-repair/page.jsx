@@ -17,6 +17,7 @@ export default function DellRepair() {
     { id: 'motherboard-repair', icon: <Cpu size={28} />, title: t('主板/芯片级维修', 'Motherboard Repair'), desc: t('不开机、死机、充电芯片故障、进液腐蚀。芯片级维修，比换主板便宜70%以上。XPS/Alienware游戏本主板维修，经验丰富。', 'No power, crashes, charging IC fault, liquid damage. Component-level repair, 70%+ cheaper than board replacement. XPS/Alienware gaming board repair, extensive experience.') },
     { id: 'cleaning', icon: <Cpu size={28} />, title: t('清灰换硅脂', 'Cleaning & Cooling'), desc: t('风扇狂转、机身发烫、游戏降频掉帧。深度拆机清灰+换顶级导热硅脂，Dell G系列/Alienware散热改善显著，有效降温10-15°C。', 'Loud fans, overheating, game frame drops. Deep clean + premium thermal paste. Major improvement for Dell G series/Alienware gaming laptops. Effective 10-15°C temp drop.') },
     { id: 'os-upgrade', icon: <Monitor size={28} />, title: t('系统/升级', 'OS & Upgrade'), desc: t('Windows重装/升级、加装M.2 NVMe固态、内存升级到128GB、数据备份迁移。Dell XPS/Alienware最优升级方案。', 'Windows reinstall/upgrade, M.2 NVMe SSD install, RAM upgrade up to 128GB, data backup & migration. Best upgrade plan for Dell XPS/Alienware.') },
+    { id: 'other-issues', icon: '🔍', title: t('其他故障', 'Other Issues'), desc: t('免费检测，不修不收费。', 'Free check, no charge if no repair.') },
   ]
 
   const models = [

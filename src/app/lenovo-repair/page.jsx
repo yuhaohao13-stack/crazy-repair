@@ -17,6 +17,7 @@ export default function LenovoRepair() {
     { id: 'motherboard-repair', icon: <Cpu size={28} />, title: t('主板/芯片级维修', 'Motherboard Repair'), desc: t('不开机、死机、充电芯片故障、进液腐蚀。芯片级维修，比换主板便宜70%以上。ThinkPad/拯救者主板维修经验丰富。', 'No power, crashes, charging IC fault, liquid damage. Component-level repair, 70%+ cheaper than board replacement. Extensive ThinkPad/Legion board repair experience.') },
     { id: 'cleaning', icon: <Cpu size={28} />, title: t('清灰换硅脂', 'Cleaning & Cooling'), desc: t('风扇异响、发热降频、游戏掉帧。拯救者/Yoga Pro深度拆机清灰+换顶级导热硅脂，有效降温10-15°C。', 'Fan noise, overheating, game frame drops. Legion/Yoga Pro deep clean + premium thermal paste. Effective 10-15°C temp drop.') },
     { id: 'os-upgrade', icon: <Monitor size={28} />, title: t('系统/升级', 'OS & Upgrade'), desc: t('Windows重装/升级、加装M.2 NVMe固态、内存升级到64GB。ThinkPad BIOS升级/设置。帮您选最划算的升级方案。', 'Windows reinstall/upgrade, M.2 NVMe SSD install, RAM upgrade up to 64GB. ThinkPad BIOS update/config. Best upgrade plan for your budget.') },
+    { id: 'other-issues', icon: '🔍', title: t('其他故障', 'Other Issues'), desc: t('免费检测，不修不收费。', 'Free check, no charge if no repair.') },
   ]
 
   const models = [

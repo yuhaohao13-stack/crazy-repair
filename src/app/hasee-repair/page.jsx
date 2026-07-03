@@ -17,6 +17,7 @@ export default function HaseeRepair() {
     { id: 'motherboard-repair', icon: <Cpu size={28} />, title: t('主板/芯片级维修', 'Motherboard Repair'), desc: t('不开机、死机、充电芯片故障、进液腐蚀。战神游戏本主板芯片级维修，比换主板便宜得多。', 'No power, crashes, charging IC fault, liquid damage. Component-level repair for 战神 gaming boards. Much cheaper than board swap.') },
     { id: 'cleaning', icon: <Cpu size={28} />, title: t('清灰换硅脂', 'Cleaning & Cooling'), desc: t('风扇异响、发热降频、游戏掉帧。战神游戏本深度拆机清灰+换导热硅脂，有效降温10-15°C。', 'Fan noise, overheating, game throttling. 战神 gaming laptop deep clean + thermal paste. Effective 10-15°C temp drop.') },
     { id: 'os-upgrade', icon: <Monitor size={28} />, title: t('系统/升级', 'OS & Upgrade'), desc: t('Windows重装、加装M.2/NVMe固态、内存升级。神舟笔记本性价比升级方案推荐。', 'Windows reinstall, M.2/NVMe SSD install, RAM upgrade. Best value upgrades for Hasee laptops.') },
+    { id: 'other-issues', icon: '🔍', title: t('其他故障', 'Other Issues'), desc: t('免费检测，不修不收费。', 'Free check, no charge if no repair.') },
   ]
 
   const models = [
