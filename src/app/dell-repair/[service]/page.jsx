@@ -153,7 +153,7 @@ export default function ServiceDetail() {
                 onClick={() => setShowModels(!showModels)}
               >
                 <h2 className="text-xl sm:text-2xl font-bold text-gray-900">
-                  {t('支持机型 (' + brandModels.length + '款)', 'Compatible Models (' + brandModels.length + ')')}
+                  {t('支持机型 (' + brandModels.length + '款等)', 'Compatible Models (' + brandModels.length + '+ more)')}
                 </h2>
                 <ChevronDown
                   size={20}
