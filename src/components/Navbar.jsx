@@ -122,7 +122,15 @@ export default function Navbar({ lang, setLang, setShowContact }) {
           </div>
 
           <div className="flex items-center gap-2">
-            <a href="https://www.gudaoforum.com" target="_blank" rel="noopener" className="text-xs text-gray-500 hover:text-blue-600 mr-1 md:hidden">古道维修论坛</a>{/* Mobile search toggle */}
+            <a href="https://www.gudaoforum.com" target="_blank" rel="noopener" className="text-xs text-gray-500 hover:text-blue-600 mr-1 md:hidden">古道维修论坛</a>
+            <a href="https://v.douyin.com/gjAo7iQN1h4/" target="_blank" rel="noopener"
+              className="flex items-center gap-1 bg-gradient-to-r from-[#00f2fe] to-[#fe2c55] text-white hover:opacity-90 text-xs font-bold px-2.5 py-1.5 rounded-lg transition-all shadow-sm shrink-0"
+              title="@Crazy维修 抖音">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" className="shrink-0">
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.88 2.89 2.89 0 0 1-2.88-2.88 2.89 2.89 0 0 1 2.88-2.88c.35 0 .69.06 1.01.18V8.48a6.34 6.34 0 0 0-1.01-.08C5.9 8.4 3 11.3 3 14.86c0 3.56 2.9 6.46 6.46 6.46 3.56 0 6.46-2.9 6.46-6.46V9.33a8.28 8.28 0 0 0 4.67 1.4v-3.4a4.84 4.84 0 0 1-1-.64z"/>
+              </svg>
+              <span className="hidden sm:inline">抖音</span>
+            </a>{/* Mobile search toggle */}
             <button onClick={() => setShowSearch(!showSearch)} className="md:hidden text-gray-500 hover:text-gray-700">
               <SearchIcon size={16} />
             </button>
