@@ -1,12 +1,79 @@
 'use client'
 import { useState, useEffect, useRef, useCallback } from 'react'
-import { Star, ChevronLeft, ChevronRight, ImagePlus, X, ShieldCheck, Sparkles } from 'lucide-react'
+import { Star, ChevronLeft, ChevronRight, ImagePlus, X, ShieldCheck, Sparkles, ExternalLink, MapPin, Calendar } from 'lucide-react'
+
+// ========== 评价详情弹窗 ==========
+function ReviewDetailModal({ review, onClose, isAdmin }) {
+  if (!review) return null
+  
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm" onClick={onClose}>
+      <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl" onClick={e => e.stopPropagation()}>
+        {/* 头部 */}
+        <div className="sticky top-0 bg-white border-b border-gray-100 px-6 py-4 flex items-center justify-between rounded-t-2xl z-10">
+          <div className="flex items-center gap-2">
+            <div className="flex text-amber-400">
+              {[1,2,3,4,5].map(s => (
+                <Star key={s} size={16} fill={s <= review.rating ? 'currentColor' : 'none'}
+                  className={s <= review.rating ? 'text-amber-400' : 'text-gray-200'} />
+              ))}
+            </div>
+            <span className="text-sm text-gray-400">{review.rating}.0</span>
+          </div>
+          <button onClick={onClose} className="p-1 hover:bg-gray-100 rounded-lg transition-colors">
+            <X size={20} className="text-gray-500" />
+          </button>
+        </div>
+
+        <div className="p-6 space-y-5">
+          {/* 标题 */}
+          <h3 className="text-xl font-bold text-gray-900">{review.title}</h3>
+          
+          {/* 评价内容 */}
+          <p className="text-gray-700 leading-relaxed text-base">&ldquo;{review.content}&rdquo;</p>
+          
+          {/* 图片 */}
+          {review.images?.length > 0 && (
+            <div>
+              <p className="text-sm font-medium text-gray-500 mb-3">图片 ({review.images.length})</p>
+              <div className="grid gap-3" style={{
+                gridTemplateColumns: review.images.length === 1 ? '1fr' : 'repeat(auto-fit, minmax(200px, 1fr))'
+              }}>
+                {review.images.map((img, i) => (
+                  <a key={i} href={img} target="_blank" rel="noopener noreferrer"
+                    className="block rounded-xl overflow-hidden border border-gray-200 hover:opacity-95 transition-opacity">
+                    <img src={img} alt="" className="w-full h-auto max-h-80 object-contain bg-gray-50" loading="lazy" />
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+          
+          {/* 用户信息 */}
+          <div className="border-t border-gray-100 pt-4 flex items-center justify-between text-sm">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold text-sm">
+                {review.name?.charAt(0)}
+              </div>
+              <div>
+                <p className="font-medium text-gray-900">{review.name}</p>
+                <p className="text-gray-400 text-xs">{review.phone}</p>
+              </div>
+            </div>
+            <div className="text-xs text-gray-400">
+              {new Date(review.created_at).toLocaleDateString('zh-CN')}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 // ========== 评价卡片 ==========
-function ReviewCard({ review }) {
+function ReviewCard({ review, onClick }) {
   return (
-    <div className="bg-white rounded-2xl p-5 sm:p-6 border border-gray-100 shadow-sm h-full flex flex-col">
-      {/* 星级 */}
+    <div className="bg-white rounded-2xl p-5 sm:p-6 border border-gray-100 shadow-sm h-full flex flex-col cursor-pointer hover:shadow-md hover:-translate-y-0.5 transition-all" onClick={() => onClick?.(review)}>
       <div className="flex text-amber-400 mb-2">
         {[1, 2, 3, 4, 5].map((s) => (
           <Star
@@ -47,7 +114,7 @@ function ReviewCard({ review }) {
 }
 
 // ========== 轮播 ==========
-function ReviewCarousel({ reviews, onShowForm }) {
+function ReviewCarousel({ reviews, onShowForm, onCardClick }) {
   const [current, setCurrent] = useState(0)
   const max = Math.max(0, reviews.length - 1)
 
@@ -83,7 +150,7 @@ function ReviewCarousel({ reviews, onShowForm }) {
       {/* 评价卡片展示 */}
       <div className="hidden sm:grid sm:grid-cols-3 gap-4">
         {visibleDesktop.map((r) => (
-          <ReviewCard key={r.id} review={r} />
+          <ReviewCard key={r.id} review={r} onClick={onCardClick} />
         ))}
         {Array.from({ length: Math.max(0, 3 - visibleDesktop.length) }).map((_, i) => (
           <div key={`empty-${i}`} className="bg-gray-50 rounded-2xl border border-dashed border-gray-200 flex items-center justify-center min-h-[200px]">
@@ -94,7 +161,7 @@ function ReviewCarousel({ reviews, onShowForm }) {
 
       {/* 手机端：单卡片滑动 */}
       <div className="sm:hidden">
-        <ReviewCard review={reviews[current]} />
+        <ReviewCard review={reviews[current]} onClick={onCardClick} />
       </div>
 
       {/* 圆点指示器 */}
@@ -413,6 +480,11 @@ export default function ReviewSection({ showAdminButton = true }) {
   const [showForm, setShowForm] = useState(false)
   const [showAdminLogin, setShowAdminLogin] = useState(false)
   const [adminEmail, setAdminEmail] = useState('')
+  const [selectedReview, setSelectedReview] = useState(null)
+  
+  const onCardClick = useCallback((review) => {
+    setSelectedReview(review)
+  }, [])
   const [adminPassword, setAdminPassword] = useState('')
   const [adminToken, setAdminToken] = useState('')
   const [adminError, setAdminError] = useState('')
@@ -515,7 +587,7 @@ export default function ReviewSection({ showAdminButton = true }) {
             ))}
           </div>
         ) : carouselReviews.length > 0 ? (
-          <ReviewCarousel reviews={carouselReviews} onShowForm={() => setShowForm(true)} />
+          <ReviewCarousel reviews={carouselReviews} onShowForm={() => setShowForm(true)} onCardClick={onCardClick} />
         ) : (
           <div className="text-center py-12 bg-white rounded-2xl border border-dashed border-gray-200">
             <p className="text-gray-400 mb-3">暂无评价</p>
@@ -534,13 +606,13 @@ export default function ReviewSection({ showAdminButton = true }) {
             <h3 className="text-base font-semibold text-gray-900 mb-4">最新评价</h3>
             <div className="grid sm:grid-cols-2 gap-3">
               {reviews.slice(0, 6).map(r => (
-                <div key={r.id} className="bg-white rounded-xl p-4 border border-gray-100">
+                <div key={r.id} className="bg-white rounded-xl p-4 border border-gray-100 cursor-pointer hover:shadow-md hover:-translate-y-0.5 transition-all" onClick={() => onCardClick(r)}>
                   <div className="flex text-amber-400 mb-1.5">
                     {[1, 2, 3, 4, 5].map(s => (
                       <Star key={s} size={14} fill={s <= r.rating ? 'currentColor' : 'none'} className={s <= r.rating ? 'text-amber-400' : 'text-gray-200'} />
                     ))}
                   </div>
-                  <h4 className="font-medium text-gray-900 text-sm mb-1">{r.title}</h4>
+                  <h4 className="font-medium text-gray-900 text-sm mb-1 line-clamp-1">{r.title}</h4>
                   <p className="text-gray-500 text-xs leading-relaxed line-clamp-2">&ldquo;{r.content}&rdquo;</p>
                   <div className="flex items-center gap-2 mt-2 text-xs text-gray-400">
                     <span>{r.name}</span>
@@ -615,6 +687,14 @@ export default function ReviewSection({ showAdminButton = true }) {
               </form>
             </div>
           </div>
+        )}
+
+        {/* 评价详情弹窗 */}
+        {selectedReview && (
+          <ReviewDetailModal
+            review={selectedReview}
+            onClose={() => setSelectedReview(null)}
+          />
         )}
       </div>
     </section>
