@@ -1,18 +1,16 @@
 'use client'
+import { useSite } from '../../lib/SiteContext'
 import { useState } from 'react'
 import { ArrowLeft } from 'lucide-react'
 import Navbar from '../../components/Navbar'
-import Footer from '../../components/Footer'
-import ContactModal from '../../components/ContactModal'
 
 export default function OtherRepair() {
-  const [showContact, setShowContact] = useState(false)
-  const [lang, setLang] = useState('zh')
+  const { lang, setShowContact } = useSite();
   const t = (zh, en) => lang === 'zh' ? zh : en
 
   return (
     <div className="min-h-screen bg-white">
-      <Navbar lang={lang} setLang={setLang} setShowContact={setShowContact} />
+      <Navbar />
       <section className="bg-gradient-to-br from-amber-600 via-amber-500 to-yellow-500 text-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-4"><a href="/" className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-sm font-medium transition-colors"><ArrowLeft size={15} /> {t('首页', 'Home')}</a></div>
                   <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14 text-center">
@@ -82,8 +80,6 @@ export default function OtherRepair() {
           </div>
         </div>
       </section>
-      <Footer lang={lang} />
-      <ContactModal show={showContact} setShow={setShowContact} lang={lang} />
     </div>
   )
 }

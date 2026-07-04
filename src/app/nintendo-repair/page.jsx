@@ -1,16 +1,14 @@
 'use client'
+import { useSite } from '../../lib/SiteContext'
 import { useState } from 'react'
 import Navbar from '../../components/Navbar'
-import Footer from '../../components/Footer'
-import ContactModal from '../../components/ContactModal'
 
 export default function NintendoRepair() {
-  const [showContact, setShowContact] = useState(false)
-  const [lang, setLang] = useState('zh')
+  const { lang, setShowContact } = useSite();
   const t = (zh, en) => lang === 'zh' ? zh : en
   return (
     <div className="min-h-screen bg-white">
-      <Navbar lang={lang} setLang={setLang} setShowContact={setShowContact} />
+      <Navbar />
       <section className="bg-gradient-to-br from-red-600 via-red-500 to-red-400 text-white text-center">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-20">
           <div className="text-6xl mb-6">🎮</div>
@@ -27,8 +25,6 @@ export default function NintendoRepair() {
           </div>
         </div>
       </section>
-      <Footer lang={lang} />
-      <ContactModal show={showContact} setShow={setShowContact} lang={lang} />
     </div>
   )
 }

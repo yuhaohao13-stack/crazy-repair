@@ -1,6 +1,8 @@
 'use client'
+import { useSite } from '../lib/SiteContext'
 
-export default function Footer({ lang }) {
+export default function Footer() {
+  const { lang } = useSite()
   const t = (zh, en) => lang === 'zh' ? zh : en
   return (
     <footer className="bg-gray-900 text-gray-400 py-12">

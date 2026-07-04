@@ -1,13 +1,11 @@
 'use client'
+import { useSite } from '../../lib/SiteContext'
 import { useState } from 'react'
 import { ArrowLeft, Monitor, Battery, Cpu, ChevronDown } from 'lucide-react'
 import Navbar from '../../components/Navbar'
-import Footer from '../../components/Footer'
-import ContactModal from '../../components/ContactModal'
 
 export default function HaseeRepair() {
-  const [showContact, setShowContact] = useState(false)
-  const [lang, setLang] = useState('zh')
+  const { lang, setShowContact } = useSite();
   const t = (zh, en) => lang === 'zh' ? zh : en
 
   const services = [
@@ -31,7 +29,7 @@ export default function HaseeRepair() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Navbar lang={lang} setLang={setLang} setShowContact={setShowContact} />
+      <Navbar />
       <section className="bg-gradient-to-br from-indigo-700 via-indigo-600 to-indigo-500 text-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-4 flex items-center gap-2 text-sm"><a href="/" className="text-white/60 hover:text-white transition-colors">{t("首页", "Home")}</a><span className="text-white/30">/</span><a href="/computer-repair" className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-sm font-medium transition-colors"><ArrowLeft size={15} /> {t('电脑品牌', 'Computer Brands')}</a></div>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
@@ -110,8 +108,6 @@ export default function HaseeRepair() {
           </div>
         </div>
       </section>
-      <Footer lang={lang} />
-      <ContactModal show={showContact} setShow={setShowContact} lang={lang} />
     </div>
   )
 }

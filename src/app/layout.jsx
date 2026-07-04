@@ -1,5 +1,9 @@
 import './globals.css'
+import { SiteProvider } from '../lib/SiteContext'
 import ReviewSection from '../components/ReviewSection'
+import Footer from '../components/Footer'
+import ContactModal from '../components/ContactModal'
+import CTASection from '../components/CTASection'
 
 export const metadata = {
   title: {
@@ -113,8 +117,13 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
-        {children}
-        <ReviewSection />
+        <SiteProvider>
+          {children}
+          <ReviewSection />
+          <CTASection />
+          <Footer />
+          <ContactModal />
+        </SiteProvider>
       </body>
     </html>
   )

@@ -3,7 +3,10 @@ import { useState, useRef, useEffect } from 'react'
 import { Search as SearchIcon, X } from 'lucide-react'
 import modelDB from '../data/modelDB'
 
-export default function Navbar({ lang, setLang, setShowContact }) {
+import { useSite } from '../lib/SiteContext'
+
+export default function Navbar() {
+  const { lang, setLang, setShowContact } = useSite()
   const [query, setQuery] = useState('')
   const [showResults, setShowResults] = useState(false)
   const [showSearch, setShowSearch] = useState(false)

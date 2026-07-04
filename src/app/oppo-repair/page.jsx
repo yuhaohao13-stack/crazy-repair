@@ -1,13 +1,11 @@
 'use client'
+import { useSite } from '../../lib/SiteContext'
 import { useState } from 'react'
 import { ArrowLeft, Smartphone, Battery, Droplets, Cpu, ChevronDown } from 'lucide-react'
 import Navbar from '../../components/Navbar'
-import Footer from '../../components/Footer'
-import ContactModal from '../../components/ContactModal'
 
 export default function OPPORepair() {
-  const [showContact, setShowContact] = useState(false)
-  const [lang, setLang] = useState('zh')
+  const { lang, setShowContact } = useSite();
   const t = (zh, en) => lang === 'zh' ? zh : en
 
   const services = [
@@ -31,7 +29,7 @@ export default function OPPORepair() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Navbar lang={lang} setLang={setLang} setShowContact={setShowContact} />
+      <Navbar />
 
       {/* Hero */}
       <section className="bg-gradient-to-br from-green-600 via-green-500 to-green-400 text-white">
@@ -122,8 +120,6 @@ export default function OPPORepair() {
         </div>
       </section>
 
-      <Footer lang={lang} />
-      <ContactModal show={showContact} setShow={setShowContact} lang={lang} />
     </div>
   )
 }

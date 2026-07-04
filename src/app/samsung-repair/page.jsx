@@ -1,13 +1,11 @@
 'use client'
+import { useSite } from '../../lib/SiteContext'
 import { useState } from 'react'
 import { ArrowLeft, Smartphone, Battery, Droplets, Cpu, Camera, ChevronDown } from 'lucide-react'
 import Navbar from '../../components/Navbar'
-import Footer from '../../components/Footer'
-import ContactModal from '../../components/ContactModal'
 
 export default function SamsungRepair() {
-  const [showContact, setShowContact] = useState(false)
-  const [lang, setLang] = useState('zh')
+  const { lang, setShowContact } = useSite();
   const t = (zh, en) => lang === 'zh' ? zh : en
   
   const services = [
@@ -34,7 +32,7 @@ export default function SamsungRepair() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Navbar lang={lang} setLang={setLang} setShowContact={setShowContact} />
+      <Navbar />
       <section className="bg-gradient-to-br from-purple-700 via-purple-600 to-purple-500 text-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-4 flex items-center gap-2 text-sm">
           <a href="/" className="text-white/60 hover:text-white transition-colors">{t("首页", "Home")}</a>
@@ -107,8 +105,6 @@ export default function SamsungRepair() {
           </div>
         </div>
       </section>
-      <Footer lang={lang} />
-      <ContactModal show={showContact} setShow={setShowContact} lang={lang} />
     </div>
   )
 }

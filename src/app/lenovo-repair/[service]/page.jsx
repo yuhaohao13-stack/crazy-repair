@@ -1,9 +1,8 @@
 'use client'
+import { useSite } from '../../../lib/SiteContext'
 import { useState, useMemo } from 'react'
 import { ArrowLeft, ChevronDown } from 'lucide-react'
 import Navbar from '../../../components/Navbar'
-import Footer from '../../../components/Footer'
-import ContactModal from '../../../components/ContactModal'
 import { repairServices } from '../../../data/repairServices'
 import modelDB from '../../../data/modelDB'
 import { useParams, usePathname } from 'next/navigation'
@@ -55,9 +54,8 @@ const brandDirModelFilter = {
 }
 
 export default function ServiceDetail() {
-  const [showContact, setShowContact] = useState(false)
+  const { lang, setShowContact } = useSite();
   const [showModels, setShowModels] = useState(false)
-  const [lang, setLang] = useState('zh')
   const params = useParams()
   const pathname = usePathname()
   const t = (zh, en) => lang === 'zh' ? zh : en
@@ -92,7 +90,7 @@ export default function ServiceDetail() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Navbar lang={lang} setLang={setLang} setShowContact={setShowContact} />
+      <Navbar />
       
       <div className="bg-gray-50 border-b border-gray-100">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-2.5 text-xs text-gray-500 flex gap-1.5 flex-wrap">
@@ -206,8 +204,6 @@ export default function ServiceDetail() {
         </div>
       </section>
 
-      <Footer lang={lang} />
-      <ContactModal show={showContact} setShow={setShowContact} lang={lang} />
     </div>
   )
 }

@@ -1,8 +1,10 @@
 'use client'
 import { useState } from 'react'
 import { ChevronRight, MessageCircle, Phone, MapPin } from 'lucide-react'
+import { useSite } from '../lib/SiteContext'
 
-export default function ContactModal({ show, setShow, lang }) {
+export default function ContactModal() {
+  const { showContact: show, setShowContact: setShow, lang } = useSite()
   const [copied, setCopied] = useState(false)
   const t = (zh, en) => lang === 'zh' ? zh : en
   if (!show) return null
