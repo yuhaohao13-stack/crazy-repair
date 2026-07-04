@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect, useRef, useCallback } from 'react'
-import { Star, ChevronLeft, ChevronRight, ImagePlus, X, ShieldCheck, Sparkles, ExternalLink, MapPin, Calendar } from 'lucide-react'
+import { Star, ImagePlus, X, ShieldCheck, Sparkles } from 'lucide-react'
 
 // ========== 评价详情弹窗 ==========
 function ReviewDetailModal({ review, onClose, isAdmin }) {
@@ -113,70 +113,47 @@ function ReviewCard({ review, onClick }) {
   )
 }
 
-// ========== 轮播 ==========
-function ReviewCarousel({ reviews, onShowForm, onCardClick }) {
-  const [current, setCurrent] = useState(0)
-  const max = Math.max(0, reviews.length - 1)
-
-  const next = useCallback(() => setCurrent(c => Math.min(c + 1, max)), [max])
-  const prev = useCallback(() => setCurrent(c => Math.max(c - 1, 0)), [])
-
-  // 自动轮播
-  useEffect(() => {
-    if (reviews.length <= 1) return
-    const timer = setInterval(next, 5000)
-    return () => clearInterval(timer)
-  }, [next, reviews.length])
-
+// ========== 评价紧凑列表（替代轮播） ==========
+function ReviewList({ reviews, onCardClick }) {
   if (!reviews.length) return null
 
-  const visibleDesktop = reviews.slice(current, current + 3)
-  const hasMore = current + 3 < reviews.length
+  // 前3条：大卡片展示
+  const featured = reviews.slice(0, 3)
+  // 后面的：紧凑列表
+  const rest = reviews.slice(3)
 
   return (
-    <div className="relative">
-      {/* 左右箭头 */}
-      {current > 0 && (
-        <button onClick={prev} className="absolute -left-3 sm:-left-4 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow-md border border-gray-100 hover:bg-gray-50 transition-colors">
-          <ChevronLeft size={20} className="text-gray-600" />
-        </button>
-      )}
-      {hasMore && (
-        <button onClick={next} className="absolute -right-3 sm:-right-4 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow-md border border-gray-100 hover:bg-gray-50 transition-colors">
-          <ChevronRight size={20} className="text-gray-600" />
-        </button>
-      )}
-
-      {/* 评价卡片展示 */}
-      <div className="hidden sm:grid sm:grid-cols-3 gap-4">
-        {visibleDesktop.map((r) => (
+    <div className="space-y-6">
+      {/* 前3条大卡片 */}
+      <div className="grid sm:grid-cols-3 gap-4">
+        {featured.map(r => (
           <ReviewCard key={r.id} review={r} onClick={onCardClick} />
         ))}
-        {Array.from({ length: Math.max(0, 3 - visibleDesktop.length) }).map((_, i) => (
-          <div key={`empty-${i}`} className="bg-gray-50 rounded-2xl border border-dashed border-gray-200 flex items-center justify-center min-h-[200px]">
-            <p className="text-gray-400 text-sm">更多评价加载中...</p>
-          </div>
-        ))}
       </div>
 
-      {/* 手机端：单卡片滑动 */}
-      <div className="sm:hidden">
-        <ReviewCard review={reviews[current]} onClick={onCardClick} />
-      </div>
-
-      {/* 圆点指示器 */}
-      {reviews.length > 3 && (
-        <div className="flex justify-center gap-1.5 mt-4">
-          {Array.from({ length: Math.min(reviews.length - 2, 5) }).map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrent(i)}
-              className={`w-2 h-2 rounded-full transition-all ${
-                i === Math.min(current, reviews.length - 3)
-                  ? 'bg-blue-600 w-5'
-                  : 'bg-gray-300'
-              }`}
-            />
+      {/* 后面的紧凑列表 */}
+      {rest.length > 0 && (
+        <div className="space-y-2">
+          {rest.map(r => (
+            <div key={r.id}
+              onClick={() => onCardClick(r)}
+              className="bg-white rounded-xl px-4 py-3 border border-gray-100 cursor-pointer hover:bg-gray-50 hover:border-gray-200 transition-all flex items-center gap-3"
+            >
+              {/* 星级 */}
+              <div className="flex text-amber-400 shrink-0">
+                {[1,2,3,4,5].map(s => (
+                  <Star key={s} size={13} fill={s <= r.rating ? 'currentColor' : 'none'}
+                    className={s <= r.rating ? 'text-amber-400' : 'text-gray-200'} />
+                ))}
+              </div>
+              {/* 标题 + 摘要 */}
+              <div className="flex-1 min-w-0">
+                <span className="text-sm font-medium text-gray-900 line-clamp-1">{r.title}</span>
+                <span className="text-xs text-gray-400 ml-2 line-clamp-1">&ldquo;{r.content}&rdquo;</span>
+              </div>
+              {/* 用户名 */}
+              <span className="text-xs text-gray-400 shrink-0">{r.name}</span>
+            </div>
           ))}
         </div>
       )}
@@ -474,7 +451,6 @@ function ReviewForm({ onClose, onSubmitted }) {
 // ========== 主组件 ==========
 export default function ReviewSection({ showAdminButton = true }) {
   const [reviews, setReviews] = useState([])
-  const [carouselReviews, setCarouselReviews] = useState([])
   const [total, setTotal] = useState(0)
   const [loading, setLoading] = useState(true)
   const [showForm, setShowForm] = useState(false)
@@ -495,7 +471,6 @@ export default function ReviewSection({ showAdminButton = true }) {
       const res = await fetch('/api/reviews/list?pageSize=50')
       const data = await res.json()
       setReviews(data.reviews || [])
-      setCarouselReviews(data.carousel || [])
       setTotal(data.total || 0)
     } catch (err) {
       console.error('Load reviews error:', err)
@@ -586,8 +561,8 @@ export default function ReviewSection({ showAdminButton = true }) {
               </div>
             ))}
           </div>
-        ) : carouselReviews.length > 0 ? (
-          <ReviewCarousel reviews={carouselReviews} onShowForm={() => setShowForm(true)} onCardClick={onCardClick} />
+        ) : reviews.length > 0 ? (
+          <ReviewList reviews={reviews} onCardClick={onCardClick} />
         ) : (
           <div className="text-center py-12 bg-white rounded-2xl border border-dashed border-gray-200">
             <p className="text-gray-400 mb-3">暂无评价</p>
@@ -600,30 +575,7 @@ export default function ReviewSection({ showAdminButton = true }) {
           </div>
         )}
 
-        {/* 评价列表（最新10条） */}
-        {!loading && reviews.length > 0 && (
-          <div className="mt-8">
-            <h3 className="text-base font-semibold text-gray-900 mb-4">最新评价</h3>
-            <div className="grid sm:grid-cols-2 gap-3">
-              {reviews.slice(0, 6).map(r => (
-                <div key={r.id} className="bg-white rounded-xl p-4 border border-gray-100 cursor-pointer hover:shadow-md hover:-translate-y-0.5 transition-all" onClick={() => onCardClick(r)}>
-                  <div className="flex text-amber-400 mb-1.5">
-                    {[1, 2, 3, 4, 5].map(s => (
-                      <Star key={s} size={14} fill={s <= r.rating ? 'currentColor' : 'none'} className={s <= r.rating ? 'text-amber-400' : 'text-gray-200'} />
-                    ))}
-                  </div>
-                  <h4 className="font-medium text-gray-900 text-sm mb-1 line-clamp-1">{r.title}</h4>
-                  <p className="text-gray-500 text-xs leading-relaxed line-clamp-2">&ldquo;{r.content}&rdquo;</p>
-                  <div className="flex items-center gap-2 mt-2 text-xs text-gray-400">
-                    <span>{r.name}</span>
-                    <span>·</span>
-                    <span>{r.phone}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+
 
         {/* 评价表单 Modal */}
         {showForm && (
