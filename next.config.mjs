@@ -33,9 +33,9 @@ const nextConfig = {
               "default-src 'self'",
               "script-src 'self' 'unsafe-inline'",
               "style-src 'self' 'unsafe-inline'",
-              "img-src 'self' data:",
+              "img-src 'self' data: https://rsndnhdimruisysacujg.supabase.co",
               "font-src 'self' data:",
-              "connect-src 'self'",
+              "connect-src 'self' https://rsndnhdimruisysacujg.supabase.co",},{
               "frame-ancestors 'none'",
               "form-action 'self'",
               "media-src 'self'",
@@ -68,6 +68,10 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'picsum.photos',
+      },
+      {
+        protocol: 'https',
+        hostname: 'rsndnhdimruisysacujg.supabase.co',
       },
     ],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
