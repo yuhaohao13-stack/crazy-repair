@@ -1,14 +1,11 @@
 import { NextResponse } from 'next/server'
-import { cookies } from 'next/headers'
+import { ADMIN_EMAIL, ADMIN_PASSWORD } from '@/lib/admin-auth'
 
 export async function POST(req) {
   try {
     const { email, password } = await req.json()
 
-    const adminEmail = process.env.ADMIN_EMAIL
-    const adminPassword = process.env.ADMIN_PASSWORD
-
-    if (email !== adminEmail || password !== adminPassword) {
+    if (email !== ADMIN_EMAIL || password !== ADMIN_PASSWORD) {
       return NextResponse.json({ error: '账号或密码错误' }, { status: 401 })
     }
 
@@ -17,7 +14,7 @@ export async function POST(req) {
       JSON.stringify({
         email,
         time: Date.now(),
-        sig: `crazy_${email}_${adminPassword}`,
+        sig: `crazy_${email}_${ADMIN_PASSWORD}`,
       })
     ).toString('base64')
 

@@ -1,6 +1,8 @@
-node_modules/
-.next/
-out/
-.env.local
 *.zip
 .DS_Store
+.env.local
+.next/
+node_modules/
+out/
+src/lib/env.js
+src/lib/env.local.js
