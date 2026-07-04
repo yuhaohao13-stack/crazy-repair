@@ -7,17 +7,15 @@ import CTASection from './CTASection'
 
 export default function LayoutBottom() {
   const pathname = usePathname()
-
-  // 首页显示全套，品牌服务页面只显示评价
   const isHome = pathname === '/'
 
   return (
     <>
-      {/* 首页：FAQ → 评价 → CTA */}
-      {/* 品牌页：只显示评价 */}
+      {/* 所有页面：评价 → CTA → Footer */}
+      {/* 首页额外加 FAQ */}
       {isHome && <FAQSection />}
       <ReviewSection />
-      {isHome && <CTASection />}
+      <CTASection />
     </>
   )
 }
