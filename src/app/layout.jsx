@@ -1,4 +1,5 @@
 import './globals.css'
+import ReviewSection from '../components/ReviewSection'
 
 export const metadata = {
   title: {
@@ -111,7 +112,10 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <ReviewSection />
+      </body>
     </html>
   )
 }

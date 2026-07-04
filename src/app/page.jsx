@@ -1,6 +1,6 @@
 'use client'
 import { useState, useMemo } from 'react'
-import { Smartphone, Monitor, Tablet, Wrench, ShieldCheck, Clock, ChevronDown, Star, Award, MapPin, MessageCircle, Phone, Search } from 'lucide-react'
+import { Smartphone, Monitor, Tablet, Wrench, ShieldCheck, Clock, ChevronDown, Award, MapPin, MessageCircle, Phone, Search } from 'lucide-react'
 
 function SearchCheck(props) {
   return (<svg xmlns="http://www.w3.org/2000/svg" width={props.size||24} height={props.size||24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="m9 11 2 2 4-4"/></svg>)
@@ -97,13 +97,6 @@ export default function Home() {
     { icon: <Award size={28} />, title: t(`${yearsActive}年维修生涯`, `${yearsActive} Years Experience`), desc: t('2007年至今奋斗在维修一线', 'On the repair frontline since 2007') },
   ]
 
-  const reviews = [
-    { name: '张先生', text: t('换了iPhone屏幕，价格比官方便宜太多，质量很好，推荐！', 'iPhone screen replacement, way cheaper than official, great quality!'), stars: 5 },
-    { name: '李女士', text: t('电脑卡顿好久了，加了固态硬盘开机10秒，太牛了', 'Slow laptop got SSD, boots in 10 seconds!'), stars: 5 },
-    { name: '王先生', text: t('iPad屏幕摔碎了，修好跟新的一样，还贴了膜，服务态度超好', 'iPad screen fixed like new, also got a screen protector. Great service!'), stars: 5 },
-    { name: '刘先生', text: t('MacBook进水了，以为废了，结果修好了。手艺确实可以，800块救了一台一万多的电脑，值。', 'Spilled water on my MacBook, thought it was dead. He fixed it. 800 RMB saved a 10K+ laptop. Worth every cent.'), stars: 5 },
-    { name: '陈女士', text: t('华为P40换了电池又满血复活，老板实在，还帮我清了下灰，没收额外费用', 'Huawei P40 battery swap, feels like new. He also cleaned dust for free. Solid guy.'), stars: 5 },
-  ]
 
   return (
     <div className="min-h-screen bg-white">
@@ -375,24 +368,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== 客户评价 ===== */}
-      <section id="reviews" className="py-16 sm:py-20 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">{t('客户评价', 'Customer Reviews')}</h2>
-            <p className="text-gray-500 mt-2">{t('来自真实客户的好评', 'What our customers say')}</p>
-          </div>
-          <div className="grid sm:grid-cols-3 gap-6">
-            {reviews.map((r, i) => (
-              <div key={i} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
-                <div className="flex text-amber-400 mb-3">{[...Array(r.stars)].map((_, j) => <Star key={j} size={16} fill="currentColor" />)}</div>
-                <p className="text-gray-600 text-sm leading-relaxed mb-4">"{r.text}"</p>
-                <p className="text-gray-400 text-xs font-medium">{r.name}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* ===== FAQ ===== */}
       <section id="faq" className="py-16 sm:py-20">
