@@ -1,10 +1,5 @@
 import './globals.css'
 import { SiteProvider } from '../lib/SiteContext'
-import ReviewSection from '../components/ReviewSection'
-import Footer from '../components/Footer'
-import ContactModal from '../components/ContactModal'
-import CTASection from '../components/CTASection'
-import FAQSection from '../components/FAQSection'
 import LayoutBottom from '../components/LayoutBottom'
 
 export const metadata = {

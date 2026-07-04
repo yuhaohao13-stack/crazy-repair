@@ -3,7 +3,8 @@
 import { usePathname } from 'next/navigation'
 import ReviewSection from './ReviewSection'
 import FAQSection from './FAQSection'
-import CTASection from './CTASection'
+import Footer from './Footer'
+import ContactModal from './ContactModal'
 
 export default function LayoutBottom() {
   const pathname = usePathname()
@@ -11,11 +12,12 @@ export default function LayoutBottom() {
 
   return (
     <>
-      {/* 所有页面：评价 → CTA → Footer */}
-      {/* 首页额外加 FAQ */}
+      {/* 首页额外显示FAQ */}
       {isHome && <FAQSection />}
+      {/* 所有页面：评价 → 黑色Footer */}
       <ReviewSection />
-      <CTASection />
+      <Footer />
+      <ContactModal />
     </>
   )
 }
