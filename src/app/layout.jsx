@@ -1,5 +1,6 @@
 import './globals.css'
 import { SiteProvider } from '../lib/SiteContext'
+import FAQSection from '../components/FAQSection'
 import ReviewSection from '../components/ReviewSection'
 import Footer from '../components/Footer'
 import ContactModal from '../components/ContactModal'
@@ -119,6 +120,7 @@ export default function RootLayout({ children }) {
       <body>
         <SiteProvider>
           {children}
+          <FAQSection />
           <ReviewSection />
           <CTASection />
           <Footer />
