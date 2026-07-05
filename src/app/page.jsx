@@ -24,7 +24,7 @@ export default function Home() {
       link: '/phone-repair',
       title: t('手机维修', 'Phone Repair'),
       summary: t('苹果/三星/华为/小米/OPPO/vivo/OnePlus/荣耀/Google Pixel 等全品牌', 'Apple/Samsung/Huawei/Xiaomi/OPPO/vivo/OnePlus/Honor/Google Pixel & more'),
-      brands: t('覆盖 iPhone 16/15/14/13 全系，三星 S/Z/A 系列，华为 Mate/P 系列，小米 Redmi 全系，OPPO Find/Reno，vivo X/iQOO，OnePlus，荣耀 Magic/数字/X 系列，Google Pixel 全系列', 'iPhone 16/15/14/13 all series, Samsung S/Z/A series, Huawei Mate/P series, Xiaomi/Redmi all models, OPPO Find/Reno, vivo X/iQOO, OnePlus, Honor Magic/Number/X series, Google Pixel all series'),
+      brands: t('覆盖 iPhone 17/16/15/14/13 全系，三星 S/Z/A 系列，华为 Mate/P 系列，小米 Redmi 全系，OPPO Find/Reno，vivo X/iQOO，OnePlus，荣耀 Magic/数字/X 系列，Google Pixel 全系列', 'iPhone 17/16/15/14/13 all series, Samsung S/Z/A series, Huawei Mate/P series, Xiaomi/Redmi all models, OPPO Find/Reno, vivo X/iQOO, OnePlus, Honor Magic/Number/X series, Google Pixel all series'),
       details: [
         { name: t('屏幕更换', 'Screen Replacement'), desc: t('内外屏总成更换，原装品质/国产高性价比可选。含专业密封胶恢复防水性。iPhone OLED/三星AMOLED/各种屏幕都做。', 'Full assembly replacement. OEM quality or affordable options. Includes waterproof sealant. iPhone OLED, Samsung AMOLED, all screen types handled.') },
         { name: t('电池更换', 'Battery Replacement'), desc: t('原装品质电池，容量达标不虚标。更换后自动检测健康度，告别续航焦虑。iPhone/安卓全系列电池现货。', 'Quality batteries with accurate capacity. Health check after replacement. iPhone & Android batteries in stock.') },
@@ -258,7 +258,8 @@ export default function Home() {
             <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
               <h3 className="font-bold text-blue-600 mb-3 text-sm uppercase tracking-wider">{t('📱 iPhone 全系列', '📱 iPhone Series')}</h3>
               <ul className="space-y-1.5 text-sm text-gray-600">
-                {[t('iPhone 16 Pro Max / Pro / Plus / 16', 'iPhone 16 Pro Max / Pro / Plus / 16'),
+                {[t('iPhone 17 Pro Max / Pro / 17 / 17 Air / 16e', 'iPhone 17 Pro Max / Pro / 17 / 17 Air / 16e'),
+                  t('iPhone 16 Pro Max / Pro / Plus / 16', 'iPhone 16 Pro Max / Pro / Plus / 16'),
                   t('iPhone 15 Pro Max / Pro / Plus / 15', 'iPhone 15 Pro Max / Pro / Plus / 15'),
                   t('iPhone 14 Pro Max / Pro / Plus / 14', 'iPhone 14 Pro Max / Pro / Plus / 14'),
                   t('iPhone 13 Pro Max / Pro / 13 / 13 Mini', 'iPhone 13 Pro Max / Pro / 13 / 13 Mini'),
