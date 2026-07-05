@@ -1,7 +1,7 @@
 'use client'
 import { useSite } from '../../../lib/SiteContext'
 import { useState, useMemo } from 'react'
-import { ArrowLeft, ChevronDown } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 import Navbar from '../../../components/Navbar'
 import Breadcrumb from "../../../components/Breadcrumb";
 import { repairServices } from '../../../data/repairServices'
@@ -102,9 +102,6 @@ export default function ServiceDetail() {
 
       <section className={'bg-gradient-to-br ' + info.gradient + ' text-white'}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
-          <a href={'/' + brandDir} className="inline-flex items-center gap-1 text-white/70 hover:text-white text-xs mb-3">
-            <ArrowLeft size={12} /> {t('← 返回' + info.label, '← Back to ' + info.labelEn)}
-          </a>
           <h1 className="text-2xl sm:text-4xl font-bold mb-2">{lang === 'zh' ? service.title : service.titleEn}</h1>
           <p className="text-base sm:text-lg text-white/90 max-w-2xl">{lang === 'zh' ? service.description : service.descriptionEn}</p>
           <div className="mt-4 flex gap-3">
