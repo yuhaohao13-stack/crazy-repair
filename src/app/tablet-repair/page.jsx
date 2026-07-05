@@ -27,7 +27,7 @@ export default function TabletRepair() {
               <h3 className="font-bold text-lg mb-1">{t('Apple iPad', 'Apple iPad')}</h3>
               <p className="text-sm text-white/80 mb-2">{t('iPad Pro/Air/Mini/数字系列全代维修', 'iPad Pro/Air/Mini/digital all gens')}</p>
               <p className="text-xs text-white/60">{t('屏幕更换、电池、充电口、进水', 'Screen, battery, port, water')}</p>
-              <a href="/iphone-repair" className="inline-block mt-3 text-xs bg-white/20 px-3 py-1 rounded-full hover:bg-white/30">{t('查看服务 →', 'Services →')}</a>
+              <a href="/ipad-repair" className="inline-block mt-3 text-xs bg-white/20 px-3 py-1 rounded-full hover:bg-white/30">{t('查看服务 →', 'Services →')}</a>
             </div>
             <div className="bg-gradient-to-br from-purple-600 to-purple-500 text-white rounded-2xl p-5 shadow-md">
               <div className="text-3xl mb-2">📟</div>

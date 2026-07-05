@@ -29,6 +29,7 @@ const brandConfig = {
   'msi-repair': { key: 'msi', label: '微星 维修', labelEn: 'MSI Repair', gradient: 'from-red-700 via-red-600 to-red-500' },
   'surface-repair': { key: 'surface', label: 'Surface 维修', labelEn: 'Surface Repair', gradient: 'from-gray-700 via-gray-600 to-gray-500' },
   'hasee-repair': { key: 'hasee', label: '神舟 维修', labelEn: 'Hasee Repair', gradient: 'from-indigo-700 via-indigo-600 to-indigo-500' },
+  'ipad-repair': { key: 'ipad', label: 'iPad 维修', labelEn: 'iPad Repair', gradient: 'from-blue-700 via-blue-600 to-blue-500' },
 }
 
 // 品牌目录 → modelDB 品牌名&页面映射
@@ -52,6 +53,7 @@ const brandDirModelFilter = {
   'msi-repair': { brand: 'MSI', page: '/msi-repair' },
   'surface-repair': { brand: 'Microsoft', page: '/surface-repair' },
   'hasee-repair': { brand: 'Hasee', page: '/hasee-repair' },
+  'ipad-repair': { brand: 'Apple', page: '/ipad-repair' },
 }
 
 export default function ServiceDetail() {
