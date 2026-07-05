@@ -38,7 +38,7 @@ export default function FloatingContact() {
   const [showPhones, setShowPhones] = useState(false)
 
   return (
-    <div className="fixed bottom-4 right-4 z-40 flex flex-col items-end gap-2 sm:hidden">
+    <div className="fixed bottom-4 right-4 z-40 flex flex-col items-end gap-2">
       {/* 展开菜单 */}
       {expanded && (
         <div className="bg-white rounded-2xl shadow-xl border border-gray-200 p-3 w-64 animate-in slide-in-from-bottom-2 duration-200">
