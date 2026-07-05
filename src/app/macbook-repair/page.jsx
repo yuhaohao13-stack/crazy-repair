@@ -92,7 +92,7 @@ export default function MacBookRepair() {
 
       <section className="py-16 bg-gradient-to-br from-gray-800 via-gray-700 to-gray-600 text-white text-center">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-4">{t('MacBook 出问题了？找我', 'MacBook issues? Hit me up')}</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4">{t('需要MacBook维修？找我', 'Need MacBook Repair? Contact me')}</h2>
           <p className="text-gray-300 mb-8">{t('免费检测，先报价后维修。', 'Free diagnosis, quote first.')}</p>
           <div className="flex flex-wrap justify-center gap-4">
             <button onClick={() => setShowContact(true)} className="bg-white text-gray-800 font-semibold px-8 py-4 rounded-xl hover:bg-gray-100 transition-colors shadow-lg text-lg">{t('📱 微信咨询', '📱 WeChat')}</button>

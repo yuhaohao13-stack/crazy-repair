@@ -103,7 +103,7 @@ export default function AcerRepair() {
       </section>
       <section className="py-16 bg-gradient-to-br from-green-700 via-green-600 to-green-500 text-white text-center">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-4">{t('Acer 出问题了？找我', 'Acer issues? Contact me')}</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4">{t('需要Acer维修？找我', 'Need Acer Repair? Contact me')}</h2>
           <p className="text-green-200 mb-8">{t('免费检测，先报价后维修。', 'Free diagnosis, quote first.')}</p>
           <div className="flex flex-wrap justify-center gap-4">
             <button onClick={() => setShowContact(true)} className="bg-white text-green-600 font-semibold px-8 py-4 rounded-xl hover:bg-green-50 transition-colors shadow-lg text-lg">{t('📱 微信咨询', '📱 WeChat')}</button>

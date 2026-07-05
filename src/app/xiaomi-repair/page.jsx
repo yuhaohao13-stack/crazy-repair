@@ -104,7 +104,7 @@ export default function XiaomiRepair() {
 
       <section className="py-16 bg-gradient-to-br from-orange-600 via-orange-500 to-yellow-500 text-white text-center">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-4">{t('Xiaomi 有问题？找我', 'Xiaomi issues? Contact me')}</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4">{t('需要Xiaomi维修？找我', 'Need Xiaomi Repair? Contact me')}</h2>
           <p className="text-orange-100 mb-8">{t('免费检测，先报价后维修。', 'Free diagnosis, quote first.')}</p>
           <div className="flex flex-wrap justify-center gap-4">
             <button onClick={() => setShowContact(true)} className="bg-white text-orange-600 font-semibold px-8 py-4 rounded-xl hover:bg-orange-50 transition-colors shadow-lg text-lg">{t('📱 微信咨询', '📱 WeChat')}</button>
