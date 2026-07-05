@@ -1,10 +1,19 @@
 'use client'
 import { useSite } from '../../../lib/SiteContext'
-import { useState } from 'react'
-import { ArrowLeft, ChevronDown } from 'lucide-react'
 import Navbar from '../../../components/Navbar'
 import Breadcrumb from "../../../components/Breadcrumb";
 import { useParams } from 'next/navigation'
+
+// 每个品牌维修项目对应的详情页 service ID（下标匹配 repairs[] 顺序）
+const brandServiceIds = {
+  ipad:      ['screen-replacement', 'battery-replacement', 'charging-port', 'motherboard-repair', 'water-damage'],
+  samsung:   ['screen-replacement', 'battery-replacement', 'back-glass', 'charging-port', 'motherboard-repair'],
+  huawei:    ['screen-replacement', 'battery-replacement', 'charging-port', 'motherboard-repair', 'flash-unlock'],
+  xiaomi:    ['screen-replacement', 'battery-replacement', 'charging-port', 'motherboard-repair'],
+  oppo:      ['screen-replacement', 'battery-replacement', 'charging-port', 'motherboard-repair'],
+  lenovo:    ['screen-replacement', 'battery-replacement', 'charging-port', 'motherboard-repair'],
+  kindle:    [],
+}
 
 const serviceData = {
   ipad: {
@@ -12,7 +21,6 @@ const serviceData = {
     titleEn: 'Apple iPad',
     subtitle: 'iPad Pro/Air/Mini/数字系列全代维修',
     subtitleEn: 'iPad Pro/Air/Mini/digital all gens repair',
-    gradient: 'from-blue-600 to-blue-500',
     gradientBg: 'from-blue-700 via-blue-600 to-blue-500',
     icon: '📟',
     description: 'iPad Pro Mini-LED屏/M4 OLED屏、iPad Air、iPad mini、数字系列——屏幕碎了、电池不耐用了、充电口松了、进水了。Apple iPad全系列专业维修，2007年至今奋斗在维修一线。',
@@ -31,7 +39,6 @@ const serviceData = {
     titleEn: 'Samsung Galaxy Tab',
     subtitle: '三星Tab S/A/Active全系列维修',
     subtitleEn: 'Samsung Tab S/A/Active series repair',
-    gradient: 'from-purple-600 to-purple-500',
     gradientBg: 'from-purple-700 via-purple-600 to-purple-500',
     icon: '📟',
     description: '三星Galaxy Tab S系列旗舰屏、Tab A系列性价比平板——屏幕碎了、电池不耐用了、后盖碎了。三星平板AMOLED/LCD换屏专家，芯片级主板维修。',
@@ -50,7 +57,6 @@ const serviceData = {
     titleEn: 'Huawei MatePad',
     subtitle: '华为MatePad Pro/Air/SE全系维修',
     subtitleEn: 'Huawei MatePad Pro/Air/SE series repair',
-    gradient: 'from-red-600 to-red-500',
     gradientBg: 'from-red-600 via-red-500 to-red-400',
     icon: '📟',
     description: '华为MatePad Pro OLED旗舰、MatePad Air、MatePad SE——屏幕更换、电池维修、主板芯片级维修、鸿蒙刷机解锁。华为平板全系专业维修。',
@@ -69,7 +75,6 @@ const serviceData = {
     titleEn: 'Xiaomi/Redmi Pad',
     subtitle: '小米Pad/Redmi Pad全系维修',
     subtitleEn: 'Xiaomi Pad/Redmi Pad all series repair',
-    gradient: 'from-orange-600 to-yellow-500',
     gradientBg: 'from-orange-600 via-orange-500 to-yellow-500',
     icon: '📟',
     description: '小米平板、Redmi Pad——屏幕碎了、电池不耐用了、充电口松了。小米平板性价比维修，换屏换电修主板一站式搞定。',
@@ -87,7 +92,6 @@ const serviceData = {
     titleEn: 'OPPO Pad / OnePlus Pad',
     subtitle: 'OPPO Pad/OnePlus Pad维修',
     subtitleEn: 'OPPO Pad/OnePlus Pad repair',
-    gradient: 'from-teal-600 to-teal-500',
     gradientBg: 'from-teal-700 via-teal-600 to-teal-500',
     icon: '📟',
     description: 'OPPO Pad、OnePlus Pad——屏幕碎了、电池不耐用了、充电口坏了。OPPO/一加平板专业维修。',
@@ -105,7 +109,6 @@ const serviceData = {
     titleEn: 'Lenovo Tab / Honor Pad',
     subtitle: '联想小新Pad/荣耀平板全系维修',
     subtitleEn: 'Lenovo Pad/Honor Pad all series repair',
-    gradient: 'from-violet-600 to-violet-500',
     gradientBg: 'from-violet-700 via-violet-600 to-violet-500',
     icon: '📟',
     description: '联想小新Pad、联想Yoga Tab、荣耀平板——屏幕更换、电池维修、充电口维修。性价比平板维修专家。',
@@ -123,7 +126,6 @@ const serviceData = {
     titleEn: 'Kindle / E-reader',
     subtitle: 'Kindle/Kobo/文石BOOX/小米多看',
     subtitleEn: 'Kindle/Kobo/BOOX/Xiaomi e-reader',
-    gradient: 'from-amber-600 to-amber-500',
     gradientBg: 'from-amber-600 via-amber-500 to-yellow-500',
     icon: '📖',
     description: 'Amazon Kindle、Kindle Paperwhite、Kindle Oasis、Kobo、文石BOOX、小米多看——墨水屏碎裂、电池不耐用、系统卡顿死机。电子书阅读器专业维修。',
@@ -145,6 +147,8 @@ export default function TabletServiceDetail() {
 
   const serviceId = params?.service || 'ipad'
   const info = serviceData[serviceId]
+  const serviceIds = brandServiceIds[serviceId] || []
+
   if (!info) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
@@ -166,9 +170,6 @@ export default function TabletServiceDetail() {
 
       <section className={'bg-gradient-to-br ' + info.gradientBg + ' text-white'}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14">
-          <a href="/tablet-repair" className="inline-flex items-center gap-1 text-white/70 hover:text-white text-xs mb-3">
-            <ArrowLeft size={12} /> {t('← 返回平板维修', '← Back to Tablet Repair')}
-          </a>
           <div className="flex items-center gap-4 mb-2">
             <div className="text-4xl">{info.icon}</div>
             <div>
@@ -188,12 +189,17 @@ export default function TabletServiceDetail() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">{t('常见维修项目', 'Common Repairs')}</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {info.repairs.map((r, i) => (
-              <div key={i} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
-                <h3 className="font-bold text-gray-900 mb-1 text-sm">{lang === 'zh' ? r.title : r.titleEn}</h3>
-                <p className="text-xs text-gray-500 leading-relaxed">{lang === 'zh' ? r.desc : r.descEn}</p>
-              </div>
-            ))}
+            {info.repairs.map((r, i) => {
+              const href = info.brandPage && serviceIds[i] ? info.brandPage + '/' + serviceIds[i] : null
+              const Component = href ? 'a' : 'div'
+              const linkProps = href ? { href, className: 'bg-white rounded-2xl border border-gray-100 shadow-sm p-5 hover:shadow-md hover:-translate-y-0.5 transition-all block' } : { className: 'bg-white rounded-2xl border border-gray-100 shadow-sm p-5' }
+              return (
+                <Component key={i} {...linkProps}>
+                  <h3 className="font-bold text-gray-900 mb-1 text-sm">{lang === 'zh' ? r.title : r.titleEn}</h3>
+                  <p className="text-xs text-gray-500 leading-relaxed">{lang === 'zh' ? r.desc : r.descEn}</p>
+                </Component>
+              )
+            })}
           </div>
         </div>
       </section>
@@ -210,7 +216,7 @@ export default function TabletServiceDetail() {
         </div>
       </section>
 
-      <section className={'bg-gradient-to-br ' + info.gradientBg + ' text-white text-center'}>
+      <section className={'py-12 bg-gradient-to-br ' + info.gradientBg + ' text-white text-center'}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <h2 className="text-xl sm:text-2xl font-bold mb-3">{t('需要' + info.title + '维修？找我', 'Need ' + info.titleEn + ' Repair? Contact me')}</h2>
           <p className="text-white/80 text-sm mb-6">{t('免费检测，发照片就能初步判断', 'Free diagnosis — send a photo for a quick check')}</p>

@@ -1,7 +1,5 @@
 'use client'
 import { useSite } from '../../../lib/SiteContext'
-import { useState } from 'react'
-import { ArrowLeft } from 'lucide-react'
 import Navbar from '../../../components/Navbar'
 import Breadcrumb from "../../../components/Breadcrumb";
 import { useParams } from 'next/navigation'
@@ -183,9 +181,7 @@ export default function OtherServiceDetail() {
 
       <section className={'bg-gradient-to-br ' + info.gradientBg + ' text-white'}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14">
-          <a href="/other-repair" className="inline-flex items-center gap-1 text-white/70 hover:text-white text-xs mb-3">
-            <ArrowLeft size={12} /> {t('← 返回其他维修', '← Back to Other Repair')}
-          </a>
+
           <div className="flex items-center gap-4 mb-2">
             <div className="text-4xl">{info.icon}</div>
             <div>
