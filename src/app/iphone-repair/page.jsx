@@ -18,6 +18,7 @@ export default function IphoneRepair() {
   ]
   
   const models = [
+      t('iPhone 17 Pro Max / Pro / 17 / 17 Air', 'iPhone 17 Pro Max / Pro / 17 / 17 Air'),
       t('iPhone 16 Pro Max / Pro / Plus / 16 / 16e', 'iPhone 16 Pro Max / Pro / Plus / 16 / 16e'),
       t('iPhone 15 Pro Max / Pro / Plus / 15', 'iPhone 15 Pro Max / Pro / Plus / 15'),
       t('iPhone 14 Pro Max / Pro / Plus / 14', 'iPhone 14 Pro Max / Pro / Plus / 14'),
@@ -45,7 +46,7 @@ export default function IphoneRepair() {
             <h1 className="text-3xl sm:text-5xl font-bold mb-4">{t('iPhone 维修', 'iPhone Repair')}</h1>
             <p className="text-blue-200 text-xl mb-4">{t('苹果 iPhone 全系列专业维修 | 威海环翠区', 'Professional iPhone Repair for All Models | Weihai')}</p>
             <p className="text-blue-100 leading-relaxed">
-              {t('iPhone换屏、换电池、修主板、修面容、处理进水——所有iPhone型号都能修。2007年至今奋斗在维修一线，经验丰富。先检测后报价，价格透明，30天质保。', 'iPhone screen replacement, battery swap, motherboard repair, Face ID fix, water damage — all models iPhone 6 through 16. Since 2007. Free diagnosis, 30-day warranty.')}
+              {t('iPhone换屏、换电池、修主板、修面容、处理进水——所有iPhone型号都能修。2007年至今奋斗在维修一线，经验丰富。先检测后报价，价格透明，30天质保。', 'iPhone screen replacement, battery swap, motherboard repair, Face ID fix, water damage — all models iPhone 6 through 17. Since 2007. Free diagnosis, 30-day warranty.')}
             </p>
             <div className="flex flex-wrap gap-3 mt-6">
               <button onClick={() => setShowContact(true)} className="bg-white text-blue-600 font-semibold px-6 py-3 rounded-xl hover:bg-blue-50 transition-colors shadow-lg">

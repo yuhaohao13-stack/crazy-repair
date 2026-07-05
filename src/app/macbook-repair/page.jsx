@@ -17,7 +17,7 @@ export default function MacBookRepair() {
     { id: 'cleaning', icon: <Cpu size={28} />, title: t('清灰换硅脂/散热', 'Cleaning & Cooling'), desc: t('风扇狂转、机身发烫、性能下降。深度清灰+换导热硅脂，有效降温10-20°C。', 'Loud fans, overheating, performance drop. Deep clean + thermal paste, lowers temps 10-20°C.') },
   ]
 
-  const models = ['MacBook Pro 16" M3/M4', 'MacBook Pro 14" M3/M4', 'MacBook Pro 13" A1706/A1989/A2338', 'MacBook Pro 15" A1398/A1707/A1990', 'MacBook Pro 17" A1297', 'MacBook Air 15" M3/M4', 'MacBook Air 13" A1466/A1932/A2337', 'MacBook Air 11" A1370/A1465', 'iMac 21.5/27 全代', 'Mac Mini / Mac Pro']
+  const models = ['MacBook Pro 16" M5/M4', 'MacBook Pro 14" M5/M4', 'MacBook Pro 13" A1706/A1989/A2338', 'MacBook Pro 15" A1398/A1707/A1990', 'MacBook Pro 17" A1297', 'MacBook Air 15" M4/M3', 'MacBook Air 13" A1466/A1932/A2337', 'MacBook Air 11" A1370/A1465', 'iMac 21.5/27 全代', 'Mac Mini / Mac Pro']
 
   return (
     <div className="min-h-screen bg-white">
