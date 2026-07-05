@@ -1,7 +1,6 @@
 'use client'
 import { useSite } from '../../lib/SiteContext'
 import { useState } from 'react'
-import { ArrowLeft } from 'lucide-react'
 import Navbar from '../../components/Navbar'
 
 export default function OtherRepair() {
@@ -12,8 +11,7 @@ export default function OtherRepair() {
     <div className="min-h-screen bg-white">
       <Navbar />
       <section className="bg-gradient-to-br from-amber-600 via-amber-500 to-yellow-500 text-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-4"><a href="/" className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-sm font-medium transition-colors"><ArrowLeft size={15} /> {t('首页', 'Home')}</a></div>
-                  <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14 text-center">
+<div className="max-w-6xl mx-auto px-4 sm:px-6 py-14 text-center">
           <h1 className="text-3xl sm:text-5xl font-bold mb-3">{t('其他数码维修', 'Other Device Repair')}</h1>
           <p className="text-amber-100 text-lg">{t('手表、游戏机、耳机、相机、改装', 'Watch, console, earphone, camera, mods')}</p>
         </div>

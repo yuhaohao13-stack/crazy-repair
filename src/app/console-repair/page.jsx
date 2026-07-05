@@ -13,7 +13,7 @@ export default function GameConsoleRepair() {
       <Navbar />
       <Breadcrumb items={[{label:"游戏机维修",labelEn:"Console Repair"}]} />
       <section className="bg-gradient-to-br from-red-600 via-red-500 to-red-400 text-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-4 flex items-center gap-2 text-sm"><a href="/" className="text-white/60 hover:text-white transition-colors">{t("首页", "Home")}</a><span className="text-white/30">/</span><a href="/other-repair" className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-sm font-medium transition-colors"><ArrowLeft size={15} /> {t('其他设备', 'Other Devices')}</a></div>
+        
                   <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14">
           <h1 className="text-3xl sm:text-5xl font-bold mb-3">{t('GameConsole 维修', 'GameConsole Repair')}</h1>
           <p className="text-green-100 text-lg mb-4">{t('GameConsole 全系列专业维修 | 威海', 'GameConsole All Series | Weihai')}</p>

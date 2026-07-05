@@ -34,7 +34,7 @@ export default function LenovoRepair() {
       <Navbar />
       <Breadcrumb items={[{label:"电脑维修",labelEn:"Computer Repair",href:"/computer-repair"},{label:"Lenovo 维修",labelEn:"Lenovo Repair"}]} />
       <section className="bg-gradient-to-br from-blue-700 via-blue-600 to-blue-500 text-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-4 flex items-center gap-2 text-sm"><a href="/" className="text-white/60 hover:text-white transition-colors">{t("首页", "Home")}</a><span className="text-white/30">/</span><a href="/computer-repair" className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-sm font-medium transition-colors"><ArrowLeft size={15} /> {t('电脑品牌', 'Computer Brands')}</a></div>
+        
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
           <div className="max-w-3xl">
             <h1 className="text-3xl sm:text-5xl font-bold mb-4">{t('Lenovo 维修', 'Lenovo Repair')}</h1>

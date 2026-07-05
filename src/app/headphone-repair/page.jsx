@@ -1,7 +1,6 @@
 'use client'
 import { useSite } from '../../lib/SiteContext'
 import { useState } from 'react'
-import { ArrowLeft } from 'lucide-react'
 import Navbar from '../../components/Navbar'
 
 export default function HeadphonesRepair() {
@@ -11,8 +10,7 @@ export default function HeadphonesRepair() {
     <div className="min-h-screen bg-white">
       <Navbar />
       <section className="bg-gradient-to-br from-green-600 via-green-500 to-green-400 text-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-4 flex items-center gap-2 text-sm"><a href="/" className="text-white/60 hover:text-white transition-colors">{t("首页", "Home")}</a><span className="text-white/30">/</span><a href="/other-repair" className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-sm font-medium transition-colors"><ArrowLeft size={15} /> {t('其他设备', 'Other Devices')}</a></div>
-                  <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14">
+<div className="max-w-6xl mx-auto px-4 sm:px-6 py-14">
           <h1 className="text-3xl sm:text-5xl font-bold mb-3">{t('Headphones 维修', 'Headphones Repair')}</h1>
           <p className="text-green-100 text-lg mb-4">{t('Headphones 全系列专业维修 | 威海', 'Headphones All Series | Weihai')}</p>
           <p className="text-green-100 max-w-2xl">{t('Headphones Find、Reno、A系列——屏幕碎了、电池不耐用了、充电口坏了，拿来给我看看。2007年至今奋斗在维修一线。', 'Headphones Find, Reno, A series — cracked screen, battery drain, charging port issues. On the job since 2007.')}</p>
