@@ -34,6 +34,7 @@ const brandServices = {
   'nintendo-repair': [],
   'sony-repair': [],
   'other-repair': [],
+  'tablet-repair': [],
 }
 
 export default function sitemap() {
@@ -51,6 +52,24 @@ export default function sitemap() {
     { url: `${BASE}/sony-repair`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.7 },
     { url: `${BASE}/other-repair`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
   ]
+
+  // 平板维修子页面
+  const tabletServices = ['ipad', 'samsung', 'huawei', 'xiaomi', 'oppo', 'lenovo', 'kindle']
+  const tabletServicePages = tabletServices.map(id => ({
+    url: `${BASE}/tablet-repair/${id}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: 0.7,
+  }))
+
+  // 其他数码维修子页面
+  const otherServices = ['watch', 'samsung-watch', 'console', 'headphone', 'camera', 'mods', 'smart-home', 'other']
+  const otherServicePages = otherServices.map(id => ({
+    url: `${BASE}/other-repair/${id}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: 0.7,
+  }))
 
   // 品牌概览页面
   const brandPages = Object.keys(brandServices).map(dir => ({
@@ -73,5 +92,5 @@ export default function sitemap() {
     }
   }
 
-  return [...staticPages, ...brandPages, ...servicePages]
+  return [...staticPages, ...brandPages, ...servicePages, ...tabletServicePages, ...otherServicePages]
 }
