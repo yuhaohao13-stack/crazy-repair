@@ -13,7 +13,8 @@ export default function TabletRepair() {
       <Navbar />
       <Breadcrumb items={[{label:"平板维修",labelEn:"Tablet Repair"}]} />
       <section className="bg-gradient-to-br from-teal-600 via-teal-500 to-teal-400 text-white">
-<div className="max-w-6xl mx-auto px-4 sm:px-6 py-14 text-center">
+        
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14 text-center">
           <h1 className="text-3xl sm:text-5xl font-bold mb-3">{t('平板维修', 'Tablet Repair')}</h1>
           <p className="text-teal-200 text-lg">{t('iPad、安卓平板、电子书维修', 'iPad, Android tablet & e-reader repair')}</p>
         </div>
