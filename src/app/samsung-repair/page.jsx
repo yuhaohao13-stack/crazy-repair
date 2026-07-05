@@ -3,6 +3,7 @@ import { useSite } from '../../lib/SiteContext'
 import { useState } from 'react'
 import { ArrowLeft, Smartphone, Battery, Droplets, Cpu, Camera, ChevronDown } from 'lucide-react'
 import Navbar from '../../components/Navbar'
+import Breadcrumb from "../../components/Breadcrumb";
 
 export default function SamsungRepair() {
   const { lang, setShowContact } = useSite();
@@ -33,6 +34,7 @@ export default function SamsungRepair() {
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
+      <Breadcrumb items={[{label:"手机维修",labelEn:"Phone Repair",href:"/phone-repair"},{label:"Samsung 维修",labelEn:"Samsung Repair"}]} />
       <section className="bg-gradient-to-br from-purple-700 via-purple-600 to-purple-500 text-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-4 flex items-center gap-2 text-sm">
           <a href="/" className="text-white/60 hover:text-white transition-colors">{t("首页", "Home")}</a>

@@ -69,12 +69,21 @@ export default function ContactModal() {
             <ChevronRight size={20} className="text-gray-400 shrink-0" />
           </button>
 
+          {/* 中国电话 */}
+          <a href="tel:+8613573735550"
+            className="flex items-center gap-4 p-4 rounded-2xl border border-gray-200 hover:border-blue-300 hover:bg-blue-50 cursor-pointer transition-all"
+          >
+            <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center shrink-0"><Phone size={24} className="text-blue-600" /></div>
+            <div className="flex-1"><p className="font-semibold text-gray-900">{t('中国电话', 'China Phone')}</p><p className="text-xs text-gray-500">+86 13573735550</p></div>
+            <ChevronRight size={20} className="text-gray-400" />
+          </a>
+
           {/* WhatsApp */}
           <a href="https://wa.me/6596146709?text=我想咨询手机电脑维修事宜" target="_blank" rel="noopener noreferrer"
             className="flex items-center gap-4 p-4 rounded-2xl border border-gray-200 hover:border-green-300 hover:bg-green-50 cursor-pointer transition-all"
           >
             <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center shrink-0"><Phone size={24} className="text-green-600" /></div>
-            <div className="flex-1"><p className="font-semibold text-gray-900">WhatsApp</p><p className="text-xs text-gray-500">+65 96146709</p></div>
+            <div className="flex-1"><p className="font-semibold text-gray-900">WhatsApp / {t('新加坡电话', 'Singapore Phone')}</p><p className="text-xs text-gray-500">+65 96146709</p></div>
             <ChevronRight size={20} className="text-gray-400" />
           </a>
 

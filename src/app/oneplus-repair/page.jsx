@@ -3,6 +3,7 @@ import { useSite } from '../../lib/SiteContext'
 import { useState } from 'react'
 import { ArrowLeft, Smartphone, Battery, Droplets, Cpu, ChevronDown } from 'lucide-react'
 import Navbar from '../../components/Navbar'
+import Breadcrumb from "../../components/Breadcrumb";
 
 export default function OnePlusRepair() {
   const { lang, setShowContact } = useSite();
@@ -30,6 +31,7 @@ export default function OnePlusRepair() {
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
+      <Breadcrumb items={[{label:"手机维修",labelEn:"Phone Repair",href:"/phone-repair"},{label:"OnePlus 维修",labelEn:"OnePlus Repair"}]} />
 
       {/* Hero */}
       <section className="bg-gradient-to-br from-red-700 via-red-600 to-red-500 text-white">

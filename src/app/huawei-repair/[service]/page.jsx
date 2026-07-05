@@ -3,6 +3,7 @@ import { useSite } from '../../../lib/SiteContext'
 import { useState, useMemo } from 'react'
 import { ArrowLeft, ChevronDown } from 'lucide-react'
 import Navbar from '../../../components/Navbar'
+import Breadcrumb from "../../../components/Breadcrumb";
 import { repairServices } from '../../../data/repairServices'
 import modelDB from '../../../data/modelDB'
 import { useParams, usePathname } from 'next/navigation'
@@ -92,15 +93,10 @@ export default function ServiceDetail() {
     <div className="min-h-screen bg-white">
       <Navbar />
       
-      <div className="bg-gray-50 border-b border-gray-100">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-2.5 text-xs text-gray-500 flex gap-1.5 flex-wrap">
-          <a href="/" className="hover:text-blue-600">{t('首页', 'Home')}</a>
-          <span>/</span>
-          <a href={'/' + brandDir} className="hover:text-blue-600">{lang === 'zh' ? info.label : info.labelEn}</a>
-          <span>/</span>
-          <span className="text-gray-800">{lang === 'zh' ? service.title : service.titleEn}</span>
-        </div>
-      </div>
+      <Breadcrumb items={[
+        { label: info.label, labelEn: info.labelEn, href: "/" + brandDir },
+        { label: service.title, labelEn: service.titleEn },
+      ]} />
 
       <section className={'bg-gradient-to-br ' + info.gradient + ' text-white'}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-14">

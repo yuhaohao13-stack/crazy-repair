@@ -2,6 +2,7 @@
 import { useSite } from '../../lib/SiteContext'
 import { useState } from 'react'
 import Navbar from '../../components/Navbar'
+import Breadcrumb from "../../components/Breadcrumb";
 
 export default function NintendoRepair() {
   const { lang, setShowContact } = useSite();
@@ -9,6 +10,7 @@ export default function NintendoRepair() {
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
+      <Breadcrumb items={[{label:"任天堂维修",labelEn:"Nintendo Repair"}]} />
       <section className="bg-gradient-to-br from-red-600 via-red-500 to-red-400 text-white text-center">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-20">
           <div className="text-6xl mb-6">🎮</div>

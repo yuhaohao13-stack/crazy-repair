@@ -3,6 +3,7 @@ import { useSite } from '../../lib/SiteContext'
 import { useState } from 'react'
 import { ArrowLeft, Monitor, Battery, Cpu, ChevronDown } from 'lucide-react'
 import Navbar from '../../components/Navbar'
+import Breadcrumb from "../../components/Breadcrumb";
 
 export default function AcerRepair() {
   const { lang, setShowContact } = useSite();
@@ -33,6 +34,7 @@ export default function AcerRepair() {
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
+      <Breadcrumb items={[{label:"电脑维修",labelEn:"Computer Repair",href:"/computer-repair"},{label:"宏基 维修",labelEn:"Acer Repair"}]} />
       <section className="bg-gradient-to-br from-green-700 via-green-600 to-green-500 text-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-4 flex items-center gap-2 text-sm"><a href="/" className="text-white/60 hover:text-white transition-colors">{t("首页", "Home")}</a><span className="text-white/30">/</span><a href="/computer-repair" className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-sm font-medium transition-colors"><ArrowLeft size={15} /> {t('电脑品牌', 'Computer Brands')}</a></div>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-20">

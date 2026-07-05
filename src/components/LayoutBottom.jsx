@@ -5,6 +5,7 @@ import ReviewSection from './ReviewSection'
 import FAQSection from './FAQSection'
 import Footer from './Footer'
 import ContactModal from './ContactModal'
+import FloatingContact from './FloatingContact'
 
 export default function LayoutBottom() {
   const pathname = usePathname()
@@ -18,6 +19,7 @@ export default function LayoutBottom() {
       <ReviewSection />
       <Footer />
       <ContactModal />
+      <FloatingContact />
     </>
   )
 }

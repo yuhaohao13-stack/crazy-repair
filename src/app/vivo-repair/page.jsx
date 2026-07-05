@@ -3,6 +3,7 @@ import { useSite } from '../../lib/SiteContext'
 import { useState } from 'react'
 import { ArrowLeft, Smartphone, Battery, Droplets, Cpu, ChevronDown } from 'lucide-react'
 import Navbar from '../../components/Navbar'
+import Breadcrumb from "../../components/Breadcrumb";
 
 export default function VIVORepair() {
   const { lang, setShowContact } = useSite();
@@ -30,6 +31,7 @@ export default function VIVORepair() {
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
+      <Breadcrumb items={[{label:"手机维修",labelEn:"Phone Repair",href:"/phone-repair"},{label:"VIVO 维修",labelEn:"VIVO Repair"}]} />
 
       {/* Hero */}
       <section className="bg-gradient-to-br from-cyan-700 via-cyan-600 to-cyan-500 text-white">

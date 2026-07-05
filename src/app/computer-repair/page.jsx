@@ -3,6 +3,7 @@ import { useSite } from '../../lib/SiteContext'
 import { useState } from 'react'
 import { ArrowLeft } from 'lucide-react'
 import Navbar from '../../components/Navbar'
+import Breadcrumb from "../../components/Breadcrumb";
 
 export default function ComputerRepair() {
   const { lang, setShowContact } = useSite();
@@ -38,6 +39,7 @@ export default function ComputerRepair() {
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
+      <Breadcrumb items={[{label:"电脑维修",labelEn:"Computer Repair"}]} />
       <section className="bg-gradient-to-br from-gray-800 via-gray-700 to-gray-600 text-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-4"><a href="/" className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-sm font-medium transition-colors"><ArrowLeft size={15} /> {t('首页', 'Home')}</a></div>
                   <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14 text-center">

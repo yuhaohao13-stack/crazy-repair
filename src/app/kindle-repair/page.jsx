@@ -2,6 +2,7 @@
 import { useSite } from '../../lib/SiteContext'
 import { useState } from 'react'
 import Navbar from '../../components/Navbar'
+import Breadcrumb from "../../components/Breadcrumb";
 
 export default function KindleRepair() {
   const { lang, setShowContact } = useSite();
@@ -9,6 +10,7 @@ export default function KindleRepair() {
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
+      <Breadcrumb items={[{label:"Kindle 维修",labelEn:"Kindle Repair"}]} />
       <section className="bg-gradient-to-br from-amber-600 via-amber-500 to-yellow-500 text-white text-center">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-20">
           <div className="text-6xl mb-6">📖</div>
