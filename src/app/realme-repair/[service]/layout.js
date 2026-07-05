@@ -1,4 +1,4 @@
-import { generateServiceMetadata } from '@/lib/service-metadata'
+import { generateServiceMetadata } from '../../../lib/service-metadata'
 
 export async function generateMetadata({ params }) {
   return generateServiceMetadata("realme-repair", params.service)
