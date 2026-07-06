@@ -68,14 +68,16 @@ export default function SonyRepair() {
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 text-center">{t('维修服务', 'Repair Services')}</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((s, i) => (
-              <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 hover:shadow-md transition-all">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-lg shrink-0">{s.icon}</div>
-                  <h3 className="font-bold text-gray-900 text-lg">{t(s.title, s.titleEn)}</h3>
+              <a key={i} href={'/other-repair/console/console-' + s.id} className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-md transition-all group block">
+                <div className="p-6">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-lg shrink-0">{s.icon}</div>
+                    <h3 className="font-bold text-gray-900 text-lg">{t(s.title, s.titleEn)}</h3>
+                  </div>
+                  <p className="text-sm text-gray-500 leading-relaxed">{t(s.desc, s.descEn)}</p>
+                  <div className="mt-4 text-blue-600 text-xs font-medium flex items-center gap-1">{t('查看详情 →', 'View Details →')}</div>
                 </div>
-                <p className="text-sm text-gray-500 leading-relaxed">{t(s.desc, s.descEn)}</p>
-                <div className="mt-4 text-blue-600 text-xs font-medium">{t('微信咨询 →', 'Contact →')}</div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
