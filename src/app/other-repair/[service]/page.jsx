@@ -215,11 +215,12 @@ export default function OtherServiceDetail() {
       {/* 配图 */}
       <section className="pt-8 pb-2">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] rounded-2xl overflow-hidden bg-gray-200 shadow-lg">
+          <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] rounded-2xl overflow-hidden bg-[#e5e7eb] shadow-lg">
             <img
               src={'/images/services/other-repair-' + serviceId + '.jpg'}
               alt={lang === 'zh' ? info.title : info.titleEn}
               className="w-full h-full object-cover"
+              loading="lazy"
               onError={(e) => {
                 e.target.style.display = 'none'
                 e.target.parentElement.innerHTML = '<div class="flex items-center justify-center h-full text-6xl opacity-30">' + info.icon + '</div>'
