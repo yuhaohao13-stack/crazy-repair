@@ -1,96 +1,83 @@
-/** @type {import('next').NextConfig} */
-
 const BASE = 'https://www.crazy-repair.com'
 
-// 品牌目录及服务列表
+const brands = [
+  'phone-repair', 'computer-repair',
+  'iphone-repair', 'samsung-repair', 'huawei-repair', 'xiaomi-repair',
+  'oppo-repair', 'vivo-repair', 'oneplus-repair', 'honor-repair',
+  'google-repair', 'realme-repair', 'macbook-repair', 'ipad-repair',
+  'lenovo-repair', 'dell-repair', 'hp-repair', 'asus-repair',
+  'acer-repair', 'msi-repair', 'surface-repair', 'hasee-repair',
+  'console-repair', 'camera-repair', 'watch-repair', 'headphone-repair',
+  'kindle-repair', 'nintendo-repair', 'sony-repair', 'tablet-repair',
+  'other-repair',
+]
+
 const brandServices = {
-  'iphone-repair': ['screen-replacement', 'battery-replacement', 'water-damage', 'motherboard-repair', 'camera-repair', 'face-id', 'charging-port'],
-  'macbook-repair': ['screen-replacement', 'battery-replacement', 'water-damage', 'motherboard-repair', 'cleaning', 'keyboard-repair'],
-  'samsung-repair': ['screen-replacement', 'battery-replacement', 'motherboard-repair', 'charging-port', 'camera-repair', 'back-glass'],
-  'xiaomi-repair': ['screen-replacement', 'battery-replacement', 'flash-unlock'],
-  'huawei-repair': ['screen-replacement', 'battery-replacement', 'flash-unlock', 'motherboard-repair', 'water-damage', 'back-glass'],
-  'lenovo-repair': ['screen-replacement', 'battery-replacement', 'keyboard-repair', 'cleaning', 'os-upgrade', 'other-issues'],
-  'dell-repair': ['screen-replacement', 'battery-replacement', 'keyboard-repair', 'cleaning', 'os-upgrade', 'other-issues'],
-  'hp-repair': ['screen-replacement', 'battery-replacement', 'keyboard-repair', 'cleaning', 'os-upgrade', 'other-issues'],
-  'asus-repair': ['screen-replacement', 'battery-replacement', 'cleaning', 'keyboard-repair', 'os-upgrade', 'other-issues'],
-  'acer-repair': ['screen-replacement', 'battery-replacement', 'keyboard-repair', 'cleaning', 'os-upgrade', 'other-issues'],
-  'msi-repair': ['screen-replacement', 'battery-replacement', 'cleaning', 'keyboard-repair', 'os-upgrade', 'other-issues'],
-  'surface-repair': ['screen-replacement', 'battery-replacement', 'keyboard-repair', 'cleaning', 'os-upgrade', 'other-issues'],
-  'hasee-repair': ['screen-replacement', 'battery-replacement', 'cleaning', 'keyboard-repair', 'os-upgrade', 'other-issues'],
-  'oppo-repair': ['screen-replacement', 'battery-replacement', 'charging-port', 'motherboard-repair', 'other-issues'],
-  'vivo-repair': ['screen-replacement', 'battery-replacement', 'charging-port', 'motherboard-repair', 'other-issues'],
-  'oneplus-repair': ['screen-replacement', 'battery-replacement', 'charging-port', 'motherboard-repair', 'other-issues'],
-  'honor-repair': ['screen-replacement', 'battery-replacement', 'charging-port', 'motherboard-repair', 'other-issues'],
-  'google-repair': ['screen-replacement', 'battery-replacement', 'charging-port', 'motherboard-repair', 'other-issues'],
-  'realme-repair': ['screen-replacement', 'battery-replacement', 'charging-port', 'motherboard-repair', 'other-issues'],
-  'phone-repair': [],
-  'computer-repair': [],
-  'tablet-repair': [],
-  'watch-repair': [],
-  'console-repair': [],
-  'camera-repair': [],
-  'headphone-repair': [],
-  'kindle-repair': [],
-  'nintendo-repair': [],
-  'sony-repair': [],
-  'other-repair': [],
-  'tablet-repair': [],
+  'iphone-repair': ['screen-replacement','battery-replacement','water-damage','motherboard-repair','camera-repair','face-id','charging-port'],
+  'macbook-repair': ['screen-replacement','battery-replacement','water-damage','motherboard-repair','cleaning','keyboard-repair','charging-port'],
+  'samsung-repair': ['screen-replacement','battery-replacement','motherboard-repair','charging-port','camera-repair','back-glass','water-damage'],
+  'huawei-repair': ['screen-replacement','battery-replacement','motherboard-repair','charging-port','back-glass','water-damage','flash-unlock'],
+  'xiaomi-repair': ['screen-replacement','battery-replacement','motherboard-repair','charging-port','back-glass','water-damage'],
+  'oppo-repair': ['screen-replacement','battery-replacement','motherboard-repair','charging-port','back-glass','water-damage'],
+  'vivo-repair': ['screen-replacement','battery-replacement','motherboard-repair','charging-port','back-glass','water-damage'],
+  'oneplus-repair': ['screen-replacement','battery-replacement','motherboard-repair','charging-port','back-glass','water-damage'],
+  'google-repair': ['screen-replacement','battery-replacement','motherboard-repair','charging-port','back-glass'],
+  'honor-repair': ['screen-replacement','battery-replacement','motherboard-repair','charging-port','back-glass','water-damage'],
+  'realme-repair': ['screen-replacement','battery-replacement','motherboard-repair','charging-port','back-glass'],
+  'lenovo-repair': ['screen-replacement','battery-replacement','motherboard-repair','cleaning','keyboard-repair','charging-port'],
+  'dell-repair': ['screen-replacement','battery-replacement','motherboard-repair','cleaning','keyboard-repair','charging-port'],
+  'hp-repair': ['screen-replacement','battery-replacement','motherboard-repair','cleaning','keyboard-repair','charging-port'],
+  'asus-repair': ['screen-replacement','battery-replacement','motherboard-repair','cleaning','keyboard-repair','charging-port'],
+  'acer-repair': ['screen-replacement','battery-replacement','motherboard-repair','cleaning','keyboard-repair','charging-port'],
+  'msi-repair': ['screen-replacement','battery-replacement','motherboard-repair','cleaning','keyboard-repair','charging-port'],
+  'surface-repair': ['screen-replacement','battery-replacement','motherboard-repair','cleaning','keyboard-repair','charging-port'],
+  'hasee-repair': ['screen-replacement','battery-replacement','motherboard-repair','cleaning','keyboard-repair','charging-port'],
+  'ipad-repair': ['screen-replacement','battery-replacement','motherboard-repair','charging-port'],
 }
 
-export default function sitemap() {
-  const staticPages = [
-    { url: BASE, lastModified: new Date(), changeFrequency: 'daily', priority: 1.0 },
-    { url: `${BASE}/phone-repair`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
-    { url: `${BASE}/computer-repair`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
-    { url: `${BASE}/tablet-repair`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
-    { url: `${BASE}/watch-repair`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
-    { url: `${BASE}/console-repair`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.7 },
-    { url: `${BASE}/camera-repair`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.7 },
-    { url: `${BASE}/headphone-repair`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.7 },
-    { url: `${BASE}/kindle-repair`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.7 },
-    { url: `${BASE}/nintendo-repair`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.7 },
-    { url: `${BASE}/sony-repair`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.7 },
-    { url: `${BASE}/other-repair`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
-  ]
+const otherCategories = ['watch','samsung-watch','console','headphone','camera','mods','smart-home','other']
 
-  // 平板维修子页面
-  const tabletServices = ['ipad', 'samsung', 'huawei', 'xiaomi', 'oppo', 'lenovo', 'kindle']
-  const tabletServicePages = tabletServices.map(id => ({
-    url: `${BASE}/tablet-repair/${id}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly',
-    priority: 0.7,
-  }))
+const otherItems = {
+  watch: ['watch-screen','watch-battery','watch-water-damage','watch-sensor'],
+  'samsung-watch': ['samsung-watch-screen','samsung-watch-battery','samsung-watch-strap','samsung-watch-motherboard'],
+  console: ['console-joystick-drift','console-screen','console-battery','console-cleaning','console-mods'],
+  headphone: ['headphone-battery','headphone-one-side-silent','headphone-charging-case','headphone-mic'],
+  camera: ['camera-lens','camera-sensor-cleaning','camera-shutter','camera-data-recovery','camera-drone'],
+  mods: ['mods-storage','mods-dual-sim','mods-shell-swap','mods-console'],
+  'smart-home': ['smart-home-router','smart-home-wifi','smart-home-cctv','smart-home-setup'],
+  other: ['other-screen','other-battery','other-charging-port','other-diagnosis'],
+}
 
-  // 其他数码维修子页面
-  const otherServices = ['watch', 'samsung-watch', 'console', 'headphone', 'camera', 'mods', 'smart-home', 'other']
-  const otherServicePages = otherServices.map(id => ({
-    url: `${BASE}/other-repair/${id}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly',
-    priority: 0.7,
-  }))
+export async function GET() {
+  const urls = []
 
-  // 品牌概览页面
-  const brandPages = Object.keys(brandServices).map(dir => ({
-    url: `${BASE}/${dir}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly',
-    priority: 0.85,
-  }))
+  // 首页
+  urls.push(`  <url><loc>${BASE}</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>`)
 
-  // 服务详情页面
-  const servicePages = []
-  for (const [dir, services] of Object.entries(brandServices)) {
-    for (const serviceId of services) {
-      servicePages.push({
-        url: `${BASE}/${dir}/${serviceId}`,
-        lastModified: new Date(),
-        changeFrequency: 'weekly',
-        priority: 0.7,
-      })
+  // 品牌页面 & 服务详情页
+  for (const brand of brands) {
+    urls.push(`  <url><loc>${BASE}/${brand}</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>`)
+    const services = brandServices[brand] || []
+    for (const svc of services) {
+      urls.push(`  <url><loc>${BASE}/${brand}/${svc}</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>`)
     }
   }
 
-  return [...staticPages, ...brandPages, ...servicePages, ...tabletServicePages, ...otherServicePages]
+  // 其他维修分类页 & 项目详情页
+  for (const cat of otherCategories) {
+    urls.push(`  <url><loc>${BASE}/other-repair/${cat}</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>`)
+    const items = otherItems[cat] || []
+    for (const item of items) {
+      urls.push(`  <url><loc>${BASE}/other-repair/${cat}/${item}</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>`)
+    }
+  }
+
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls.join('\n')}
+</urlset>`
+
+  return new Response(xml, {
+    headers: { 'Content-Type': 'application/xml' },
+  })
 }
