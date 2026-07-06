@@ -212,20 +212,25 @@ export default function OtherServiceDetail() {
         </div>
       </section>
 
-      {/* 配图 */}
+      {/* 配图 - 使用padding-bottom方案提升移动端兼容 */}
       <section className="pt-8 pb-2">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] rounded-2xl overflow-hidden bg-[#e5e7eb] shadow-lg">
-            <img
-              src={'/images/services/other-repair-' + serviceId + '.jpg'}
-              alt={lang === 'zh' ? info.title : info.titleEn}
-              className="w-full h-full object-cover"
-              loading="lazy"
-              onError={(e) => {
-                e.target.style.display = 'none'
-                e.target.parentElement.innerHTML = '<div class="flex items-center justify-center h-full text-6xl opacity-30">' + info.icon + '</div>'
-              }}
-            />
+          <div className="relative w-full rounded-2xl overflow-hidden bg-gray-200 shadow-lg" style={{paddingBottom: '75%'}}>
+            <div className="absolute inset-0">
+              <img
+                src={'/images/services/other-repair-' + serviceId + '.jpg'}
+                alt={lang === 'zh' ? info.title : info.titleEn}
+                className="w-full h-full object-cover"
+                loading="lazy"
+                onError={(e) => {
+                  e.target.style.display = 'none'
+                  const fallback = document.createElement('div')
+                  fallback.className = 'flex items-center justify-center h-full text-6xl opacity-30'
+                  fallback.textContent = info.icon
+                  e.target.parentElement.appendChild(fallback)
+                }}
+              />
+            </div>
           </div>
         </div>
       </section>
