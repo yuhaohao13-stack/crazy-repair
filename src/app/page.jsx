@@ -286,11 +286,11 @@ export default function Home() {
             <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
               <h3 className="font-bold text-blue-600 mb-3 text-sm uppercase tracking-wider">{t('⌚ Apple Watch 系列', '⌚ Apple Watch Series')}</h3>
               <ul className="space-y-1.5 text-sm text-gray-600">
-                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/watch-repair" className="hover:text-blue-600 transition-colors">{t('Apple Watch Ultra 2 / Ultra (49mm)', 'Apple Watch Ultra 2 / Ultra (49mm)')}</a></li>
-                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/watch-repair" className="hover:text-blue-600 transition-colors">{t('Apple Watch Series 9/8/7', 'Apple Watch Series 9/8/7')}</a></li>
-                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/watch-repair" className="hover:text-blue-600 transition-colors">{t('Apple Watch SE/6/5/4', 'Apple Watch SE/6/5/4')}</a></li>
-                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/watch-repair" className="hover:text-blue-600 transition-colors">{t('Apple Watch Series 3/2/1', 'Apple Watch Series 3/2/1')}</a></li>
-                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/samsung-repair" className="hover:text-blue-600 transition-colors">{t('Samsung Galaxy Watch 全系', 'Samsung Galaxy Watch')}</a></li>
+                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/other-repair/watch" className="hover:text-blue-600 transition-colors">{t('Apple Watch Ultra 2 / Ultra (49mm)', 'Apple Watch Ultra 2 / Ultra (49mm)')}</a></li>
+                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/other-repair/watch" className="hover:text-blue-600 transition-colors">{t('Apple Watch Series 9/8/7', 'Apple Watch Series 9/8/7')}</a></li>
+                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/other-repair/watch" className="hover:text-blue-600 transition-colors">{t('Apple Watch SE/6/5/4', 'Apple Watch SE/6/5/4')}</a></li>
+                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/other-repair/watch" className="hover:text-blue-600 transition-colors">{t('Apple Watch Series 3/2/1', 'Apple Watch Series 3/2/1')}</a></li>
+                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/other-repair/samsung-watch" className="hover:text-blue-600 transition-colors">{t('Samsung Galaxy Watch 全系', 'Samsung Galaxy Watch')}</a></li>
               </ul>
             </div>
             {/* Mac */}
