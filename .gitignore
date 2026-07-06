@@ -6,3 +6,4 @@ node_modules/
 out/
 src/lib/env.js
 src/lib/env.local.js
+.vercel
