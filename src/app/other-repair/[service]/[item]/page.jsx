@@ -25,7 +25,6 @@ const itemDetails = {
       'Touch calibration included for smooth operation',
       '30-minute quick repair, wait while you wait',
     ],
-    price: '¥200起',
   },
   'watch-battery': {
     title: '电池更换',
@@ -47,7 +46,6 @@ const itemDetails = {
       'Battery health check after replacement',
       'Battery life restored like new',
     ],
-    price: '¥150起',
   },
   'watch-water-damage': {
     title: '进水维修',
@@ -69,7 +67,6 @@ const itemDetails = {
       'DO NOT charge after water damage!',
       'Earlier diagnosis = higher success rate',
     ],
-    price: '¥200起',
   },
   'watch-sensor': {
     title: '传感器维修',
@@ -91,7 +88,6 @@ const itemDetails = {
       'Sensor module chip-level repair',
       'Sensor module replacement available',
     ],
-    price: '¥180起',
   },
   'samsung-watch-screen': {
     title: '屏幕更换',
@@ -113,7 +109,6 @@ const itemDetails = {
       'Professional waterproof sealant included',
       'Touch calibration for smooth operation',
     ],
-    price: '¥200起',
   },
   'samsung-watch-battery': {
     title: '电池更换',
@@ -135,7 +130,6 @@ const itemDetails = {
       'Battery status check after replacement',
       'Full day battery life restored',
     ],
-    price: '¥150起',
   },
   'samsung-watch-strap': {
     title: '表带/表扣',
@@ -157,7 +151,6 @@ const itemDetails = {
       'Compatible with Galaxy Watch 6/5/4/Classic/Ultra',
       'Multiple color options available',
     ],
-    price: '¥50起',
   },
   'samsung-watch-motherboard': {
     title: '主板维修',
@@ -179,7 +172,6 @@ const itemDetails = {
       'Chip-level motherboard repair, precise fault diagnosis',
       'Includes motherboard diagnosis, quote before repair',
     ],
-    price: '¥200起',
   },
   'console-joystick-drift': {
     title: '手柄漂移维修',
@@ -203,7 +195,6 @@ const itemDetails = {
       'OEM stick replacement with calibration',
       'Hall effect mod recommended: permanent solution',
     ],
-    price: '¥80起',
   },
   'console-screen': {
     title: '屏幕更换',
@@ -225,7 +216,6 @@ const itemDetails = {
       'OEM quality screen with touch calibration',
       'Full function test after replacement',
     ],
-    price: '¥200起',
   },
   'console-battery': {
     title: '电池更换',
@@ -247,7 +237,6 @@ const itemDetails = {
       'OEM spec battery with accurate capacity',
       'Battery swelling check, safety inspection',
     ],
-    price: '¥120起',
   },
   'console-cleaning': {
     title: '清灰散热',
@@ -271,7 +260,6 @@ const itemDetails = {
       'Overheating, auto shutdown issues resolved',
       'Recommended yearly cleaning to extend console life',
     ],
-    price: '¥100起',
   },
   'console-mods': {
     title: '改装升级',
@@ -295,7 +283,6 @@ const itemDetails = {
       'Various console mods and DIY customizations',
       'Quote based on project — DM us your idea',
     ],
-    price: '¥100起',
   },
   'headphone-battery': {
     title: '电池更换',
@@ -319,7 +306,6 @@ const itemDetails = {
       'Battery life restored to 2-4 hours after replacement',
       'Non-destructive shell opening, full function test',
     ],
-    price: '¥80起',
   },
   'headphone-one-side-silent': {
     title: '一只不响维修',
@@ -341,7 +327,6 @@ const itemDetails = {
       'Internal flex cable break/contact issue repair',
       'L/R channel balance test after repair',
     ],
-    price: '¥100起',
   },
   'headphone-charging-case': {
     title: '充电仓维修',
@@ -365,7 +350,6 @@ const itemDetails = {
       'Charging case motherboard repair',
       'Replacement case available for purchase',
     ],
-    price: '¥100起',
   },
   'headphone-mic': {
     title: '麦克风/降噪',
@@ -389,7 +373,6 @@ const itemDetails = {
       'ANC mesh cleaning/replacement',
       'Noise cancellation test after repair',
     ],
-    price: '¥120起',
   },
   'camera-lens': {
     title: '镜头维修',
@@ -413,7 +396,6 @@ const itemDetails = {
       'Lens flex cable break/contact issue repair',
       'Includes lens cleaning + function test',
     ],
-    price: '¥150起',
   },
   'camera-sensor-cleaning': {
     title: '传感器清洁',
@@ -435,7 +417,6 @@ const itemDetails = {
       'Professional sensor cleaning tools + anhydrous ethanol',
       'Before/after comparison photos available',
     ],
-    price: '¥80起',
   },
   'camera-shutter': {
     title: '快门维修',
@@ -459,7 +440,6 @@ const itemDetails = {
       'Shutter assembly complete replacement',
       'Shutter accuracy test after replacement',
     ],
-    price: '¥200起',
   },
   'camera-data-recovery': {
     title: '数据恢复',
@@ -483,7 +463,6 @@ const itemDetails = {
       'Camera card error — needs formatting',
       'Data rescue first, then card problem solving',
     ],
-    price: '¥100起',
   },
   'camera-drone': {
     title: '无人机维修',
@@ -507,7 +486,6 @@ const itemDetails = {
       'Transmission signal fault — laggy/disconnected feed',
       'Full drone inspection + flight test',
     ],
-    price: '¥150起',
   },
   'mods-storage': {
     title: '扩容升级',
@@ -531,7 +509,6 @@ const itemDetails = {
       'System flashing and data migration after upgrade',
       'Full function test after upgrade',
     ],
-    price: '¥200起',
   },
   'mods-dual-sim': {
     title: '改双卡',
@@ -553,7 +530,6 @@ const itemDetails = {
       'Compatible: iPhone XR/XS Max/11/12/13/14/15/16/17 series',
       'Physical dual SIM + eSIM combo options available',
     ],
-    price: '¥150起',
   },
   'mods-shell-swap': {
     title: '换壳改色',
@@ -575,7 +551,6 @@ const itemDetails = {
       'Custom colors and patterns — DM to discuss',
       'Full transplant including mid-frame/buttons',
     ],
-    price: '¥150起',
   },
   'mods-console': {
     title: '游戏机改装',
@@ -599,7 +574,6 @@ const itemDetails = {
       'Various console mod projects',
       'Quote based on project — discuss before work',
     ],
-    price: '¥100起',
   },
   'smart-home-router': {
     title: '路由器设置',
@@ -623,7 +597,6 @@ const itemDetails = {
       'Supported brands: TP-Link, Xiaomi, ASUS, Netgear, Huawei, etc.',
       'Remote guidance/on-site setup (Weihai city area)',
     ],
-    price: '¥50起',
   },
   'smart-home-wifi': {
     title: 'WiFi覆盖优化',
@@ -647,7 +620,6 @@ const itemDetails = {
       'AC+AP deployment (for large homes/villas)',
       'Speed optimization, channel adjustment, interference reduction',
     ],
-    price: '¥100起',
   },
   'smart-home-cctv': {
     title: '监控安装',
@@ -671,7 +643,6 @@ const itemDetails = {
       'Recording playback, motion detection alert config',
       'Supported brands: Hikvision, Dahua, Xiaomi, TP-Link, etc.',
     ],
-    price: '¥100起',
   },
   'smart-home-setup': {
     title: '智能家居调试',
@@ -695,7 +666,6 @@ const itemDetails = {
       'Smart light/curtain/sensor/lock integration and testing',
       'Remote troubleshooting support',
     ],
-    price: '¥80起',
   },
   'other-screen': {
     title: '屏幕更换',
@@ -717,7 +687,6 @@ const itemDetails = {
       'Direct replacement if parts available',
       'Alternative solutions/device suggestions for rare parts',
     ],
-    price: '¥100起',
   },
   'other-battery': {
     title: '电池更换',
@@ -739,7 +708,6 @@ const itemDetails = {
       'Purchase suggestions or alternatives for rare parts',
       'Includes battery swelling safety check',
     ],
-    price: '¥80起',
   },
   'other-charging-port': {
     title: '充电口维修',
@@ -761,7 +729,6 @@ const itemDetails = {
       'Flex cable soldering repair or charging port board replacement',
       'Charging test after repair',
     ],
-    price: '¥80起',
   },
   'other-diagnosis': {
     title: '免费检测',
@@ -783,7 +750,6 @@ const itemDetails = {
       'No charge if no repair',
       'Minor issues — free advice, you can DIY',
     ],
-    price: '免费',
   },
 }
 
@@ -850,7 +816,7 @@ export default function OtherRepairItemDetail() {
             <div>
               <h1 className="text-2xl sm:text-4xl font-bold">{lang === 'zh' ? item.title : item.titleEn}</h1>
               <p className="text-sm text-white/80">
-                {info.icon} {lang === 'zh' ? info.title : info.titleEn} · {item.price}
+                {info.icon} {lang === 'zh' ? info.title : info.titleEn}
               </p>
             </div>
           </div>
