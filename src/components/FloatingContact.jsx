@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { MessageCircle, Phone, Heart, X } from 'lucide-react'
 import { useSite } from '../lib/SiteContext'
 
@@ -39,6 +39,19 @@ export default function FloatingContact() {
   }
 
   const [showPhones, setShowPhones] = useState(false)
+  const menuRef = useRef(null)
+
+  // 点击外部自动收起
+  useEffect(() => {
+    if (!expanded) return
+    const handler = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setExpanded(false)
+      }
+    }
+    document.addEventListener('mousedown', handler)
+    return () => document.removeEventListener('mousedown', handler)
+  }, [expanded])
 
   const openDonateWechat = () => {
     setShowDonate(false)
@@ -134,12 +147,13 @@ export default function FloatingContact() {
       <div className="fixed bottom-6 right-4 z-40 flex flex-col items-end gap-2">
         {/* 联系展开菜单 */}
         {expanded && (
-          <div className="bg-white rounded-2xl shadow-xl border border-gray-200 p-3 w-64 animate-in slide-in-from-bottom-2 duration-200">
+          <div ref={menuRef} className="bg-white rounded-2xl shadow-xl border border-gray-200 p-3 w-72 animate-in slide-in-from-bottom-2 duration-200">
             <div className="text-center mb-2">
               <p className="text-xs font-bold text-gray-900">{t('联系我们', 'Contact Us')}</p>
               <p className="text-[10px] text-gray-400">{t('选择联系方式', 'Choose a way')}</p>
             </div>
             <div className="space-y-1.5">
+              {/* 微信 */}
               <button onClick={() => copyWechat('crazy-repair')}
                 className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-green-50 transition-colors">
                 <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center shrink-0">
@@ -153,6 +167,7 @@ export default function FloatingContact() {
                 </div>
               </button>
 
+              {/* 电话 */}
               <div>
                 <button onClick={() => setShowPhones(!showPhones)}
                   className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-blue-50 transition-colors">
@@ -180,6 +195,7 @@ export default function FloatingContact() {
                 )}
               </div>
 
+              {/* WhatsApp */}
               <a href="https://wa.me/6596146709?text=我想咨询维修事宜" target="_blank" rel="noopener noreferrer"
                 className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-green-50 transition-colors">
                 <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center shrink-0">
@@ -190,6 +206,44 @@ export default function FloatingContact() {
                   <p className="text-[10px] text-gray-400">+65 96146709</p>
                 </div>
               </a>
+
+              {/* 官方网站 */}
+              <a href="https://www.crazy-repair.com" target="_blank" rel="noopener noreferrer"
+                className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-blue-50 transition-colors">
+                <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center shrink-0">
+                  <span className="text-base">🔧</span>
+                </div>
+                <div className="text-left flex-1">
+                  <p className="text-xs font-medium text-gray-900">{t('官方网站', 'Website')}</p>
+                  <p className="text-[10px] text-gray-400">www.crazy-repair.com</p>
+                </div>
+              </a>
+
+              {/* 抖音 */}
+              <a href="https://v.douyin.com/NvUr5C82ZDM/" target="_blank" rel="noopener noreferrer"
+                className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-pink-50 transition-colors">
+                <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0"
+                  style={{background: 'linear-gradient(135deg, #00f2fe, #fe2c55)'}}>
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="#fff">
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.88 2.89 2.89 0 0 1-2.88-2.88 2.89 2.89 0 0 1 2.88-2.88c.35 0 .69.06 1.01.18V8.48a6.34 6.34 0 0 0-1.01-.08C5.9 8.4 3 11.3 3 14.86c0 3.56 2.9 6.46 6.46 6.46 3.56 0 6.46-2.9 6.46-6.46V9.33a8.28 8.28 0 0 0 4.67 1.4v-3.4a4.84 4.84 0 0 1-1-.64z"/>
+                  </svg>
+                </div>
+                <div className="text-left flex-1">
+                  <p className="text-xs font-medium text-gray-900">{t('抖音', 'TikTok')}</p>
+                  <p className="text-[10px] text-gray-400">@Crazy维修 浩哥维修实录</p>
+                </div>
+              </a>
+
+              {/* 到店地址 */}
+              <div className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl">
+                <div className="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center shrink-0">
+                  <span className="text-base">📍</span>
+                </div>
+                <div className="text-left flex-1">
+                  <p className="text-xs font-medium text-gray-900">{t('到店维修', 'Visit Store')}</p>
+                  <p className="text-[10px] text-gray-400">{t('威海环翠区西门31号', 'No.31 West Gate, Huancui')}</p>
+                </div>
+              </div>
             </div>
             <button onClick={() => setExpanded(false)}
               className="w-full mt-1 py-2 text-[10px] text-gray-400 hover:text-gray-600 transition-colors">
