@@ -265,17 +265,7 @@ export default function FloatingContact() {
           {expanded ? <X size={20} /> : <MessageCircle size={20} />}
         </button>
 
-        {/* 提示文字 */}
-        {!expanded && (
-          <div className="flex flex-col items-end gap-1">
-            <span className="bg-white text-xs text-gray-500 px-2 py-1 rounded-full shadow border border-gray-100 animate-in slide-in-from-bottom-2">
-              ☕ {t('打赏', 'Donate')}
-            </span>
-            <span className="bg-white text-xs text-gray-500 px-2 py-1 rounded-full shadow border border-gray-100">
-              {t('联系我', 'Contact')}
-            </span>
-          </div>
-        )}
+
       </div>
     </>
   )
