@@ -144,7 +144,7 @@ export default function FloatingContact() {
       )}
 
       {/* 右下角悬浮按钮组 */}
-      <div className="fixed bottom-6 right-4 z-40 flex flex-col items-end gap-2">
+      <div className="fixed bottom-28 right-4 z-40 flex flex-col items-end gap-2">
         {/* 联系展开菜单 */}
         {expanded && (
           <div ref={menuRef} className="bg-white rounded-2xl shadow-xl border border-gray-200 p-3 w-72 animate-in slide-in-from-bottom-2 duration-200">
