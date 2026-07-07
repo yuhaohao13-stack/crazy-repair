@@ -126,7 +126,7 @@ export default function Navbar() {
 
           <div className="flex items-center gap-2">
             <a href="https://www.gudaoforum.com" target="_blank" rel="noopener" className="text-xs text-gray-500 hover:text-blue-600 mr-1 md:hidden">古道维修论坛</a>
-            <a href="https://v.douyin.com/gjAo7iQN1h4/" target="_blank" rel="noopener"
+            <a href="https://v.douyin.com/NvUr5C82ZDM/" target="_blank" rel="noopener"
               className="flex items-center gap-1 bg-gradient-to-r from-[#00f2fe] to-[#fe2c55] text-white hover:opacity-90 text-xs font-bold px-2.5 py-1.5 rounded-lg transition-all shadow-sm shrink-0"
               title="浩哥维修实录 @Crazy维修 抖音">
               <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" className="shrink-0">
