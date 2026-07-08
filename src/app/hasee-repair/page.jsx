@@ -42,8 +42,9 @@ export default function HaseeRepair() {
               {t('神舟战神游戏本性价比之王、精盾商务本、优雅轻薄本——屏幕碎了、电池鼓包了、游戏本降频掉帧了，拿来给我看看。神舟笔记本配件便宜，维修费更实惠。2007年至今奋斗在维修一线。战神2025系列清灰换硅脂、换高刷屏、升级固态内存，一站式搞定。', 'Hasee 战神 gaming — the king of value, Jingdun business, 优雅 ultrabooks — cracked screen, swollen battery, game frame drops, we fix it all. Hasee parts are affordable, so are our repairs. On the job since 2007. 战神 2025 cleaning, high-refresh screen swap, SSD/RAM upgrades, all in one place.')}
             </p>
             <div className="flex flex-wrap gap-3 mt-6">
-              <button onClick={() => setShowContact(true)} className="bg-white text-indigo-600 font-semibold px-6 py-3 rounded-xl hover:bg-indigo-50 transition-colors shadow-lg">{t('📱 微信咨询', '📱 WeChat')}</button>
-              <a href="https://wa.me/6596146709?text=我的Hasee神舟电脑需要维修" target="_blank" className="bg-green-500 text-white font-semibold px-6 py-3 rounded-xl hover:bg-green-600 transition-colors shadow-lg">{t('💬 WhatsApp咨询', '💬 WhatsApp')}</a>
+              <button onClick={() => setShowContact(true)} className="bg-white text-indigo-600 font-semibold px-6 py-3 rounded-xl hover:bg-indigo-50 transition-colors shadow-lg">
+                {t('📱 立即咨询', '📱 Contact Now')}
+              </button>
             </div>
           </div>
         </div>
@@ -105,8 +106,9 @@ export default function HaseeRepair() {
           <h2 className="text-2xl sm:text-3xl font-bold mb-4">{t('需要Hasee维修？找我', 'Need Hasee Repair? Contact me')}</h2>
           <p className="text-indigo-200 mb-8">{t('免费检测，先报价后维修。', 'Free diagnosis, quote first.')}</p>
           <div className="flex flex-wrap justify-center gap-4">
-            <button onClick={() => setShowContact(true)} className="bg-white text-indigo-600 font-semibold px-8 py-4 rounded-xl hover:bg-indigo-50 transition-colors shadow-lg text-lg">{t('📱 微信咨询', '📱 WeChat')}</button>
-            <a href="https://wa.me/6596146709?text=我的Hasee神舟电脑需要维修" target="_blank" className="bg-green-500 text-white font-semibold px-8 py-4 rounded-xl hover:bg-green-600 transition-colors shadow-lg text-lg">{t('💬 WhatsApp咨询', '💬 WhatsApp')}</a>
+            <button onClick={() => setShowContact(true)} className="bg-white text-indigo-600 font-semibold px-8 py-4 rounded-xl hover:bg-indigo-50 transition-colors shadow-lg text-lg">
+                {t('📱 立即咨询', '📱 Contact Now')}
+              </button>
           </div>
         </div>
       </section>

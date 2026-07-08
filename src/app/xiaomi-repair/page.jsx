@@ -32,8 +32,9 @@ export default function XiaomiRepair() {
               {t('小米16/15 Ultra、Redmi Note 14、Poco全系列——屏幕、电池、主板、刷机解锁，统统搞定。比小米官方售后便宜，质量同样可靠。擅长小米主板芯片级维修和红米性价比维修。2007年至今奋斗在维修一线。', 'Xiaomi 16/15 Ultra, Redmi Note 14, Poco series — screens, batteries, boards, flashing, all covered. Cheaper than Xiaomi official, same quality. Specialized in Xiaomi motherboard repair and Redmi value repairs. On the job since 2007.')}
             </p>
             <div className="flex flex-wrap gap-3 mt-6">
-              <button onClick={() => setShowContact(true)} className="bg-white text-orange-600 font-semibold px-6 py-3 rounded-xl hover:bg-orange-50 transition-colors shadow-lg">{t('📱 微信咨询', '📱 WeChat')}</button>
-              <a href="https://wa.me/6596146709?text=我的Xiaomi手机需要维修" target="_blank" className="bg-green-500 text-white font-semibold px-6 py-3 rounded-xl hover:bg-green-600 transition-colors shadow-lg">{t('💬 WhatsApp咨询', '💬 WhatsApp')}</a>
+              <button onClick={() => setShowContact(true)} className="bg-white text-orange-600 font-semibold px-6 py-3 rounded-xl hover:bg-orange-50 transition-colors shadow-lg">
+                {t('📱 立即咨询', '📱 Contact Now')}
+              </button>
             </div>
           </div>
         </div>
@@ -109,8 +110,9 @@ export default function XiaomiRepair() {
           <h2 className="text-2xl sm:text-3xl font-bold mb-4">{t('需要Xiaomi维修？找我', 'Need Xiaomi Repair? Contact me')}</h2>
           <p className="text-orange-100 mb-8">{t('免费检测，先报价后维修。', 'Free diagnosis, quote first.')}</p>
           <div className="flex flex-wrap justify-center gap-4">
-            <button onClick={() => setShowContact(true)} className="bg-white text-orange-600 font-semibold px-8 py-4 rounded-xl hover:bg-orange-50 transition-colors shadow-lg text-lg">{t('📱 微信咨询', '📱 WeChat')}</button>
-            <a href="https://wa.me/6596146709?text=我的Xiaomi手机需要维修" target="_blank" className="bg-green-500 text-white font-semibold px-8 py-4 rounded-xl hover:bg-green-600 transition-colors shadow-lg text-lg">{t('💬 WhatsApp咨询', '💬 WhatsApp')}</a>
+            <button onClick={() => setShowContact(true)} className="bg-white text-orange-600 font-semibold px-8 py-4 rounded-xl hover:bg-orange-50 transition-colors shadow-lg text-lg">
+                {t('📱 立即咨询', '📱 Contact Now')}
+              </button>
           </div>
         </div>
       </section>

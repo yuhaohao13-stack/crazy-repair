@@ -45,8 +45,9 @@ export default function AcerRepair() {
               {t('Acer Predator Helios Neo旗舰游戏本、Nitro性价比游戏本、Swift Go轻薄本、Aspire家用本——屏幕碎了、电池鼓包了、游戏本降频了，拿来给我看看。Acer笔记本价格亲民，维修费也更实惠。2007年至今奋斗在维修一线。Predator Helios Neo 16/18 (2024)、Swift Go 14/16 (2024-2025)、Aspire 2025系列清灰换硅脂、换高刷屏、升级固态内存，一站式搞定。', 'Acer Predator Helios Neo flagship gaming, Nitro budget gaming, Swift Go ultrabooks, Aspire home laptops — cracked screen, swollen battery, game throttling, we fix it all. Acer laptops are budget-friendly, so are our repairs. On the job since 2007. Predator Helios Neo 16/18 (2024), Swift Go 14/16 (2024-2025), Aspire 2025 series — cleaning, high-refresh screen swap, SSD/RAM upgrades, all in one place.')}
             </p>
             <div className="flex flex-wrap gap-3 mt-6">
-              <button onClick={() => setShowContact(true)} className="bg-white text-green-600 font-semibold px-6 py-3 rounded-xl hover:bg-green-50 transition-colors shadow-lg">{t('📱 微信咨询', '📱 WeChat')}</button>
-              <a href="https://wa.me/6596146709?text=我的Acer电脑需要维修" target="_blank" className="bg-green-500 text-white font-semibold px-6 py-3 rounded-xl hover:bg-green-600 transition-colors shadow-lg">{t('💬 WhatsApp咨询', '💬 WhatsApp')}</a>
+              <button onClick={() => setShowContact(true)} className="bg-white text-green-600 font-semibold px-6 py-3 rounded-xl hover:bg-green-50 transition-colors shadow-lg">
+                {t('📱 立即咨询', '📱 Contact Now')}
+              </button>
             </div>
           </div>
         </div>
@@ -108,8 +109,9 @@ export default function AcerRepair() {
           <h2 className="text-2xl sm:text-3xl font-bold mb-4">{t('需要Acer维修？找我', 'Need Acer Repair? Contact me')}</h2>
           <p className="text-green-200 mb-8">{t('免费检测，先报价后维修。', 'Free diagnosis, quote first.')}</p>
           <div className="flex flex-wrap justify-center gap-4">
-            <button onClick={() => setShowContact(true)} className="bg-white text-green-600 font-semibold px-8 py-4 rounded-xl hover:bg-green-50 transition-colors shadow-lg text-lg">{t('📱 微信咨询', '📱 WeChat')}</button>
-            <a href="https://wa.me/6596146709?text=我的Acer电脑需要维修" target="_blank" className="bg-green-500 text-white font-semibold px-8 py-4 rounded-xl hover:bg-green-600 transition-colors shadow-lg text-lg">{t('💬 WhatsApp咨询', '💬 WhatsApp')}</a>
+            <button onClick={() => setShowContact(true)} className="bg-white text-green-600 font-semibold px-8 py-4 rounded-xl hover:bg-green-50 transition-colors shadow-lg text-lg">
+                {t('📱 立即咨询', '📱 Contact Now')}
+              </button>
           </div>
         </div>
       </section>

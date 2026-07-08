@@ -61,8 +61,9 @@ export default function NintendoRepair() {
               {t('任天堂全系列维修——Switch OLED/Switch/Switch Lite屏幕更换、Joy-Con手柄漂移霍尔效应改装、电池更换、充电口维修、清灰散热、芯片破解。2007年至今奋斗在维修一线。', 'Full Nintendo console repair — Switch OLED/Switch/Lite screen replacement, Joy-Con hall effect joystick mod, battery service, charging port repair, deep cleaning, mod chip install. Serving since 2007.')}
             </p>
             <div className="flex flex-wrap gap-3 mt-6">
-              <button onClick={() => setShowContact(true)} className="bg-white text-red-600 font-semibold px-6 py-3 rounded-xl hover:bg-red-50 transition-colors shadow-lg">{t('📱 微信咨询维修', '📱 WeChat for Repair')}</button>
-              <a href="https://wa.me/6596146709?text=我的Nintendo需要维修" target="_blank" className="bg-green-500 text-white font-semibold px-6 py-3 rounded-xl hover:bg-green-600 transition-colors shadow-lg">{t('💬 WhatsApp咨询', '💬 WhatsApp')}</a>
+              <button onClick={() => setShowContact(true)} className="bg-white text-red-600 font-semibold px-6 py-3 rounded-xl hover:bg-red-50 transition-colors shadow-lg">
+                {t('📱 立即咨询', '📱 Contact Now')}
+              </button>
             </div>
           </div>
         </div>
@@ -135,8 +136,9 @@ export default function NintendoRepair() {
           <h2 className="text-2xl sm:text-3xl font-bold mb-4">{t('需要Nintendo维修？找我', 'Need Nintendo Repair? Contact me')}</h2>
           <p className="text-red-200 mb-8">{t('免费检测，发照片就能初步判断', 'Free diagnosis, send a photo for a quick check')}</p>
           <div className="flex flex-wrap justify-center gap-4">
-            <button onClick={() => setShowContact(true)} className="bg-white text-red-600 font-semibold px-8 py-4 rounded-xl hover:bg-red-50 transition-colors shadow-lg text-lg">{t('📱 微信咨询', '📱 WeChat')}</button>
-            <a href="https://wa.me/6596146709?text=需要Nintendo维修" target="_blank" className="bg-green-500 text-white font-semibold px-8 py-4 rounded-xl hover:bg-green-600 transition-colors shadow-lg text-lg">{t('💬 WhatsApp咨询', '💬 WhatsApp')}</a>
+            <button onClick={() => setShowContact(true)} className="bg-white text-red-600 font-semibold px-8 py-4 rounded-xl hover:bg-red-50 transition-colors shadow-lg text-lg">
+                {t('📱 立即咨询', '📱 Contact Now')}
+              </button>
           </div>
         </div>
       </section>

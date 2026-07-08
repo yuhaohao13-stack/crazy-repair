@@ -43,8 +43,9 @@ export default function LenovoRepair() {
               {t('联想ThinkPad商用本、拯救者/小新电竞&全能本、Yoga高端轻薄本——屏幕碎了、电池鼓包了、ThinkPad小红点不灵了、拯救者降频了，拿来给我看看。联想笔记本芯片级维修，比联想起官方便宜。2007年至今奋斗在维修一线。ThinkPad X1 Carbon Gen 13 (2025)、Yoga Pro 9i 2025、Legion 9i 2025系列清灰换硅脂、换OLED屏、升级固态内存，一站式搞定。', 'Lenovo ThinkPad business, Legion gaming, Xiaoxin all-rounders, Yoga premium ultrabooks — cracked screen, swollen battery, TrackPoint issues, Legion throttling, we fix it all. Lenovo component-level board repair. On the job since 2007. ThinkPad X1 Carbon Gen 13 (2025), Yoga Pro 9i 2025, Legion 9i 2025 — cleaning, OLED screen swap, SSD/RAM upgrades, all in one place.')}
             </p>
             <div className="flex flex-wrap gap-3 mt-6">
-              <button onClick={() => setShowContact(true)} className="bg-white text-blue-600 font-semibold px-6 py-3 rounded-xl hover:bg-blue-50 transition-colors shadow-lg">{t('📱 微信咨询', '📱 WeChat')}</button>
-              <a href="https://wa.me/6596146709?text=我的Lenovo电脑需要维修" target="_blank" className="bg-green-500 text-white font-semibold px-6 py-3 rounded-xl hover:bg-green-600 transition-colors shadow-lg">{t('💬 WhatsApp咨询', '💬 WhatsApp')}</a>
+              <button onClick={() => setShowContact(true)} className="bg-white text-blue-600 font-semibold px-6 py-3 rounded-xl hover:bg-blue-50 transition-colors shadow-lg">
+                {t('📱 立即咨询', '📱 Contact Now')}
+              </button>
             </div>
           </div>
         </div>
@@ -106,8 +107,9 @@ export default function LenovoRepair() {
           <h2 className="text-2xl sm:text-3xl font-bold mb-4">{t('需要Lenovo维修？找我', 'Need Lenovo Repair? Contact me')}</h2>
           <p className="text-blue-200 mb-8">{t('免费检测，先报价后维修。', 'Free diagnosis, quote first.')}</p>
           <div className="flex flex-wrap justify-center gap-4">
-            <button onClick={() => setShowContact(true)} className="bg-white text-blue-600 font-semibold px-8 py-4 rounded-xl hover:bg-blue-50 transition-colors shadow-lg text-lg">{t('📱 微信咨询', '📱 WeChat')}</button>
-            <a href="https://wa.me/6596146709?text=我的Lenovo电脑需要维修" target="_blank" className="bg-green-500 text-white font-semibold px-8 py-4 rounded-xl hover:bg-green-600 transition-colors shadow-lg text-lg">{t('💬 WhatsApp咨询', '💬 WhatsApp')}</a>
+            <button onClick={() => setShowContact(true)} className="bg-white text-blue-600 font-semibold px-8 py-4 rounded-xl hover:bg-blue-50 transition-colors shadow-lg text-lg">
+                {t('📱 立即咨询', '📱 Contact Now')}
+              </button>
           </div>
         </div>
       </section>

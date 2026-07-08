@@ -34,8 +34,9 @@ export default function MacBookRepair() {
               {t('MacBook屏幕碎了？电池鼓包了？进液开不了机？我们修。从2007年奋斗在维修一线，MacBook主板芯片级维修经验丰富。比官方便宜，质量不打折。', 'Cracked MacBook screen? Swollen battery? Liquid damage? We fix it. On the repair frontline since 2007. Cheap vs official, same quality.')}
             </p>
             <div className="flex flex-wrap gap-3 mt-6">
-              <button onClick={() => setShowContact(true)} className="bg-white text-gray-800 font-semibold px-6 py-3 rounded-xl hover:bg-gray-100 transition-colors shadow-lg">{t('📱 微信咨询', '📱 WeChat')}</button>
-              <a href="https://wa.me/6596146709?text=我的MacBook需要维修" target="_blank" className="bg-green-500 text-white font-semibold px-6 py-3 rounded-xl hover:bg-green-600 transition-colors shadow-lg">{t('💬 WhatsApp咨询', '💬 WhatsApp')}</a>
+              <button onClick={() => setShowContact(true)} className="bg-white text-gray-800 font-semibold px-6 py-3 rounded-xl hover:bg-gray-100 transition-colors shadow-lg">
+                {t('📱 立即咨询', '📱 Contact Now')}
+              </button>
             </div>
           </div>
         </div>
@@ -97,8 +98,9 @@ export default function MacBookRepair() {
           <h2 className="text-2xl sm:text-3xl font-bold mb-4">{t('需要MacBook维修？找我', 'Need MacBook Repair? Contact me')}</h2>
           <p className="text-gray-300 mb-8">{t('免费检测，先报价后维修。', 'Free diagnosis, quote first.')}</p>
           <div className="flex flex-wrap justify-center gap-4">
-            <button onClick={() => setShowContact(true)} className="bg-white text-gray-800 font-semibold px-8 py-4 rounded-xl hover:bg-gray-100 transition-colors shadow-lg text-lg">{t('📱 微信咨询', '📱 WeChat')}</button>
-            <a href="https://wa.me/6596146709?text=我的MacBook需要维修" target="_blank" className="bg-green-500 text-white font-semibold px-8 py-4 rounded-xl hover:bg-green-600 transition-colors shadow-lg text-lg">{t('💬 WhatsApp咨询', '💬 WhatsApp')}</a>
+            <button onClick={() => setShowContact(true)} className="bg-white text-gray-800 font-semibold px-8 py-4 rounded-xl hover:bg-gray-100 transition-colors shadow-lg text-lg">
+                {t('📱 立即咨询', '📱 Contact Now')}
+              </button>
           </div>
         </div>
       </section>

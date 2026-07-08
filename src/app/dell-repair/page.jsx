@@ -44,8 +44,9 @@ export default function DellRepair() {
               {t('Dell XPS轻薄旗舰、Inspiron家用全能、Alienware顶级游戏本、Latitude商用本——屏幕碎了、电池鼓包了、游戏本发热降频了，拿来给我看看。Dell笔记本芯片级维修，比官方便宜。2007年至今奋斗在维修一线。XPS 16/14 (2024)、Inspiron 2025系列、Latitude 2025系列清灰换硅脂、换OLED屏、升级固态内存，一站式搞定。', 'Dell XPS flagship ultrabooks, Inspiron all-rounders, Alienware gaming beasts, Latitude business laptops — cracked screen, swollen battery, gaming throttle, we fix it all. Dell component-level board repair, cheaper than official. On the job since 2007. XPS 16/14 (2024), Inspiron 2025 series, Latitude 2025 series — cleaning, OLED screen swap, SSD/RAM upgrades, all in one place.')}
             </p>
             <div className="flex flex-wrap gap-3 mt-6">
-              <button onClick={() => setShowContact(true)} className="bg-white text-blue-600 font-semibold px-6 py-3 rounded-xl hover:bg-blue-50 transition-colors shadow-lg">{t('📱 微信咨询', '📱 WeChat')}</button>
-              <a href="https://wa.me/6596146709?text=我的Dell电脑需要维修" target="_blank" className="bg-green-500 text-white font-semibold px-6 py-3 rounded-xl hover:bg-green-600 transition-colors shadow-lg">{t('💬 WhatsApp咨询', '💬 WhatsApp')}</a>
+              <button onClick={() => setShowContact(true)} className="bg-white text-blue-600 font-semibold px-6 py-3 rounded-xl hover:bg-blue-50 transition-colors shadow-lg">
+                {t('📱 立即咨询', '📱 Contact Now')}
+              </button>
             </div>
           </div>
         </div>
@@ -111,8 +112,9 @@ export default function DellRepair() {
           <h2 className="text-2xl sm:text-3xl font-bold mb-4">{t('需要Dell维修？找我', 'Need Dell Repair? Contact me')}</h2>
           <p className="text-blue-200 mb-8">{t('免费检测，先报价后维修。', 'Free diagnosis, quote first.')}</p>
           <div className="flex flex-wrap justify-center gap-4">
-            <button onClick={() => setShowContact(true)} className="bg-white text-blue-600 font-semibold px-8 py-4 rounded-xl hover:bg-blue-50 transition-colors shadow-lg text-lg">{t('📱 微信咨询', '📱 WeChat')}</button>
-            <a href="https://wa.me/6596146709?text=我的Dell电脑需要维修" target="_blank" className="bg-green-500 text-white font-semibold px-8 py-4 rounded-xl hover:bg-green-600 transition-colors shadow-lg text-lg">{t('💬 WhatsApp咨询', '💬 WhatsApp')}</a>
+            <button onClick={() => setShowContact(true)} className="bg-white text-blue-600 font-semibold px-8 py-4 rounded-xl hover:bg-blue-50 transition-colors shadow-lg text-lg">
+                {t('📱 立即咨询', '📱 Contact Now')}
+              </button>
           </div>
         </div>
       </section>

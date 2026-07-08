@@ -43,8 +43,9 @@ export default function SonyRepair() {
               {t('Sony PlayStation全系列维修——PS5/PS4手柄漂移霍尔效应改装、深度清灰散热、光驱维修、电源板芯片级维修、HDMI口更换、PSP/PSV屏幕电池更换。2007年至今奋斗在维修一线。', 'Full Sony PlayStation repair — PS5/PS4 hall effect joystick mod, deep cleaning, disc drive repair, PSU chip-level repair, HDMI port replacement, PSP/PSV screen and battery service. Serving since 2007.')}
             </p>
             <div className="flex flex-wrap gap-3 mt-6">
-              <button onClick={() => setShowContact(true)} className="bg-white text-blue-600 font-semibold px-6 py-3 rounded-xl hover:bg-blue-50 transition-colors shadow-lg">{t('📱 微信咨询维修', '📱 WeChat for Repair')}</button>
-              <a href="https://wa.me/6596146709?text=我的PlayStation需要维修" target="_blank" className="bg-green-500 text-white font-semibold px-6 py-3 rounded-xl hover:bg-green-600 transition-colors shadow-lg">{t('💬 WhatsApp咨询', '💬 WhatsApp')}</a>
+              <button onClick={() => setShowContact(true)} className="bg-white text-blue-600 font-semibold px-6 py-3 rounded-xl hover:bg-blue-50 transition-colors shadow-lg">
+                {t('📱 立即咨询', '📱 Contact Now')}
+              </button>
             </div>
           </div>
         </div>
@@ -101,8 +102,9 @@ export default function SonyRepair() {
           <h2 className="text-2xl sm:text-3xl font-bold mb-4">{t('需要Sony维修？找我', 'Need Sony Repair? Contact me')}</h2>
           <p className="text-blue-200 mb-8">{t('免费检测，发照片就能初步判断', 'Free diagnosis, send a photo for a quick check')}</p>
           <div className="flex flex-wrap justify-center gap-4">
-            <button onClick={() => setShowContact(true)} className="bg-white text-blue-600 font-semibold px-8 py-4 rounded-xl hover:bg-blue-50 transition-colors shadow-lg text-lg">{t('📱 微信咨询', '📱 WeChat')}</button>
-            <a href="https://wa.me/6596146709?text=需要PlayStation维修" target="_blank" className="bg-green-500 text-white font-semibold px-8 py-4 rounded-xl hover:bg-green-600 transition-colors shadow-lg text-lg">{t('💬 WhatsApp咨询', '💬 WhatsApp')}</a>
+            <button onClick={() => setShowContact(true)} className="bg-white text-blue-600 font-semibold px-8 py-4 rounded-xl hover:bg-blue-50 transition-colors shadow-lg text-lg">
+                {t('📱 立即咨询', '📱 Contact Now')}
+              </button>
           </div>
         </div>
       </section>

@@ -44,8 +44,9 @@ export default function GoogleRepair() {
               {t('Google Pixel 纯净Android体验——屏幕碎了、Tensor芯片发热、电池不耐用、相机计算摄影出问题、刷机卡LOGO了，拿来给我看看。虽然在威海找Pixel配件不容易，但我们有渠道。2007年至今奋斗在维修一线。', 'Google Pixel pure Android experience — cracked screen, Tensor chip overheating, battery drain, camera issues, boot loop from flashing gone wrong, we handle it all. Pixel parts are harder to source in Weihai but we have channels. On the job since 2007.')}
             </p>
             <div className="flex flex-wrap gap-3 mt-6">
-              <button onClick={() => setShowContact(true)} className="bg-white text-gray-600 font-semibold px-6 py-3 rounded-xl hover:bg-gray-50 transition-colors shadow-lg">{t('📱 微信咨询', '📱 WeChat')}</button>
-              <a href="https://wa.me/6596146709?text=我的Google Pixel手机需要维修" target="_blank" className="bg-green-500 text-white font-semibold px-6 py-3 rounded-xl hover:bg-green-600 transition-colors shadow-lg">{t('💬 WhatsApp咨询', '💬 WhatsApp')}</a>
+              <button onClick={() => setShowContact(true)} className="bg-white text-gray-600 font-semibold px-6 py-3 rounded-xl hover:bg-gray-50 transition-colors shadow-lg">
+                {t('📱 立即咨询', '📱 Contact Now')}
+              </button>
             </div>
           </div>
         </div>
@@ -116,8 +117,9 @@ export default function GoogleRepair() {
           <h2 className="text-2xl sm:text-3xl font-bold mb-4">{t('需要Google Pixel维修？找我', 'Need Google Pixel Repair? Contact me')}</h2>
           <p className="text-gray-300 mb-8">{t('免费检测，发照片就能初步判断', 'Free diagnosis, send a photo for a quick check')}</p>
           <div className="flex flex-wrap justify-center gap-4">
-            <button onClick={() => setShowContact(true)} className="bg-white text-gray-600 font-semibold px-8 py-4 rounded-xl hover:bg-gray-50 transition-colors shadow-lg text-lg">{t('📱 微信咨询', '📱 WeChat')}</button>
-            <a href="https://wa.me/6596146709?text=我的Google手机需要维修" target="_blank" className="bg-green-500 text-white font-semibold px-8 py-4 rounded-xl hover:bg-green-600 transition-colors shadow-lg text-lg">{t('💬 WhatsApp咨询', '💬 WhatsApp')}</a>
+            <button onClick={() => setShowContact(true)} className="bg-white text-gray-600 font-semibold px-8 py-4 rounded-xl hover:bg-gray-50 transition-colors shadow-lg text-lg">
+                {t('📱 立即咨询', '📱 Contact Now')}
+              </button>
           </div>
         </div>
       </section>
