@@ -17,30 +17,6 @@ export default function ContactModal() {
   const [savingQr, setSavingQr] = useState(false)
   const [qrSaved, setQrSaved] = useState(false)
 
-  // 点击微信号：复制 + 显示已复制
-  const copyWechatId = () => {
-    const doCopy = () => {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        return navigator.clipboard.writeText(WECHAT_ID)
-      }
-      return new Promise((resolve, reject) => {
-        try {
-          const ta = document.createElement('textarea')
-          ta.value = WECHAT_ID
-          ta.style.position = 'fixed'
-          ta.style.opacity = '0'
-          document.body.appendChild(ta)
-          ta.select()
-          document.execCommand('copy')
-          document.body.removeChild(ta)
-          resolve()
-        } catch(e) { reject(e) }
-      })
-    }
-    doCopy().then(() => setWechatCopied(true)).catch(() => {})
-    setTimeout(() => setWechatCopied(false), 3000)
-  }
-
   // 微信：复制 + 弹窗引导
   const handleWechat = () => {
     setWechatCopied(false)
@@ -71,6 +47,32 @@ export default function ContactModal() {
     }).catch(() => {
       setWechatCopied(false)
     })
+  }
+
+  // 点击微信号：复制 + 显示已复制
+  const copyWechatId = () => {
+    const doCopy = () => {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        return navigator.clipboard.writeText(WECHAT_ID)
+      }
+      return new Promise((resolve, reject) => {
+        try {
+          const ta = document.createElement('textarea')
+          ta.value = WECHAT_ID
+          ta.style.position = 'fixed'
+          ta.style.opacity = '0'
+          document.body.appendChild(ta)
+          ta.select()
+          document.execCommand('copy')
+          document.body.removeChild(ta)
+          resolve()
+        } catch(e) { reject(e) }
+      })
+    }
+    doCopy().then(() => {
+      setWechatCopied(true)
+      setTimeout(() => setWechatCopied(false), 3000)
+    }).catch(() => {})
   }
 
   // 保存二维码到相册
@@ -225,6 +227,20 @@ export default function ContactModal() {
               >
                 <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center shrink-0"><Phone size={18} className="text-green-600" /></div>
                 <div className="flex-1"><p className="font-semibold text-sm text-gray-900">WhatsApp</p><p className="text-[10px] text-gray-400">+65 96146709</p></div>
+                <ChevronRight size={16} className="text-gray-300" />
+              </a>
+
+              {/* 抖音 */}
+              <a href="https://v.douyin.com/NvUr5C82ZDM/" target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-3 p-3 rounded-xl border border-gray-200 hover:border-pink-300 hover:bg-pink-50 cursor-pointer transition-all"
+              >
+                <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
+                  style={{background: 'linear-gradient(135deg, #00f2fe, #fe2c55)'}}>
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="#fff">
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.88 2.89 2.89 0 0 1-2.88-2.88 2.89 2.89 0 0 1 2.88-2.88c.35 0 .69.06 1.01.18V8.48a6.34 6.34 0 0 0-1.01-.08C5.9 8.4 3 11.3 3 14.86c0 3.56 2.9 6.46 6.46 6.46 3.56 0 6.46-2.9 6.46-6.46V9.33a8.28 8.28 0 0 0 4.67 1.4v-3.4a4.84 4.84 0 0 1-1-.64z"/>
+                  </svg>
+                </div>
+                <div className="flex-1"><p className="font-semibold text-sm text-gray-900">抖音</p><p className="text-[10px] text-gray-400">@Crazy维修 浩哥维修实录</p></div>
                 <ChevronRight size={16} className="text-gray-300" />
               </a>
 
