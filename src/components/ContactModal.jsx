@@ -197,7 +197,7 @@ export default function ContactModal() {
               className="flex items-center gap-4 p-4 rounded-2xl border border-gray-200 hover:border-green-300 hover:bg-green-50 cursor-pointer transition-all"
             >
               <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center shrink-0"><Phone size={24} className="text-green-600" /></div>
-              <div className="flex-1"><p className="font-semibold text-gray-900">WhatsApp / {t('新加坡', 'Singapore')}</p><p className="text-xs text-gray-500">+65 96146709</p></div>
+              <div className="flex-1"><p className="font-semibold text-gray-900">WhatsApp</p><p className="text-xs text-gray-500">+65 96146709</p></div>
               <ChevronRight size={20} className="text-gray-400" />
             </a>
 

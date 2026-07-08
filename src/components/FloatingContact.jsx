@@ -309,11 +309,6 @@ export default function FloatingContact() {
                       <span className="text-blue-600 font-medium">{t('📞 中国', '📞 China')}</span>
                       <span className="text-gray-500">+86 13573735550</span>
                     </a>
-                    <a href="tel:+6596146709"
-                      className="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-blue-50 transition-colors text-xs">
-                      <span className="text-blue-600 font-medium">{t('📞 新加坡', '📞 Singapore')}</span>
-                      <span className="text-gray-500">+65 96146709</span>
-                    </a>
                   </div>
                 )}
               </div>
