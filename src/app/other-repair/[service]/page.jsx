@@ -206,8 +206,9 @@ export default function OtherServiceDetail() {
           </div>
           <p className="text-white/90 mt-4 max-w-2xl text-sm leading-relaxed">{lang === 'zh' ? info.description : info.descriptionEn}</p>
           <div className="flex flex-wrap gap-3 mt-6">
-            <button onClick={() => setShowContact(true)} className="bg-white text-blue-600 font-semibold text-sm px-5 py-2.5 rounded-xl hover:bg-blue-50 shadow-lg">{t('📱 微信咨询维修', '📱 WeChat for Repair')}</button>
-            <a href={'https://wa.me/6596146709?text=' + encodeURIComponent('咨询' + info.title + '维修')} target="_blank" className="bg-green-500 text-white font-semibold text-sm px-5 py-2.5 rounded-xl hover:bg-green-600 shadow-lg">{t('💬 WhatsApp咨询', '💬 WhatsApp')}</a>
+            <button onClick={() => setShowContact(true)} className="bg-white text-blue-600 font-semibold text-sm px-5 py-2.5 rounded-xl hover:bg-blue-50 shadow-lg">
+                {t("@数立即咨询", "@数Contact Now")}
+              </button>
           </div>
         </div>
       </section>
@@ -252,21 +253,9 @@ export default function OtherServiceDetail() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <p className="text-center text-gray-400 text-sm mb-4">{t('没找到你的设备？加微信问我，没列出来不代表不能修', 'Device not listed? DM me — not listed does not mean we cannot fix it')}</p>
           <div className="flex justify-center gap-3">
-            <button onClick={() => setShowContact(true)} className="bg-blue-600 text-white font-semibold px-6 py-3 rounded-xl hover:bg-blue-700 shadow-md">{t('📱 微信咨询', '📱 WeChat')}</button>
-            {info.brandPage && (
-              <a href={info.brandPage} className="bg-gray-200 text-gray-700 font-semibold px-6 py-3 rounded-xl hover:bg-gray-300 shadow-md">{t('查看全部服务 →', 'View All Services →')}</a>
-            )}
-          </div>
-        </div>
-      </section>
-
-      <section className={'bg-gradient-to-br ' + info.gradientBg + ' text-white text-center py-12'}>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-xl sm:text-2xl font-bold mb-3">{t('需要' + info.title + '维修？找我', 'Need ' + info.titleEn + ' Repair? Contact me')}</h2>
-          <p className="text-white/80 text-sm mb-6">{t('免费检测，发照片就能初步判断', 'Free diagnosis — send a photo for a quick check')}</p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <button onClick={() => setShowContact(true)} className="bg-white text-blue-600 font-semibold px-6 py-3 rounded-xl hover:bg-blue-50 shadow-md">{t('📱 微信咨询', '📱 WeChat')}</button>
-            <a href={'https://wa.me/6596146709?text=' + encodeURIComponent('咨询' + info.title + '维修')} target="_blank" className="bg-green-500 text-white font-semibold px-6 py-3 rounded-xl hover:bg-green-600 shadow-md">{t('💬 WhatsApp咨询', '💬 WhatsApp')}</a>
+            <button onClick={() => setShowContact(true)} className="bg-blue-600 text-white font-semibold px-6 py-3 rounded-xl hover:bg-blue-700 shadow-md">
+                {t("@数立即咨询", "@数Contact Now")}
+              </button>
           </div>
         </div>
       </section>

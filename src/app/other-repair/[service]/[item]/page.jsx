@@ -998,8 +998,9 @@ export default function OtherRepairItemDetail() {
             {lang === 'zh' ? item.description : item.descriptionEn}
           </p>
           <div className="flex flex-wrap gap-3 mt-6">
-            <button onClick={() => setShowContact(true)} className="bg-white text-blue-600 font-semibold text-sm px-5 py-2.5 rounded-xl hover:bg-blue-50 shadow-lg">{t('📱 微信咨询维修', '📱 WeChat for Repair')}</button>
-            <a href={'https://wa.me/6596146709?text=' + encodeURIComponent('咨询' + info.title + ' ' + item.title)} target="_blank" className="bg-green-500 text-white font-semibold text-sm px-5 py-2.5 rounded-xl hover:bg-green-600 shadow-lg">{t('💬 WhatsApp咨询', '💬 WhatsApp')}</a>
+            <button onClick={() => setShowContact(true)} className="bg-white text-blue-600 font-semibold text-sm px-5 py-2.5 rounded-xl hover:bg-blue-50 shadow-lg">
+                {t("@数立即咨询", "@数Contact Now")}
+              </button>
           </div>
         </div>
       </section>
@@ -1067,8 +1068,9 @@ export default function OtherRepairItemDetail() {
           <h2 className="text-xl sm:text-2xl font-bold mb-3">{t('需要' + item.title + '？找我', 'Need ' + item.titleEn + '? Contact me')}</h2>
           <p className="text-white/80 text-sm mb-6">{t('免费检测，发照片就能初步判断', 'Free diagnosis — send a photo for a quick check')}</p>
           <div className="flex flex-wrap justify-center gap-3">
-            <button onClick={() => setShowContact(true)} className="bg-white text-blue-600 font-semibold px-6 py-3 rounded-xl hover:bg-blue-50 shadow-md">{t('📱 微信咨询', '📱 WeChat')}</button>
-            <a href={'https://wa.me/6596146709?text=' + encodeURIComponent('咨询' + info.title + ' ' + item.title)} target="_blank" className="bg-green-500 text-white font-semibold px-6 py-3 rounded-xl hover:bg-green-600 shadow-md">{t('💬 WhatsApp咨询', '💬 WhatsApp')}</a>
+            <button onClick={() => setShowContact(true)} className="bg-white text-blue-600 font-semibold px-6 py-3 rounded-xl hover:bg-blue-50 shadow-md">
+                {t("@数立即咨询", "@数Contact Now")}
+              </button>
           </div>
         </div>
       </section>

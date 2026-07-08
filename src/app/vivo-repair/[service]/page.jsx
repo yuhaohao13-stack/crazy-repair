@@ -108,8 +108,9 @@ export default function ServiceDetail() {
             <span className="text-xs text-white/70">{t('免费检测 · 先报价后维修', 'Free check · Quote first')}</span>
           </div>
           <div className="flex flex-wrap gap-3 mt-6">
-            <button onClick={() => setShowContact(true)} className="bg-white text-blue-600 font-semibold text-sm px-5 py-2.5 rounded-xl hover:bg-blue-50 shadow-lg">{t('📱 微信咨询', '📱 WeChat')}</button>
-            <a href={'https://wa.me/6596146709?text=' + encodeURIComponent('咨询' + info.label + ' ' + service.title)} target="_blank" className="bg-green-500 text-white font-semibold text-sm px-5 py-2.5 rounded-xl hover:bg-green-600 shadow-lg">{t('💬 WhatsApp', '💬 WhatsApp')}</a>
+            <button onClick={() => setShowContact(true)} className="bg-white text-blue-600 font-semibold text-sm px-5 py-2.5 rounded-xl hover:bg-blue-50 shadow-lg">
+                {t("@数立即咨询", "@数Contact Now")}
+              </button>
           </div>
         </div>
       </section>
@@ -193,8 +194,9 @@ export default function ServiceDetail() {
           <h2 className="text-xl sm:text-2xl font-bold mb-3">{t('需要' + service.title + '？找我', 'Need ' + service.titleEn + '? Contact me')}</h2>
           <p className="text-blue-200 text-sm mb-6">{t('免费检测，发照片就能初步判断', 'Free diagnosis')}</p>
           <div className="flex flex-wrap justify-center gap-3">
-            <button onClick={() => setShowContact(true)} className="bg-white text-blue-600 font-semibold px-6 py-3 rounded-xl hover:bg-blue-50 shadow-md">{t('📱 微信咨询', '📱 WeChat')}</button>
-            <a href={'https://wa.me/6596146709?text=' + encodeURIComponent('咨询' + service.title)} target="_blank" className="bg-green-500 text-white font-semibold px-6 py-3 rounded-xl hover:bg-green-600 shadow-md">{t('💬 WhatsApp', '💬 WhatsApp')}</a>
+            <button onClick={() => setShowContact(true)} className="bg-white text-blue-600 font-semibold px-6 py-3 rounded-xl hover:bg-blue-50 shadow-md">
+                {t("@数立即咨询", "@数Contact Now")}
+              </button>
           </div>
         </div>
       </section>
