@@ -313,18 +313,6 @@ export default function FloatingContact() {
                 </div>
               </a>
 
-              {/* 官方网站 */}
-              <a href="https://www.crazy-repair.com" target="_blank" rel="noopener noreferrer"
-                className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-blue-50 transition-colors">
-                <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center shrink-0">
-                  <span className="text-base">🔧</span>
-                </div>
-                <div className="text-left flex-1">
-                  <p className="text-xs font-medium text-gray-900">{t('官方网站', 'Website')}</p>
-                  <p className="text-[10px] text-gray-400">www.crazy-repair.com</p>
-                </div>
-              </a>
-
               {/* 抖音 */}
               <a href="https://v.douyin.com/NvUr5C82ZDM/" target="_blank" rel="noopener noreferrer"
                 className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-pink-50 transition-colors">
