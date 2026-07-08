@@ -3,24 +3,24 @@ import { useState } from 'react'
 import { ChevronRight, MessageCircle, Phone, MapPin, MessageSquare } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { useSite } from '../lib/SiteContext'
-import { WECHAT_ID, PHONE_CHINA, PHONE_SG, getSmsBody, smsUrl } from '../lib/contactData'
+import { WECHAT_ID, PHONE_CHINA, getSmsBody, smsUrl } from '../lib/contactData'
 
 export default function ContactModal() {
   const { showContact: show, setShowContact: setShow, lang } = useSite()
   const pathname = usePathname()
-  const [copied, setCopied] = useState(false)
+  const t = (zh, en) => lang === 'zh' ? zh : en
+
   // 微信引导弹窗
   const [showWechatPrompt, setShowWechatPrompt] = useState(false)
   const [wechatCopied, setWechatCopied] = useState(false)
-  const t = (zh, en) => lang === 'zh' ? zh : en
-
-  if (!show) return null
+  // 保存二维码
+  const [savingQr, setSavingQr] = useState(false)
+  const [qrSaved, setQrSaved] = useState(false)
 
   // 微信：复制 + 弹窗引导
   const handleWechat = () => {
     setWechatCopied(false)
     setShowWechatPrompt(true)
-    setShow(false) // 关掉主弹窗
 
     const val = WECHAT_ID
     const doCopy = () => {
@@ -51,8 +51,6 @@ export default function ContactModal() {
   }
 
   // 保存二维码到相册
-  const [savingQr, setSavingQr] = useState(false)
-  const [qrSaved, setQrSaved] = useState(false)
   const saveQrToAlbum = async () => {
     setSavingQr(true)
     try {
@@ -79,12 +77,11 @@ export default function ContactModal() {
   const handleSms = () => {
     const body = getSmsBody(pathname)
     window.location.href = smsUrl(PHONE_CHINA, body)
-    setShow(false)
   }
 
   return (
     <>
-      {/* 微信引导弹窗 */}
+      {/* ========== 微信引导弹窗（独立于主弹窗） ========== */}
       {showWechatPrompt && (
         <div
           className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
@@ -98,7 +95,7 @@ export default function ContactModal() {
               {t('长按二维码直接添加，或在微信搜索微信号', 'Long press QR to add, or search WeChat ID')}
             </p>
 
-            {/* 微信二维码 — 在微信内长按可直接识别 */}
+            {/* 微信二维码 */}
             <div className="mb-4 flex justify-center flex-col items-center">
               <img src="/images/wechat-qr.jpg" alt="微信二维码"
                 className="w-40 h-40 rounded-xl border border-gray-200 shadow-sm cursor-pointer hover:opacity-90 transition-opacity"
@@ -145,74 +142,76 @@ export default function ContactModal() {
         </div>
       )}
 
-      {/* 主联系弹窗 */}
-      <div className="fixed inset-0 bg-black/50 z-40 flex items-center justify-center p-4" onClick={() => setShow(false)}>
-        <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-sm w-full shadow-2xl" onClick={e => e.stopPropagation()}>
-          <div className="text-center mb-6">
-            <div className="text-4xl mb-3">🔧</div>
-            <h3 className="text-xl font-bold text-gray-900">{t('联系我们', 'Contact Us')}</h3>
-            <p className="text-sm text-gray-500 mt-1">{t('选择您方便的方式', 'Choose your preferred way')}</p>
-          </div>
-          <div className="space-y-4">
-
-            {/* 📱 短信咨询 — 新增 */}
-            <button onClick={handleSms}
-              className="w-full flex items-center gap-4 p-4 rounded-2xl border border-gray-200 hover:border-blue-300 hover:bg-blue-50 cursor-pointer transition-all text-left"
-            >
-              <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center shrink-0"><MessageSquare size={24} className="text-blue-600" /></div>
-              <div className="flex-1 min-w-0">
-                <p className="font-semibold text-gray-900">{t('📱 短信咨询', '📱 SMS')}</p>
-                <p className="text-xs text-gray-500 truncate">
-                  {t('一键发送短信，自动填写咨询内容', 'Pre-filled message, one tap to send')}
-                </p>
-              </div>
-              <ChevronRight size={20} className="text-gray-400 shrink-0" />
-            </button>
-
-            {/* 💚 微信 — 改为复制+跳转 */}
-            <button onClick={handleWechat}
-              className="w-full flex items-center gap-4 p-4 rounded-2xl border border-gray-200 hover:border-green-300 hover:bg-green-50 cursor-pointer transition-all text-left"
-            >
-              <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center shrink-0"><MessageCircle size={24} className="text-green-600" /></div>
-              <div className="flex-1 min-w-0">
-                <p className="font-semibold text-gray-900">{t('💚 微信', '💚 WeChat')}</p>
-                <p className="text-xs text-gray-500 truncate">
-                  {t('复制微信号，去微信搜索添加', 'Copy ID and add on WeChat')}
-                </p>
-              </div>
-              <ChevronRight size={20} className="text-gray-400 shrink-0" />
-            </button>
-
-            {/* 📞 中国电话 */}
-            <a href="tel:+8613573735550"
-              className="flex items-center gap-4 p-4 rounded-2xl border border-gray-200 hover:border-blue-300 hover:bg-blue-50 cursor-pointer transition-all"
-            >
-              <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center shrink-0"><Phone size={24} className="text-blue-600" /></div>
-              <div className="flex-1"><p className="font-semibold text-gray-900">{t('📞 中国电话', '📞 China Phone')}</p><p className="text-xs text-gray-500">+86 13573735550</p></div>
-              <ChevronRight size={20} className="text-gray-400" />
-            </a>
-
-            {/* WhatsApp */}
-            <a href="https://wa.me/6596146709?text=我想咨询手机电脑维修事宜" target="_blank" rel="noopener noreferrer"
-              className="flex items-center gap-4 p-4 rounded-2xl border border-gray-200 hover:border-green-300 hover:bg-green-50 cursor-pointer transition-all"
-            >
-              <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center shrink-0"><Phone size={24} className="text-green-600" /></div>
-              <div className="flex-1"><p className="font-semibold text-gray-900">WhatsApp</p><p className="text-xs text-gray-500">+65 96146709</p></div>
-              <ChevronRight size={20} className="text-gray-400" />
-            </a>
-
-            {/* 到店地址 */}
-            <div className="flex items-center gap-4 p-4 rounded-2xl border border-gray-200">
-              <div className="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center shrink-0"><MapPin size={24} className="text-yellow-600" /></div>
-              <div className="flex-1"><p className="font-semibold text-gray-900">{t('📍 到店维修', '📍 Visit Store')}</p><p className="text-xs text-gray-500">{t('威海环翠区西门31号', 'No.31 West Gate, Huancui')}</p></div>
+      {/* ========== 主联系弹窗 ========== */}
+      {show && (
+        <div className="fixed inset-0 bg-black/50 z-40 flex items-center justify-center p-4" onClick={() => setShow(false)}>
+          <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-sm w-full shadow-2xl" onClick={e => e.stopPropagation()}>
+            <div className="text-center mb-6">
+              <div className="text-4xl mb-3">🔧</div>
+              <h3 className="text-xl font-bold text-gray-900">{t('联系我们', 'Contact Us')}</h3>
+              <p className="text-sm text-gray-500 mt-1">{t('选择您方便的方式', 'Choose your preferred way')}</p>
             </div>
-          </div>
+            <div className="space-y-4">
 
-          <button onClick={() => setShow(false)} className="mt-6 w-full py-3 rounded-xl bg-gray-100 text-gray-600 font-medium hover:bg-gray-200 transition-colors">
-            {t('关闭', 'Close')}
-          </button>
+              {/* 📱 短信咨询 */}
+              <button onClick={handleSms}
+                className="w-full flex items-center gap-4 p-4 rounded-2xl border border-gray-200 hover:border-blue-300 hover:bg-blue-50 cursor-pointer transition-all text-left"
+              >
+                <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center shrink-0"><MessageSquare size={24} className="text-blue-600" /></div>
+                <div className="flex-1 min-w-0">
+                  <p className="font-semibold text-gray-900">{t('📱 短信咨询', '📱 SMS')}</p>
+                  <p className="text-xs text-gray-500 truncate">
+                    {t('一键发送短信，自动填写咨询内容', 'Pre-filled message, one tap to send')}
+                  </p>
+                </div>
+                <ChevronRight size={20} className="text-gray-400 shrink-0" />
+              </button>
+
+              {/* 💚 微信 */}
+              <button onClick={handleWechat}
+                className="w-full flex items-center gap-4 p-4 rounded-2xl border border-gray-200 hover:border-green-300 hover:bg-green-50 cursor-pointer transition-all text-left"
+              >
+                <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center shrink-0"><MessageCircle size={24} className="text-green-600" /></div>
+                <div className="flex-1 min-w-0">
+                  <p className="font-semibold text-gray-900">{t('💚 微信', '💚 WeChat')}</p>
+                  <p className="text-xs text-gray-500 truncate">
+                    {t('复制微信号，去微信搜索添加', 'Copy ID and add on WeChat')}
+                  </p>
+                </div>
+                <ChevronRight size={20} className="text-gray-400 shrink-0" />
+              </button>
+
+              {/* 📞 中国电话 */}
+              <a href="tel:+8613573735550"
+                className="flex items-center gap-4 p-4 rounded-2xl border border-gray-200 hover:border-blue-300 hover:bg-blue-50 cursor-pointer transition-all"
+              >
+                <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center shrink-0"><Phone size={24} className="text-blue-600" /></div>
+                <div className="flex-1"><p className="font-semibold text-gray-900">{t('📞 中国电话', '📞 China Phone')}</p><p className="text-xs text-gray-500">+86 13573735550</p></div>
+                <ChevronRight size={20} className="text-gray-400" />
+              </a>
+
+              {/* WhatsApp */}
+              <a href="https://wa.me/6596146709?text=我想咨询手机电脑维修事宜" target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-4 p-4 rounded-2xl border border-gray-200 hover:border-green-300 hover:bg-green-50 cursor-pointer transition-all"
+              >
+                <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center shrink-0"><Phone size={24} className="text-green-600" /></div>
+                <div className="flex-1"><p className="font-semibold text-gray-900">WhatsApp</p><p className="text-xs text-gray-500">+65 96146709</p></div>
+                <ChevronRight size={20} className="text-gray-400" />
+              </a>
+
+              {/* 到店地址 */}
+              <div className="flex items-center gap-4 p-4 rounded-2xl border border-gray-200">
+                <div className="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center shrink-0"><MapPin size={24} className="text-yellow-600" /></div>
+                <div className="flex-1"><p className="font-semibold text-gray-900">{t('📍 到店维修', '📍 Visit Store')}</p><p className="text-xs text-gray-500">{t('威海环翠区西门31号', 'No.31 West Gate, Huancui')}</p></div>
+              </div>
+            </div>
+
+            <button onClick={() => setShow(false)} className="mt-6 w-full py-3 rounded-xl bg-gray-100 text-gray-600 font-medium hover:bg-gray-200 transition-colors">
+              {t('关闭', 'Close')}
+            </button>
+          </div>
         </div>
-      </div>
+      )}
     </>
   )
 }
