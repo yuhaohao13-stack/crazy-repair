@@ -34,6 +34,7 @@ export default function Footer() {
             <h4 className="font-semibold text-white mb-3">{t('联系方式', 'Contact')}</h4>
             <ul className="space-y-2 text-sm">
               <li>{t('微信', 'WeChat')}: crazy-repair</li>
+              <li>{t('手机', 'Phone')}: <a href="tel:+8613573735550" className="hover:text-white transition-colors">+86 13573735550</a></li>
               <li>WhatsApp: +65 96146709</li>
               <li>{t('地址', 'Address')}: {t('威海环翠区西门31号', 'Huancui Dist, West Gate #31')}</li>
               <li>{t('营业时间', 'Hours')}: {t('周一至周日 8:00-19:00', 'Mon-Sun 8:00-19:00')}</li>

@@ -359,6 +359,7 @@ export default function Home() {
               <div className="space-y-4">
                 <div className="flex items-start gap-3"><MapPin size={20} className="text-blue-600 shrink-0 mt-0.5" /><div><p className="font-medium text-gray-900">{t('地址', 'Address')}</p><p className="text-sm text-gray-500">{t('威海市环翠区西门31号', 'No.31 West Gate, Huancui, Weihai')}</p></div></div>
                 <div className="flex items-start gap-3"><MessageCircle size={20} className="text-green-500 shrink-0 mt-0.5" /><div><p className="font-medium text-gray-900">{t('微信', 'WeChat')}</p><p className="text-sm text-gray-500">crazy-repair</p></div></div>
+                <div className="flex items-start gap-3"><Phone size={20} className="text-red-500 shrink-0 mt-0.5" /><div><p className="font-medium text-gray-900">{t('手机', 'Phone')}</p><p className="text-sm text-gray-500"><a href="tel:+8613573735550" className="hover:text-blue-600">+86 13573735550</a></p></div></div>
                 <div className="flex items-start gap-3"><Phone size={20} className="text-green-500 shrink-0 mt-0.5" /><div><p className="font-medium text-gray-900">WhatsApp</p><p className="text-sm text-gray-500">+65 96146709</p></div></div>
                 <div className="flex items-start gap-3"><Clock size={20} className="text-gray-400 shrink-0 mt-0.5" /><div><p className="font-medium text-gray-900">{t('营业时间', 'Hours')}</p><p className="text-sm text-gray-500">{t('周一至周日 8:00-19:00', 'Mon-Sun 8:00-19:00')}</p></div></div>
               </div>
