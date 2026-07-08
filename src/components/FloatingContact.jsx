@@ -61,8 +61,6 @@ export default function FloatingContact() {
 
     doCopy().then(() => {
       setWechatCopied(true)
-      // 尝试跳转微信
-      try { window.location.href = 'weixin://' } catch(e) {}
     }).catch(() => {
       setWechatCopied(false)
     })

@@ -44,7 +44,6 @@ export default function ContactModal() {
 
     doCopy().then(() => {
       setWechatCopied(true)
-      try { window.location.href = 'weixin://' } catch(e) {}
     }).catch(() => {
       setWechatCopied(false)
     })
