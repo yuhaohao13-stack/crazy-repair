@@ -69,6 +69,32 @@ export default function FloatingContact() {
     })
   }
 
+  // 保存二维码到相册
+  const [savingQr, setSavingQr] = useState(false)
+  const [qrSaved, setQrSaved] = useState(false)
+  const saveQrToAlbum = async () => {
+    setSavingQr(true)
+    try {
+      const res = await fetch('/images/wechat-qr.jpg')
+      const blob = await res.blob()
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = 'Crazy维修微信二维码.jpg'
+      document.body.appendChild(a)
+      a.click()
+      document.body.removeChild(a)
+      setTimeout(() => URL.revokeObjectURL(url), 5000)
+      setQrSaved(true)
+      setTimeout(() => setQrSaved(false), 3000)
+    } catch(e) {
+      // 如果自动保存不支持，引导长按
+      setQrSaved(true)
+      setTimeout(() => setQrSaved(false), 3000)
+    }
+    setSavingQr(false)
+  }
+
   // 短信：直接跳转
   const handleSms = () => {
     const body = getSmsBody(pathname)
@@ -107,9 +133,20 @@ export default function FloatingContact() {
             </p>
 
             {/* 微信二维码 — 在微信内长按可直接识别 */}
-            <div className="mb-4 flex justify-center">
+            <div className="mb-4 flex justify-center flex-col items-center">
               <img src="/images/wechat-qr.jpg" alt="微信二维码"
-                className="w-40 h-40 rounded-xl border border-gray-200 shadow-sm" />
+                className="w-40 h-40 rounded-xl border border-gray-200 shadow-sm cursor-pointer hover:opacity-90 transition-opacity"
+                onClick={saveQrToAlbum} />
+              <button onClick={saveQrToAlbum}
+                className="mt-2 text-xs text-blue-500 hover:text-blue-600 font-medium"
+              >
+                {savingQr
+                  ? t('保存中...', 'Saving...')
+                  : qrSaved
+                    ? t('✅ 已保存到相册', '✅ Saved to album')
+                    : t('📥 点击保存二维码到相册', '📥 Save QR to album')
+                }
+              </button>
             </div>
 
             <div className="bg-gray-50 rounded-xl p-3 mb-3">
