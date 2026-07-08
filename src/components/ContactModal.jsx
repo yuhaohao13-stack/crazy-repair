@@ -173,85 +173,85 @@ export default function ContactModal() {
         </div>
       )}
 
-      {/* ========== 主联系弹窗（缩小版） ========== */}
+      {/* ========== 主联系弹窗（超小版） ========== */}
       {show && (
         <div className="fixed inset-0 bg-black/50 z-40 flex items-center justify-center p-4" onClick={() => setShow(false)}>
-          <div className="bg-white rounded-2xl p-4 sm:p-5 max-w-xs w-full shadow-2xl" onClick={e => e.stopPropagation()}>
-            <div className="text-center mb-3">
-              <div className="text-3xl mb-2">🔧</div>
-              <h3 className="text-base font-bold text-gray-900">{t('联系我们', 'Contact Us')}</h3>
-              <p className="text-xs text-gray-400 mt-0.5">{t('选择您方便的方式', 'Choose your preferred way')}</p>
+          <div className="bg-white rounded-2xl p-3.5 sm:p-4 max-w-[18rem] w-full shadow-2xl" onClick={e => e.stopPropagation()}>
+            <div className="text-center mb-1.5">
+              <div className="text-2xl mb-1">🔧</div>
+              <h3 className="text-sm font-bold text-gray-900">{t('联系我们', 'Contact Us')}</h3>
+              <p className="text-[10px] text-gray-400 mt-0.5">{t('选择您方便的方式', 'Choose your preferred way')}</p>
             </div>
-            <div className="space-y-2.5">
+            <div className="space-y-1.5">
 
               {/* 📱 短信咨询 */}
               <button onClick={handleSms}
-                className="w-full flex items-center gap-3 p-3 rounded-xl border border-gray-200 hover:border-blue-300 hover:bg-blue-50 cursor-pointer transition-all text-left"
+                className="w-full flex items-center gap-2 p-2 rounded-lg border border-gray-200 hover:border-blue-300 hover:bg-blue-50 cursor-pointer transition-all text-left"
               >
-                <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center shrink-0"><MessageSquare size={18} className="text-blue-600" /></div>
+                <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center shrink-0"><MessageSquare size={14} className="text-blue-600" /></div>
                 <div className="flex-1 min-w-0">
-                  <p className="font-semibold text-sm text-gray-900">{t('📱 短信咨询', '📱 SMS')}</p>
-                  <p className="text-[10px] text-gray-400 truncate">
+                  <p className="font-medium text-xs text-gray-900">{t('📱 短信咨询', '📱 SMS')}</p>
+                  <p className="text-[9px] text-gray-400 truncate">
                     {t('一键发送短信，自动填写咨询内容', 'Pre-filled message, one tap to send')}
                   </p>
                 </div>
-                <ChevronRight size={16} className="text-gray-300 shrink-0" />
+                <ChevronRight size={13} className="text-gray-300 shrink-0" />
               </button>
 
               {/* 💚 微信 */}
               <button onClick={handleWechat}
-                className="w-full flex items-center gap-3 p-3 rounded-xl border border-gray-200 hover:border-green-300 hover:bg-green-50 cursor-pointer transition-all text-left"
+                className="w-full flex items-center gap-2 p-2 rounded-lg border border-gray-200 hover:border-green-300 hover:bg-green-50 cursor-pointer transition-all text-left"
               >
-                <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center shrink-0"><MessageCircle size={18} className="text-green-600" /></div>
+                <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center shrink-0"><MessageCircle size={14} className="text-green-600" /></div>
                 <div className="flex-1 min-w-0">
-                  <p className="font-semibold text-sm text-gray-900">{t('💚 微信', '💚 WeChat')}</p>
-                  <p className="text-[10px] text-gray-400 truncate">
+                  <p className="font-medium text-xs text-gray-900">{t('💚 微信', '💚 WeChat')}</p>
+                  <p className="text-[9px] text-gray-400 truncate">
                     {t('复制微信号，去微信搜索添加', 'Copy ID and add on WeChat')}
                   </p>
                 </div>
-                <ChevronRight size={16} className="text-gray-300 shrink-0" />
+                <ChevronRight size={13} className="text-gray-300 shrink-0" />
               </button>
 
               {/* 📞 中国电话 */}
               <a href="tel:+8613573735550"
-                className="flex items-center gap-3 p-3 rounded-xl border border-gray-200 hover:border-blue-300 hover:bg-blue-50 cursor-pointer transition-all"
+                className="flex items-center gap-2 p-2 rounded-lg border border-gray-200 hover:border-blue-300 hover:bg-blue-50 cursor-pointer transition-all"
               >
-                <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center shrink-0"><Phone size={18} className="text-blue-600" /></div>
-                <div className="flex-1"><p className="font-semibold text-sm text-gray-900">{t('📞 中国电话', '📞 China Phone')}</p><p className="text-[10px] text-gray-400">+86 13573735550</p></div>
-                <ChevronRight size={16} className="text-gray-300" />
+                <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center shrink-0"><Phone size={14} className="text-blue-600" /></div>
+                <div className="flex-1"><p className="font-medium text-xs text-gray-900">{t('📞 中国电话', '📞 China Phone')}</p><p className="text-[9px] text-gray-400">+86 13573735550</p></div>
+                <ChevronRight size={13} className="text-gray-300" />
               </a>
 
               {/* WhatsApp */}
               <a href="https://wa.me/6596146709?text=我想咨询手机电脑维修事宜" target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-3 p-3 rounded-xl border border-gray-200 hover:border-green-300 hover:bg-green-50 cursor-pointer transition-all"
+                className="flex items-center gap-2 p-2 rounded-lg border border-gray-200 hover:border-green-300 hover:bg-green-50 cursor-pointer transition-all"
               >
-                <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center shrink-0"><Phone size={18} className="text-green-600" /></div>
-                <div className="flex-1"><p className="font-semibold text-sm text-gray-900">WhatsApp</p><p className="text-[10px] text-gray-400">+65 96146709</p></div>
-                <ChevronRight size={16} className="text-gray-300" />
+                <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center shrink-0"><Phone size={14} className="text-green-600" /></div>
+                <div className="flex-1"><p className="font-medium text-xs text-gray-900">WhatsApp</p><p className="text-[9px] text-gray-400">+65 96146709</p></div>
+                <ChevronRight size={13} className="text-gray-300" />
               </a>
 
               {/* 抖音 */}
               <a href="https://v.douyin.com/NvUr5C82ZDM/" target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-3 p-3 rounded-xl border border-gray-200 hover:border-pink-300 hover:bg-pink-50 cursor-pointer transition-all"
+                className="flex items-center gap-2 p-2 rounded-lg border border-gray-200 hover:border-pink-300 hover:bg-pink-50 cursor-pointer transition-all"
               >
-                <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
+                <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0"
                   style={{background: 'linear-gradient(135deg, #00f2fe, #fe2c55)'}}>
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="#fff">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="#fff">
                     <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.88 2.89 2.89 0 0 1-2.88-2.88 2.89 2.89 0 0 1 2.88-2.88c.35 0 .69.06 1.01.18V8.48a6.34 6.34 0 0 0-1.01-.08C5.9 8.4 3 11.3 3 14.86c0 3.56 2.9 6.46 6.46 6.46 3.56 0 6.46-2.9 6.46-6.46V9.33a8.28 8.28 0 0 0 4.67 1.4v-3.4a4.84 4.84 0 0 1-1-.64z"/>
                   </svg>
                 </div>
-                <div className="flex-1"><p className="font-semibold text-sm text-gray-900">抖音</p><p className="text-[10px] text-gray-400">@Crazy维修 浩哥维修实录</p></div>
-                <ChevronRight size={16} className="text-gray-300" />
+                <div className="flex-1"><p className="font-medium text-xs text-gray-900">抖音</p><p className="text-[9px] text-gray-400">@Crazy维修 浩哥维修实录</p></div>
+                <ChevronRight size={13} className="text-gray-300" />
               </a>
 
               {/* 到店地址 */}
-              <div className="flex items-center gap-3 p-3 rounded-xl border border-gray-200">
-                <div className="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center shrink-0"><MapPin size={18} className="text-yellow-600" /></div>
-                <div className="flex-1"><p className="font-semibold text-sm text-gray-900">{t('📍 到店维修', '📍 Visit Store')}</p><p className="text-[10px] text-gray-400">{t('威海环翠区西门31号', 'No.31 West Gate, Huancui')}</p></div>
+              <div className="flex items-center gap-2 p-2 rounded-lg border border-gray-200">
+                <div className="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center shrink-0"><MapPin size={14} className="text-yellow-600" /></div>
+                <div className="flex-1"><p className="font-medium text-xs text-gray-900">{t('📍 到店维修', '📍 Visit Store')}</p><p className="text-[9px] text-gray-400">{t('威海环翠区西门31号', 'No.31 West Gate, Huancui')}</p></div>
               </div>
             </div>
 
-            <button onClick={() => setShow(false)} className="mt-4 w-full py-2.5 rounded-xl bg-gray-100 text-gray-500 text-sm font-medium hover:bg-gray-200 transition-colors">
+            <button onClick={() => setShow(false)} className="mt-3 w-full py-2 rounded-lg bg-gray-100 text-gray-500 text-xs font-medium hover:bg-gray-200 transition-colors">
               {t('关闭', 'Close')}
             </button>
           </div>
