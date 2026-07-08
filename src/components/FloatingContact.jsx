@@ -1,42 +1,23 @@
 'use client'
 import { useState, useRef, useEffect } from 'react'
-import { MessageCircle, Phone, Heart, X } from 'lucide-react'
+import { MessageCircle, Phone, Heart, X, MessageSquare } from 'lucide-react'
+import { usePathname } from 'next/navigation'
 import { useSite } from '../lib/SiteContext'
+import { WECHAT_ID, PHONE_CHINA, PHONE_SG, getSmsBody, smsUrl } from '../lib/contactData'
 
 export default function FloatingContact() {
   const { lang } = useSite()
+  const pathname = usePathname()
   const [expanded, setExpanded] = useState(false)
   const [showDonate, setShowDonate] = useState(false)
   const [showWechatQR, setShowWechatQR] = useState(false)
   const [showPayNowQR, setShowPayNowQR] = useState(false)
-  const [copied, setCopied] = useState(false)
+
+  // 微信弹窗
+  const [showWechatPrompt, setShowWechatPrompt] = useState(false)
+  const [wechatCopied, setWechatCopied] = useState(false)
+
   const t = (zh, en) => lang === 'zh' ? zh : en
-
-  const copyWechat = (val) => {
-    try {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(val).then(() => {
-          setCopied(true)
-          setTimeout(() => setCopied(false), 2500)
-        }).catch(() => fallbackCopy(val))
-      } else {
-        fallbackCopy(val)
-      }
-    } catch(e) {
-      fallbackCopy(val)
-    }
-  }
-
-  const fallbackCopy = (val) => {
-    const ta = document.createElement('textarea')
-    ta.value = val
-    ta.style.position = 'fixed'
-    ta.style.opacity = '0'
-    document.body.appendChild(ta)
-    ta.select()
-    try { document.execCommand('copy'); setCopied(true); setTimeout(() => setCopied(false), 2500) } catch(e) {}
-    document.body.removeChild(ta)
-  }
 
   const [showPhones, setShowPhones] = useState(false)
   const menuRef = useRef(null)
@@ -53,6 +34,48 @@ export default function FloatingContact() {
     return () => document.removeEventListener('mousedown', handler)
   }, [expanded])
 
+  // 微信：复制微信号 + 弹窗引导
+  const handleWechat = () => {
+    setWechatCopied(false)
+    setShowWechatPrompt(true)
+    setExpanded(false)
+
+    const val = WECHAT_ID
+    const doCopy = () => {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        return navigator.clipboard.writeText(val)
+      }
+      return new Promise((resolve, reject) => {
+        try {
+          const ta = document.createElement('textarea')
+          ta.value = val
+          ta.style.position = 'fixed'
+          ta.style.opacity = '0'
+          document.body.appendChild(ta)
+          ta.select()
+          document.execCommand('copy')
+          document.body.removeChild(ta)
+          resolve()
+        } catch(e) { reject(e) }
+      })
+    }
+
+    doCopy().then(() => {
+      setWechatCopied(true)
+      // 尝试跳转微信
+      try { window.location.href = 'weixin://' } catch(e) {}
+    }).catch(() => {
+      setWechatCopied(false)
+    })
+  }
+
+  // 短信：直接跳转
+  const handleSms = () => {
+    const body = getSmsBody(pathname)
+    window.location.href = smsUrl(PHONE_CHINA, body)
+    setExpanded(false)
+  }
+
   const openDonateWechat = () => {
     setShowDonate(false)
     setTimeout(() => setShowWechatQR(true), 200)
@@ -65,7 +88,55 @@ export default function FloatingContact() {
 
   return (
     <>
-      {/* 打赏弹窗 */}
+      {/* ========== 微信引导弹窗 ========== */}
+      {showWechatPrompt && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          style={{ backgroundColor: 'rgba(0,0,0,0.35)', backdropFilter: 'blur(4px)' }}
+          onClick={() => setShowWechatPrompt(false)}
+        >
+          <div
+            className="bg-white rounded-2xl shadow-2xl max-w-sm w-full p-6 text-center"
+            style={{ animation: 'scaleIn 0.3s ease-out both' }}
+            onClick={e => e.stopPropagation()}
+          >
+            <div className="text-5xl mb-4">💚</div>
+            <h3 className="text-lg font-bold text-gray-900 mb-2">{t('添加微信', 'Add WeChat')}</h3>
+            <p className="text-sm text-gray-500 mb-4">
+              {t('微信号已复制，去微信添加好友吧', 'WeChat ID copied! Add me on WeChat')}
+            </p>
+
+            <div className="bg-gray-50 rounded-xl p-3 mb-4">
+              <p className="text-[10px] text-gray-400 mb-1">{t('我的微信号', 'My WeChat ID')}</p>
+              <p className="text-lg font-bold text-green-600 tracking-wider select-all">{WECHAT_ID}</p>
+            </div>
+
+            <div className="space-y-2 text-left text-xs text-gray-500 mb-5">
+              <p>1. {t('已复制微信号到剪贴板', 'WeChat ID copied to clipboard ✅')}</p>
+              <p>2. {t('打开微信App', 'Open WeChat app')}</p>
+              <p>3. {t('点击「添加朋友」→ 粘贴 → 搜索', 'Tap "Add Friends" → Paste → Search')}</p>
+              <p>4. {t('发送「咨询维修」即可', 'Send "咨询维修" and I\'ll reply')}</p>
+            </div>
+
+            <div className="flex gap-3">
+              <button
+                onClick={() => setShowWechatPrompt(false)}
+                className="flex-1 py-3 rounded-xl border border-gray-200 text-gray-600 text-sm font-medium hover:bg-gray-50 transition-colors"
+              >
+                {t('知道了', 'Got it')}
+              </button>
+              <button
+                onClick={() => { try { window.location.href = 'weixin://' } catch(e) {} }}
+                className="flex-1 py-3 rounded-xl bg-green-500 text-white text-sm font-medium hover:bg-green-600 transition-colors"
+              >
+                {t('打开微信', 'Open WeChat')}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ========== 打赏弹窗 ========== */}
       {showDonate && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center p-4"
@@ -107,7 +178,7 @@ export default function FloatingContact() {
         </div>
       )}
 
-      {/* 微信二维码 */}
+      {/* 微信打赏二维码 */}
       {showWechatQR && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center p-4"
@@ -143,7 +214,7 @@ export default function FloatingContact() {
         </div>
       )}
 
-      {/* 右下角悬浮按钮组 */}
+      {/* ========== 右下角悬浮按钮组 ========== */}
       <div className="fixed bottom-28 right-4 z-40 flex flex-col items-end gap-2">
         {/* 联系展开菜单 */}
         {expanded && (
@@ -153,17 +224,27 @@ export default function FloatingContact() {
               <p className="text-[10px] text-gray-400">{t('选择联系方式', 'Choose a way')}</p>
             </div>
             <div className="space-y-1.5">
-              {/* 微信 */}
-              <button onClick={() => copyWechat('crazy-repair')}
+              {/* 📱 短信咨询 — 新增 */}
+              <button onClick={handleSms}
+                className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-blue-50 transition-colors">
+                <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center shrink-0">
+                  <MessageSquare size={16} className="text-blue-600" />
+                </div>
+                <div className="text-left flex-1 min-w-0">
+                  <p className="text-xs font-medium text-gray-900">{t('📱 短信咨询', '📱 SMS')}</p>
+                  <p className="text-[10px] text-gray-400 truncate">{t('点击发送短信，一键咨询', 'Send SMS with pre-filled message')}</p>
+                </div>
+              </button>
+
+              {/* 💚 微信 — 改为复制+跳转 */}
+              <button onClick={handleWechat}
                 className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-green-50 transition-colors">
                 <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center shrink-0">
                   <MessageCircle size={16} className="text-green-600" />
                 </div>
                 <div className="text-left flex-1 min-w-0">
-                  <p className="text-xs font-medium text-gray-900">{t('微信', 'WeChat')}</p>
-                  <p className="text-[10px] text-gray-400 truncate">
-                    {copied ? <span className="text-green-600 font-semibold">{t('✅ 已复制', '✅ Copied')}</span> : 'crazy-repair'}
-                  </p>
+                  <p className="text-xs font-medium text-gray-900">{t('💚 微信', '💚 WeChat')}</p>
+                  <p className="text-[10px] text-gray-400 truncate">{t('复制微信号，去微信添加好友', 'Copy ID & open WeChat')}</p>
                 </div>
               </button>
 
@@ -175,7 +256,7 @@ export default function FloatingContact() {
                     <Phone size={16} className="text-blue-600" />
                   </div>
                   <div className="text-left flex-1">
-                    <p className="text-xs font-medium text-gray-900">{t('电话', 'Phone')}</p>
+                    <p className="text-xs font-medium text-gray-900">{t('📞 电话', '📞 Phone')}</p>
                     <p className="text-[10px] text-gray-400">{t('选择号码', 'Choose number')}</p>
                   </div>
                 </button>
@@ -183,12 +264,12 @@ export default function FloatingContact() {
                   <div className="ml-10 mt-1 space-y-1 border-l-2 border-blue-100 pl-3">
                     <a href="tel:+8613573735550"
                       className="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-blue-50 transition-colors text-xs">
-                      <span className="text-blue-600 font-medium">{t('中国', 'China')}</span>
+                      <span className="text-blue-600 font-medium">{t('📞 中国', '📞 China')}</span>
                       <span className="text-gray-500">+86 13573735550</span>
                     </a>
                     <a href="tel:+6596146709"
                       className="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-blue-50 transition-colors text-xs">
-                      <span className="text-blue-600 font-medium">{t('新加坡', 'Singapore')}</span>
+                      <span className="text-blue-600 font-medium">{t('📞 新加坡', '📞 Singapore')}</span>
                       <span className="text-gray-500">+65 96146709</span>
                     </a>
                   </div>
@@ -252,7 +333,7 @@ export default function FloatingContact() {
           </div>
         )}
 
-        {/* 打赏按钮（红色，在联系按钮上面） */}
+        {/* 打赏按钮 */}
         <button onClick={() => setShowDonate(true)}
           className="w-12 h-12 rounded-full bg-red-500 text-white shadow-lg hover:bg-red-600 hover:scale-110 transition-all active:scale-95 flex items-center justify-center"
           title={t('打赏支持', 'Support us')}>
@@ -264,8 +345,6 @@ export default function FloatingContact() {
           className="w-12 h-12 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition-all active:scale-95 flex items-center justify-center">
           {expanded ? <X size={20} /> : <MessageCircle size={20} />}
         </button>
-
-
       </div>
     </>
   )
