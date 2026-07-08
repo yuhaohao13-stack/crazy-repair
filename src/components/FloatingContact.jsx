@@ -19,7 +19,6 @@ export default function FloatingContact() {
 
   const t = (zh, en) => lang === 'zh' ? zh : en
 
-  const [showPhones, setShowPhones] = useState(false)
   const menuRef = useRef(null)
 
   // 点击外部自动收起
@@ -290,28 +289,17 @@ export default function FloatingContact() {
                 </div>
               </button>
 
-              {/* 电话 */}
-              <div>
-                <button onClick={() => setShowPhones(!showPhones)}
-                  className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-blue-50 transition-colors">
-                  <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center shrink-0">
-                    <Phone size={16} className="text-blue-600" />
-                  </div>
-                  <div className="text-left flex-1">
-                    <p className="text-xs font-medium text-gray-900">{t('📞 电话', '📞 Phone')}</p>
-                    <p className="text-[10px] text-gray-400">{t('选择号码', 'Choose number')}</p>
-                  </div>
-                </button>
-                {showPhones && (
-                  <div className="ml-10 mt-1 space-y-1 border-l-2 border-blue-100 pl-3">
-                    <a href="tel:+8613573735550"
-                      className="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-blue-50 transition-colors text-xs">
-                      <span className="text-blue-600 font-medium">{t('📞 中国', '📞 China')}</span>
-                      <span className="text-gray-500">+86 13573735550</span>
-                    </a>
-                  </div>
-                )}
-              </div>
+              {/* 电话 — 直接拨打 */}
+              <a href="tel:+8613573735550"
+                className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-blue-50 transition-colors">
+                <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center shrink-0">
+                  <Phone size={16} className="text-blue-600" />
+                </div>
+                <div className="text-left flex-1">
+                  <p className="text-xs font-medium text-gray-900">{t('📞 电话咨询', '📞 Phone')}</p>
+                  <p className="text-[10px] text-gray-400">+86 13573735550</p>
+                </div>
+              </a>
 
               {/* WhatsApp */}
               <a href="https://wa.me/6596146709?text=我想咨询维修事宜" target="_blank" rel="noopener noreferrer"
