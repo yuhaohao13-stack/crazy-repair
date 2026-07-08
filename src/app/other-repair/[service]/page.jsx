@@ -207,7 +207,7 @@ export default function OtherServiceDetail() {
           <p className="text-white/90 mt-4 max-w-2xl text-sm leading-relaxed">{lang === 'zh' ? info.description : info.descriptionEn}</p>
           <div className="flex flex-wrap gap-3 mt-6">
             <button onClick={() => setShowContact(true)} className="bg-white text-blue-600 font-semibold text-sm px-5 py-2.5 rounded-xl hover:bg-blue-50 shadow-lg">
-                {t("@数立即咨询", "@数Contact Now")}
+                {t("📱 立即咨询", "📱 Contact Now")}
               </button>
           </div>
         </div>
@@ -254,7 +254,7 @@ export default function OtherServiceDetail() {
           <p className="text-center text-gray-400 text-sm mb-4">{t('没找到你的设备？加微信问我，没列出来不代表不能修', 'Device not listed? DM me — not listed does not mean we cannot fix it')}</p>
           <div className="flex justify-center gap-3">
             <button onClick={() => setShowContact(true)} className="bg-blue-600 text-white font-semibold px-6 py-3 rounded-xl hover:bg-blue-700 shadow-md">
-                {t("@数立即咨询", "@数Contact Now")}
+                {t("📱 立即咨询", "📱 Contact Now")}
               </button>
           </div>
         </div>

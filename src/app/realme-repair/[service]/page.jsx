@@ -109,7 +109,7 @@ export default function ServiceDetail() {
           </div>
           <div className="flex flex-wrap gap-3 mt-6">
             <button onClick={() => setShowContact(true)} className="bg-white text-blue-600 font-semibold text-sm px-5 py-2.5 rounded-xl hover:bg-blue-50 shadow-lg">
-                {t("@数立即咨询", "@数Contact Now")}
+                {t("📱 立即咨询", "📱 Contact Now")}
               </button>
           </div>
         </div>
@@ -195,7 +195,7 @@ export default function ServiceDetail() {
           <p className="text-blue-200 text-sm mb-6">{t('免费检测，发照片就能初步判断', 'Free diagnosis')}</p>
           <div className="flex flex-wrap justify-center gap-3">
             <button onClick={() => setShowContact(true)} className="bg-white text-blue-600 font-semibold px-6 py-3 rounded-xl hover:bg-blue-50 shadow-md">
-                {t("@数立即咨询", "@数Contact Now")}
+                {t("📱 立即咨询", "📱 Contact Now")}
               </button>
           </div>
         </div>
