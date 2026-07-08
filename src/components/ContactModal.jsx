@@ -17,6 +17,30 @@ export default function ContactModal() {
   const [savingQr, setSavingQr] = useState(false)
   const [qrSaved, setQrSaved] = useState(false)
 
+  // 点击微信号：复制 + 显示已复制
+  const copyWechatId = () => {
+    const doCopy = () => {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        return navigator.clipboard.writeText(WECHAT_ID)
+      }
+      return new Promise((resolve, reject) => {
+        try {
+          const ta = document.createElement('textarea')
+          ta.value = WECHAT_ID
+          ta.style.position = 'fixed'
+          ta.style.opacity = '0'
+          document.body.appendChild(ta)
+          ta.select()
+          document.execCommand('copy')
+          document.body.removeChild(ta)
+          resolve()
+        } catch(e) { reject(e) }
+      })
+    }
+    doCopy().then(() => setWechatCopied(true)).catch(() => {})
+    setTimeout(() => setWechatCopied(false), 3000)
+  }
+
   // 微信：复制 + 弹窗引导
   const handleWechat = () => {
     setWechatCopied(false)
@@ -111,10 +135,17 @@ export default function ContactModal() {
               </button>
             </div>
 
-            <div className="bg-gray-50 rounded-lg p-2.5 mb-3">
-              <p className="text-[9px] text-gray-400 mb-0.5">{t('或复制微信号搜索', 'Or copy WeChat ID')}</p>
-              <p className="text-base font-bold text-green-600 tracking-wider select-all">{WECHAT_ID}</p>
-            </div>
+            <button onClick={copyWechatId} className="bg-gray-50 rounded-lg p-2.5 mb-3 w-full hover:bg-gray-100 transition-colors">
+              <p className="text-[9px] text-gray-400 mb-0.5">
+                {wechatCopied ? t('✅ 已复制', '✅ Copied') : t('点击复制微信号', 'Tap to copy WeChat ID')}
+              </p>
+              <p className="text-base font-bold tracking-wider select-all">
+                {wechatCopied
+                  ? <span className="text-green-500">{t('请到微信粘贴搜索', 'Open WeChat and paste to search')}</span>
+                  : <span className="text-green-600">{WECHAT_ID}</span>
+                }
+              </p>
+            </button>
 
             <div className="space-y-1 text-left text-[11px] text-gray-400 mb-3 ml-3">
               <p>① {t('微信号已复制 ✅', 'ID copied ✅')}</p>

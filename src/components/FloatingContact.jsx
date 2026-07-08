@@ -69,6 +69,33 @@ export default function FloatingContact() {
   // 保存二维码到相册
   const [savingQr, setSavingQr] = useState(false)
   const [qrSaved, setQrSaved] = useState(false)
+  // 点击微信号：复制 + 显示已复制（同步版）
+  const copyWechatId = () => {
+    const val = WECHAT_ID
+    const doCopy = () => {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        return navigator.clipboard.writeText(val)
+      }
+      return new Promise((resolve, reject) => {
+        try {
+          const ta = document.createElement('textarea')
+          ta.value = val
+          ta.style.position = 'fixed'
+          ta.style.opacity = '0'
+          document.body.appendChild(ta)
+          ta.select()
+          document.execCommand('copy')
+          document.body.removeChild(ta)
+          resolve()
+        } catch(e) { reject(e) }
+      })
+    }
+    doCopy().then(() => {
+      setWechatCopied(true)
+      setTimeout(() => setWechatCopied(false), 3000)
+    }).catch(() => {})
+  }
+
   const saveQrToAlbum = async () => {
     setSavingQr(true)
     try {
@@ -146,9 +173,15 @@ export default function FloatingContact() {
               </button>
             </div>
 
-            <div className="bg-gray-50 rounded-xl p-3 mb-3">
-              <p className="text-[10px] text-gray-400 mb-1">{t('或复制微信号搜索', 'Or copy WeChat ID')}</p>
-              <p className="text-lg font-bold text-green-600 tracking-wider select-all">{WECHAT_ID}</p>
+            <div className="bg-gray-50 rounded-xl p-3 mb-3 cursor-pointer hover:bg-gray-100 transition-colors" onClick={copyWechatId}>
+              <p className="text-[10px] text-gray-400 mb-1">{t('点击复制微信号', 'Tap to copy WeChat ID')}</p>
+              <p className="text-lg font-bold text-green-600 tracking-wider select-all">
+                {wechatCopied ? (
+                  <span className="text-green-500">{t('✅ 已复制，请到微信粘贴搜索', '✅ Copied! Open WeChat & paste')}</span>
+                ) : (
+                  WECHAT_ID
+                )}
+              </p>
             </div>
 
             <div className="space-y-1.5 text-left text-xs text-gray-400 mb-4">
