@@ -67,18 +67,24 @@ export default function ContactModal() {
         >
           <div className="bg-white rounded-3xl p-6 max-w-sm w-full shadow-2xl text-center" onClick={e => e.stopPropagation()}
             style={{ animation: 'scaleIn 0.3s ease-out both' }}>
-            <div className="text-5xl mb-4">💚</div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2">{t('添加微信', 'Add WeChat')}</h3>
+            <div className="text-4xl mb-3">💚</div>
+            <h3 className="text-xl font-bold text-gray-900 mb-1">{t('添加微信', 'Add WeChat')}</h3>
             <p className="text-sm text-gray-500 mb-4">
-              {t('微信号已复制，去微信添加好友吧', 'WeChat ID copied! Add me on WeChat')}
+              {t('长按二维码直接添加，或在微信搜索微信号', 'Long press QR to add, or search WeChat ID')}
             </p>
 
+            {/* 微信二维码 — 在微信内长按可直接识别 */}
+            <div className="mb-4 flex justify-center">
+              <img src="/images/wechat-qr.jpg" alt="微信二维码"
+                className="w-40 h-40 rounded-xl border border-gray-200 shadow-sm" />
+            </div>
+
             <div className="bg-gray-50 rounded-xl p-3 mb-4">
-              <p className="text-[10px] text-gray-400 mb-1">{t('我的微信号', 'My WeChat ID')}</p>
+              <p className="text-[10px] text-gray-400 mb-1">{t('或复制微信号搜索', 'Or copy WeChat ID')}</p>
               <p className="text-lg font-bold text-green-600 tracking-wider select-all">{WECHAT_ID}</p>
             </div>
 
-            <div className="space-y-2 text-left text-sm text-gray-500 mb-5 ml-4">
+            <div className="space-y-1.5 text-left text-sm text-gray-500 mb-5 ml-4">
               <p>① {t('微信号已复制 ✅', 'ID copied ✅')}</p>
               <p>② {t('打开微信App', 'Open WeChat app')}</p>
               <p>③ {t('点击「添加朋友」→ 粘贴 → 搜索', 'Tap "Add Friends" → Paste → Search')}</p>

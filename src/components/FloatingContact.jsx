@@ -100,22 +100,27 @@ export default function FloatingContact() {
             style={{ animation: 'scaleIn 0.3s ease-out both' }}
             onClick={e => e.stopPropagation()}
           >
-            <div className="text-5xl mb-4">💚</div>
-            <h3 className="text-lg font-bold text-gray-900 mb-2">{t('添加微信', 'Add WeChat')}</h3>
-            <p className="text-sm text-gray-500 mb-4">
-              {t('微信号已复制，去微信添加好友吧', 'WeChat ID copied! Add me on WeChat')}
+            <div className="text-4xl mb-3">💚</div>
+            <h3 className="text-lg font-bold text-gray-900 mb-1">{t('添加微信', 'Add WeChat')}</h3>
+            <p className="text-xs text-gray-500 mb-4">
+              {t('长按二维码直接添加，或在微信搜索微信号', 'Long press QR to add, or search WeChat ID')}
             </p>
 
-            <div className="bg-gray-50 rounded-xl p-3 mb-4">
-              <p className="text-[10px] text-gray-400 mb-1">{t('我的微信号', 'My WeChat ID')}</p>
+            {/* 微信二维码 — 在微信内长按可直接识别 */}
+            <div className="mb-4 flex justify-center">
+              <img src="/images/wechat-qr.jpg" alt="微信二维码"
+                className="w-40 h-40 rounded-xl border border-gray-200 shadow-sm" />
+            </div>
+
+            <div className="bg-gray-50 rounded-xl p-3 mb-3">
+              <p className="text-[10px] text-gray-400 mb-1">{t('或复制微信号搜索', 'Or copy WeChat ID')}</p>
               <p className="text-lg font-bold text-green-600 tracking-wider select-all">{WECHAT_ID}</p>
             </div>
 
-            <div className="space-y-2 text-left text-xs text-gray-500 mb-5">
-              <p>1. {t('已复制微信号到剪贴板', 'WeChat ID copied to clipboard ✅')}</p>
-              <p>2. {t('打开微信App', 'Open WeChat app')}</p>
-              <p>3. {t('点击「添加朋友」→ 粘贴 → 搜索', 'Tap "Add Friends" → Paste → Search')}</p>
-              <p>4. {t('发送「咨询维修」即可', 'Send "咨询维修" and I\'ll reply')}</p>
+            <div className="space-y-1.5 text-left text-xs text-gray-400 mb-4">
+              <p>① {t('微信号已复制到剪贴板 ✅', 'ID copied ✅')}</p>
+              <p>② {t('打开微信 → 添加朋友 → 粘贴搜索', 'Open WeChat → Add Friends → Paste')}</p>
+              <p>③ {t('发送「咨询维修」即可', 'Send a message to start')}</p>
             </div>
 
             <div className="flex gap-3">
