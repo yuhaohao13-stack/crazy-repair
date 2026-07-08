@@ -290,88 +290,88 @@ export default function FloatingContact() {
       <div className="fixed bottom-28 right-4 z-40 flex flex-col items-end gap-2">
         {/* 联系展开菜单 */}
         {expanded && (
-          <div ref={menuRef} className="bg-white rounded-2xl shadow-xl border border-gray-200 p-3 w-72 animate-in slide-in-from-bottom-2 duration-200">
-            <div className="text-center mb-2">
-              <p className="text-xs font-bold text-gray-900">{t('联系我们', 'Contact Us')}</p>
-              <p className="text-[10px] text-gray-400">{t('选择联系方式', 'Choose a way')}</p>
+          <div ref={menuRef} className="bg-white rounded-xl shadow-xl border border-gray-200 p-2.5 w-64 animate-in slide-in-from-bottom-2 duration-200">
+            <div className="text-center mb-1.5">
+              <p className="text-[11px] font-bold text-gray-900">{t('联系我们', 'Contact Us')}</p>
+              <p className="text-[9px] text-gray-400">{t('选择联系方式', 'Choose a way')}</p>
             </div>
-            <div className="space-y-1.5">
-              {/* 📱 短信咨询 — 新增 */}
+            <div className="space-y-1">
+              {/* 📱 短信咨询 */}
               <button onClick={handleSms}
-                className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-blue-50 transition-colors">
-                <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center shrink-0">
-                  <MessageSquare size={16} className="text-blue-600" />
+                className="w-full flex items-center gap-2 px-2.5 py-2 rounded-lg hover:bg-blue-50 transition-colors">
+                <div className="w-7 h-7 rounded-full bg-blue-100 flex items-center justify-center shrink-0">
+                  <MessageSquare size={13} className="text-blue-600" />
                 </div>
                 <div className="text-left flex-1 min-w-0">
-                  <p className="text-xs font-medium text-gray-900">{t('📱 短信咨询', '📱 SMS')}</p>
-                  <p className="text-[10px] text-gray-400 truncate">{t('点击发送短信，一键咨询', 'Send SMS with pre-filled message')}</p>
+                  <p className="text-[11px] font-medium text-gray-900">{t('📱 短信咨询', '📱 SMS')}</p>
+                  <p className="text-[9px] text-gray-400 truncate">{t('点击发送短信，一键咨询', 'Send SMS with pre-filled message')}</p>
                 </div>
               </button>
 
-              {/* 💚 微信 — 改为复制+跳转 */}
+              {/* 💚 微信 */}
               <button onClick={handleWechat}
-                className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-green-50 transition-colors">
-                <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center shrink-0">
-                  <MessageCircle size={16} className="text-green-600" />
+                className="w-full flex items-center gap-2 px-2.5 py-2 rounded-lg hover:bg-green-50 transition-colors">
+                <div className="w-7 h-7 rounded-full bg-green-100 flex items-center justify-center shrink-0">
+                  <MessageCircle size={13} className="text-green-600" />
                 </div>
                 <div className="text-left flex-1 min-w-0">
-                  <p className="text-xs font-medium text-gray-900">{t('💚 微信', '💚 WeChat')}</p>
-                  <p className="text-[10px] text-gray-400 truncate">{t('复制微信号，去微信添加好友', 'Copy ID & open WeChat')}</p>
+                  <p className="text-[11px] font-medium text-gray-900">{t('💚 微信', '💚 WeChat')}</p>
+                  <p className="text-[9px] text-gray-400 truncate">{t('复制微信号，去微信添加好友', 'Copy ID & open WeChat')}</p>
                 </div>
               </button>
 
-              {/* 电话 — 直接拨打 */}
+              {/* 电话 */}
               <a href="tel:+8613573735550"
-                className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-blue-50 transition-colors">
-                <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center shrink-0">
-                  <Phone size={16} className="text-blue-600" />
+                className="w-full flex items-center gap-2 px-2.5 py-2 rounded-lg hover:bg-blue-50 transition-colors">
+                <div className="w-7 h-7 rounded-full bg-blue-100 flex items-center justify-center shrink-0">
+                  <Phone size={13} className="text-blue-600" />
                 </div>
                 <div className="text-left flex-1">
-                  <p className="text-xs font-medium text-gray-900">{t('📞 电话咨询', '📞 Phone')}</p>
-                  <p className="text-[10px] text-gray-400">+86 13573735550</p>
+                  <p className="text-[11px] font-medium text-gray-900">{t('📞 电话咨询', '📞 Phone')}</p>
+                  <p className="text-[9px] text-gray-400">+86 13573735550</p>
                 </div>
               </a>
 
               {/* WhatsApp */}
               <a href="https://wa.me/6596146709?text=我想咨询维修事宜" target="_blank" rel="noopener noreferrer"
-                className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-green-50 transition-colors">
-                <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center shrink-0">
-                  <Phone size={16} className="text-green-600" />
+                className="w-full flex items-center gap-2 px-2.5 py-2 rounded-lg hover:bg-green-50 transition-colors">
+                <div className="w-7 h-7 rounded-full bg-green-100 flex items-center justify-center shrink-0">
+                  <Phone size={13} className="text-green-600" />
                 </div>
                 <div className="text-left flex-1">
-                  <p className="text-xs font-medium text-gray-900">WhatsApp</p>
-                  <p className="text-[10px] text-gray-400">+65 96146709</p>
+                  <p className="text-[11px] font-medium text-gray-900">WhatsApp</p>
+                  <p className="text-[9px] text-gray-400">+65 96146709</p>
                 </div>
               </a>
 
               {/* 抖音 */}
               <a href="https://v.douyin.com/NvUr5C82ZDM/" target="_blank" rel="noopener noreferrer"
-                className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-pink-50 transition-colors">
-                <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0"
+                className="w-full flex items-center gap-2 px-2.5 py-2 rounded-lg hover:bg-pink-50 transition-colors">
+                <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0"
                   style={{background: 'linear-gradient(135deg, #00f2fe, #fe2c55)'}}>
-                  <svg viewBox="0 0 24 24" width="14" height="14" fill="#fff">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="#fff">
                     <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.88 2.89 2.89 0 0 1-2.88-2.88 2.89 2.89 0 0 1 2.88-2.88c.35 0 .69.06 1.01.18V8.48a6.34 6.34 0 0 0-1.01-.08C5.9 8.4 3 11.3 3 14.86c0 3.56 2.9 6.46 6.46 6.46 3.56 0 6.46-2.9 6.46-6.46V9.33a8.28 8.28 0 0 0 4.67 1.4v-3.4a4.84 4.84 0 0 1-1-.64z"/>
                   </svg>
                 </div>
                 <div className="text-left flex-1">
-                  <p className="text-xs font-medium text-gray-900">{t('抖音', 'TikTok')}</p>
-                  <p className="text-[10px] text-gray-400">@Crazy维修 浩哥维修实录</p>
+                  <p className="text-[11px] font-medium text-gray-900">{t('抖音', 'TikTok')}</p>
+                  <p className="text-[9px] text-gray-400">@Crazy维修 浩哥维修实录</p>
                 </div>
               </a>
 
               {/* 到店地址 */}
-              <div className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl">
-                <div className="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center shrink-0">
-                  <span className="text-base">📍</span>
+              <div className="w-full flex items-center gap-2 px-2.5 py-2 rounded-lg">
+                <div className="w-7 h-7 rounded-full bg-yellow-100 flex items-center justify-center shrink-0">
+                  <span className="text-sm">📍</span>
                 </div>
                 <div className="text-left flex-1">
-                  <p className="text-xs font-medium text-gray-900">{t('到店维修', 'Visit Store')}</p>
-                  <p className="text-[10px] text-gray-400">{t('威海环翠区西门31号', 'No.31 West Gate, Huancui')}</p>
+                  <p className="text-[11px] font-medium text-gray-900">{t('到店维修', 'Visit Store')}</p>
+                  <p className="text-[9px] text-gray-400">{t('威海环翠区西门31号', 'No.31 West Gate, Huancui')}</p>
                 </div>
               </div>
             </div>
             <button onClick={() => setExpanded(false)}
-              className="w-full mt-1 py-2 text-[10px] text-gray-400 hover:text-gray-600 transition-colors">
+              className="w-full mt-1 py-1.5 text-[9px] text-gray-400 hover:text-gray-600 transition-colors">
               {t('收起', 'Close')}
             </button>
           </div>
