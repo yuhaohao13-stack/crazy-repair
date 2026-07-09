@@ -1,7 +1,8 @@
 'use client'
 import { useState, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
-import { MessageSquare, Pin, ArrowLeft, Send, ImagePlus, X, User, Shield, ChevronDown, ChevronUp } from 'lucide-react'
+import { MessageSquare, Pin, ArrowLeft, Send, ImagePlus, X, User, Shield, ChevronDown, ChevronUp, Search } from 'lucide-react'
+import UserProfileModal from '@/components/UserProfileModal'
 
 export default function BoardPage() {
   const router = useRouter()
@@ -23,6 +24,7 @@ export default function BoardPage() {
 
   // 展开回复
   const [expandedReplies, setExpandedReplies] = useState({})
+  const [profileUserId, setProfileUserId] = useState(null)
 
   // 获取当前用户
   useEffect(() => {
@@ -151,7 +153,16 @@ export default function BoardPage() {
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-1.5">
-            <span className="font-medium text-sm text-gray-900 truncate">{msg.user?.username || '未知用户'}</span>
+            <span className="font-medium text-sm text-gray-900 truncate">
+              {msg.user?.username || '未知用户'}
+              {user?.is_admin && msg.user?.id && (
+                <button onClick={() => setProfileUserId(msg.user.id)}
+                  className="ml-1 text-blue-500 hover:text-blue-700 inline-flex items-center"
+                  title="查看用户资料">
+                  <Search size={11} />
+                </button>
+              )}
+            </span>
             {msg.user?.is_admin && <span className="text-xs bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded">管理员</span>}
           </div>
           <div className="text-xs text-gray-400">{formatDate(msg.created_at)}</div>
@@ -341,6 +352,11 @@ export default function BoardPage() {
           </div>
         )}
       </div>
+
+      {/* 用户资料弹窗（管理员可见） */}
+      {profileUserId && (
+        <UserProfileModal userId={profileUserId} onClose={() => setProfileUserId(null)} />
+      )}
     </div>
   )
 }

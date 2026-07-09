@@ -1,9 +1,10 @@
 'use client'
 import { useState, useEffect, useRef, useCallback } from 'react'
-import { Star, ImagePlus, X, ShieldCheck, Sparkles, Send, User, Shield, ChevronDown, ChevronUp } from 'lucide-react'
+import { Star, ImagePlus, X, ShieldCheck, Sparkles, Send, User, Shield, ChevronDown, ChevronUp, Search } from 'lucide-react'
+import UserProfileModal from './UserProfileModal'
 
 // ========== 评价详情弹窗（含回复） ==========
-function ReviewDetailModal({ review, onClose, isAdmin, user }) {
+function ReviewDetailModal({ review, onClose, isAdmin, user, adminUser }) {
   const [replies, setReplies] = useState([])
   const [replyContent, setReplyContent] = useState('')
   const [replyImages, setReplyImages] = useState([])
@@ -11,6 +12,7 @@ function ReviewDetailModal({ review, onClose, isAdmin, user }) {
   const [captchaInput, setCaptchaInput] = useState('')
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState('')
+  const [profileUserId, setProfileUserId] = useState(null)
   const fileInputRef = useRef(null)
 
   if (!review) return null
@@ -148,7 +150,16 @@ function ReviewDetailModal({ review, onClose, isAdmin, user }) {
                 {review.user_id ? <User size={18} /> : review.name?.charAt(0)}
               </div>
               <div>
-                <p className="font-medium text-gray-900">{review.name}</p>
+                <p className="font-medium text-gray-900">
+                  {review.name}
+                  {adminUser?.is_admin && review.user_id && (
+                    <button onClick={() => setProfileUserId(review.user_id)}
+                      className="ml-1.5 text-blue-500 hover:text-blue-700 inline-flex items-center gap-0.5 text-xs"
+                      title="查看用户资料">
+                      <Search size={12} />
+                    </button>
+                  )}
+                </p>
                 <p className="text-gray-400 text-xs">{review.phone}</p>
               </div>
             </div>
@@ -241,6 +252,11 @@ function ReviewDetailModal({ review, onClose, isAdmin, user }) {
             </form>
           </div>
         </div>
+
+        {/* 用户资料弹窗（管理员可见） */}
+        {adminUser?.is_admin && profileUserId && (
+          <UserProfileModal userId={profileUserId} onClose={() => setProfileUserId(null)} />
+        )}
       </div>
     </div>
   )
@@ -736,7 +752,7 @@ export default function ReviewSection({ showAdminButton = true }) {
 
         {/* 评价详情弹窗（含回复） */}
         {selectedReview && (
-          <ReviewDetailModal review={selectedReview} onClose={() => setSelectedReview(null)} user={user} />
+          <ReviewDetailModal review={selectedReview} onClose={() => setSelectedReview(null)} user={user} adminUser={user} />
         )}
       </div>
     </section>

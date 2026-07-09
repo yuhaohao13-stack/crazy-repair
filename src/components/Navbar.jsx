@@ -78,42 +78,12 @@ export default function Navbar() {
     <div className="sticky top-0 z-50 bg-white border-b border-gray-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-12">
-          {/* 左侧：Logo + 用户信息 */}
+          {/* 左侧：Logo */}
           <div className="flex items-center gap-2 shrink-0">
             <a href="/" className="flex items-center gap-1.5 hover:opacity-80 transition-opacity shrink-0">
               <span className="text-lg">🔧</span>
               <span className="font-bold text-sm text-gray-900">Crazy维修</span>
             </a>
-            {user && (
-              <div className="relative" ref={userMenuRef}>
-                <button onClick={() => setShowUserMenu(!showUserMenu)}
-                  className="flex items-center gap-1 text-xs bg-blue-50 text-blue-700 hover:bg-blue-100 px-2 py-1 rounded-lg transition-colors">
-                  <User size={12} />
-                  <span className="max-w-[60px] truncate">{user.username}</span>
-                  <ChevronDown size={10} />
-                </button>
-                {showUserMenu && (
-                  <div className="absolute top-full left-0 mt-1 bg-white rounded-xl border border-gray-200 shadow-lg z-[60] py-1 min-w-[120px]">
-                    <a href="/profile" className="block px-3 py-2 text-xs text-gray-700 hover:bg-gray-50 flex items-center gap-1.5">
-                      <User size={12} /> 个人中心
-                    </a>
-                    <a href="/board" className="block px-3 py-2 text-xs text-gray-700 hover:bg-gray-50 flex items-center gap-1.5">
-                      <MessageSquare size={12} /> 留言板
-                    </a>
-                    {user.is_admin && (
-                      <a href="/admin" className="block px-3 py-2 text-xs text-amber-600 hover:bg-gray-50 flex items-center gap-1.5">
-                        <Star size={12} /> 管理后台
-                      </a>
-                    )}
-                    <hr className="my-1 border-gray-100" />
-                    <button onClick={handleLogout}
-                      className="w-full text-left px-3 py-2 text-xs text-red-500 hover:bg-gray-50 flex items-center gap-1.5">
-                      <LogOut size={12} /> 退出登录
-                    </button>
-                  </div>
-                )}
-              </div>
-            )}
           </div>
 
           {/* 中间：导航链接 */}
@@ -239,7 +209,39 @@ export default function Navbar() {
               className="text-xs px-2 py-1 rounded border border-gray-300 text-gray-500 hover:text-gray-800"
             >{lang === 'zh' ? 'EN' : '中文'}</button>
 
-            {/* 登录/注册按钮（未登录时显示） */}
+            {/* 用户菜单（已登录） */}
+            {user && (
+              <div className="relative" ref={userMenuRef}>
+                <button onClick={() => setShowUserMenu(!showUserMenu)}
+                  className="flex items-center gap-1 text-xs bg-blue-50 text-blue-700 hover:bg-blue-100 px-2 py-1 rounded-lg transition-colors">
+                  <User size={12} />
+                  <span className="max-w-[60px] truncate">{user.username}</span>
+                  <ChevronDown size={10} />
+                </button>
+                {showUserMenu && (
+                  <div className="absolute top-full right-0 mt-1 bg-white rounded-xl border border-gray-200 shadow-lg z-[60] py-1 min-w-[120px]">
+                    <a href="/profile" className="block px-3 py-2 text-xs text-gray-700 hover:bg-gray-50 flex items-center gap-1.5">
+                      <User size={12} /> 个人中心
+                    </a>
+                    <a href="/board" className="block px-3 py-2 text-xs text-gray-700 hover:bg-gray-50 flex items-center gap-1.5">
+                      <MessageSquare size={12} /> 留言板
+                    </a>
+                    {user.is_admin && (
+                      <a href="/admin" className="block px-3 py-2 text-xs text-amber-600 hover:bg-gray-50 flex items-center gap-1.5">
+                        <Star size={12} /> 管理后台
+                      </a>
+                    )}
+                    <hr className="my-1 border-gray-100" />
+                    <button onClick={handleLogout}
+                      className="w-full text-left px-3 py-2 text-xs text-red-500 hover:bg-gray-50 flex items-center gap-1.5">
+                      <LogOut size={12} /> 退出登录
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* 登录按钮（未登录） */}
             {!user && (
               <a href="/login"
                 className="text-xs border border-blue-300 text-blue-600 hover:bg-blue-50 font-medium px-3 py-1.5 rounded-lg transition-colors">
