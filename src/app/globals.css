@@ -17,6 +17,11 @@
   --color-gray-900: #0f172a;
 }
 
+/* 所有按钮默认显示小手 */
+button:not(:disabled) {
+  cursor: pointer;
+}
+
 html {
   scroll-behavior: smooth;
 }
