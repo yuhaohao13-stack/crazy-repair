@@ -10,13 +10,14 @@ import FloatingContact from './FloatingContact'
 export default function LayoutBottom() {
   const pathname = usePathname()
   const isHome = pathname === '/'
+  const hideReviews = pathname === '/board'
 
   return (
     <>
       {/* 首页额外显示FAQ */}
       {isHome && <FAQSection />}
-      {/* 所有页面：评价 → 黑色Footer */}
-      <ReviewSection />
+      {/* 所有页面：评价 → 黑色Footer（/board 不显示） */}
+      {!hideReviews && <ReviewSection />}
       <Footer />
       <ContactModal />
       <FloatingContact />

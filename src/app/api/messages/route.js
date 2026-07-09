@@ -145,11 +145,10 @@ export async function GET(req) {
     })
 
     const attachUserAndReplies = (m) => ({
-      ...m,
+      ...stripListImages(m),
       user: usersMap[m.user_id] || null,
       replies: (repliesMap[m.id] || []).map(r => ({
-        ...r,
-        images: (r.images?.length > 0) ? r.images.map(img => img?.startsWith('data:') ? '' : img).filter(Boolean) : [],
+        ...stripListImages(r),
       })),
       replyCount: countMap[m.id] || 0,
     })
