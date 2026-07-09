@@ -185,21 +185,6 @@ function ReviewDetailModal({ review, onClose, isAdmin, user, adminUser }) {
                       {reply.is_pinned && <span className="text-xs bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded">置顶</span>}
                       {reply.is_admin_reply && !reply.is_pinned && <span className="text-xs bg-blue-100 text-blue-600 px-1.5 py-0.5 rounded">官方回复</span>}
                       <span className="text-xs text-gray-400">{new Date(reply.created_at).toLocaleDateString('zh-CN')}</span>
-                      {/* 管理员置顶按钮 */}
-                      {adminUser?.is_admin && (
-                        <button onClick={() => {
-                          const token = localStorage.getItem('crazy_user_token')
-                          fetch('/api/messages/admin/pin', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-                            body: JSON.stringify({ id: reply.id, pinned: !reply.is_pinned }),
-                          }).then(() => loadReplies())
-                        }}
-                          className={`ml-auto ${reply.is_pinned ? 'text-amber-500' : 'text-gray-300'} hover:text-amber-500 transition-colors`}
-                          title={reply.is_pinned ? '取消置顶' : '置顶此回复'}>
-                          📌
-                        </button>
-                      )}
                     </div>
                     <p className="text-sm text-gray-600 ml-7">{reply.content}</p>
                     {reply.images && reply.images.length > 0 && (
