@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase-server'
 import { hashPassword, generateUserToken, checkUserExists } from '@/lib/auth'
+import { validatePhone } from '@/lib/phone'
 
 export async function POST(req) {
   try {
@@ -10,8 +11,9 @@ export async function POST(req) {
     // 验证必填
     if (!username?.trim()) return NextResponse.json({ error: '请输入用户名' }, { status: 400 })
     if (!phone?.trim()) return NextResponse.json({ error: '请输入手机号' }, { status: 400 })
-    if (!phone.match(/^1\d{10}$/) && !phone.match(/^\d{7,15}$/))
-      return NextResponse.json({ error: '手机号格式不正确' }, { status: 400 })
+    const phoneCheck = validatePhone(phone.trim())
+    if (!phoneCheck.valid) return NextResponse.json({ error: phoneCheck.error || '手机号格式不正确' }, { status: 400 })
+    const cleanPhone = phoneCheck.formatted || phone.trim()
     if (!password?.trim() || password.length < 6)
       return NextResponse.json({ error: '密码至少6位' }, { status: 400 })
     if (!username.match(/^[a-zA-Z0-9\u4e00-\u9fa5_]{2,20}$/))
@@ -44,7 +46,7 @@ export async function POST(req) {
     await supabase.from('captchas').delete().eq('id', captchaId)
 
     // 检查用户名/手机号是否已存在
-    const existing = await checkUserExists(username.trim(), phone.trim())
+    const existing = await checkUserExists(username.trim(), cleanPhone)
     if (existing.exists) {
       const field = existing.field === 'username' ? '用户名' : '手机号'
       return NextResponse.json({ error: `${field}已被注册` }, { status: 409 })
@@ -58,7 +60,7 @@ export async function POST(req) {
       .from('users')
       .insert({
         username: username.trim(),
-        phone: phone.trim(),
+        phone: cleanPhone,
         password_hash: passwordHash,
         birth_place: birth_place?.trim() || '',
         birth_date: birth_date || null,

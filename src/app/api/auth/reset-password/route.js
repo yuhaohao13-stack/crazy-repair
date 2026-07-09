@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase-server'
 import { hashPassword } from '@/lib/auth'
+import { validatePhone } from '@/lib/phone'
 
 export async function POST(req) {
   try {
@@ -9,6 +10,9 @@ export async function POST(req) {
 
     // 验证必填
     if (!phone?.trim()) return NextResponse.json({ error: '请输入手机号' }, { status: 400 })
+    const phoneCheck = validatePhone(phone.trim())
+    if (!phoneCheck.valid) return NextResponse.json({ error: phoneCheck.error || '手机号格式不正确' }, { status: 400 })
+    const cleanPhone = phoneCheck.formatted || phone.trim()
     if (!birth_place?.trim()) return NextResponse.json({ error: '请输入出生地' }, { status: 400 })
     if (!birth_date?.trim()) return NextResponse.json({ error: '请选择出生年月' }, { status: 400 })
     if (!newPassword?.trim() || newPassword.length < 6)
@@ -44,7 +48,7 @@ export async function POST(req) {
     const { data: user, error: userError } = await supabase
       .from('users')
       .select('id, username, phone, birth_place, birth_date')
-      .eq('phone', phone.trim())
+      .eq('phone', cleanPhone)
       .single()
 
     if (userError || !user) {
