@@ -284,12 +284,30 @@ export default function BoardPage() {
       {/* 展开的回复 */}
       {expandedReplies[msg.id] && msg.replies && msg.replies.length > 0 && (
         <div className="mt-3 ml-4 pl-3 border-l-2 border-blue-100 space-y-3">
-          {msg.replies.map(reply => (
+          {[...msg.replies].sort((a, b) => (b.is_pinned ? 1 : 0) - (a.is_pinned ? 1 : 0)).map(reply => (
             <div key={reply.id} className={`p-3 rounded-xl ${reply.is_admin_reply ? 'bg-blue-50 border border-blue-100' : 'bg-gray-50'}`}>
               <div className="flex items-center gap-1.5 mb-1">
                 <span className="font-medium text-xs text-gray-800">{reply.user?.username}</span>
-                {reply.is_admin_reply && <span className="text-xs bg-blue-100 text-blue-600 px-1.5 py-0.5 rounded">官方</span>}
+                {reply.is_pinned && <span className="text-xs bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded">置顶</span>}
+                {reply.is_admin_reply && !reply.is_pinned && <span className="text-xs bg-blue-100 text-blue-600 px-1.5 py-0.5 rounded">官方</span>}
                 <span className="text-xs text-gray-400">{formatDate(reply.created_at)}</span>
+                {/* 管理员置顶按钮 */}
+                {user?.is_admin && (
+                  <button onClick={() => {
+                    fetch('/api/messages/admin/pin', {
+                      method: 'POST',
+                      headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${localStorage.getItem('crazy_user_token')}`,
+                      },
+                      body: JSON.stringify({ id: reply.id, pinned: !reply.is_pinned }),
+                    }).then(() => loadMessages())
+                  }}
+                    className={`ml-auto ${reply.is_pinned ? 'text-amber-500' : 'text-gray-300'} hover:text-amber-500 transition-colors`}
+                    title={reply.is_pinned ? '取消置顶' : '置顶此回复'}>
+                    📌
+                  </button>
+                )}
               </div>
               <p className="text-sm text-gray-600">{reply.content}</p>
               {reply.images && reply.images.length > 0 && (
