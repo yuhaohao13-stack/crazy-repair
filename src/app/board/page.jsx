@@ -206,7 +206,7 @@ export default function BoardPage() {
         <div className="flex items-center justify-between mb-6">
           <div>
             <h1 className="text-2xl font-bold text-gray-900">{t('维修求助', 'Repair Help')}</h1>
-            <p className="text-sm text-gray-500">{t('发表你的想法，参与讨论', 'Share your thoughts, join the discussion')}</p>
+            <p className="text-sm text-gray-500">{t('免费咨询，在线支招——威海本地维修，随时来问', 'Free advice, online help — Weihai local repair, ask anytime')}</p>
           </div>
           <button onClick={() => {
             if (!user) { router.push('/login'); return }
