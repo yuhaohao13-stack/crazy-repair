@@ -44,49 +44,64 @@ export async function GET(req) {
     const pageSize = parseInt(searchParams.get('pageSize') || '10')
     const offset = (page - 1) * pageSize
 
-    // 并行查询
+    // ─── 第一轮：获取评价 + 总数 + 轮播 ───
     const fields = 'id,name,phone,title,content,rating,images,user_id,created_at'
 
-    const [reviewsRes, countRes, repliesRes, carouselRes] = await Promise.all([
+    const [reviewsRes, countRes, carouselRes] = await Promise.all([
       supabase.from('reviews').select(fields).order('created_at', { ascending: false }).range(offset, offset + pageSize - 1),
       supabase.from('reviews').select('id', { count: 'exact', head: true }),
-      supabase.from('messages').select('id,user_id,content,images,is_pinned,is_admin_reply,created_at,target_id,user:user_id(id,username,is_admin)').eq('target_type', 'review').is('parent_id', null).order('is_pinned', { ascending: false }).order('created_at', { ascending: true }),
       supabase.from('reviews').select(fields).order('created_at', { ascending: false }).limit(5),
     ])
 
     if (reviewsRes.error) throw reviewsRes.error
 
     const reviews = reviewsRes.data || []
-    const allReplies = repliesRes.data || []
     const carousel = carouselRes.data || []
     const total = countRes.count || 0
 
-    // 手机号脱敏
+    // ─── 第二轮：只查当前页评价的回复（不扫全表） ───
     const maskPhone = (p) => p?.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2') || p
-
-    // 组装回复预览
     const reviewIds = reviews.map(r => r.id)
-    const repliesMap = {}
-    const countMap = {}
+    let repliesMap = {}
+    let countMap = {}
 
-    allReplies.forEach(r => {
-      const key = r.target_id
-      countMap[key] = (countMap[key] || 0) + 1
-      if (!repliesMap[key]) repliesMap[key] = []
-      if (repliesMap[key].length < 2) {
-        repliesMap[key].push(r)
+    if (reviewIds.length > 0) {
+      const { data: allReplies } = await supabase
+        .from('messages')
+        .select('id,user_id,content,images,is_pinned,is_admin_reply,created_at,target_id,user:user_id(id,username,is_admin)')
+        .eq('target_type', 'review')
+        .is('parent_id', null)
+        .in('target_id', reviewIds)
+        .order('is_pinned', { ascending: false })
+        .order('created_at', { ascending: true })
+
+      if (allReplies) {
+        allReplies.forEach(r => {
+          const key = r.target_id
+          countMap[key] = (countMap[key] || 0) + 1
+          if (!repliesMap[key]) repliesMap[key] = []
+          if (repliesMap[key].length < 2) {
+            repliesMap[key].push(r)
+          }
+        })
       }
+    }
+
+    // 列表页：去掉 base64 图片数据
+    const stripImages = (item) => ({
+      ...item,
+      images: (item.images?.length > 0) ? item.images.map(img => img?.startsWith('data:') ? '' : img).filter(Boolean) : [],
     })
 
     const reviewsWithReplies = reviews.map(r => ({
-      ...r,
+      ...stripImages(r),
       phone: maskPhone(r.phone),
-      replies: repliesMap[r.id] || [],
+      replies: (repliesMap[r.id] || []).map(stripImages),
       replyCount: countMap[r.id] || 0,
     }))
 
     const carouselMasked = (carousel || []).map(r => ({
-      ...r,
+      ...stripImages(r),
       phone: maskPhone(r.phone),
     }))
 

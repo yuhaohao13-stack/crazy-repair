@@ -319,6 +319,20 @@ export default function ReviewSection({ showAdminButton = true }) {
   const [adminPassword, setAdminPassword] = useState('')
   const [adminToken, setAdminToken] = useState('')
   const [adminError, setAdminError] = useState('')
+  const sectionRef = useRef(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  // IntersectionObserver：滚到区域才加载评价
+  useEffect(() => {
+    const el = sectionRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setIsVisible(true); observer.disconnect() } },
+      { rootMargin: '200px' }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
 
   useEffect(() => {
     const token = localStorage.getItem('crazy_user_token')
@@ -339,7 +353,7 @@ export default function ReviewSection({ showAdminButton = true }) {
     finally { setLoading(false) }
   }, [])
 
-  useEffect(() => { loadReviews() }, [loadReviews])
+  useEffect(() => { if (isVisible) loadReviews() }, [isVisible, loadReviews])
 
   useEffect(() => {
     const token = localStorage.getItem('crazy_admin_token')
@@ -371,7 +385,7 @@ export default function ReviewSection({ showAdminButton = true }) {
     : '0.0'
 
   return (
-    <section id="reviews" className="py-12 sm:py-16 bg-gray-50">
+    <section id="reviews" ref={sectionRef} className="py-12 sm:py-16 bg-gray-50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between mb-8">
           <div>

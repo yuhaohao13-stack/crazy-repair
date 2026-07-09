@@ -28,6 +28,8 @@ export async function GET(req) {
       const message = msgRes.data
       const allReplies = repliesRes.data || []
 
+      // 详情页：保留完整数据（含 base64 图片）
+
       // 获取用户数据
       const userIds = new Set([message.user_id])
       allReplies.forEach(r => { if (r.user_id) userIds.add(r.user_id) })
@@ -46,6 +48,7 @@ export async function GET(req) {
 
     // ─── 分页参数 ───
     const offset = (page - 1) * pageSize
+    // 列表模式只返回图片数量和引用，不返回 base64 原图（详情页才需要）
     const fields = 'id,user_id,title,content,images,is_pinned,is_admin_reply,created_at'
 
     // ─── 第一轮：并行获取置顶 + 分页消息 + 总数 ───
@@ -135,10 +138,19 @@ export async function GET(req) {
       }
     })
 
+    // 列表页：去掉 base64 图片数据（6MB+ 的响应体就是它）
+    const stripListImages = (m) => ({
+      ...m,
+      images: (m.images?.length > 0) ? m.images.map(img => img?.startsWith('data:') ? '' : img).filter(Boolean) : [],
+    })
+
     const attachUserAndReplies = (m) => ({
       ...m,
       user: usersMap[m.user_id] || null,
-      replies: repliesMap[m.id] || [],
+      replies: (repliesMap[m.id] || []).map(r => ({
+        ...r,
+        images: (r.images?.length > 0) ? r.images.map(img => img?.startsWith('data:') ? '' : img).filter(Boolean) : [],
+      })),
       replyCount: countMap[m.id] || 0,
     })
 
