@@ -60,15 +60,18 @@ export async function POST(req) {
     const isAdminReply = user.is_admin
     const isPinned = isAdminReply
 
+    // 消息回复需要关联 parent_id，评价回复用 target_type/target_id
+    const parentId = targetType === 'message' ? parseInt(targetId) : null
+
     const { data, error } = await supabase
       .from('messages')
       .insert({
         user_id: user.id,
         content: content.trim(),
         images: images || [],
-        parent_id: null,
+        parent_id: parentId,
         target_type: targetType,
-        target_id: targetId,
+        target_id: parseInt(targetId),
         is_admin_reply: isAdminReply,
         is_pinned: isPinned,
       })
