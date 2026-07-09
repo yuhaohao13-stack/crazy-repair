@@ -1,11 +1,8 @@
 'use client'
 import { useState } from 'react'
 
-const CHINA_REGIONS = [
-  { n: '北京', c: [] },
-  { n: '上海', c: [] },
-  { n: '天津', c: [] },
-  { n: '重庆', c: [] },
+var R = [
+  { n: '北京', c: [] },{ n: '上海', c: [] },{ n: '天津', c: [] },{ n: '重庆', c: [] },
   { n: '河北', c: ['石家庄','唐山','秦皇岛','邯郸','邢台','保定','张家口','承德','沧州','廊坊','衡水'] },
   { n: '山西', c: ['太原','大同','阳泉','长治','晋城','朔州','晋中','运城','忻州','临汾','吕梁'] },
   { n: '内蒙古', c: ['呼和浩特','包头','乌海','赤峰','通辽','鄂尔多斯','呼伦贝尔','巴彦淖尔','乌兰察布','兴安盟','锡林郭勒盟','阿拉善盟'] },
@@ -34,70 +31,63 @@ const CHINA_REGIONS = [
   { n: '宁夏', c: ['银川','石嘴山','吴忠','固原','中卫'] },
   { n: '新疆', c: ['乌鲁木齐','克拉玛依','吐鲁番','哈密','昌吉','博尔塔拉','巴音郭楞','阿克苏','克孜勒苏','喀什','和田','伊犁','塔城','阿勒泰'] },
   { n: '台湾', c: ['台北','高雄','台中','台南','基隆','新竹','嘉义','桃园','新北'] },
-  { n: '香港', c: [] },
-  { n: '澳门', c: [] },
+  { n: '香港', c: [] },{ n: '澳门', c: [] },
 ]
 
-export default function BirthPlaceSelector({ value, onChange, lang }) {
-  const t = (zh, en) => lang === 'en' ? en : zh
-  const isOverseas = value?.overseas === true
-  const sel = isOverseas ? null : CHINA_REGIONS.find(r => r.n === value?.province)
+export default function BPicker({val,onChange,lang}) {
+  var T = function(zh,en) { return lang==='en'?en:zh }
+  var ov = val && val.overseas===true
+  var sel = ov ? null : R.find(function(r){return r.n===val.province})
 
   return (
     <div className="space-y-2">
       <div className="flex gap-2">
-        <button type="button" onClick={() => onChange({ overseas: true })}
-          className={`px-3 py-1.5 text-xs rounded-lg font-medium transition-colors ${
-            isOverseas ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-500 hover:bg-gray-200'}`}>
-          🌍 {t('海外', 'Overseas')}
+        <button type="button" onClick={function(){onChange({overseas:true})}}
+          className={"px-3 py-1.5 text-xs rounded-lg font-medium transition-colors "+(ov?'bg-blue-600 text-white':'bg-gray-100 text-gray-500 hover:bg-gray-200')}>
+          {"\\ud83c\\udf0d "}{T('海外','Overseas')}
         </button>
-        <button type="button" onClick={() => onChange({ province: '', city: '' })}
-          className={`px-3 py-1.5 text-xs rounded-lg font-medium transition-colors ${
-            !isOverseas ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-500 hover:bg-gray-200'}`}>
-          🇨🇳 {t('中国', 'China')}
+        <button type="button" onClick={function(){onChange({province:'',city:''})}}
+          className={"px-3 py-1.5 text-xs rounded-lg font-medium transition-colors "+(!ov?'bg-blue-600 text-white':'bg-gray-100 text-gray-500 hover:bg-gray-200')}>
+          {"\\ud83c\\udde8\\ud83c\\uddf3 "}{T('中国','China')}
         </button>
       </div>
 
-      {isOverseas ? (
-        <div className="bg-gray-50 border border-gray-200 rounded-xl px-3 py-2.5 text-sm text-gray-500">
-          {t('海外', 'Overseas')}
-        </div>
+      {ov ? (
+        <div className="bg-gray-50 border border-gray-200 rounded-xl px-3 py-2.5 text-sm text-gray-500">{T('海外','Overseas')}</div>
       ) : (
         <>
-          <select value={value?.province || ''}
-            onChange={e => onChange({ province: e.target.value, city: '' })}
+          <select value={val.province||''} onChange={function(e){onChange({province:e.target.value,city:''})}}
             className="w-full border border-gray-300 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white">
-            <option value="">{t('请选择省份', 'Select province')}</option>
-            {CHINA_REGIONS.map(r => <option key={r.n} value={r.n}>{r.n}</option>)}
+            <option value="">{T('请选择省份','Select province')}</option>
+            {R.map(function(r){return <option key={r.n} value={r.n}>{r.n}</option>})}
           </select>
 
-          {value?.province && sel?.c?.length > 0 && (
-            <select value={value?.city || ''}
-              onChange={e => onChange({ province: value.province, city: e.target.value })}
+          {val.province && sel && sel.c && sel.c.length > 0 ? (
+            <select value={val.city||''} onChange={function(e){onChange({province:val.province,city:e.target.value})}}
               className="w-full border border-gray-300 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white">
-              <option value="">{t('请选择城市', 'Select city')}</option>
-              {sel.c.map(c => <option key={c} value={c}>{c}</option>)}
+              <option value="">{T('请选择城市','Select city')}</option>
+              {sel.c.map(function(c){return <option key={c} value={c}>{c}</option>})}
             </select>
-          )}
+          ) : null}
 
-          {value?.province && sel?.c?.length === 0 && (
-            <div className="text-xs text-gray-400 px-1">{t('无需选择城市', 'No city selection needed')}</div>
-          )}
+          {val.province && sel && (!sel.c || sel.c.length===0) ? (
+            <div className="text-xs text-gray-400 px-1">{T('无需选择城市','No city selection needed')}</div>
+          ) : null}
         </>
       )}
     </div>
   )
 }
 
-export function bpStr(v) {
+export function toStr(v) {
   if (!v) return ''
-  if (v.overseas) return '海外'
-  return v.province + (v.city ? '/' + v.city : '')
+  if (v.overseas) return 'overseas'
+  return v.province + (v.city ? '/'+v.city : '')
 }
 
-export function parseBp(s) {
-  if (!s) return { province: '', city: '' }
-  if (s === '海外') return { overseas: true }
-  const p = s.split('/')
-  return { province: p[0], city: p[1] || '' }
+export function fromStr(s) {
+  if (!s) return {province:'',city:''}
+  if (s==='overseas') return {overseas:true}
+  var p=s.split('/')
+  return {province:p[0],city:p[1]||''}
 }
