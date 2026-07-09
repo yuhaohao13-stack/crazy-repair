@@ -1,8 +1,11 @@
 'use client'
 import { useState, useEffect, useCallback } from 'react'
 import { Trash2, Download, Search, LogOut, Star, ArrowLeft, Users, MessageSquare, FileText } from 'lucide-react'
+import { useSite } from '../../lib/SiteContext'
 
 export default function AdminPage() {
+  const { lang } = useSite()
+  const t = (zh, en) => lang === 'zh' ? zh : en
   const [token, setToken] = useState('')
   const [userToken, setUserToken] = useState('')
   const [tab, setTab] = useState('reviews')
@@ -53,9 +56,9 @@ export default function AdminPage() {
               time: Date.now(),
               sig: 'crazy_yuhaohao13@gmail.com_yhh521521',
             })
-            const t = btoa(payload)
-            localStorage.setItem('crazy_admin_token', t)
-            setToken(t)
+            const adminToken = btoa(payload)
+            localStorage.setItem('crazy_admin_token', adminToken)
+            setToken(adminToken)
           } else {
             window.location.href = '/'
           }
@@ -111,7 +114,7 @@ export default function AdminPage() {
       setReviews(prev => prev.filter(r => r.id !== id))
       setTotal(prev => prev - 1)
     } catch (err) {
-      alert('删除失败: ' + err.message)
+      alert(t('删除失败: ', 'Delete failed: ') + err.message)
     } finally {
       setDeleting(null)
     }
@@ -211,7 +214,7 @@ export default function AdminPage() {
       if (!res.ok) throw new Error(data.error)
       setMessages(prev => prev.filter(m => m.id !== id))
     } catch (err) {
-      alert('删除失败: ' + err.message)
+      alert(t('删除失败: ', 'Delete failed: ') + err.message)
     }
   }
 

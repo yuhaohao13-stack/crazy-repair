@@ -3,9 +3,12 @@ import { useState, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { MessageSquare, Pin, ArrowLeft, Send, ImagePlus, X, User, Shield, Search } from 'lucide-react'
 import UserProfileModal from '@/components/UserProfileModal'
+import { useSite } from '../../lib/SiteContext'
 
 export default function BoardPage() {
   const router = useRouter()
+  const { lang } = useSite()
+  const t = (zh, en) => lang === 'zh' ? zh : en
   const [user, setUser] = useState(null)
   const [messages, setMessages] = useState([])
   const [pinned, setPinned] = useState([])
@@ -92,7 +95,7 @@ export default function BoardPage() {
       if (!res.ok) { setError(data.error); fetchCaptcha(); return }
       setTitle(''); setContent(''); setImages([]); setShowForm(false)
       fetchCaptcha(); loadMessages()
-    } catch { setError('发表失败'); fetchCaptcha() }
+    } catch { setError(t('发表失败', 'Post failed')); fetchCaptcha() }
     finally { setPosting(false) }
   }
 
@@ -100,10 +103,10 @@ export default function BoardPage() {
     const date = new Date(d)
     const now = new Date()
     const diff = now - date
-    if (diff < 60000) return '刚刚'
-    if (diff < 3600000) return `${Math.floor(diff / 60000)}分钟前`
-    if (diff < 86400000) return `${Math.floor(diff / 3600000)}小时前`
-    return date.toLocaleDateString('zh-CN', { month: 'short', day: 'numeric' })
+    if (diff < 60000) return t('刚刚', 'Just now')
+    if (diff < 3600000) return lang === 'zh' ? `${Math.floor(diff / 60000)}分钟前` : `${Math.floor(diff / 60000)}m ago`
+    if (diff < 86400000) return lang === 'zh' ? `${Math.floor(diff / 3600000)}小时前` : `${Math.floor(diff / 3600000)}h ago`
+    return date.toLocaleDateString(lang === 'zh' ? 'zh-CN' : 'en-US', { month: 'short', day: 'numeric' })
   }
 
   const renderMessage = (msg, isPinned) => (
@@ -122,15 +125,15 @@ export default function BoardPage() {
                 {msg.user.username}
               </button>
             ) : (
-              <span className="font-medium text-sm text-gray-900 truncate">{msg.user?.username || '未知用户'}</span>
+              <span className="font-medium text-sm text-gray-900 truncate">{msg.user?.username || t('未知用户', 'Unknown user')}</span>
             )}
-            {msg.user?.is_admin && <span className="text-xs bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded">管理员</span>}
+            {msg.user?.is_admin && <span className="text-xs bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded">{t('管理员', 'Admin')}</span>}
           </div>
           <div className="text-xs text-gray-400">{formatDate(msg.created_at)}</div>
         </div>
         {isPinned && (
           <span className="flex items-center gap-1 text-xs text-amber-600 bg-amber-50 px-2 py-1 rounded-lg">
-            <Pin size={12} /> 置顶
+            <Pin size={12} /> {t('置顶', 'Pinned')}
           </span>
         )}
       </div>
@@ -160,7 +163,7 @@ export default function BoardPage() {
             <div key={reply.id} className={`p-2.5 rounded-xl ${reply.is_admin_reply ? 'bg-blue-50 border border-blue-100' : 'bg-gray-50'}`}>
               <div className="flex items-center gap-1 mb-0.5">
                 <span className="font-medium text-xs text-gray-700">{reply.user?.username}</span>
-                {reply.is_pinned && <span className="text-xs bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded">置顶</span>}
+                {reply.is_pinned && <span className="text-xs bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded">{t('置顶', 'Pinned')}</span>}
                 {reply.is_admin_reply && !reply.is_pinned && <span className="text-xs bg-blue-100 text-blue-600 px-1.5 py-0.5 rounded">官方</span>}
               </div>
               <p className="text-xs text-gray-600 line-clamp-2">{reply.content}</p>
@@ -175,19 +178,19 @@ export default function BoardPage() {
         {(msg.replyCount || 0) > 2 ? (
           <button onClick={e => { e.stopPropagation(); router.push(`/board/${msg.id}`) }}
             className="text-xs text-blue-600 hover:text-blue-700 font-medium">
-            查看全部 {msg.replyCount} 条回复 →
+            {t(`查看全部 ${msg.replyCount} 条回复 →`, `View all ${msg.replyCount} replies →`)}
           </button>
         ) : msg.replies?.length > 0 ? (
           <button onClick={e => { e.stopPropagation(); router.push(`/board/${msg.id}`) }}
             className="text-xs text-blue-600 hover:text-blue-700 font-medium">
-            查看回复详情 →
+            {t('查看回复详情 →', 'View reply details →')}
           </button>
         ) : null}
 
         {/* 回复按钮 */}
         <button onClick={e => { e.stopPropagation(); router.push(`/board/${msg.id}`) }}
           className="flex items-center gap-1 text-xs text-gray-500 hover:text-blue-600">
-          <Send size={12} /> 回复
+          <Send size={12} /> {t('回复', 'Reply')}
         </button>
       </div>
     </div>
@@ -199,17 +202,17 @@ export default function BoardPage() {
         <div className="flex items-center justify-between mb-6">
           <div>
             <button onClick={() => router.push('/')} className="flex items-center gap-1 text-gray-500 hover:text-gray-700 mb-2 text-sm">
-              <ArrowLeft size={16} /> 返回首页
+              <ArrowLeft size={16} /> {t('返回首页', '← Home')}
             </button>
-            <h1 className="text-2xl font-bold text-gray-900">留言板</h1>
-            <p className="text-sm text-gray-500">发表你的想法，参与讨论</p>
+            <h1 className="text-2xl font-bold text-gray-900">{t('留言板', 'Message Board')}</h1>
+            <p className="text-sm text-gray-500">{t('发表你的想法，参与讨论', 'Share your thoughts, join the discussion')}</p>
           </div>
           <button onClick={() => {
             if (!user) { router.push('/login'); return }
             setShowForm(!showForm)
           }}
             className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2.5 rounded-xl transition-colors flex items-center gap-1">
-            <MessageSquare size={16} /> {user ? '发表留言' : '登录后发表'}
+            <MessageSquare size={16} /> {user ? t('发表留言', 'Post Message') : t('登录后发表', 'Login to Post')}
           </button>
         </div>
 
@@ -218,10 +221,10 @@ export default function BoardPage() {
           <form onSubmit={handlePost} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4 sm:p-6 mb-6">
             {error && <div className="bg-red-50 text-red-600 text-sm p-3 rounded-xl mb-4">{error}</div>}
             <input type="text" value={title} onChange={e => setTitle(e.target.value)}
-              placeholder="标题（选填）" maxLength={100}
+              placeholder={t('标题（选填）', 'Title (optional)')} maxLength={100}
               className="w-full border border-gray-300 rounded-xl px-3 py-2 text-sm mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
             <textarea value={content} onChange={e => setContent(e.target.value)}
-              placeholder="写下你想说的..." rows={4} required
+              placeholder={t('写下你想说的...', "Write what's on your mind...")} rows={4} required
               className="w-full border border-gray-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none mb-3" />
             <div className="flex flex-wrap items-center gap-2 mb-3">
               {images.map((img, i) => (
@@ -237,24 +240,24 @@ export default function BoardPage() {
                   <input type="file" accept="image/*" className="hidden" onChange={handleImageUpload} />
                 </label>
               )}
-              <span className="text-xs text-gray-400 ml-1">{images.length}/3 张</span>
+              <span className="text-xs text-gray-400 ml-1">{t(`${images.length}/3 张`, `${images.length}/3 images`)}</span>
             </div>
             <div className="flex items-center gap-3 mb-4">
               <div className="bg-gray-100 px-4 py-2 rounded-xl font-mono text-lg tracking-widest text-gray-800 select-none">
                 {captcha.code || '····'}
               </div>
               <input type="text" value={captcha.input} onChange={e => setCaptcha({ ...captcha, input: e.target.value })}
-                placeholder="验证码" required maxLength={4}
+                placeholder={t('验证码', 'Captcha')} required maxLength={4}
                 className="w-24 border border-gray-300 rounded-xl px-3 py-2 text-sm text-center tracking-widest focus:outline-none focus:ring-2 focus:ring-blue-500" />
-              <button type="button" onClick={fetchCaptcha} className="text-xs text-blue-600 hover:text-blue-700">换一张</button>
+              <button type="button" onClick={fetchCaptcha} className="text-xs text-blue-600 hover:text-blue-700">{t('换一张', 'Refresh')}</button>
             </div>
             <div className="flex gap-2">
               <button type="submit" disabled={posting}
                 className="flex items-center gap-1 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white text-sm font-medium px-5 py-2.5 rounded-xl transition-colors">
-                <Send size={14} /> {posting ? '发表中...' : '发表'}
+                <Send size={14} /> {posting ? t('发表中...', 'Posting...') : t('发表', 'Post')}
               </button>
               <button type="button" onClick={() => setShowForm(false)}
-                className="text-sm text-gray-500 hover:text-gray-700 px-4 py-2.5">取消</button>
+                className="text-sm text-gray-500 hover:text-gray-700 px-4 py-2.5">{t('取消', 'Cancel')}</button>
             </div>
           </form>
         )}
@@ -263,7 +266,7 @@ export default function BoardPage() {
         {pinned.length > 0 && (
           <div className="mb-6">
             <div className="flex items-center gap-1 text-xs font-medium text-amber-600 mb-3">
-              <Pin size={14} /> 置顶
+              <Pin size={14} /> {t('置顶', 'Pinned')}
             </div>
             <div className="space-y-3">
               {pinned.map(msg => renderMessage(msg, true))}
@@ -273,11 +276,11 @@ export default function BoardPage() {
 
         {/* 留言列表 */}
         {loading ? (
-          <div className="text-center py-12 text-gray-400">加载中...</div>
+          <div className="text-center py-12 text-gray-400">{t('加载中...', 'Loading...')}</div>
         ) : messages.length === 0 ? (
           <div className="text-center py-12 text-gray-400">
             <MessageSquare size={40} className="mx-auto mb-3 text-gray-300" />
-            <p>还没有留言，来发表第一条吧</p>
+            <p>{t('还没有留言，来发表第一条吧', 'No messages yet. Be the first to post!')}</p>
           </div>
         ) : (
           <div className="space-y-3">
@@ -289,10 +292,10 @@ export default function BoardPage() {
         {totalPages > 1 && (
           <div className="flex justify-center gap-2 mt-8">
             <button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page <= 1}
-              className="px-3 py-1.5 text-sm border border-gray-200 rounded-lg disabled:opacity-30 hover:bg-gray-50">上一页</button>
+              className="px-3 py-1.5 text-sm border border-gray-200 rounded-lg disabled:opacity-30 hover:bg-gray-50">{t('上一页', 'Previous')}</button>
             <span className="px-3 py-1.5 text-sm text-gray-500">{page} / {totalPages}</span>
             <button onClick={() => setPage(p => Math.min(totalPages, p + 1))} disabled={page >= totalPages}
-              className="px-3 py-1.5 text-sm border border-gray-200 rounded-lg disabled:opacity-30 hover:bg-gray-50">下一页</button>
+              className="px-3 py-1.5 text-sm border border-gray-200 rounded-lg disabled:opacity-30 hover:bg-gray-50">{t('下一页', 'Next')}</button>
           </div>
         )}
       </div>

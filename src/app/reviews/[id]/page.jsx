@@ -3,8 +3,11 @@ import { useState, useEffect, useCallback } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import { ArrowLeft, Send, ImagePlus, X, User, Shield, Star, Sparkles } from 'lucide-react'
 import UserProfileModal from '@/components/UserProfileModal'
+import { useSite } from '../../../lib/SiteContext'
 
 export default function ReviewDetailPage() {
+  const { lang } = useSite()
+  const t = (zh, en) => lang === 'zh' ? zh : en
   const router = useRouter()
   const params = useParams()
   const reviewId = params.id
@@ -79,19 +82,19 @@ export default function ReviewDetailPage() {
 
   const formatDate = (d) => {
     const date = new Date(d)
-    return date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })
+    return date.toLocaleDateString(lang === 'zh' ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' })
   }
 
   if (loading) {
-    return <div className="min-h-screen bg-gray-50 flex items-center justify-center"><div className="text-gray-400">加载中...</div></div>
+    return <div className="min-h-screen bg-gray-50 flex items-center justify-center"><div className="text-gray-400">{t('加载中...', 'Loading...')}</div></div>
   }
 
   if (error || !review) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <p className="text-gray-400 mb-4">{error || '评价不存在'}</p>
-          <button onClick={() => router.push('/')} className="text-blue-600 text-sm">← 返回首页</button>
+          <p className="text-gray-400 mb-4">{error || t('评价不存在', 'Review not found')}</p>
+          <button onClick={() => router.push('/')} className="text-blue-600 text-sm">{t('← 返回首页', '← Home')}</button>
         </div>
       </div>
     )
@@ -102,7 +105,7 @@ export default function ReviewDetailPage() {
       <div className="max-w-3xl mx-auto px-4 py-8">
         <button onClick={() => router.push('/')}
           className="flex items-center gap-1 text-gray-500 hover:text-gray-700 mb-4 text-sm">
-          <ArrowLeft size={16} /> 返回首页
+          <ArrowLeft size={16} /> {t('返回首页', 'Home')}
         </button>
 
         {/* 评价主体 */}
@@ -155,12 +158,12 @@ export default function ReviewDetailPage() {
         {/* 回复列表 */}
         <div className="mb-6">
           <h3 className="text-sm font-bold text-gray-700 mb-3 flex items-center gap-1.5">
-            💬 回复 ({replies.length})
+            💬 {t('回复', 'Replies')} ({replies.length})
           </h3>
 
           {replies.length === 0 ? (
             <div className="text-center py-10 bg-white rounded-2xl border border-dashed border-gray-200">
-              <p className="text-gray-400 text-sm">暂无回复</p>
+              <p className="text-gray-400 text-sm">{t('暂无回复', 'No replies yet')}</p>
             </div>
           ) : (
             <div className="space-y-3">
@@ -171,9 +174,9 @@ export default function ReviewDetailPage() {
                       {reply.is_admin_reply ? <Shield size={12} className="text-amber-600" /> : <User size={12} className="text-blue-600" />}
                     </div>
                     <span className="font-medium text-sm text-gray-800">{reply.user?.username}</span>
-                    {reply.is_pinned && <span className="text-xs bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded">置顶</span>}
-                    {reply.is_admin_reply && !reply.is_pinned && <span className="text-xs bg-blue-100 text-blue-600 px-1.5 py-0.5 rounded">官方</span>}
-                    <span className="text-xs text-gray-400">{new Date(reply.created_at).toLocaleDateString('zh-CN')}</span>
+                    {reply.is_pinned && <span className="text-xs bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded">{t('置顶', 'Pinned')}</span>}
+                    {reply.is_admin_reply && !reply.is_pinned && <span className="text-xs bg-blue-100 text-blue-600 px-1.5 py-0.5 rounded">{t('官方', 'Official')}</span>}
+                    <span className="text-xs text-gray-400">{new Date(reply.created_at).toLocaleDateString(lang === 'zh' ? 'zh-CN' : 'en-US')}</span>
                   </div>
                   <p className="text-sm text-gray-700 ml-7 leading-relaxed">{reply.content}</p>
                   {reply.images?.length > 0 && (
@@ -194,18 +197,18 @@ export default function ReviewDetailPage() {
 
         {/* 回复表单 */}
         <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 sm:p-6">
-          <h4 className="text-sm font-bold text-gray-700 mb-3">发表回复</h4>
+          <h4 className="text-sm font-bold text-gray-700 mb-3">{t('发表回复', 'Reply')}</h4>
           {!user ? (
             <div className="text-center py-4">
-              <p className="text-sm text-gray-500 mb-2">请先登录后再回复</p>
+              <p className="text-sm text-gray-500 mb-2">{t('请先登录后再回复', 'Please log in to reply')}</p>
               <button onClick={() => router.push('/login')}
-                className="bg-blue-600 text-white text-sm font-medium px-4 py-2 rounded-xl">去登录</button>
+                className="bg-blue-600 text-white text-sm font-medium px-4 py-2 rounded-xl">{t('去登录', 'Log In')}</button>
             </div>
           ) : (
             <form onSubmit={handleReply} className="space-y-3">
               {error && <div className="bg-red-50 text-red-600 text-sm p-3 rounded-xl">{error}</div>}
               <textarea value={replyContent} onChange={e => setReplyContent(e.target.value)}
-                placeholder="写下你的回复..." rows={3} required
+                placeholder={t('写下你的回复...', 'Write your reply...')} rows={3} required
                 className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none resize-none" />
               <div className="flex flex-wrap items-center gap-2">
                 {replyImages.map((img, i) => (
@@ -236,15 +239,15 @@ export default function ReviewDetailPage() {
                   <span className="text-lg font-bold tracking-[0.3em] text-blue-700 font-mono">{captcha.code || '····'}</span>
                 </div>
                 <input type="text" value={captcha.input} onChange={e => setCaptcha(prev => ({ ...prev, input: e.target.value }))}
-                  placeholder="验证码" required maxLength={4}
+                  placeholder={t('验证码', 'Captcha')} required maxLength={4}
                   className="w-24 border border-gray-200 rounded-xl px-3 py-2 text-sm text-center tracking-widest focus:ring-2 focus:ring-blue-500 outline-none" />
-                <button type="button" onClick={fetchCaptcha} className="p-2 text-gray-400 hover:text-blue-600" title="刷新">
+                <button type="button" onClick={fetchCaptcha} className="p-2 text-gray-400 hover:text-blue-600" title={t('刷新', 'Refresh')}>
                   <Sparkles size={16} />
                 </button>
               </div>
               <button type="submit" disabled={submitting}
                 className="flex items-center gap-1 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white text-sm font-medium px-5 py-2.5 rounded-xl transition-colors">
-                <Send size={14} /> {submitting ? '发送中...' : '发送回复'}
+                <Send size={14} /> {submitting ? t('发送中...', 'Sending...') : t('发送回复', 'Send Reply')}
               </button>
             </form>
           )}
