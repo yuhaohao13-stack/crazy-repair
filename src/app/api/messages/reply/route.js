@@ -2,6 +2,25 @@ import { NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase-server'
 import { getUserFromRequest } from '@/lib/auth'
 
+// 上传 base64 图片到 Supabase Storage
+async function uploadImageBase64(base64Str) {
+  try {
+    const matches = base64Str.match(/^data:image\/(\w+);base64,(.+)$/)
+    if (!matches) return null
+    const ext = matches[1] === 'jpeg' ? 'jpg' : matches[1]
+    const buffer = Buffer.from(matches[2], 'base64')
+    if (buffer.length > 5 * 1024 * 1024) return null
+    const filename = `reply_${Date.now()}_${Math.random().toString(36).slice(2, 8)}.${ext}`
+    const filepath = `messages/${filename}`
+    const { error: uploadError } = await supabase.storage
+      .from('message-images')
+      .upload(filepath, buffer, { contentType: `image/${matches[1] === 'jpg' ? 'jpeg' : matches[1]}`, upsert: false })
+    if (uploadError) { console.error('Reply image upload error:', uploadError); return null }
+    const { data: { publicUrl } } = supabase.storage.from('message-images').getPublicUrl(filepath)
+    return publicUrl
+  } catch { return null }
+}
+
 // 回复评价或留言
 export async function POST(req) {
   try {
@@ -56,6 +75,15 @@ export async function POST(req) {
       return NextResponse.json({ error: '最多上传3张图片' }, { status: 400 })
     }
 
+    // 将 base64 图片上传到 Supabase Storage
+    let finalImages = (images || [])
+    if (finalImages.some(img => img?.startsWith('data:'))) {
+      const uploaded = await Promise.all(finalImages.map(img =>
+        img?.startsWith('data:') ? uploadImageBase64(img) : Promise.resolve(img)
+      ))
+      finalImages = uploaded.filter(Boolean)
+    }
+
     // 管理员回复自动置顶
     const isAdminReply = user.is_admin
     const isPinned = isAdminReply
@@ -68,7 +96,7 @@ export async function POST(req) {
       .insert({
         user_id: user.id,
         content: content.trim(),
-        images: images || [],
+        images: finalImages,
         parent_id: parentId,
         target_type: targetType,
         target_id: parseInt(targetId),

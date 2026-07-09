@@ -146,15 +146,21 @@ export default function BoardPage() {
       {/* 内容 */}
       <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-wrap">{msg.content}</p>
 
-      {/* 图片 */}
-      {msg.images && msg.images.length > 0 && (
+      {/* 图片：有URL图展示缩略图，只有base64旧图展示图标标记 */}
+      {msg.imageCount > 0 && (
         <div className="flex flex-wrap gap-2 mt-3">
           {msg.images.map((img, i) => (
             <img key={i} src={img} alt=""
               className="rounded-xl object-cover border border-gray-100 cursor-pointer hover:opacity-90 transition-opacity"
               style={{ maxWidth: '50%', maxHeight: '200px' }}
-              onClick={e => { e.stopPropagation(); window.open(img, '_blank') }} />
+              onClick={e => { e.stopPropagation(); window.open(img, '_blank') }} loading="lazy" />
           ))}
+          {/* 有base64旧图但没URL → 显示图图标 */}
+          {msg.images.length < msg.imageCount && (
+            <div className="flex items-center gap-1 text-xs text-gray-400 bg-gray-50 rounded-xl px-3 py-2 border border-gray-100">
+              🖼️ {msg.imageCount}张图
+            </div>
+          )}
         </div>
       )}
 

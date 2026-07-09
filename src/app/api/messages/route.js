@@ -2,6 +2,44 @@ import { NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase-server'
 import { getUserFromRequest } from '@/lib/auth'
 
+// 上传 base64 图片到 Supabase Storage，返回公开URL
+async function uploadImageBase64(base64Str) {
+  try {
+    // 解析 data:image/jpeg;base64,/9j/4AA...
+    const matches = base64Str.match(/^data:image\/(\w+);base64,(.+)$/)
+    if (!matches) return null
+    const ext = matches[1] === 'jpeg' ? 'jpg' : matches[1]
+    const buffer = Buffer.from(matches[2], 'base64')
+
+    // 限制单张 5MB
+    if (buffer.length > 5 * 1024 * 1024) return null
+
+    const filename = `msg_${Date.now()}_${Math.random().toString(36).slice(2, 8)}.${ext}`
+    const filepath = `messages/${filename}`
+
+    const { error: uploadError } = await supabase.storage
+      .from('message-images')
+      .upload(filepath, buffer, {
+        contentType: `image/${matches[1] === 'jpg' ? 'jpeg' : matches[1]}`,
+        upsert: false,
+      })
+
+    if (uploadError) {
+      console.error('Message image upload error:', uploadError)
+      return null
+    }
+
+    const { data: { publicUrl } } = supabase.storage
+      .from('message-images')
+      .getPublicUrl(filepath)
+
+    return publicUrl
+  } catch (err) {
+    console.error('Upload image error:', err)
+    return null
+  }
+}
+
 // 获取留言列表（可指定单个留言详情）
 export async function GET(req) {
   try {
@@ -138,10 +176,11 @@ export async function GET(req) {
       }
     })
 
-    // 列表页：去掉 base64 图片数据（6MB+ 的响应体就是它）
+    // 列表页：保留URL图片，去掉base64，加imageCount标记
     const stripListImages = (m) => ({
       ...m,
-      images: (m.images?.length > 0) ? m.images.map(img => img?.startsWith('data:') ? '' : img).filter(Boolean) : [],
+      images: (m.images || []).filter(img => img && !img.startsWith('data:')),
+      imageCount: (m.images || []).length,
     })
 
     const attachUserAndReplies = (m) => ({
@@ -212,13 +251,22 @@ export async function POST(req) {
       return NextResponse.json({ error: '最多上传3张图片' }, { status: 400 })
     }
 
+    // 将 base64 图片上传到 Supabase Storage，存URL
+    let finalImages = (images || [])
+    if (finalImages.some(img => img?.startsWith('data:'))) {
+      const uploaded = await Promise.all(finalImages.map(img =>
+        img?.startsWith('data:') ? uploadImageBase64(img) : Promise.resolve(img)
+      ))
+      finalImages = uploaded.filter(Boolean)
+    }
+
     const { data, error } = await supabase
       .from('messages')
       .insert({
         user_id: user.id,
         title: title?.trim() || '',
         content: content.trim(),
-        images: images || [],
+        images: finalImages,
         parent_id: null,
         target_type: 'message',
         is_admin_reply: user.is_admin,
