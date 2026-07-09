@@ -44,12 +44,12 @@ export async function GET(req) {
       })
     }
 
-    // 并行查询优化：4个查询同时跑，不用 JOIN，分开查 user
+    // ─── 分页参数 ───
     const offset = (page - 1) * pageSize
-
     const fields = 'id,user_id,title,content,images,is_pinned,is_admin_reply,created_at'
 
-    const [pinnedRes, msgsRes, repliesRes, countRes] = await Promise.all([
+    // ─── 第一轮：并行获取置顶 + 分页消息 + 总数 ───
+    const [pinnedRes, msgsRes, countRes] = await Promise.all([
       // 1. 置顶留言
       supabase
         .from('messages')
@@ -71,15 +71,7 @@ export async function GET(req) {
         .order('created_at', { ascending: false })
         .range(offset, offset + pageSize - 1),
 
-      // 3. 所有回复
-      supabase
-        .from('messages')
-        .select(`id,parent_id,user_id,content,images,is_pinned,is_admin_reply,created_at`)
-        .not('parent_id', 'is', null)
-        .order('is_pinned', { ascending: false })
-        .order('created_at', { ascending: true }),
-
-      // 4. 总数（轻量查询）
+      // 3. 总数（轻量查询）
       supabase
         .from('messages')
         .select('id', { count: 'exact', head: true })
@@ -93,17 +85,30 @@ export async function GET(req) {
 
     const pinnedData = pinnedRes.data || []
     const messagesData = msgsRes.data || []
-    const allReplies = repliesRes.data || []
     const total = countRes.count || 0
 
-    // 收集所有 user_id
+    // ─── 第二轮：只查当前页消息的回复 + 用户数据 ───
+    const parentIds = [...pinnedData.map(m => m.id), ...messagesData.map(m => m.id)]
     const userIds = new Set()
-    ;[...pinnedData, ...messagesData, ...allReplies].forEach(m => {
-      if (m.user_id) userIds.add(m.user_id)
-    })
+    ;[...pinnedData, ...messagesData].forEach(m => { if (m.user_id) userIds.add(m.user_id) })
+
+    let allReplies = []
+    let usersMap = {}
+
+    // 查回复（限定到当前页消息，不扫全表）
+    if (parentIds.length > 0) {
+      const { data: repliesData } = await supabase
+        .from('messages')
+        .select(`id,parent_id,user_id,content,images,is_pinned,is_admin_reply,created_at`)
+        .in('parent_id', parentIds)
+        .order('is_pinned', { ascending: false })
+        .order('created_at', { ascending: true })
+
+      allReplies = repliesData || []
+      allReplies.forEach(r => { if (r.user_id) userIds.add(r.user_id) })
+    }
 
     // 查用户数据
-    let usersMap = {}
     if (userIds.size > 0) {
       const { data: users } = await supabase
         .from('users')
@@ -115,7 +120,6 @@ export async function GET(req) {
     }
 
     // 组装回复：每条留言最多2条预览 + 统计总数
-    const parentIds = [...pinnedData.map(m => m.id), ...messagesData.map(m => m.id)]
     const repliesMap = {}
     const countMap = {}
 

@@ -44,6 +44,11 @@ export default function MessageDetailPage() {
     } catch { /* ignore */ }
   }, [])
 
+  // 验证码懒加载：只在需要回复时才请求
+  useEffect(() => {
+    if (user && !captcha.id) fetchCaptcha()
+  }, [user, captcha.id, fetchCaptcha])
+
   const loadMessage = useCallback(async () => {
     setLoading(true)
     try {
@@ -56,7 +61,7 @@ export default function MessageDetailPage() {
     setLoading(false)
   }, [messageId])
 
-  useEffect(() => { loadMessage(); fetchCaptcha() }, [loadMessage, fetchCaptcha])
+  useEffect(() => { loadMessage() }, [loadMessage])
 
   const handleReply = async (e) => {
     e.preventDefault()

@@ -211,6 +211,7 @@ export default function BoardPage() {
           <button onClick={() => {
             if (!user) { router.push('/login'); return }
             setShowForm(!showForm)
+            if (!showForm && !captcha.id) fetchCaptcha()
           }}
             className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2.5 rounded-xl transition-colors flex items-center gap-1">
             <MessageSquare size={16} /> {user ? t('发布求助', 'Post Request') : t('登录后求助', 'Login to Ask')}
