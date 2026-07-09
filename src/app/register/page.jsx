@@ -13,7 +13,7 @@ export default function RegisterPage() {
   const router = useRouter()
   const [form, setForm] = useState({
     username: '', phone: '', password: '', confirmPassword: '',
-    birth_place: '', birth_date: '', bio: '', hobbies: '', address: '',
+    birth_place: '', birth_date: '', bio: '', hobbies: '',
   })
   const [captcha, setCaptcha] = useState({ id: '', code: '', input: '' })
   const [showPassword, setShowPassword] = useState(false)
@@ -149,21 +149,6 @@ export default function RegisterPage() {
                   <DatePicker value={form.birth_date} onChange={(d) => setForm(prev => ({ ...prev, birth_date: d }))} lang={lang} max={new Date().toISOString().split('T')[0]} />
                 </div>
               </div>
-              {/* 详细地址 */}
-              <div>
-                <label className="block text-xs font-medium text-gray-700 mb-1">{t('详细地址', 'Detailed Address')}</label>
-                {form.birth_place && form.birth_place !== '海外' && form.birth_place !== '' && (
-                  <div className="text-xs text-blue-600 font-medium mb-1.5">
-                    📍 {form.birth_place}
-                  </div>
-                )}
-                <input type="text" name="address" value={form.address} onChange={handleChange}
-                  placeholder={form.birth_place ? t('请输入详细地址', 'Enter detailed address') : t('请先选择出生地', 'Select birthplace first')}
-                  className="w-full border border-gray-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  disabled={!form.birth_place}
-                />
-              </div>
-
               <div className="mt-4">
                 <label className="block text-xs font-medium text-gray-700 mb-1">{t('个人简介', 'Bio')}</label>
                 <textarea name="bio" value={form.bio} onChange={handleChange}
