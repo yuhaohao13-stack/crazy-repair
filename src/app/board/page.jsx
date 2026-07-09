@@ -201,11 +201,11 @@ export default function BoardPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
-      <Breadcrumb items={[{ label: '留言板', labelEn: 'Message Board' }]} />
+      <Breadcrumb items={[{ label: '维修求助', labelEn: 'Repair Help' }]} />
       <div className="max-w-4xl mx-auto px-4 py-8">
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">{t('留言板', 'Message Board')}</h1>
+            <h1 className="text-2xl font-bold text-gray-900">{t('维修求助', 'Repair Help')}</h1>
             <p className="text-sm text-gray-500">{t('发表你的想法，参与讨论', 'Share your thoughts, join the discussion')}</p>
           </div>
           <button onClick={() => {
@@ -213,7 +213,7 @@ export default function BoardPage() {
             setShowForm(!showForm)
           }}
             className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2.5 rounded-xl transition-colors flex items-center gap-1">
-            <MessageSquare size={16} /> {user ? t('发表留言', 'Post Message') : t('登录后发表', 'Login to Post')}
+            <MessageSquare size={16} /> {user ? t('发布求助', 'Post Request') : t('登录后求助', 'Login to Ask')}
           </button>
         </div>
 
@@ -281,7 +281,7 @@ export default function BoardPage() {
         ) : messages.length === 0 ? (
           <div className="text-center py-12 text-gray-400">
             <MessageSquare size={40} className="mx-auto mb-3 text-gray-300" />
-            <p>{t('还没有留言，来发表第一条吧', 'No messages yet. Be the first to post!')}</p>
+            <p>{t('还没有求助，来发布第一条吧', 'No requests yet. Be the first to ask!')}</p>
           </div>
         ) : (
           <div className="space-y-3">

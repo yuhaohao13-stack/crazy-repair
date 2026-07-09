@@ -101,7 +101,7 @@ export default function MessageDetailPage() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <p className="text-gray-400 mb-4">{error || t('留言不存在', 'Message not found')}</p>
-          <button onClick={() => router.push('/board')} className="text-blue-600 text-sm">{t('← 返回留言板', '← Back')}</button>
+          <button onClick={() => router.push('/board')} className="text-blue-600 text-sm">{t('← 返回维修求助', '← Back')}</button>
         </div>
       </div>
     )
@@ -111,8 +111,8 @@ export default function MessageDetailPage() {
     <div className="min-h-screen bg-gray-50">
       <Navbar />
       <Breadcrumb items={[
-        { label: '留言板', labelEn: 'Message Board', href: '/board' },
-        { label: '留言详情', labelEn: 'Message Detail' }
+        { label: '维修求助', labelEn: 'Repair Help', href: '/board' },
+        { label: '求助详情', labelEn: 'Request Detail' }
       ]} />
       <div className="max-w-3xl mx-auto px-4 py-8">
 
