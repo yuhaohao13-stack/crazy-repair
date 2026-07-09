@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
-import { MessageSquare, Pin, ArrowLeft, Send, ImagePlus, X, User, Shield, ChevronDown, ChevronUp, Search } from 'lucide-react'
+import { MessageSquare, Pin, ArrowLeft, Send, ImagePlus, X, User, Shield, Search } from 'lucide-react'
 import UserProfileModal from '@/components/UserProfileModal'
 
 export default function BoardPage() {
@@ -12,6 +12,7 @@ export default function BoardPage() {
   const [page, setPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
   const [loading, setLoading] = useState(true)
+  const [profileUserId, setProfileUserId] = useState(null)
 
   // 发帖
   const [showForm, setShowForm] = useState(false)
@@ -21,65 +22,6 @@ export default function BoardPage() {
   const [captcha, setCaptcha] = useState({ id: '', code: '', input: '' })
   const [posting, setPosting] = useState(false)
   const [error, setError] = useState('')
-
-  // 展开回复
-  const [expandedReplies, setExpandedReplies] = useState({})
-  const [profileUserId, setProfileUserId] = useState(null)
-
-  // 回复表单
-  const [replyTo, setReplyTo] = useState(null) // msg id
-  const [replyContent, setReplyContent] = useState('')
-  const [replyImages, setReplyImages] = useState([])
-  const [replyCaptcha, setReplyCaptcha] = useState({ id: '', code: '', input: '' })
-  const [replySubmitting, setReplySubmitting] = useState(false)
-  const [replyError, setReplyError] = useState('')
-
-  const fetchReplyCaptcha = useCallback(async () => {
-    try {
-      const res = await fetch('/api/reviews/captcha')
-      const data = await res.json()
-      setReplyCaptcha({ id: data.captchaId, code: data.code, input: '' })
-    } catch { /* ignore */ }
-  }, [])
-
-  const handleReply = async () => {
-    if (!user) { router.push('/login'); return }
-    if (!replyContent.trim()) return
-    setReplyError('')
-    setReplySubmitting(true)
-
-    try {
-      const token = localStorage.getItem('crazy_user_token')
-      const res = await fetch('/api/messages/reply', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          content: replyContent.trim(),
-          images: replyImages,
-          targetType: 'message',
-          targetId: replyTo,
-          captchaId: replyCaptcha.id,
-          captchaValue: replyCaptcha.input,
-        }),
-      })
-      const data = await res.json()
-      if (!res.ok) throw new Error(data.error || '回复失败')
-
-      setReplyContent('')
-      setReplyImages([])
-      setReplyTo(null)
-      fetchReplyCaptcha()
-      loadMessages()
-    } catch (err) {
-      setReplyError(err.message)
-      fetchReplyCaptcha()
-    } finally {
-      setReplySubmitting(false)
-    }
-  }
 
   // 获取当前用户
   useEffect(() => {
@@ -116,77 +58,42 @@ export default function BoardPage() {
 
   useEffect(() => { loadMessages() }, [loadMessages])
 
-  // 图片上传（base64转url）
-  const handleImageUpload = async (e) => {
+  // 图片上传
+  const handleImageUpload = (e) => {
     const files = Array.from(e.target.files)
     const remaining = 3 - images.length
-    if (remaining <= 0) return alert('最多3张图片')
-
+    if (remaining <= 0) return
     const batch = files.slice(0, remaining)
     for (const file of batch) {
-      if (file.size > 5 * 1024 * 1024) {
-        alert(`${file.name} 超过5MB`)
-        continue
-      }
+      if (file.size > 5 * 1024 * 1024) continue
       const reader = new FileReader()
-      reader.onload = (ev) => {
-        setImages(prev => [...prev, ev.target.result])
-      }
+      reader.onload = (ev) => setImages(prev => [...prev, ev.target.result])
       reader.readAsDataURL(file)
     }
   }
 
-  const removeImage = (idx) => {
-    setImages(prev => prev.filter((_, i) => i !== idx))
-  }
+  const removeImage = (idx) => setImages(prev => prev.filter((_, i) => i !== idx))
 
   const handlePost = async (e) => {
     e.preventDefault()
-    if (!user) { router.push('/login'); return }
     setError('')
     setPosting(true)
-
     try {
       const token = localStorage.getItem('crazy_user_token')
       const res = await fetch('/api/messages', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
         body: JSON.stringify({
-          title: title.trim(),
-          content: content.trim(),
-          images,
-          captchaId: captcha.id,
-          captchaValue: captcha.input,
+          title: title.trim(), content: content.trim(), images,
+          captchaId: captcha.id, captchaValue: captcha.input,
         }),
       })
       const data = await res.json()
-
-      if (!res.ok) {
-        setError(data.error)
-        fetchCaptcha()
-        return
-      }
-
-      // 重置
-      setTitle('')
-      setContent('')
-      setImages([])
-      setShowForm(false)
-      fetchCaptcha()
-      loadMessages()
-    } catch {
-      setError('发表失败')
-      fetchCaptcha()
-    } finally {
-      setPosting(false)
-    }
-  }
-
-  const toggleReplies = (msgId) => {
-    setExpandedReplies(prev => ({ ...prev, [msgId]: !prev[msgId] }))
+      if (!res.ok) { setError(data.error); fetchCaptcha(); return }
+      setTitle(''); setContent(''); setImages([]); setShowForm(false)
+      fetchCaptcha(); loadMessages()
+    } catch { setError('发表失败'); fetchCaptcha() }
+    finally { setPosting(false) }
   }
 
   const formatDate = (d) => {
@@ -211,9 +118,8 @@ export default function BoardPage() {
             <span className="font-medium text-sm text-gray-900 truncate">
               {msg.user?.username || '未知用户'}
               {user?.is_admin && msg.user?.id && (
-                <button onClick={() => setProfileUserId(msg.user.id)}
-                  className="ml-1 text-blue-500 hover:text-blue-700 inline-flex items-center"
-                  title="查看用户资料">
+                <button onClick={e => { e.stopPropagation(); setProfileUserId(msg.user.id) }}
+                  className="ml-1 text-blue-500 hover:text-blue-700 inline-flex items-center" title="查看用户资料">
                   <Search size={11} />
                 </button>
               )}
@@ -227,9 +133,6 @@ export default function BoardPage() {
             <Pin size={12} /> 置顶
           </span>
         )}
-        {msg.is_admin_reply && !isPinned && (
-          <span className="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded-lg">官方回复</span>
-        )}
       </div>
 
       {/* 标题 */}
@@ -238,130 +141,55 @@ export default function BoardPage() {
       {/* 内容 */}
       <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-wrap">{msg.content}</p>
 
-      {/* 图片 - 最大宽度不超过页面1/2 */}
+      {/* 图片 */}
       {msg.images && msg.images.length > 0 && (
         <div className="flex flex-wrap gap-2 mt-3">
           {msg.images.map((img, i) => (
-            <img
-              key={i}
-              src={img}
-              alt=""
+            <img key={i} src={img} alt=""
               className="rounded-xl object-cover border border-gray-100 cursor-pointer hover:opacity-90 transition-opacity"
               style={{ maxWidth: '50%', maxHeight: '200px' }}
-              onClick={() => window.open(img, '_blank')}
-            />
+              onClick={() => window.open(img, '_blank')} />
+          ))}
+        </div>
+      )}
+
+      {/* 回复预览（最多2条） */}
+      {msg.replies && msg.replies.length > 0 && (
+        <div className="mt-3 pt-3 border-t border-gray-100 space-y-2">
+          {msg.replies.map(reply => (
+            <div key={reply.id} className={`p-2.5 rounded-xl ${reply.is_admin_reply ? 'bg-blue-50 border border-blue-100' : 'bg-gray-50'}`}>
+              <div className="flex items-center gap-1 mb-0.5">
+                <span className="font-medium text-xs text-gray-700">{reply.user?.username}</span>
+                {reply.is_pinned && <span className="text-xs bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded">置顶</span>}
+                {reply.is_admin_reply && !reply.is_pinned && <span className="text-xs bg-blue-100 text-blue-600 px-1.5 py-0.5 rounded">官方</span>}
+              </div>
+              <p className="text-xs text-gray-600 line-clamp-2">{reply.content}</p>
+            </div>
           ))}
         </div>
       )}
 
       {/* 操作行 */}
-      <div className="flex items-center gap-2 mt-3">
-        {/* 回复数 */}
-        {msg.replies && msg.replies.length > 0 && (
-          <button onClick={() => toggleReplies(msg.id)}
-            className="flex items-center gap-1 text-xs text-blue-600 hover:text-blue-700">
-            {expandedReplies[msg.id] ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-            {msg.replies.length} 条回复
+      <div className="flex items-center gap-3 mt-3 pt-2 border-t border-gray-50">
+        {/* 查看全部回复 */}
+        {(msg.replyCount || 0) > 2 ? (
+          <button onClick={() => router.push(`/board/${msg.id}`)}
+            className="text-xs text-blue-600 hover:text-blue-700 font-medium">
+            查看全部 {msg.replyCount} 条回复 →
           </button>
-        )}
+        ) : msg.replies?.length > 0 ? (
+          <button onClick={() => router.push(`/board/${msg.id}`)}
+            className="text-xs text-blue-600 hover:text-blue-700 font-medium">
+            查看回复详情 →
+          </button>
+        ) : null}
+
         {/* 回复按钮 */}
-        {user ? (
-          <button onClick={() => {
-            setReplyTo(replyTo === msg.id ? null : msg.id)
-            if (replyTo !== msg.id) fetchReplyCaptcha()
-          }}
-            className="flex items-center gap-1 text-xs text-gray-500 hover:text-blue-600">
-            <Send size={12} /> 回复
-          </button>
-        ) : (
-          <button onClick={() => router.push('/login')}
-            className="flex items-center gap-1 text-xs text-gray-400 hover:text-blue-600">
-            <Send size={12} /> 登录回复
-          </button>
-        )}
+        <button onClick={() => router.push(`/board/${msg.id}`)}
+          className="flex items-center gap-1 text-xs text-gray-500 hover:text-blue-600">
+          <Send size={12} /> 回复
+        </button>
       </div>
-
-      {/* 展开的回复 */}
-      {expandedReplies[msg.id] && msg.replies && msg.replies.length > 0 && (
-        <div className="mt-3 ml-4 pl-3 border-l-2 border-blue-100 space-y-3">
-          {[...msg.replies].sort((a, b) => (b.is_pinned ? 1 : 0) - (a.is_pinned ? 1 : 0)).map(reply => (
-            <div key={reply.id} className={`p-3 rounded-xl ${reply.is_admin_reply ? 'bg-blue-50 border border-blue-100' : 'bg-gray-50'}`}>
-              <div className="flex items-center gap-1.5 mb-1">
-                <span className="font-medium text-xs text-gray-800">{reply.user?.username}</span>
-                {reply.is_pinned && <span className="text-xs bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded">置顶</span>}
-                {reply.is_admin_reply && !reply.is_pinned && <span className="text-xs bg-blue-100 text-blue-600 px-1.5 py-0.5 rounded">官方</span>}
-                <span className="text-xs text-gray-400">{formatDate(reply.created_at)}</span>
-              </div>
-              <p className="text-sm text-gray-600">{reply.content}</p>
-              {reply.images && reply.images.length > 0 && (
-                <div className="flex flex-wrap gap-2 mt-2">
-                  {reply.images.map((img, i) => (
-                    <img key={i} src={img} alt=""
-                      className="rounded-lg object-cover border border-gray-100 cursor-pointer"
-                      style={{ maxWidth: '40%', maxHeight: '150px' }}
-                      onClick={() => window.open(img, '_blank')} />
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      )}
-
-      {/* 回复表单 */}
-      {replyTo === msg.id && (
-        <div className="mt-3 pt-3 border-t border-gray-100">
-          {replyError && <div className="bg-red-50 text-red-600 text-sm p-2 rounded-xl mb-2">{replyError}</div>}
-          <textarea value={replyContent} onChange={e => setReplyContent(e.target.value)}
-            placeholder="写下你的回复..." rows={2} required
-            className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none resize-none mb-2" />
-          {/* 图片 */}
-          <div className="flex flex-wrap items-center gap-2 mb-2">
-            {replyImages.map((img, i) => (
-              <div key={i} className="relative">
-                <img src={img} alt="" className="w-14 h-14 rounded-lg object-cover border border-gray-200" />
-                <button type="button" onClick={() => setReplyImages(prev => prev.filter((_, j) => j !== i))}
-                  className="absolute -top-1.5 -right-1.5 bg-red-500 text-white rounded-full p-0.5">
-                  <X size={12} />
-                </button>
-              </div>
-            ))}
-            {replyImages.length < 3 && (
-              <label className="w-14 h-14 rounded-lg border-2 border-dashed border-gray-300 flex items-center justify-center cursor-pointer hover:border-blue-400">
-                <ImagePlus size={18} className="text-gray-400" />
-                <input type="file" accept="image/*" className="hidden" onChange={e => {
-                  const files = Array.from(e.target.files || [])
-                  if (replyImages.length + files.length > 3) return
-                  for (const f of files) {
-                    if (f.size > 5*1024*1024) continue
-                    const reader = new FileReader()
-                    reader.onload = (ev) => setReplyImages(prev => [...prev, ev.target.result])
-                    reader.readAsDataURL(f)
-                  }
-                }} />
-              </label>
-            )}
-          </div>
-          {/* 验证码 */}
-          <div className="flex items-center gap-2 mb-2">
-            <div className="bg-gray-100 px-3 py-1.5 rounded-xl font-mono text-base tracking-widest text-gray-800 select-none">
-              {replyCaptcha.code || '····'}
-            </div>
-            <input type="text" value={replyCaptcha.input} onChange={e => setReplyCaptcha(prev => ({ ...prev, input: e.target.value }))}
-              placeholder="验证码" maxLength={4}
-              className="w-20 border border-gray-300 rounded-xl px-2 py-1.5 text-xs text-center tracking-widest focus:outline-none focus:ring-2 focus:ring-blue-500" />
-            <button type="button" onClick={fetchReplyCaptcha} className="text-xs text-blue-600 hover:text-blue-700">换一张</button>
-          </div>
-          <div className="flex gap-2">
-            <button onClick={handleReply} disabled={replySubmitting}
-              className="flex items-center gap-1 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white text-xs font-medium px-3 py-1.5 rounded-lg transition-colors">
-              <Send size={12} /> {replySubmitting ? '发送中...' : '发送回复'}
-            </button>
-            <button onClick={() => { setReplyTo(null); setReplyContent(''); setReplyImages([]); setReplyError('') }}
-              className="text-xs text-gray-500 hover:text-gray-700 px-3 py-1.5">取消</button>
-          </div>
-        </div>
-      )}
     </div>
   )
 
@@ -389,24 +217,18 @@ export default function BoardPage() {
         {showForm && (
           <form onSubmit={handlePost} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4 sm:p-6 mb-6">
             {error && <div className="bg-red-50 text-red-600 text-sm p-3 rounded-xl mb-4">{error}</div>}
-
-            <input type="text" value={title} onChange={(e) => setTitle(e.target.value)}
+            <input type="text" value={title} onChange={e => setTitle(e.target.value)}
               placeholder="标题（选填）" maxLength={100}
               className="w-full border border-gray-300 rounded-xl px-3 py-2 text-sm mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-
-            <textarea value={content} onChange={(e) => setContent(e.target.value)}
+            <textarea value={content} onChange={e => setContent(e.target.value)}
               placeholder="写下你想说的..." rows={4} required
               className="w-full border border-gray-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none mb-3" />
-
-            {/* 图片上传 */}
             <div className="flex flex-wrap items-center gap-2 mb-3">
               {images.map((img, i) => (
                 <div key={i} className="relative">
                   <img src={img} alt="" className="w-16 h-16 rounded-lg object-cover border border-gray-200" />
                   <button type="button" onClick={() => removeImage(i)}
-                    className="absolute -top-1.5 -right-1.5 bg-red-500 text-white rounded-full p-0.5">
-                    <X size={12} />
-                  </button>
+                    className="absolute -top-1.5 -right-1.5 bg-red-500 text-white rounded-full p-0.5"><X size={12} /></button>
                 </div>
               ))}
               {images.length < 3 && (
@@ -417,18 +239,15 @@ export default function BoardPage() {
               )}
               <span className="text-xs text-gray-400 ml-1">{images.length}/3 张</span>
             </div>
-
-            {/* 验证码 */}
             <div className="flex items-center gap-3 mb-4">
               <div className="bg-gray-100 px-4 py-2 rounded-xl font-mono text-lg tracking-widest text-gray-800 select-none">
                 {captcha.code || '····'}
               </div>
-              <input type="text" value={captcha.input} onChange={(e) => setCaptcha({ ...captcha, input: e.target.value })}
+              <input type="text" value={captcha.input} onChange={e => setCaptcha({ ...captcha, input: e.target.value })}
                 placeholder="验证码" required maxLength={4}
                 className="w-24 border border-gray-300 rounded-xl px-3 py-2 text-sm text-center tracking-widest focus:outline-none focus:ring-2 focus:ring-blue-500" />
               <button type="button" onClick={fetchCaptcha} className="text-xs text-blue-600 hover:text-blue-700">换一张</button>
             </div>
-
             <div className="flex gap-2">
               <button type="submit" disabled={posting}
                 className="flex items-center gap-1 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white text-sm font-medium px-5 py-2.5 rounded-xl transition-colors">
@@ -470,19 +289,14 @@ export default function BoardPage() {
         {totalPages > 1 && (
           <div className="flex justify-center gap-2 mt-8">
             <button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page <= 1}
-              className="px-3 py-1.5 text-sm border border-gray-200 rounded-lg disabled:opacity-30 hover:bg-gray-50">
-              上一页
-            </button>
+              className="px-3 py-1.5 text-sm border border-gray-200 rounded-lg disabled:opacity-30 hover:bg-gray-50">上一页</button>
             <span className="px-3 py-1.5 text-sm text-gray-500">{page} / {totalPages}</span>
             <button onClick={() => setPage(p => Math.min(totalPages, p + 1))} disabled={page >= totalPages}
-              className="px-3 py-1.5 text-sm border border-gray-200 rounded-lg disabled:opacity-30 hover:bg-gray-50">
-              下一页
-            </button>
+              className="px-3 py-1.5 text-sm border border-gray-200 rounded-lg disabled:opacity-30 hover:bg-gray-50">下一页</button>
           </div>
         )}
       </div>
 
-      {/* 用户资料弹窗（管理员可见） */}
       {profileUserId && (
         <UserProfileModal userId={profileUserId} onClose={() => setProfileUserId(null)} />
       )}

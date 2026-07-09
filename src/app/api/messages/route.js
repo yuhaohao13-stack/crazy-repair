@@ -2,12 +2,47 @@ import { NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase-server'
 import { getUserFromRequest } from '@/lib/auth'
 
-// 获取留言列表
+// 获取留言列表（可指定单个留言详情）
 export async function GET(req) {
   try {
     const url = new URL(req.url)
+    const messageId = url.searchParams.get('messageId')
     const page = parseInt(url.searchParams.get('page') || '1')
     const pageSize = parseInt(url.searchParams.get('pageSize') || '20')
+
+    // 如果指定了 messageId，返回单条留言详情
+    if (messageId) {
+      const { data: message, error: msgError } = await supabase
+        .from('messages')
+        .select(`
+          *,
+          user:user_id (id, username, is_admin)
+        `)
+        .eq('id', messageId)
+        .single()
+
+      if (msgError || !message) {
+        return NextResponse.json({ error: '留言不存在' }, { status: 404 })
+      }
+
+      // 获取所有回复
+      const { data: replies } = await supabase
+        .from('messages')
+        .select(`
+          *,
+          user:user_id (id, username, is_admin)
+        `)
+        .eq('parent_id', messageId)
+        .order('is_pinned', { ascending: false })
+        .order('created_at', { ascending: true })
+
+      return NextResponse.json({
+        message,
+        replies: replies || [],
+      })
+    }
+
+    // 分页获取留言列表
     const offset = (page - 1) * pageSize
 
     // 获取置顶留言 + 普通留言（分页）
@@ -38,7 +73,7 @@ export async function GET(req) {
 
     if (messagesError) throw messagesError
 
-    // 获取所有留言的回复
+    // 获取所有留言的回复（只取前2条做预览）
     const parentIds = [...(pinnedData || []).map(m => m.id), ...(messagesData || []).map(m => m.id)]
     let replies = []
     if (parentIds.length > 0) {
@@ -49,20 +84,44 @@ export async function GET(req) {
           user:user_id (id, username, is_admin)
         `)
         .in('parent_id', parentIds)
+        .order('is_pinned', { ascending: false })
         .order('created_at', { ascending: true })
 
       if (repliesData) replies = repliesData
     }
 
-    // 整理数据结构：给每个帖子附上回复
+    // 每条留言最多取2条回复
     const repliesMap = {}
     replies.forEach(r => {
       if (!repliesMap[r.parent_id]) repliesMap[r.parent_id] = []
-      repliesMap[r.parent_id].push(r)
+      if (repliesMap[r.parent_id].length < 2) {
+        repliesMap[r.parent_id].push(r)
+      }
     })
 
-    const pinMessages = (pinnedData || []).map(m => ({ ...m, replies: repliesMap[m.id] || [] }))
-    const pageMessages = (messagesData || []).map(m => ({ ...m, replies: repliesMap[m.id] || [] }))
+    // 统计每条留言的回复总数
+    const { data: replyCounts } = await supabase
+      .from('messages')
+      .select('parent_id')
+      .in('parent_id', parentIds)
+
+    const countMap = {}
+    if (replyCounts) {
+      replyCounts.forEach(r => {
+        countMap[r.parent_id] = (countMap[r.parent_id] || 0) + 1
+      })
+    }
+
+    const pinMessages = (pinnedData || []).map(m => ({
+      ...m,
+      replies: repliesMap[m.id] || [],
+      replyCount: countMap[m.id] || 0,
+    }))
+    const pageMessages = (messagesData || []).map(m => ({
+      ...m,
+      replies: repliesMap[m.id] || [],
+      replyCount: countMap[m.id] || 0,
+    }))
 
     return NextResponse.json({
       pinned: pinMessages,
