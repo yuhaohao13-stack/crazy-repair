@@ -76,8 +76,9 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4 py-8">
+    <div className="min-h-screen bg-gray-50">
       <Navbar />
+      <div className="flex items-center justify-center px-4 py-8">
       <div className="w-full max-w-md">
         <Breadcrumb items={[{ label: '注册', labelEn: 'Register' }]} />
 
@@ -184,6 +185,7 @@ export default function RegisterPage() {
           </p>
         </div>
       </div>
+    </div>
     </div>
   )
 }
