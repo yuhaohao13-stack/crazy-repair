@@ -108,6 +108,7 @@ export default function Home() {
             <div className="space-y-6">
               <h1 className="text-3xl sm:text-5xl font-bold leading-tight">{t('Crazy维修', 'Crazy Repair')}</h1>
               <p className="text-xl sm:text-2xl font-semibold text-blue-200">{t('威海专业手机电脑维修', 'Weihai Pro Phone & PC Repair')}</p>
+              <p className="text-blue-200/70 text-sm sm:text-base font-medium">{t('累计服务超过10万+位客户', '100000+ Satisfied Customers')}</p>
               <p className="text-blue-100 leading-relaxed text-sm sm:text-base max-w-lg">
                 {t('Crazy维修专注手机、电脑、平板等第三方维修服务，位于威海环翠区西门31号。2007年至今奋斗在维修一线，免费检测，先报价后维修，30天质保。手机碎屏、电池更换、电脑维修、数据恢复，价格透明，诚信经营。', 'Crazy Repair specializes in third-party phone, computer and tablet repair services. Located at West Gate #31, Huancui District, Weihai. On the repair frontline since 2007. Free diagnosis, quote first, 30-day warranty. Screen repair, battery replacement, computer repair, data recovery — transparent pricing, honest service.')}
               </p>
