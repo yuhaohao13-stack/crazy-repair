@@ -107,7 +107,8 @@ export default function BoardPage() {
   }
 
   const renderMessage = (msg, isPinned) => (
-    <div key={msg.id} className={`bg-white rounded-2xl border ${isPinned ? 'border-amber-200 bg-amber-50/30' : 'border-gray-100'} shadow-sm p-4 sm:p-5`}>
+    <div key={msg.id} onClick={() => router.push(`/board/${msg.id}`)}
+      className={`bg-white rounded-2xl border cursor-pointer ${isPinned ? 'border-amber-200 bg-amber-50/30' : 'border-gray-100'} shadow-sm p-4 sm:p-5`}>
       {/* 头部 */}
       <div className="flex items-center gap-2 mb-3">
         <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center shrink-0">
@@ -148,7 +149,7 @@ export default function BoardPage() {
             <img key={i} src={img} alt=""
               className="rounded-xl object-cover border border-gray-100 cursor-pointer hover:opacity-90 transition-opacity"
               style={{ maxWidth: '50%', maxHeight: '200px' }}
-              onClick={() => window.open(img, '_blank')} />
+              onClick={e => { e.stopPropagation(); window.open(img, '_blank') }} />
           ))}
         </div>
       )}
@@ -173,19 +174,19 @@ export default function BoardPage() {
       <div className="flex items-center gap-3 mt-3 pt-2 border-t border-gray-50">
         {/* 查看全部回复 */}
         {(msg.replyCount || 0) > 2 ? (
-          <button onClick={() => router.push(`/board/${msg.id}`)}
+          <button onClick={e => { e.stopPropagation(); router.push(`/board/${msg.id}`) }}
             className="text-xs text-blue-600 hover:text-blue-700 font-medium">
             查看全部 {msg.replyCount} 条回复 →
           </button>
         ) : msg.replies?.length > 0 ? (
-          <button onClick={() => router.push(`/board/${msg.id}`)}
+          <button onClick={e => { e.stopPropagation(); router.push(`/board/${msg.id}`) }}
             className="text-xs text-blue-600 hover:text-blue-700 font-medium">
             查看回复详情 →
           </button>
         ) : null}
 
         {/* 回复按钮 */}
-        <button onClick={() => router.push(`/board/${msg.id}`)}
+        <button onClick={e => { e.stopPropagation(); router.push(`/board/${msg.id}`) }}
           className="flex items-center gap-1 text-xs text-gray-500 hover:text-blue-600">
           <Send size={12} /> 回复
         </button>
