@@ -26,6 +26,61 @@ export default function BoardPage() {
   const [expandedReplies, setExpandedReplies] = useState({})
   const [profileUserId, setProfileUserId] = useState(null)
 
+  // 回复表单
+  const [replyTo, setReplyTo] = useState(null) // msg id
+  const [replyContent, setReplyContent] = useState('')
+  const [replyImages, setReplyImages] = useState([])
+  const [replyCaptcha, setReplyCaptcha] = useState({ id: '', code: '', input: '' })
+  const [replySubmitting, setReplySubmitting] = useState(false)
+  const [replyError, setReplyError] = useState('')
+
+  const fetchReplyCaptcha = useCallback(async () => {
+    try {
+      const res = await fetch('/api/reviews/captcha')
+      const data = await res.json()
+      setReplyCaptcha({ id: data.captchaId, code: data.code, input: '' })
+    } catch { /* ignore */ }
+  }, [])
+
+  const handleReply = async () => {
+    if (!user) { router.push('/login'); return }
+    if (!replyContent.trim()) return
+    setReplyError('')
+    setReplySubmitting(true)
+
+    try {
+      const token = localStorage.getItem('crazy_user_token')
+      const res = await fetch('/api/messages/reply', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          content: replyContent.trim(),
+          images: replyImages,
+          targetType: 'message',
+          targetId: replyTo,
+          captchaId: replyCaptcha.id,
+          captchaValue: replyCaptcha.input,
+        }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || '回复失败')
+
+      setReplyContent('')
+      setReplyImages([])
+      setReplyTo(null)
+      fetchReplyCaptcha()
+      loadMessages()
+    } catch (err) {
+      setReplyError(err.message)
+      fetchReplyCaptcha()
+    } finally {
+      setReplySubmitting(false)
+    }
+  }
+
   // 获取当前用户
   useEffect(() => {
     const token = localStorage.getItem('crazy_user_token')
@@ -199,14 +254,32 @@ export default function BoardPage() {
         </div>
       )}
 
-      {/* 回复数 */}
-      {msg.replies && msg.replies.length > 0 && (
-        <button onClick={() => toggleReplies(msg.id)}
-          className="flex items-center gap-1 text-xs text-blue-600 hover:text-blue-700 mt-3">
-          {expandedReplies[msg.id] ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-          {msg.replies.length} 条回复
-        </button>
-      )}
+      {/* 操作行 */}
+      <div className="flex items-center gap-2 mt-3">
+        {/* 回复数 */}
+        {msg.replies && msg.replies.length > 0 && (
+          <button onClick={() => toggleReplies(msg.id)}
+            className="flex items-center gap-1 text-xs text-blue-600 hover:text-blue-700">
+            {expandedReplies[msg.id] ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+            {msg.replies.length} 条回复
+          </button>
+        )}
+        {/* 回复按钮 */}
+        {user ? (
+          <button onClick={() => {
+            setReplyTo(replyTo === msg.id ? null : msg.id)
+            if (replyTo !== msg.id) fetchReplyCaptcha()
+          }}
+            className="flex items-center gap-1 text-xs text-gray-500 hover:text-blue-600">
+            <Send size={12} /> 回复
+          </button>
+        ) : (
+          <button onClick={() => router.push('/login')}
+            className="flex items-center gap-1 text-xs text-gray-400 hover:text-blue-600">
+            <Send size={12} /> 登录回复
+          </button>
+        )}
+      </div>
 
       {/* 展开的回复 */}
       {expandedReplies[msg.id] && msg.replies && msg.replies.length > 0 && (
@@ -231,6 +304,61 @@ export default function BoardPage() {
               )}
             </div>
           ))}
+        </div>
+      )}
+
+      {/* 回复表单 */}
+      {replyTo === msg.id && (
+        <div className="mt-3 pt-3 border-t border-gray-100">
+          {replyError && <div className="bg-red-50 text-red-600 text-sm p-2 rounded-xl mb-2">{replyError}</div>}
+          <textarea value={replyContent} onChange={e => setReplyContent(e.target.value)}
+            placeholder="写下你的回复..." rows={2} required
+            className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none resize-none mb-2" />
+          {/* 图片 */}
+          <div className="flex flex-wrap items-center gap-2 mb-2">
+            {replyImages.map((img, i) => (
+              <div key={i} className="relative">
+                <img src={img} alt="" className="w-14 h-14 rounded-lg object-cover border border-gray-200" />
+                <button type="button" onClick={() => setReplyImages(prev => prev.filter((_, j) => j !== i))}
+                  className="absolute -top-1.5 -right-1.5 bg-red-500 text-white rounded-full p-0.5">
+                  <X size={12} />
+                </button>
+              </div>
+            ))}
+            {replyImages.length < 3 && (
+              <label className="w-14 h-14 rounded-lg border-2 border-dashed border-gray-300 flex items-center justify-center cursor-pointer hover:border-blue-400">
+                <ImagePlus size={18} className="text-gray-400" />
+                <input type="file" accept="image/*" className="hidden" onChange={e => {
+                  const files = Array.from(e.target.files || [])
+                  if (replyImages.length + files.length > 3) return
+                  for (const f of files) {
+                    if (f.size > 5*1024*1024) continue
+                    const reader = new FileReader()
+                    reader.onload = (ev) => setReplyImages(prev => [...prev, ev.target.result])
+                    reader.readAsDataURL(f)
+                  }
+                }} />
+              </label>
+            )}
+          </div>
+          {/* 验证码 */}
+          <div className="flex items-center gap-2 mb-2">
+            <div className="bg-gray-100 px-3 py-1.5 rounded-xl font-mono text-base tracking-widest text-gray-800 select-none">
+              {replyCaptcha.code || '····'}
+            </div>
+            <input type="text" value={replyCaptcha.input} onChange={e => setReplyCaptcha(prev => ({ ...prev, input: e.target.value }))}
+              placeholder="验证码" maxLength={4}
+              className="w-20 border border-gray-300 rounded-xl px-2 py-1.5 text-xs text-center tracking-widest focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            <button type="button" onClick={fetchReplyCaptcha} className="text-xs text-blue-600 hover:text-blue-700">换一张</button>
+          </div>
+          <div className="flex gap-2">
+            <button onClick={handleReply} disabled={replySubmitting}
+              className="flex items-center gap-1 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white text-xs font-medium px-3 py-1.5 rounded-lg transition-colors">
+              <Send size={12} /> {replySubmitting ? '发送中...' : '发送回复'}
+            </button>
+            <button onClick={() => { setReplyTo(null); setReplyContent(''); setReplyImages([]); setReplyError('') }}
+              className="text-xs text-gray-500 hover:text-gray-700 px-3 py-1.5">取消</button>
+          </div>
         </div>
       )}
     </div>
