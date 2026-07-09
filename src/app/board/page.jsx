@@ -236,17 +236,13 @@ export default function BoardPage() {
             <h1 className="text-2xl font-bold text-gray-900">留言板</h1>
             <p className="text-sm text-gray-500">发表你的想法，参与讨论</p>
           </div>
-          {user ? (
-            <button onClick={() => setShowForm(!showForm)}
-              className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2.5 rounded-xl transition-colors flex items-center gap-1">
-              <MessageSquare size={16} /> 发表留言
-            </button>
-          ) : (
-            <button onClick={() => router.push('/login')}
-              className="bg-gray-600 hover:bg-gray-700 text-white text-sm font-medium px-4 py-2.5 rounded-xl transition-colors">
-              登录后发表
-            </button>
-          )}
+          <button onClick={() => {
+            if (!user) { router.push('/login'); return }
+            setShowForm(!showForm)
+          }}
+            className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2.5 rounded-xl transition-colors flex items-center gap-1">
+            <MessageSquare size={16} /> {user ? '发表留言' : '登录后发表'}
+          </button>
         </div>
 
         {/* 发帖表单 */}

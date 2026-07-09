@@ -1,10 +1,21 @@
 import { NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase-server'
+import { getUserFromRequest, findUserById } from '@/lib/auth'
 
 export async function POST(req) {
   try {
     const body = await req.json()
-    const { name, phone, title, content, rating, images, captchaId, captchaValue } = body
+    let { name, phone, title, content, rating, images, captchaId, captchaValue } = body
+
+    // 检查是否有登录用户 token
+    const user = getUserFromRequest(req)
+    if (user) {
+      const dbUser = await findUserById(user.id)
+      if (dbUser) {
+        name = dbUser.username
+        phone = dbUser.phone
+      }
+    }
 
     // 验证必填字段
     if (!name?.trim()) return NextResponse.json({ error: '请输入用户名' }, { status: 400 })
@@ -51,17 +62,24 @@ export async function POST(req) {
     await supabase.from('captchas').delete().eq('id', captchaId)
 
     // 插入评价
+    const insertData = {
+      name: name.trim(),
+      phone: phone.trim(),
+      title: title.trim(),
+      content: content.trim(),
+      rating: ratingNum,
+      images: images || [],
+      approved: true,
+    }
+
+    // 如果是登录用户，关联 user_id
+    if (user) {
+      insertData.user_id = user.id
+    }
+
     const { data, error } = await supabase
       .from('reviews')
-      .insert({
-        name: name.trim(),
-        phone: phone.trim(),
-        title: title.trim(),
-        content: content.trim(),
-        rating: ratingNum,
-        images: images || [],
-        approved: true,
-      })
+      .insert(insertData)
       .select('id, name, title, created_at')
       .single()
 

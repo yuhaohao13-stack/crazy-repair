@@ -400,9 +400,15 @@ function ReviewForm({ onClose, onSubmitted, user }) {
         imageUrls = uploadData.urls
       }
 
+      const headers = { 'Content-Type': 'application/json' }
+      if (user) {
+        const token = localStorage.getItem('crazy_user_token')
+        if (token) headers['Authorization'] = `Bearer ${token}`
+      }
+
       const res = await fetch('/api/reviews/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers,
         body: JSON.stringify({
           name: form.name,
           phone: form.phone,
@@ -465,19 +471,27 @@ function ReviewForm({ onClose, onSubmitted, user }) {
         </div>
       </div>
 
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">用户名 *</label>
-        <input type="text" value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-          placeholder="请输入称呼" required maxLength={30}
-          className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" />
-      </div>
-
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">手机号 *</label>
-        <input type="tel" value={form.phone} onChange={e => setForm(f => ({ ...f, phone: e.target.value }))}
-          placeholder="请输入手机号" required maxLength={15}
-          className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" />
-      </div>
+      {!user && (
+        <>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">用户名 *</label>
+            <input type="text" value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+              placeholder="请输入称呼" required maxLength={30}
+              className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">手机号 *</label>
+            <input type="tel" value={form.phone} onChange={e => setForm(f => ({ ...f, phone: e.target.value }))}
+              placeholder="请输入手机号" required maxLength={15}
+              className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" />
+          </div>
+        </>
+      )}
+      {user && (
+        <div className="bg-blue-50 rounded-xl p-3 text-sm text-blue-700">
+          ✅ 已登录为 <strong>{user.username}</strong>（{user.phone}），无需重复填写
+        </div>
+      )}
 
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1">标题 *</label>
@@ -629,7 +643,10 @@ export default function ReviewSection({ showAdminButton = true }) {
             )}
           </div>
           <div className="flex items-center gap-3">
-            <button onClick={() => setShowForm(true)}
+            <button onClick={() => {
+              if (!user) { window.location.href = '/login'; return }
+              setShowForm(true)
+            }}
               className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-5 py-2.5 rounded-xl transition-colors shadow-sm">
               写评价 ✍️
             </button>
@@ -658,7 +675,10 @@ export default function ReviewSection({ showAdminButton = true }) {
         ) : (
           <div className="text-center py-12 bg-white rounded-2xl border border-dashed border-gray-200">
             <p className="text-gray-400 mb-3">暂无评价</p>
-            <button onClick={() => setShowForm(true)}
+            <button onClick={() => {
+              if (!user) { window.location.href = '/login'; return }
+              setShowForm(true)
+            }}
               className="text-blue-600 font-medium hover:text-blue-700 transition-colors">
               成为第一个评价的人 →
             </button>
