@@ -334,7 +334,7 @@ export default function Home() {
             <div>
               <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">{t('关于 Crazy维修', 'About Crazy Repair')}</h2>
               <div className="space-y-4 text-gray-600 leading-relaxed text-sm sm:text-base">
-                <p>{t('Crazy维修（Crazy-repair）成立于威海环翠区，是一家专注于手机、电脑、平板及各类数码产品维修的专业工作室。2007年至今奋斗在维修一线，累计服务超过5000位客户。', 'Crazy Repair is a professional repair studio in Huancui, Weihai. On the repair frontline since 2007 with 5000+ satisfied customers.')}</p>
+                <p>{t('Crazy维修（Crazy-repair）成立于威海环翠区，是一家专注于手机、电脑、平板及各类数码产品维修的专业工作室。2007年至今奋斗在维修一线，累计服务超过100000位客户。', 'Crazy Repair is a professional repair studio in Huancui, Weihai. On the repair frontline since 2007 with 100000+ satisfied customers.')}</p>
                 <p>{t('我们修的设备覆盖你能想到的大部分品牌——Apple、Samsung、华为、小米、OPPO、vivo、OnePlus、荣耀、Google Pixel、Realme……不管是iPhone屏幕碎了、三星电池不耐用了、华为MatePad摔了、还是MacBook进水了，拿来给我看看。', 'We repair most brands you can think of — Apple, Samsung, Huawei, Xiaomi, OPPO, vivo, OnePlus, Honor, Google Pixel, Realme… Cracked iPhone screen, dying Samsung battery, dropped Huawei MatePad, water-damaged MacBook — bring it in.')}</p>
                 <p>{t('我们的理念：先查问题，告诉客户真实情况，给出合理报价，修不修客户决定。绝不诱导消费，绝不隐瞒问题。不做那种"小病大修"的套路。', 'Our philosophy: diagnose first, be honest, give a fair quote. No pressure, no hidden issues. No "upsell" tricks.')}</p>
                 <p>{t('所有维修当面完成（特殊主板问题除外），修之前跟你说清楚问题在哪、怎么修、多少钱，你觉得合适再修。修完之后当面测试，确保功能正常再拿走。简单直接，不整虚的。', 'All repairs done on-site (except complex board work). I\'ll explain the issue, the fix, and the cost before starting. You approve first. After repair, we test everything together before you leave. Simple and transparent.')}</p>
@@ -344,7 +344,7 @@ export default function Home() {
                     <div className="text-xs text-gray-500">{t('维修生涯', 'On the job')}</div>
                   </div>
                   <div className="bg-blue-50 rounded-xl px-4 py-3 text-center">
-                    <div className="text-2xl font-bold text-blue-600">5000+</div>
+                    <div className="text-2xl font-bold text-blue-600">100000+</div>
                     <div className="text-xs text-gray-500">{t('服务客户', 'Clients')}</div>
                   </div>
                   <div className="bg-blue-50 rounded-xl px-4 py-3 text-center">
