@@ -6,6 +6,8 @@ import { Eye, EyeOff } from 'lucide-react'
 import Navbar from '../../components/Navbar'
 import Breadcrumb from '../../components/Breadcrumb'
 import { useSite } from '../../lib/SiteContext'
+import BirthPlaceSelector from '../../components/BirthPlaceSelector'
+import DatePicker from '../../components/DatePicker'
 
 export default function RegisterPage() {
   const router = useRouter()
@@ -141,14 +143,11 @@ export default function RegisterPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-medium text-gray-700 mb-1">{t('出生地', 'Birthplace')}</label>
-                  <input type="text" name="birth_place" value={form.birth_place} onChange={handleChange}
-                    placeholder={t('如：山东威海', 'e.g. Weihai, Shandong')}
-                    className="w-full border border-gray-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                  <BirthPlaceSelector value={form.birth_place} onChange={(v) => handleChange({ target: { name: 'birth_place', value: typeof v === 'string' ? v : (v.province + (v.city ? '/' + v.city : '')) } })} lang={lang} />
                 </div>
                 <div>
                   <label className="block text-xs font-medium text-gray-700 mb-1">{t('出生年月', 'Birth Date')}</label>
-                  <input type="date" name="birth_date" value={form.birth_date} onChange={handleChange}
-                    className="w-full border border-gray-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                  <DatePicker value={form.birth_date} onChange={(d) => handleChange({ target: { name: 'birth_date', value: d } })} lang={lang} max={new Date().toISOString().split('T')[0]} />
                 </div>
               </div>
               <div className="mt-4">
