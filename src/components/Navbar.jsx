@@ -17,7 +17,6 @@ export default function Navbar() {
 
   const t = (zh, en) => lang === 'zh' ? zh : en
 
-  // 检查登录状态
   useEffect(() => {
     const token = localStorage.getItem('crazy_user_token')
     if (token) {
@@ -86,12 +85,11 @@ export default function Navbar() {
             </a>
           </div>
 
-          {/* 中间：导航链接 */}
+          {/* --- 桌面端导航 --- */}
           <div className="hidden md:flex items-center gap-2 text-xs text-gray-600">
             <a href="/#brands" className="hover:text-blue-600 whitespace-nowrap">{t('品牌', 'Brands')}</a>
             <a href="/#services" className="hover:text-blue-600 whitespace-nowrap">{t('服务', 'Services')}</a>
-            
-            {/* 维修品牌下拉 */}
+
             <div className="relative group">
               <a href="/#brands" className="hover:text-blue-600 whitespace-nowrap flex items-center gap-0.5">
                 维修品牌 <ChevronDown size={10} />
@@ -102,8 +100,6 @@ export default function Navbar() {
                 <a href="/samsung-repair" className="block px-3 py-1.5 text-xs text-gray-700 hover:bg-gray-50">Samsung 维修</a>
                 <a href="/huawei-repair" className="block px-3 py-1.5 text-xs text-gray-700 hover:bg-gray-50">Huawei 维修</a>
                 <a href="/xiaomi-repair" className="block px-3 py-1.5 text-xs text-gray-700 hover:bg-gray-50">Xiaomi 维修</a>
-                <a href="/oppo-repair" className="block px-3 py-1.5 text-xs text-gray-700 hover:bg-gray-50">OPPO 维修</a>
-                <a href="/vivo-repair" className="block px-3 py-1.5 text-xs text-gray-700 hover:bg-gray-50">vivo 维修</a>
                 <hr className="my-1 border-gray-50" />
                 <div className="px-3 py-1 text-xs font-bold text-gray-400">💻 电脑</div>
                 <a href="/macbook-repair" className="block px-3 py-1.5 text-xs text-gray-700 hover:bg-gray-50">MacBook 维修</a>
@@ -114,12 +110,9 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* 客户评价 */}
             <a href="/#reviews" className="hover:text-blue-600 whitespace-nowrap flex items-center gap-0.5">
               <Star size={10} /> 客户评价
             </a>
-
-            {/* 留言板 */}
             <a href="/board" className="hover:text-blue-600 whitespace-nowrap flex items-center gap-0.5">
               <MessageSquare size={10} /> 留言板
             </a>
@@ -128,20 +121,14 @@ export default function Navbar() {
             <a href="https://www.gudaoforum.com" target="_blank" rel="noopener" className="hover:text-blue-600 whitespace-nowrap font-medium">古道维修论坛</a>
             <span className="text-gray-300 mx-1">|</span>
 
-            {/* 搜索 */}
             <div className="relative flex items-center">
               {showSearch ? (
                 <div className="flex items-center gap-1">
-                  <input
-                    ref={inputRef}
-                    type="text"
-                    value={query}
+                  <input ref={inputRef} type="text" value={query}
                     onChange={(e) => { setQuery(e.target.value); setShowResults(true) }}
                     onFocus={() => setShowResults(true)}
                     placeholder={t('搜索型号', 'Search model')}
-                    className="w-36 border border-gray-300 rounded px-2 py-1 text-xs focus:outline-none focus:border-blue-400"
-                    autoFocus
-                  />
+                    className="w-36 border border-gray-300 rounded px-2 py-1 text-xs focus:outline-none focus:border-blue-400" autoFocus />
                   <button onClick={() => { setShowSearch(false); setQuery(''); setShowResults(false) }}
                     className="text-gray-400 hover:text-gray-600"><X size={14} /></button>
                 </div>
@@ -153,7 +140,6 @@ export default function Navbar() {
               )}
             </div>
 
-            {/* 搜索结果 */}
             {showResults && query && results.length > 0 && (
               <div ref={resultsRef} className="absolute top-full mt-1 right-0 bg-white rounded-xl border border-gray-200 shadow-xl z-[60] max-h-80 overflow-y-auto" style={{width: '380px'}}>
                 {Object.entries(grouped).map(([brand, items], gi) => (
@@ -162,8 +148,7 @@ export default function Navbar() {
                     {items.map((item, i) => (
                       <a key={i} href={item.page}
                         className="flex items-center justify-between px-3 py-2 hover:bg-blue-50 transition-colors border-b border-gray-50 last:border-0"
-                        onClick={() => { setShowResults(false); setShowSearch(false) }}
-                      >
+                        onClick={() => { setShowResults(false); setShowSearch(false) }}>
                         <div>
                           <span className="font-medium text-gray-800 text-sm">{item.model}</span>
                           <div className="flex flex-wrap gap-1 mt-0.5">
@@ -187,9 +172,23 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* 右侧：操作按钮 */}
-          <div className="flex items-center gap-2">
-            <a href="https://www.gudaoforum.com" target="_blank" rel="noopener" className="text-xs text-gray-500 hover:text-blue-600 mr-1 md:hidden">古道维修论坛</a>
+          {/* --- 右侧：操作按钮（桌面端+手机端） --- */}
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            {/* 手机端：留言板 + 客户评价 */}
+            <a href="/board" className="md:hidden text-xs text-gray-500 hover:text-blue-600 flex items-center gap-0.5" title="留言板">
+              <MessageSquare size={14} />
+            </a>
+            <a href="/#reviews" className="md:hidden text-xs text-gray-500 hover:text-blue-600 flex items-center gap-0.5" title="客户评价">
+              <Star size={14} />
+            </a>
+
+            {/* 古道维修论坛 - 桌面端显示全文，手机端显示"古" */}
+            <a href="https://www.gudaoforum.com" target="_blank" rel="noopener"
+              className="text-xs text-gray-500 hover:text-blue-600 hidden sm:inline-flex items-center">古道维修论坛</a>
+            <a href="https://www.gudaoforum.com" target="_blank" rel="noopener"
+              className="text-xs text-gray-500 hover:text-blue-600 sm:hidden inline-flex items-center font-bold" title="古道维修论坛">古</a>
+
+            {/* 抖音 */}
             <a href="https://v.douyin.com/NvUr5C82ZDM/" target="_blank" rel="noopener"
               className="flex items-center gap-1 bg-gradient-to-r from-[#00f2fe] to-[#fe2c55] text-white hover:opacity-90 text-xs font-bold px-2.5 py-1.5 rounded-lg transition-all shadow-sm shrink-0"
               title="浩哥维修实录 @Crazy维修 抖音">
@@ -215,7 +214,7 @@ export default function Navbar() {
                 <button onClick={() => setShowUserMenu(!showUserMenu)}
                   className="flex items-center gap-1 text-xs bg-blue-50 text-blue-700 hover:bg-blue-100 px-2 py-1 rounded-lg transition-colors">
                   <User size={12} />
-                  <span className="max-w-[60px] truncate">{user.username}</span>
+                  <span className="max-w-[50px] sm:max-w-[60px] truncate">{user.username}</span>
                   <ChevronDown size={10} />
                 </button>
                 {showUserMenu && (
