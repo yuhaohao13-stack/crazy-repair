@@ -4,7 +4,8 @@ import { Trash2, Download, Search, LogOut, Star, ArrowLeft, Users, MessageSquare
 
 export default function AdminPage() {
   const [token, setToken] = useState('')
-  const [tab, setTab] = useState('reviews') // reviews | users | messages
+  const [userToken, setUserToken] = useState('')
+  const [tab, setTab] = useState('reviews')
 
   // Reviews state
   const [reviews, setReviews] = useState([])
@@ -47,11 +48,12 @@ export default function AdminPage() {
         .then(d => {
           if (d.user && d.user.is_admin) {
             setUserToken(ut)
-            const t = Buffer.from(JSON.stringify({
+            const payload = JSON.stringify({
               email: 'yuhaohao13@gmail.com',
               time: Date.now(),
               sig: 'crazy_yuhaohao13@gmail.com_yhh521521',
-            })).toString('base64')
+            })
+            const t = btoa(payload)
             localStorage.setItem('crazy_admin_token', t)
             setToken(t)
           } else {
@@ -237,7 +239,6 @@ export default function AdminPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* 顶部导航 */}
       <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -248,12 +249,10 @@ export default function AdminPage() {
           </div>
           <div className="flex items-center gap-2">
             {tab === 'reviews' && (
-              <>
-                <button onClick={handleExport} disabled={exporting || total === 0}
-                  className="flex items-center gap-1.5 text-sm bg-green-600 hover:bg-green-700 disabled:bg-gray-300 text-white px-4 py-2 rounded-xl transition-colors">
-                  <Download size={16} />{exporting ? '导出中...' : '导出评价CSV'}
-                </button>
-              </>
+              <button onClick={handleExport} disabled={exporting || total === 0}
+                className="flex items-center gap-1.5 text-sm bg-green-600 hover:bg-green-700 disabled:bg-gray-300 text-white px-4 py-2 rounded-xl transition-colors">
+                <Download size={16} />{exporting ? '导出中...' : '导出评价CSV'}
+              </button>
             )}
             {tab === 'users' && (
               <button onClick={handleExportUsers} disabled={exportUsersLoading || users.length === 0}
@@ -267,7 +266,6 @@ export default function AdminPage() {
             </button>
           </div>
         </div>
-        {/* Tab导航 */}
         <div className="max-w-6xl mx-auto px-4 sm:px-6 flex gap-1">
           <button onClick={() => setTab('reviews')}
             className={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
@@ -292,10 +290,8 @@ export default function AdminPage() {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6">
 
-        {/* ============ TAB: 评价管理 ============ */}
         {tab === 'reviews' && (
           <>
-            {/* 搜索 */}
             <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4 mb-4">
               <form onSubmit={e => { e.preventDefault(); setSearch(searchInput); setPage(1); }} className="flex gap-3">
                 <div className="flex-1 relative">
@@ -324,7 +320,6 @@ export default function AdminPage() {
             ) : reviews.length === 0 ? (
               <div className="text-center py-16 bg-white rounded-2xl border border-dashed border-gray-200">
                 <p className="text-gray-400 text-lg mb-2">暂无评价</p>
-                <p className="text-gray-400 text-sm">还没有客户提交评价</p>
               </div>
             ) : (
               <>
@@ -352,7 +347,7 @@ export default function AdminPage() {
                             <div className="flex gap-2 mt-2">
                               {r.images.map((img, i) => (
                                 <a key={i} href={img} target="_blank" rel="noopener noreferrer">
-                                  <img src={img} alt="" className="w-12 h-12 rounded-lg object-cover border border-gray-100 hover:opacity-80 transition-opacity" />
+                                  <img src={img} alt="" className="w-12 h-12 rounded-lg object-cover border border-gray-100" />
                                 </a>
                               ))}
                             </div>
@@ -370,10 +365,10 @@ export default function AdminPage() {
                 {totalPages > 1 && (
                   <div className="flex items-center justify-center gap-2 mt-6">
                     <button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page <= 1}
-                      className="px-4 py-2 text-sm border border-gray-200 rounded-xl disabled:opacity-50 hover:bg-gray-50 transition-colors">上一页</button>
+                      className="px-4 py-2 text-sm border border-gray-200 rounded-xl disabled:opacity-50 hover:bg-gray-50">上一页</button>
                     <span className="text-sm text-gray-500 px-3">{page} / {totalPages}</span>
                     <button onClick={() => setPage(p => Math.min(totalPages, p + 1))} disabled={page >= totalPages}
-                      className="px-4 py-2 text-sm border border-gray-200 rounded-xl disabled:opacity-50 hover:bg-gray-50 transition-colors">下一页</button>
+                      className="px-4 py-2 text-sm border border-gray-200 rounded-xl disabled:opacity-50 hover:bg-gray-50">下一页</button>
                   </div>
                 )}
               </>
@@ -381,20 +376,17 @@ export default function AdminPage() {
           </>
         )}
 
-        {/* ============ TAB: 用户管理 ============ */}
         {tab === 'users' && (
           <>
             <div className="flex items-center justify-between mb-4">
               <p className="text-sm text-gray-500">共 {users.length} 个注册用户</p>
             </div>
-
             {usersLoading ? (
               <div className="text-center py-12 text-gray-400">加载中...</div>
             ) : users.length === 0 ? (
               <div className="text-center py-16 bg-white rounded-2xl border border-dashed border-gray-200">
                 <Users size={40} className="mx-auto mb-3 text-gray-300" />
                 <p className="text-gray-400 text-lg mb-2">暂无注册用户</p>
-                <p className="text-gray-400 text-sm">还没有用户注册</p>
               </div>
             ) : (
               <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
@@ -412,7 +404,7 @@ export default function AdminPage() {
                     </thead>
                     <tbody className="divide-y divide-gray-100">
                       {users.map(u => (
-                        <tr key={u.id} className="hover:bg-gray-50 transition-colors">
+                        <tr key={u.id} className="hover:bg-gray-50">
                           <td className="px-4 py-3 font-medium text-gray-900">
                             {u.username}
                             {u.is_admin && <span className="ml-1.5 text-xs bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded">管理员</span>}
@@ -432,7 +424,6 @@ export default function AdminPage() {
           </>
         )}
 
-        {/* ============ TAB: 留言管理 ============ */}
         {tab === 'messages' && (
           <>
             {messagesLoading ? (
