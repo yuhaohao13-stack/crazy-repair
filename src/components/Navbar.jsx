@@ -176,10 +176,10 @@ export default function Navbar() {
           <div className="flex items-center gap-1.5 sm:gap-2">
             {/* 手机端：留言板 + 客户评价 */}
             <a href="/board" className="md:hidden text-xs text-gray-500 hover:text-blue-600 flex items-center gap-0.5" title="留言板">
-              <MessageSquare size={14} />
+              <MessageSquare size={14} />留言
             </a>
             <a href="/#reviews" className="md:hidden text-xs text-gray-500 hover:text-blue-600 flex items-center gap-0.5" title="客户评价">
-              <Star size={14} />
+              <Star size={14} />评价
             </a>
 
             {/* 古道维修论坛 - 桌面端显示全文，手机端显示"古" */}
