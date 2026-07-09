@@ -1,12 +1,18 @@
 import { NextResponse } from 'next/server'
 import { getUserFromRequest } from '@/lib/auth'
+import { verifyAdminToken } from '@/lib/admin-auth'
 import { supabase } from '@/lib/supabase-server'
 
 export async function GET(req) {
   try {
-    const user = getUserFromRequest(req)
+    // 支持新用户token和旧admin token
+    let user = getUserFromRequest(req)
     if (!user || !user.is_admin) {
-      return NextResponse.json({ error: '无权限' }, { status: 403 })
+      const token = req.headers.get('authorization')?.replace('Bearer ', '')
+      if (!verifyAdminToken(token)) {
+        return NextResponse.json({ error: '无权限' }, { status: 403 })
+      }
+      user = { is_admin: true }
     }
 
     // 获取所有非管理员用户（不暴露密码）

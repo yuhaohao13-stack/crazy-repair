@@ -32,27 +32,25 @@ export default function AdminPage() {
   const pageSize = 20
 
   useEffect(() => {
-    // 优先用新用户token，退回到老admin token
-    const userToken = localStorage.getItem('crazy_user_token')
-    const adminToken = localStorage.getItem('crazy_admin_token')
+    const ut = localStorage.getItem('crazy_user_token')
+    const at = localStorage.getItem('crazy_admin_token')
 
-    if (adminToken) {
-      setToken(adminToken)
+    if (at) {
+      setToken(at)
+      if (ut) setUserToken(ut)
       return
     }
 
-    if (userToken) {
-      // 检查是否是管理员
-      fetch('/api/auth/me', { headers: { Authorization: `Bearer ${userToken}` } })
+    if (ut) {
+      fetch('/api/auth/me', { headers: { Authorization: `Bearer ${ut}` } })
         .then(r => r.json())
         .then(d => {
           if (d.user && d.user.is_admin) {
-            // 生成一个老admin-token格式的token
+            setUserToken(ut)
             const t = Buffer.from(JSON.stringify({
               email: 'yuhaohao13@gmail.com',
               time: Date.now(),
               sig: 'crazy_yuhaohao13@gmail.com_yhh521521',
-              userToken,
             })).toString('base64')
             localStorage.setItem('crazy_admin_token', t)
             setToken(t)
