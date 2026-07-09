@@ -1,5 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react'
+import PhoneInput from '../../components/PhoneInput'
 import { useRouter } from 'next/navigation'
 import { Eye, EyeOff } from 'lucide-react'
 import Navbar from '../../components/Navbar'
@@ -14,6 +15,7 @@ export default function RegisterPage() {
   })
   const [captcha, setCaptcha] = useState({ id: '', code: '', input: '' })
   const [showPassword, setShowPassword] = useState(false)
+  const [phoneCode, setPhoneCode] = useState('86')
   const [error, setError] = useState('')
   const { lang } = useSite()
   const t = (zh, en) => lang === 'zh' ? zh : en
@@ -46,11 +48,13 @@ export default function RegisterPage() {
 
     setLoading(true)
     try {
+      const fullPhone = '+' + phoneCode + form.phone
       const res = await fetch('/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...form,
+          phone: fullPhone,
           captchaId: captcha.id,
           captchaValue: captcha.input,
         }),
@@ -100,10 +104,13 @@ export default function RegisterPage() {
                   className="w-full border border-gray-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
               </div>
               <div>
-                <label className="block text-xs font-medium text-gray-700 mb-1">{t('手机号 *', 'Phone *')}</label>
-                <input type="tel" name="phone" value={form.phone} onChange={handleChange}
-                  placeholder={t('11位手机号', '11-digit phone number')} required maxLength={15}
-                  className="w-full border border-gray-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                <PhoneInput
+                  value={{ code: phoneCode, number: form.phone }}
+                  onChange={(v) => { setPhoneCode(v.code); setForm({...form, phone: v.number}) }}
+                  label={t('手机号 *', 'Phone *')}
+                  required
+                  lang={lang}
+                />
               </div>
             </div>
 

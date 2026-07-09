@@ -10,7 +10,7 @@
 // 国家代码 → 手机号本地位数
 const COUNTRY_CODES = {
   // 亚洲
-  86: { len: 11, name: '中国' },        // 1XX XXXX XXXX
+  86: { len: 11, name: '中国' },        // 13X 14X 15X 16X 17X 18X 19X（所有1开头11位）
   65: { len: 8, name: '新加坡' },        // XXXX XXXX
   852: { len: 8, name: '香港' },         // XXXX XXXX
   853: { len: 8, name: '澳门' },         // XXXX XXXX

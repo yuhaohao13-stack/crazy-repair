@@ -3,6 +3,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { useSite } from '../../lib/SiteContext'
 import { useRouter } from 'next/navigation'
 import { Eye, EyeOff, ArrowLeft, Sparkles } from 'lucide-react'
+import PhoneInput from '../../components/PhoneInput'
 import Navbar from '../../components/Navbar'
 import Breadcrumb from '../../components/Breadcrumb'
 
@@ -22,6 +23,7 @@ export default function LoginPage() {
   const [showReset, setShowReset] = useState(false)
   const [resetStep, setResetStep] = useState(1) // 1=手机号, 2=身份验证, 3=新密码
   const [resetPhone, setResetPhone] = useState('')
+  const [resetPhoneCode, setResetPhoneCode] = useState('86')
   const [resetBirthPlace, setResetBirthPlace] = useState('')
   const [resetBirthDate, setResetBirthDate] = useState('')
   const [resetNewPassword, setResetNewPassword] = useState('')
@@ -114,7 +116,7 @@ export default function LoginPage() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          phone: resetPhone.trim(),
+          phone: '+' + resetPhoneCode + resetPhone.trim(),
           birth_place: resetBirthPlace.trim(),
           birth_date: resetBirthDate.trim(),
           newPassword: resetNewPassword,
@@ -137,6 +139,7 @@ export default function LoginPage() {
     setShowReset(false)
     setResetStep(1)
     setResetPhone('')
+    setResetPhoneCode('86')
     setResetBirthPlace('')
     setResetBirthDate('')
     setResetNewPassword('')
@@ -193,10 +196,13 @@ export default function LoginPage() {
                       <h2 className="text-lg font-bold text-gray-900">{t('输入手机号', 'Enter Phone Number')}</h2>
                       <p className="text-xs text-gray-500">{t('填写注册时使用的手机号', 'Enter the phone number you registered with')}</p>
                       <div>
-                        <label className="block text-xs font-medium text-gray-700 mb-1">{t('手机号', 'Phone Number')}</label>
-                        <input type="tel" value={resetPhone} onChange={e => setResetPhone(e.target.value)}
-                          placeholder={t('输入注册手机号', 'Enter registered phone number')} required
-                          className="w-full border border-gray-300 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                        <PhoneInput
+                          value={{ code: resetPhoneCode, number: resetPhone }}
+                          onChange={(v) => { setResetPhoneCode(v.code); setResetPhone(v.number) }}
+                          label={t('手机号', 'Phone Number')}
+                          required
+                          lang={lang}
+                        />
                       </div>
                       <button type="submit"
                         className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-xl transition-colors">
