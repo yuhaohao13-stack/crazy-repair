@@ -1,6 +1,8 @@
 'use client'
 import { useState, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
+import Navbar from '../../components/Navbar'
+import Breadcrumb from '../../components/Breadcrumb'
 import { MessageSquare, Pin, ArrowLeft, Send, ImagePlus, X, User, Shield, Search } from 'lucide-react'
 import UserProfileModal from '@/components/UserProfileModal'
 import { useSite } from '../../lib/SiteContext'
@@ -198,12 +200,11 @@ export default function BoardPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Navbar />
+      <Breadcrumb items={[{ label: '留言板', labelEn: 'Message Board' }]} />
       <div className="max-w-4xl mx-auto px-4 py-8">
         <div className="flex items-center justify-between mb-6">
           <div>
-            <button onClick={() => router.push('/')} className="flex items-center gap-1 text-gray-500 hover:text-gray-700 mb-2 text-sm">
-              <ArrowLeft size={16} /> {t('返回首页', '← Home')}
-            </button>
             <h1 className="text-2xl font-bold text-gray-900">{t('留言板', 'Message Board')}</h1>
             <p className="text-sm text-gray-500">{t('发表你的想法，参与讨论', 'Share your thoughts, join the discussion')}</p>
           </div>

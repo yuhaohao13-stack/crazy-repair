@@ -2,7 +2,9 @@
 import { useState } from 'react'
 import { useSite } from '../../lib/SiteContext'
 import { useRouter } from 'next/navigation'
-import { Eye, EyeOff, ArrowLeft } from 'lucide-react'
+import { Eye, EyeOff } from 'lucide-react'
+import Navbar from '../../components/Navbar'
+import Breadcrumb from '../../components/Breadcrumb'
 
 export default function LoginPage() {
   const router = useRouter()
@@ -44,11 +46,9 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4 py-8">
+      <Navbar />
       <div className="w-full max-w-sm">
-        <button onClick={() => router.push('/')} className="flex items-center gap-1 text-gray-500 hover:text-gray-700 mb-6 text-sm">
-          <ArrowLeft size={16} /> {t('返回首页', '← Home')}
-        </button>
-
+        <Breadcrumb items={[{ label: '登录', labelEn: 'Log In' }]} />
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8">
           <h1 className="text-2xl font-bold text-gray-900 mb-1">{t('登录', 'Log In')}</h1>
           <p className="text-sm text-gray-500 mb-6">{t('用用户名或手机号登录', 'Login with username or phone')}</p>

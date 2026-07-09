@@ -2,6 +2,8 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import { ArrowLeft, Send, ImagePlus, X, User, Shield, Star, Sparkles } from 'lucide-react'
+import Navbar from '../../../components/Navbar'
+import Breadcrumb from '../../../components/Breadcrumb'
 import UserProfileModal from '@/components/UserProfileModal'
 import { useSite } from '../../../lib/SiteContext'
 
@@ -102,11 +104,12 @@ export default function ReviewDetailPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Navbar />
+      <Breadcrumb items={[
+        { label: '首页', labelEn: 'Home', href: '/' },
+        { label: '评价详情', labelEn: 'Review Detail' }
+      ]} />
       <div className="max-w-3xl mx-auto px-4 py-8">
-        <button onClick={() => router.push('/')}
-          className="flex items-center gap-1 text-gray-500 hover:text-gray-700 mb-4 text-sm">
-          <ArrowLeft size={16} /> {t('返回首页', 'Home')}
-        </button>
 
         {/* 评价主体 */}
         <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 sm:p-6 mb-6">

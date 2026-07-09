@@ -1,7 +1,9 @@
 'use client'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { ArrowLeft, Save, User, Mail, MapPin, Cake, Heart, FileText } from 'lucide-react'
+import Navbar from '../../components/Navbar'
+import Breadcrumb from '../../components/Breadcrumb'
+import { Save, User, Mail, MapPin, Cake, Heart, FileText } from 'lucide-react'
 import { useSite } from '../../lib/SiteContext'
 
 export default function ProfilePage() {
@@ -99,11 +101,11 @@ export default function ProfilePage() {
   if (!user) return null
 
   return (
+    <>
+    <Navbar />
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-2xl mx-auto px-4">
-        <button onClick={() => router.push('/')} className="flex items-center gap-1 text-gray-500 hover:text-gray-700 mb-6 text-sm">
-          <ArrowLeft size={16} /> {t('返回首页', '← Home')}
-        </button>
+        <Breadcrumb items={[{ label: '个人中心', labelEn: 'Profile' }]} />
 
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8">
           {/* 用户信息头 */}
@@ -201,5 +203,6 @@ export default function ProfilePage() {
         </div>
       </div>
     </div>
+    </>
   )
 }
