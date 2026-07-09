@@ -21,9 +21,9 @@ export default function Navbar() {
     const token = localStorage.getItem('crazy_user_token')
     if (token) {
       fetch('/api/auth/me', { headers: { Authorization: `Bearer ${token}` } })
-        .then(r => r.json())
-        .then(d => { if (d.user) setUser(d.user) })
-        .catch(() => localStorage.removeItem('crazy_user_token'))
+        .then(r => { if (r.status === 401) { localStorage.removeItem('crazy_user_token'); return null }; return r.json() })
+        .then(d => { if (d?.user) setUser(d.user) })
+        .catch(() => {})
     }
   }, [])
 

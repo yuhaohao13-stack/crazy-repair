@@ -42,8 +42,8 @@ export function verifyUserToken(token) {
     const decoded = JSON.parse(Buffer.from(token, 'base64').toString('utf-8'))
     const expectedSig = `crazy_${decoded.id}_${TOKEN_SECRET}`
     if (decoded.sig !== expectedSig) return null
-    // Token有效期：7天
-    if (Date.now() - decoded.time > 7 * 24 * 60 * 60 * 1000) return null
+    // Token有效期：30天
+    if (Date.now() - decoded.time > 30 * 24 * 60 * 60 * 1000) return null
     return decoded
   } catch {
     return null
