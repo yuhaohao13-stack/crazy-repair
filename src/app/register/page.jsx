@@ -12,7 +12,7 @@ import DatePicker from '../../components/DatePicker'
 export default function RegisterPage() {
   const router = useRouter()
   const [form, setForm] = useState({
-    username: '', phone: '', password: '', confirmPassword: '',
+    username: '', phone: '', password: '', confirmPassword: '', gender: 'male',
     birth_place: '', birth_date: '', bio: '', hobbies: '',
   })
   const [captcha, setCaptcha] = useState({ id: '', code: '', input: '' })
@@ -103,6 +103,35 @@ export default function RegisterPage() {
               <input type="text" name="username" value={form.username} onChange={handleChange}
                 placeholder={t('2-20位中英文或数字', '2-20 chars, letters/numbers')} required maxLength={20}
                 className="w-full border border-gray-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            </div>
+
+            {/* 性别 */}
+            <div>
+              <label className="block text-xs font-medium text-gray-700 mb-1">{t('性别 *', 'Gender *')}</label>
+              <div className="flex gap-3">
+                <label className={`flex-1 flex items-center justify-center gap-1 p-3 rounded-xl border cursor-pointer transition-all text-sm font-medium ${
+                  form.gender === 'male'
+                    ? 'border-blue-500 bg-blue-50 text-blue-700'
+                    : 'border-gray-300 text-gray-500 hover:border-blue-300'
+                }`}>
+                  <input type="radio" name="gender" value="male"
+                    checked={form.gender === 'male'}
+                    onChange={e => setForm({...form, gender: e.target.value})}
+                    className="hidden" />
+                  ♂ {t('男', 'Male')}
+                </label>
+                <label className={`flex-1 flex items-center justify-center gap-1 p-3 rounded-xl border cursor-pointer transition-all text-sm font-medium ${
+                  form.gender === 'female'
+                    ? 'border-blue-500 bg-blue-50 text-blue-700'
+                    : 'border-gray-300 text-gray-500 hover:border-blue-300'
+                }`}>
+                  <input type="radio" name="gender" value="female"
+                    checked={form.gender === 'female'}
+                    onChange={e => setForm({...form, gender: e.target.value})}
+                    className="hidden" />
+                  ♀ {t('女', 'Female')}
+                </label>
+              </div>
             </div>
 
             <div>

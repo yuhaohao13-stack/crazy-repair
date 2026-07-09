@@ -10,10 +10,11 @@ export async function POST(req) {
     }
 
     const body = await req.json()
-    const { birth_place, birth_date, bio, hobbies } = body
+    const { gender, birth_place, birth_date, bio, hobbies } = body
 
     // 只允许修改这些字段（用户名和手机号不可修改）
     const updates = {}
+    if (gender !== undefined) updates.gender = gender
     if (birth_place !== undefined) updates.birth_place = birth_place.trim()
     if (birth_date !== undefined) updates.birth_date = birth_date || null
     if (bio !== undefined) updates.bio = bio.trim()
@@ -27,7 +28,7 @@ export async function POST(req) {
       .from('users')
       .update(updates)
       .eq('id', user.id)
-      .select('id, username, phone, birth_place, birth_date, bio, hobbies, is_admin')
+      .select('id, username, phone, gender, birth_place, birth_date, bio, hobbies, is_admin')
       .single()
 
     if (error) throw error

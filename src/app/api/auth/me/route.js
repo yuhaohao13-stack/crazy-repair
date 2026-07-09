@@ -19,6 +19,7 @@ export async function GET(req) {
         id: dbUser.id,
         username: dbUser.username,
         phone: dbUser.phone,
+        gender: dbUser.gender || 'male',
         birth_place: dbUser.birth_place,
         birth_date: dbUser.birth_date,
         bio: dbUser.bio,

@@ -11,7 +11,7 @@ export default function ProfilePage() {
   const t = (zh, en) => lang === 'zh' ? zh : en
   const router = useRouter()
   const [user, setUser] = useState(null)
-  const [form, setForm] = useState({ birth_place: '', birth_date: '', bio: '', hobbies: '' })
+  const [form, setForm] = useState({ birth_place: '', birth_date: '', bio: '', hobbies: '', gender: 'male' })
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [message, setMessage] = useState({ type: '', text: '' })
@@ -42,6 +42,7 @@ export default function ProfilePage() {
             birth_date: data.user.birth_date || '',
             bio: data.user.bio || '',
             hobbies: data.user.hobbies || '',
+            gender: data.user.gender || 'male',
           })
         }
       })
@@ -149,6 +150,12 @@ export default function ProfilePage() {
               <div className="text-sm font-medium text-gray-800">{user.phone}</div>
               <div className="text-xs text-gray-400 mt-0.5">{t('不可修改', 'Cannot be changed')}</div>
             </div>
+            {user.gender && (
+            <div className="bg-gray-50 rounded-xl p-3">
+              <div className="flex items-center gap-1.5 text-xs text-gray-400 mb-1">性别</div>
+              <div className="text-sm font-medium text-gray-800">{user.gender === 'male' ? '♂ 男' : '♀ 女'}</div>
+            </div>
+            )}
           </div>
 
           {/* 可修改表单 */}
@@ -163,12 +170,36 @@ export default function ProfilePage() {
                   className="w-full border border-gray-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
               </div>
               <div>
-                <label className="flex items-center gap-1 text-xs font-medium text-gray-700 mb-1">
-                  <Cake size={12} /> {t('出生年月', 'Birth Date')}
-                </label>
-                <input type="date" name="birth_date" value={form.birth_date} onChange={handleChange}
-                  className="w-full border border-gray-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                <label className="flex items-center gap-1 text-xs font-medium text-gray-700 mb-1">{t('性别', 'Gender')}</label>
+                <div className="flex gap-2">
+                  <label className={`flex-1 flex items-center justify-center p-2.5 rounded-xl border cursor-pointer text-sm font-medium ${
+                    form.gender === 'male' ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-gray-300 text-gray-500'
+                  }`}>
+                    <input type="radio" name="gender" value="male"
+                      checked={form.gender === 'male'}
+                      onChange={e => setForm({...form, gender: e.target.value})}
+                      className="hidden" />
+                    ♂ {t('男', 'Male')}
+                  </label>
+                  <label className={`flex-1 flex items-center justify-center p-2.5 rounded-xl border cursor-pointer text-sm font-medium ${
+                    form.gender === 'female' ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-gray-300 text-gray-500'
+                  }`}>
+                    <input type="radio" name="gender" value="female"
+                      checked={form.gender === 'female'}
+                      onChange={e => setForm({...form, gender: e.target.value})}
+                      className="hidden" />
+                    ♀ {t('女', 'Female')}
+                  </label>
+                </div>
               </div>
+            </div>
+
+            <div>
+              <label className="flex items-center gap-1 text-xs font-medium text-gray-700 mb-1">
+                <Cake size={12} /> {t('出生年月', 'Birth Date')}
+              </label>
+              <input type="date" name="birth_date" value={form.birth_date} onChange={handleChange}
+                className="w-full border border-gray-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
             </div>
 
             <div>
