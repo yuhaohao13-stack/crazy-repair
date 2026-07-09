@@ -33,7 +33,7 @@ export default function Footer() {
               <li><a href="/#services" className="hover:text-white transition-colors">{t('服务项目', 'Services')}</a></li>
               <li><a href="/#about" className="hover:text-white transition-colors">{t('关于我们', 'About Us')}</a></li>
               <li><a href="/#reviews" className="hover:text-white transition-colors">{t('客户评价', 'Reviews')}</a></li>
-              <li><a href="/board" className="hover:text-white transition-colors">{t('留言板', 'Board')}</a></li>
+              <li><a href="/board" className="hover:text-white transition-colors">{t('维修求助', 'Repair Help')}</a></li>
               <li><a href="/#faq" className="hover:text-white transition-colors">{t('常见问题', 'FAQ')}</a></li>
             </ul>
           </div>

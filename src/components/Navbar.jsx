@@ -114,7 +114,7 @@ export default function Navbar() {
               <Star size={10} /> 客户评价
             </a>
             <a href="/board" className="hover:text-blue-600 whitespace-nowrap flex items-center gap-0.5">
-              <MessageSquare size={10} /> 留言板
+              <MessageSquare size={10} /> 维修求助
             </a>
 
             <span className="text-gray-300 mx-1">|</span>
@@ -175,8 +175,8 @@ export default function Navbar() {
           {/* --- 右侧：操作按钮（桌面端+手机端） --- */}
           <div className="flex items-center gap-1.5 sm:gap-2">
             {/* 手机端：留言板 + 客户评价 */}
-            <a href="/board" className="md:hidden text-xs text-gray-500 hover:text-blue-600 flex items-center gap-0.5" title="留言板">
-              <MessageSquare size={14} />留言
+            <a href="/board" className="md:hidden text-xs text-gray-500 hover:text-blue-600 flex items-center gap-0.5" title="维修求助">
+              <MessageSquare size={14} />维修求助
             </a>
             <a href="/#reviews" className="md:hidden text-xs text-gray-500 hover:text-blue-600 flex items-center gap-0.5" title="客户评价">
               <Star size={14} />评价
@@ -223,7 +223,7 @@ export default function Navbar() {
                       <User size={12} /> 个人中心
                     </a>
                     <a href="/board" className="block px-3 py-2 text-xs text-gray-700 hover:bg-gray-50 flex items-center gap-1.5">
-                      <MessageSquare size={12} /> 留言板
+                      <MessageSquare size={12} /> 维修求助
                     </a>
                     {user.is_admin && (
                       <a href="/admin" className="block px-3 py-2 text-xs text-amber-600 hover:bg-gray-50 flex items-center gap-1.5">
