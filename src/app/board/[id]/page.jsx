@@ -118,10 +118,11 @@ export default function MessageDetailPage() {
             </div>
             <div>
               <div className="flex items-center gap-1.5">
-                <span className="font-semibold text-sm text-gray-900">{message.user?.username || '未知用户'}</span>
-                {user?.is_admin && message.user?.id && (
+                {user?.is_admin && message.user?.id ? (
                   <button onClick={() => setProfileUserId(message.user.id)}
-                    className="ml-1 text-blue-500 hover:text-blue-700 text-xs">🔍</button>
+                    className="font-semibold text-sm text-blue-600 hover:text-blue-800">{message.user.username}</button>
+                ) : (
+                  <span className="font-semibold text-sm text-gray-900">{message.user?.username || '未知用户'}</span>
                 )}
                 {message.user?.is_admin && <span className="text-xs bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded">管理员</span>}
               </div>

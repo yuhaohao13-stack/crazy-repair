@@ -125,10 +125,11 @@ export default function ReviewDetailPage() {
             </div>
             <div>
               <div className="flex items-center gap-1.5">
-                <span className="font-semibold text-sm text-gray-900">{review.name}</span>
-                {user?.is_admin && review.user_id && (
+                {user?.is_admin && review.user_id ? (
                   <button onClick={() => setProfileUserId(review.user_id)}
-                    className="ml-0.5 text-blue-500 hover:text-blue-700 text-xs">🔍</button>
+                    className="font-semibold text-sm text-blue-600 hover:text-blue-800">{review.name}</button>
+                ) : (
+                  <span className="font-semibold text-sm text-gray-900">{review.name}</span>
                 )}
               </div>
               <div className="text-xs text-gray-400">{review.phone} · {formatDate(review.created_at)}</div>
