@@ -6,7 +6,7 @@ import { validatePhone } from '@/lib/phone'
 export async function POST(req) {
   try {
     const body = await req.json()
-    const { username, phone, password, birth_place, birth_date, bio, hobbies, captchaId, captchaValue } = body
+    const { username, phone, password, birth_place, birth_date, bio, hobbies, address, captchaId, captchaValue } = body
 
     // 验证必填
     if (!username?.trim()) return NextResponse.json({ error: '请输入用户名' }, { status: 400 })
@@ -66,6 +66,7 @@ export async function POST(req) {
         birth_date: birth_date || null,
         bio: bio?.trim() || '',
         hobbies: hobbies?.trim() || '',
+        address: address?.trim() || '',
         is_admin: false,
       })
       .select('id, username, phone, is_admin')
