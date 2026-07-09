@@ -1,11 +1,104 @@
 'use client'
 import { useState, useEffect, useRef, useCallback } from 'react'
-import { Star, ImagePlus, X, ShieldCheck, Sparkles } from 'lucide-react'
+import { Star, ImagePlus, X, ShieldCheck, Sparkles, Send, User, Shield, ChevronDown, ChevronUp } from 'lucide-react'
 
-// ========== 评价详情弹窗 ==========
-function ReviewDetailModal({ review, onClose, isAdmin }) {
+// ========== 评价详情弹窗（含回复） ==========
+function ReviewDetailModal({ review, onClose, isAdmin, user }) {
+  const [replies, setReplies] = useState([])
+  const [replyContent, setReplyContent] = useState('')
+  const [replyImages, setReplyImages] = useState([])
+  const [captcha, setCaptcha] = useState({ id: null, code: '' })
+  const [captchaInput, setCaptchaInput] = useState('')
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState('')
+  const fileInputRef = useRef(null)
+
   if (!review) return null
-  
+
+  const loadCaptcha = useCallback(async () => {
+    try {
+      const res = await fetch('/api/reviews/captcha')
+      const data = await res.json()
+      setCaptcha({ id: data.captchaId, code: data.code })
+    } catch { /* ignore */ }
+  }, [])
+
+  // 加载回复
+  const loadReplies = useCallback(async () => {
+    try {
+      const res = await fetch(`/api/messages/reply?targetType=review&targetId=${review.id}`)
+      const data = await res.json()
+      setReplies(data.replies || [])
+    } catch { /* ignore */ }
+  }, [review.id])
+
+  useEffect(() => {
+    loadReplies()
+    loadCaptcha()
+  }, [loadReplies, loadCaptcha])
+
+  const handleReplyImage = (e) => {
+    const files = Array.from(e.target.files || [])
+    if (replyImages.length + files.length > 3) {
+      setError('最多3张图片')
+      return
+    }
+    for (const file of files) {
+      if (file.size > 5 * 1024 * 1024) {
+        setError(`${file.name} 超过5MB`)
+        continue
+      }
+      const reader = new FileReader()
+      reader.onload = (ev) => setReplyImages(prev => [...prev, ev.target.result])
+      reader.readAsDataURL(file)
+    }
+  }
+
+  const handleReply = async (e) => {
+    e.preventDefault()
+    if (!replyContent.trim()) return
+    setError('')
+    setSubmitting(true)
+
+    try {
+      const token = localStorage.getItem('crazy_user_token')
+      if (!token) {
+        setError('请先登录')
+        setSubmitting(false)
+        return
+      }
+
+      const res = await fetch('/api/messages/reply', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          content: replyContent,
+          images: replyImages,
+          targetType: 'review',
+          targetId: review.id,
+          captchaId: captcha.id,
+          captchaValue: captchaInput,
+        }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error)
+
+      setReplyContent('')
+      setReplyImages([])
+      setCaptchaInput('')
+      loadCaptcha()
+      loadReplies()
+    } catch (err) {
+      setError(err.message)
+      loadCaptcha()
+    } finally {
+      setSubmitting(false)
+    }
+  }
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm" onClick={onClose}>
       <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl" onClick={e => e.stopPropagation()}>
@@ -28,32 +121,31 @@ function ReviewDetailModal({ review, onClose, isAdmin }) {
         <div className="p-6 space-y-5">
           {/* 标题 */}
           <h3 className="text-xl font-bold text-gray-900">{review.title}</h3>
-          
+
           {/* 评价内容 */}
           <p className="text-gray-700 leading-relaxed text-base">&ldquo;{review.content}&rdquo;</p>
-          
-          {/* 图片 */}
+
+          {/* 图片 - 最大宽度不超过页面1/2 */}
           {review.images?.length > 0 && (
             <div>
               <p className="text-sm font-medium text-gray-500 mb-3">图片 ({review.images.length})</p>
-              <div className="grid gap-3" style={{
-                gridTemplateColumns: review.images.length === 1 ? '1fr' : 'repeat(auto-fit, minmax(200px, 1fr))'
-              }}>
+              <div className="flex flex-wrap gap-3">
                 {review.images.map((img, i) => (
                   <a key={i} href={img} target="_blank" rel="noopener noreferrer"
-                    className="block rounded-xl overflow-hidden border border-gray-200 hover:opacity-95 transition-opacity">
+                    className="block rounded-xl overflow-hidden border border-gray-200 hover:opacity-95 transition-opacity"
+                    style={{ maxWidth: '50%' }}>
                     <img src={img} alt="" className="w-full h-auto max-h-80 object-contain bg-gray-50" loading="lazy" />
                   </a>
                 ))}
               </div>
             </div>
           )}
-          
+
           {/* 用户信息 */}
           <div className="border-t border-gray-100 pt-4 flex items-center justify-between text-sm">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold text-sm">
-                {review.name?.charAt(0)}
+                {review.user_id ? <User size={18} /> : review.name?.charAt(0)}
               </div>
               <div>
                 <p className="font-medium text-gray-900">{review.name}</p>
@@ -63,6 +155,90 @@ function ReviewDetailModal({ review, onClose, isAdmin }) {
             <div className="text-xs text-gray-400">
               {new Date(review.created_at).toLocaleDateString('zh-CN')}
             </div>
+          </div>
+
+          {/* 回复列表 */}
+          {replies.length > 0 && (
+            <div className="border-t border-gray-100 pt-4">
+              <h4 className="text-sm font-bold text-gray-700 mb-3">
+                回复 ({replies.length})
+              </h4>
+              <div className="space-y-3">
+                {replies.map(reply => (
+                  <div key={reply.id} className={`p-3 rounded-xl ${reply.is_admin_reply ? 'bg-blue-50 border border-blue-100' : 'bg-gray-50'}`}>
+                    <div className="flex items-center gap-1.5 mb-1">
+                      <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center">
+                        {reply.is_admin_reply ? <Shield size={12} className="text-amber-600" /> : <User size={12} className="text-blue-600" />}
+                      </div>
+                      <span className="font-medium text-xs text-gray-800">{reply.user?.username || '用户'}</span>
+                      {reply.is_admin_reply && <span className="text-xs bg-blue-100 text-blue-600 px-1.5 py-0.5 rounded">官方回复</span>}
+                      <span className="text-xs text-gray-400">{new Date(reply.created_at).toLocaleDateString('zh-CN')}</span>
+                    </div>
+                    <p className="text-sm text-gray-600 ml-7">{reply.content}</p>
+                    {reply.images && reply.images.length > 0 && (
+                      <div className="flex flex-wrap gap-2 mt-2 ml-7">
+                        {reply.images.map((img, i) => (
+                          <img key={i} src={img} alt=""
+                            className="rounded-lg object-cover border border-gray-100 cursor-pointer"
+                            style={{ maxWidth: '40%', maxHeight: '150px' }}
+                            onClick={() => window.open(img, '_blank')} />
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* 回复表单 */}
+          <div className="border-t border-gray-100 pt-4">
+            <h4 className="text-sm font-bold text-gray-700 mb-3">发表回复</h4>
+            {error && <div className="bg-red-50 text-red-600 text-sm p-3 rounded-xl mb-3">{error}</div>}
+            <form onSubmit={handleReply} className="space-y-3">
+              <textarea value={replyContent} onChange={e => setReplyContent(e.target.value)}
+                placeholder={user ? "写下你的回复..." : "请先登录后再回复"}
+                rows={3} required
+                className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none resize-none" />
+
+              {/* 图片 */}
+              <div className="flex flex-wrap items-center gap-2">
+                {replyImages.map((img, i) => (
+                  <div key={i} className="relative">
+                    <img src={img} alt="" className="w-14 h-14 rounded-lg object-cover border border-gray-200" />
+                    <button type="button" onClick={() => setReplyImages(prev => prev.filter((_, j) => j !== i))}
+                      className="absolute -top-1.5 -right-1.5 bg-red-500 text-white rounded-full p-0.5">
+                      <X size={12} />
+                    </button>
+                  </div>
+                ))}
+                {replyImages.length < 3 && (
+                  <label className="w-14 h-14 rounded-lg border-2 border-dashed border-gray-300 flex items-center justify-center cursor-pointer hover:border-blue-400">
+                    <ImagePlus size={18} className="text-gray-400" />
+                    <input type="file" accept="image/*" className="hidden" onChange={handleReplyImage} />
+                  </label>
+                )}
+              </div>
+
+              {/* 验证码 */}
+              <div className="flex items-center gap-3">
+                <div className="bg-gradient-to-r from-blue-50 to-blue-100 border border-blue-200 rounded-xl px-4 py-2 select-none">
+                  <span className="text-lg font-bold tracking-[0.3em] text-blue-700 font-mono">{captcha.code || '····'}</span>
+                </div>
+                <input type="text" value={captchaInput} onChange={e => setCaptchaInput(e.target.value)}
+                  placeholder="验证码" required maxLength={4}
+                  className="w-24 border border-gray-200 rounded-xl px-3 py-2 text-sm text-center tracking-widest focus:ring-2 focus:ring-blue-500 outline-none" />
+                <button type="button" onClick={loadCaptcha} className="p-2 text-gray-400 hover:text-blue-600" title="刷新">
+                  <Sparkles size={16} />
+                </button>
+              </div>
+
+              <button type="submit" disabled={submitting || !user}
+                className="flex items-center gap-1 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white text-sm font-medium px-4 py-2 rounded-xl transition-colors">
+                <Send size={14} /> {submitting ? '发送中...' : '发送回复'}
+              </button>
+              {!user && <p className="text-xs text-gray-400"><a href="/login" className="text-blue-600">登录</a>后即可回复</p>}
+            </form>
           </div>
         </div>
       </div>
@@ -90,7 +266,7 @@ function ReviewCard({ review, onClick }) {
       <p className="text-gray-600 text-xs sm:text-sm leading-relaxed mb-3 flex-1 line-clamp-4">
         &ldquo;{review.content}&rdquo;
       </p>
-      {/* 图片 */}
+      {/* 图片 - 不超过50%宽度 */}
       {review.images?.length > 0 && (
         <div className="flex gap-2 mb-3 flex-wrap">
           {review.images.map((img, i) => (
@@ -99,6 +275,7 @@ function ReviewCard({ review, onClick }) {
               src={img}
               alt="评价图片"
               className="w-16 h-16 sm:w-20 sm:h-20 rounded-lg object-cover border border-gray-100"
+              style={{ maxWidth: '50%' }}
               loading="lazy"
             />
           ))}
@@ -113,25 +290,19 @@ function ReviewCard({ review, onClick }) {
   )
 }
 
-// ========== 评价紧凑列表（替代轮播） ==========
+// ========== 评价紧凑列表 ==========
 function ReviewList({ reviews, onCardClick }) {
   if (!reviews.length) return null
-
-  // 前3条：大卡片展示
   const featured = reviews.slice(0, 3)
-  // 后面的：紧凑列表
   const rest = reviews.slice(3)
 
   return (
     <div className="space-y-6">
-      {/* 前3条大卡片 */}
       <div className="grid sm:grid-cols-3 gap-4">
         {featured.map(r => (
           <ReviewCard key={r.id} review={r} onClick={onCardClick} />
         ))}
       </div>
-
-      {/* 后面的紧凑列表 */}
       {rest.length > 0 && (
         <div className="space-y-2">
           {rest.map(r => (
@@ -139,19 +310,16 @@ function ReviewList({ reviews, onCardClick }) {
               onClick={() => onCardClick(r)}
               className="bg-white rounded-xl px-4 py-3 border border-gray-100 cursor-pointer hover:bg-gray-50 hover:border-gray-200 transition-all flex items-center gap-3"
             >
-              {/* 星级 */}
               <div className="flex text-amber-400 shrink-0">
                 {[1,2,3,4,5].map(s => (
                   <Star key={s} size={13} fill={s <= r.rating ? 'currentColor' : 'none'}
                     className={s <= r.rating ? 'text-amber-400' : 'text-gray-200'} />
                 ))}
               </div>
-              {/* 标题 + 摘要 */}
               <div className="flex-1 min-w-0">
                 <span className="text-sm font-medium text-gray-900 line-clamp-1">{r.title}</span>
                 <span className="text-xs text-gray-400 ml-2 line-clamp-1">&ldquo;{r.content}&rdquo;</span>
               </div>
-              {/* 用户名 */}
               <span className="text-xs text-gray-400 shrink-0">{r.name}</span>
             </div>
           ))}
@@ -162,9 +330,13 @@ function ReviewList({ reviews, onCardClick }) {
 }
 
 // ========== 评价表单 ==========
-function ReviewForm({ onClose, onSubmitted }) {
-  const [step, setStep] = useState('form') // form | success
-  const [form, setForm] = useState({ name: '', phone: '', title: '', content: '', rating: 5 })
+function ReviewForm({ onClose, onSubmitted, user }) {
+  const [step, setStep] = useState('form')
+  const [form, setForm] = useState({
+    name: user?.username || '',
+    phone: user?.phone || '',
+    title: '', content: '', rating: 5,
+  })
   const [images, setImages] = useState([])
   const [captcha, setCaptcha] = useState({ id: null, code: '' })
   const [captchaInput, setCaptchaInput] = useState('')
@@ -172,20 +344,25 @@ function ReviewForm({ onClose, onSubmitted }) {
   const [error, setError] = useState('')
   const fileInputRef = useRef(null)
 
-  // 加载验证码
+  useEffect(() => {
+    // 自动从用户信息填表
+    if (user) {
+      setForm(f => ({ ...f, name: user.username, phone: user.phone }))
+    }
+  }, [user])
+
   const loadCaptcha = useCallback(async () => {
     try {
       const res = await fetch('/api/reviews/captcha')
       const data = await res.json()
       setCaptcha({ id: data.captchaId, code: data.code })
     } catch {
-      setError('加载验证码失败，请刷新重试')
+      setError('加载验证码失败')
     }
   }, [])
 
   useEffect(() => { loadCaptcha() }, [loadCaptcha])
 
-  // 图片选择
   const handleImageSelect = (e) => {
     const files = Array.from(e.target.files || [])
     if (images.length + files.length > 3) {
@@ -195,7 +372,6 @@ function ReviewForm({ onClose, onSubmitted }) {
     const newImages = files.map(f => ({
       file: f,
       preview: URL.createObjectURL(f),
-      uploading: false,
     }))
     setImages(prev => [...prev, ...newImages])
     setError('')
@@ -208,14 +384,12 @@ function ReviewForm({ onClose, onSubmitted }) {
     })
   }
 
-  // 提交
   const handleSubmit = async (e) => {
     e.preventDefault()
     setError('')
     setSubmitting(true)
 
     try {
-      // 1. 先上传图片
       let imageUrls = []
       if (images.length > 0) {
         const formData = new FormData()
@@ -226,7 +400,6 @@ function ReviewForm({ onClose, onSubmitted }) {
         imageUrls = uploadData.urls
       }
 
-      // 2. 提交评价
       const res = await fetch('/api/reviews/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -250,13 +423,13 @@ function ReviewForm({ onClose, onSubmitted }) {
         onSubmitted?.()
         onClose?.()
         setStep('form')
-        setForm({ name: '', phone: '', title: '', content: '', rating: 5 })
+        setForm({ name: user?.username || '', phone: user?.phone || '', title: '', content: '', rating: 5 })
         setImages([])
         setCaptchaInput('')
       }, 2000)
     } catch (err) {
       setError(err.message)
-      loadCaptcha() // 刷新验证码
+      loadCaptcha()
       setCaptchaInput('')
     } finally {
       setSubmitting(false)
@@ -277,7 +450,6 @@ function ReviewForm({ onClose, onSubmitted }) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      {/* 评分 */}
       <div className="flex items-center gap-2">
         <span className="text-sm text-gray-600 font-medium">评分：</span>
         <div className="flex gap-1">
@@ -293,157 +465,84 @@ function ReviewForm({ onClose, onSubmitted }) {
         </div>
       </div>
 
-      {/* 用户名 */}
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1">用户名 *</label>
-        <input
-          type="text"
-          value={form.name}
-          onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-          placeholder="请输入您的称呼"
-          required
-          maxLength={30}
-          className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-shadow"
-        />
+        <input type="text" value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+          placeholder="请输入称呼" required maxLength={30}
+          className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" />
       </div>
 
-      {/* 手机号 */}
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1">手机号 *</label>
-        <input
-          type="tel"
-          value={form.phone}
-          onChange={e => setForm(f => ({ ...f, phone: e.target.value }))}
-          placeholder="请输入手机号"
-          required
-          maxLength={15}
-          className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-shadow"
-        />
+        <input type="tel" value={form.phone} onChange={e => setForm(f => ({ ...f, phone: e.target.value }))}
+          placeholder="请输入手机号" required maxLength={15}
+          className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" />
       </div>
 
-      {/* 标题 */}
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1">标题 *</label>
-        <input
-          type="text"
-          value={form.title}
-          onChange={e => setForm(f => ({ ...f, title: e.target.value }))}
-          placeholder="给这次维修一个评价标题"
-          required
-          maxLength={100}
-          className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-shadow"
-        />
+        <input type="text" value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))}
+          placeholder="给这次维修一个评价标题" required maxLength={100}
+          className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" />
       </div>
 
-      {/* 内容 */}
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1">评价内容 *</label>
-        <textarea
-          value={form.content}
-          onChange={e => setForm(f => ({ ...f, content: e.target.value }))}
-          placeholder="分享一下您的维修体验..."
-          required
-          rows={4}
-          maxLength={1000}
-          className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-shadow resize-none"
-        />
+        <textarea value={form.content} onChange={e => setForm(f => ({ ...f, content: e.target.value }))}
+          placeholder="分享一下您的维修体验..." required rows={4} maxLength={1000}
+          className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none resize-none" />
       </div>
 
-      {/* 图片上传 */}
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1">
-          图片（最多3张，可选）
-          <span className="text-gray-400 font-normal ml-1">支持 JPG/PNG/WebP/GIF，单张不超5MB</span>
+          图片（最多3张，可选）<span className="text-gray-400 font-normal ml-1">支持 JPG/PNG/WebP/GIF，单张不超5MB</span>
         </label>
         <div className="flex gap-2 flex-wrap">
           {images.map((img, i) => (
             <div key={i} className="relative w-20 h-20 rounded-xl overflow-hidden border border-gray-200">
               <img src={img.preview} alt="预览" className="w-full h-full object-cover" />
-              <button
-                type="button"
-                onClick={() => removeImage(i)}
-                className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-0.5"
-              >
+              <button type="button" onClick={() => removeImage(i)}
+                className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-0.5">
                 <X size={14} />
               </button>
             </div>
           ))}
           {images.length < 3 && (
-            <button
-              type="button"
-              onClick={() => fileInputRef.current?.click()}
-              className="w-20 h-20 rounded-xl border-2 border-dashed border-gray-200 flex flex-col items-center justify-center text-gray-400 hover:border-blue-400 hover:text-blue-500 transition-colors"
-            >
+            <button type="button" onClick={() => fileInputRef.current?.click()}
+              className="w-20 h-20 rounded-xl border-2 border-dashed border-gray-200 flex flex-col items-center justify-center text-gray-400 hover:border-blue-400 hover:text-blue-500 transition-colors">
               <ImagePlus size={24} />
               <span className="text-xs mt-1">添加</span>
             </button>
           )}
         </div>
-        <input
-          ref={fileInputRef}
-          type="file"
-          accept="image/jpeg,image/png,image/webp,image/gif"
-          multiple
-          onChange={handleImageSelect}
-          className="hidden"
-        />
+        <input ref={fileInputRef} type="file" accept="image/jpeg,image/png,image/webp,image/gif" multiple onChange={handleImageSelect} className="hidden" />
       </div>
 
-      {/* 验证码 */}
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1">验证码 *</label>
         <div className="flex items-center gap-3">
           <div className="bg-gradient-to-r from-blue-50 to-blue-100 border border-blue-200 rounded-xl px-5 py-3 select-none">
-            <span className="text-xl font-bold tracking-[0.4em] text-blue-700 font-mono">
-              {captcha.code}
-            </span>
+            <span className="text-xl font-bold tracking-[0.4em] text-blue-700 font-mono">{captcha.code}</span>
           </div>
-          <input
-            type="text"
-            value={captchaInput}
-            onChange={e => setCaptchaInput(e.target.value)}
-            placeholder="输入上方数字"
-            required
-            maxLength={4}
-            className="flex-1 px-4 py-2.5 border border-gray-200 rounded-xl text-sm text-center font-mono tracking-widest focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-shadow"
-          />
-          <button
-            type="button"
-            onClick={loadCaptcha}
-            className="p-2.5 text-gray-400 hover:text-blue-600 transition-colors"
-            title="刷新验证码"
-          >
+          <input type="text" value={captchaInput} onChange={e => setCaptchaInput(e.target.value)}
+            placeholder="输入上方数字" required maxLength={4}
+            className="flex-1 px-4 py-2.5 border border-gray-200 rounded-xl text-sm text-center font-mono tracking-widest focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" />
+          <button type="button" onClick={loadCaptcha} className="p-2.5 text-gray-400 hover:text-blue-600" title="刷新">
             <Sparkles size={20} />
           </button>
         </div>
       </div>
 
-      {/* 错误提示 */}
-      {error && (
-        <div className="bg-red-50 border border-red-200 text-red-600 text-sm rounded-xl px-4 py-3">
-          {error}
-        </div>
-      )}
+      {error && <div className="bg-red-50 border border-red-200 text-red-600 text-sm rounded-xl px-4 py-3">{error}</div>}
 
-      {/* 提交按钮 */}
-      <button
-        type="submit"
-        disabled={submitting}
-        className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold py-3 rounded-xl transition-colors flex items-center justify-center gap-2"
-      >
+      <button type="submit" disabled={submitting}
+        className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
         {submitting ? (
-          <>
-            <span className="animate-spin w-4 h-4 border-2 border-white border-t-transparent rounded-full" />
-            提交中...
-          </>
-        ) : (
-          '提交评价'
-        )}
+          <><span className="animate-spin w-4 h-4 border-2 border-white border-t-transparent rounded-full" />提交中...</>
+        ) : '提交评价'}
       </button>
 
-      <p className="text-xs text-gray-400 text-center">
-        提交即表示您同意我们展示您的评价内容
-      </p>
+      <p className="text-xs text-gray-400 text-center">提交即表示您同意我们展示您的评价内容</p>
     </form>
   )
 }
@@ -457,15 +556,22 @@ export default function ReviewSection({ showAdminButton = true }) {
   const [showAdminLogin, setShowAdminLogin] = useState(false)
   const [adminEmail, setAdminEmail] = useState('')
   const [selectedReview, setSelectedReview] = useState(null)
-  
-  const onCardClick = useCallback((review) => {
-    setSelectedReview(review)
-  }, [])
+  const [user, setUser] = useState(null)
   const [adminPassword, setAdminPassword] = useState('')
   const [adminToken, setAdminToken] = useState('')
   const [adminError, setAdminError] = useState('')
 
-  // 加载评价
+  // 检查登录状态
+  useEffect(() => {
+    const token = localStorage.getItem('crazy_user_token')
+    if (token) {
+      fetch('/api/auth/me', { headers: { Authorization: `Bearer ${token}` } })
+        .then(r => r.json())
+        .then(d => { if (d.user) setUser(d.user) })
+        .catch(() => {})
+    }
+  }, [])
+
   const loadReviews = useCallback(async () => {
     try {
       const res = await fetch('/api/reviews/list?pageSize=50')
@@ -481,13 +587,11 @@ export default function ReviewSection({ showAdminButton = true }) {
 
   useEffect(() => { loadReviews() }, [loadReviews])
 
-  // 检查是否有admin token
   useEffect(() => {
     const token = localStorage.getItem('crazy_admin_token')
     if (token) setAdminToken(token)
   }, [])
 
-  // Admin登录
   const handleAdminLogin = async (e) => {
     e.preventDefault()
     setAdminError('')
@@ -510,46 +614,34 @@ export default function ReviewSection({ showAdminButton = true }) {
     }
   }
 
-  // 计算平均分
   const avgRating = reviews.length > 0
     ? (reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length).toFixed(1)
     : '0.0'
 
   return (
-    <section className="py-12 sm:py-16 bg-gray-50">
+    <section id="reviews" className="py-12 sm:py-16 bg-gray-50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        {/* 标题行 */}
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
-              客户评价
-            </h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">客户评价</h2>
             {total > 0 && (
-              <p className="text-gray-500 text-sm mt-1">
-                共 {total} 条评价 · 平均评分 {avgRating} ⭐
-              </p>
+              <p className="text-gray-500 text-sm mt-1">共 {total} 条评价 · 平均评分 {avgRating} ⭐</p>
             )}
           </div>
           <div className="flex items-center gap-3">
-            <button
-              onClick={() => setShowForm(true)}
-              className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-5 py-2.5 rounded-xl transition-colors shadow-sm"
-            >
+            <button onClick={() => setShowForm(true)}
+              className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-5 py-2.5 rounded-xl transition-colors shadow-sm">
               写评价 ✍️
             </button>
             {showAdminButton && (
-              <button
-                onClick={() => setShowAdminLogin(true)}
-                className="text-gray-400 hover:text-blue-600 text-xs font-medium px-3 py-2 rounded-lg transition-colors"
-                title="管理员"
-              >
+              <button onClick={() => setShowAdminLogin(true)}
+                className="text-gray-400 hover:text-blue-600 text-xs font-medium px-3 py-2 rounded-lg transition-colors" title="管理员">
                 🔧
               </button>
             )}
           </div>
         </div>
 
-        {/* 轮播区域 */}
         {loading ? (
           <div className="grid sm:grid-cols-3 gap-4">
             {[1, 2, 3].map(i => (
@@ -562,20 +654,16 @@ export default function ReviewSection({ showAdminButton = true }) {
             ))}
           </div>
         ) : reviews.length > 0 ? (
-          <ReviewList reviews={reviews} onCardClick={onCardClick} />
+          <ReviewList reviews={reviews} onCardClick={setSelectedReview} />
         ) : (
           <div className="text-center py-12 bg-white rounded-2xl border border-dashed border-gray-200">
             <p className="text-gray-400 mb-3">暂无评价</p>
-            <button
-              onClick={() => setShowForm(true)}
-              className="text-blue-600 font-medium hover:text-blue-700 transition-colors"
-            >
+            <button onClick={() => setShowForm(true)}
+              className="text-blue-600 font-medium hover:text-blue-700 transition-colors">
               成为第一个评价的人 →
             </button>
           </div>
         )}
-
-
 
         {/* 评价表单 Modal */}
         {showForm && (
@@ -588,10 +676,7 @@ export default function ReviewSection({ showAdminButton = true }) {
                 </button>
               </div>
               <div className="p-6">
-                <ReviewForm
-                  onClose={() => setShowForm(false)}
-                  onSubmitted={loadReviews}
-                />
+                <ReviewForm onClose={() => setShowForm(false)} onSubmitted={loadReviews} user={user} />
               </div>
             </div>
           </div>
@@ -610,29 +695,17 @@ export default function ReviewSection({ showAdminButton = true }) {
               <form onSubmit={handleAdminLogin} className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">邮箱</label>
-                  <input
-                    type="email"
-                    value={adminEmail}
-                    onChange={e => setAdminEmail(e.target.value)}
-                    placeholder="管理员邮箱"
-                    required
-                    className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                  />
+                  <input type="email" value={adminEmail} onChange={e => setAdminEmail(e.target.value)}
+                    placeholder="管理员邮箱" required
+                    className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">密码</label>
-                  <input
-                    type="password"
-                    value={adminPassword}
-                    onChange={e => setAdminPassword(e.target.value)}
-                    placeholder="管理员密码"
-                    required
-                    className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                  />
+                  <input type="password" value={adminPassword} onChange={e => setAdminPassword(e.target.value)}
+                    placeholder="管理员密码" required
+                    className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" />
                 </div>
-                {adminError && (
-                  <div className="bg-red-50 border border-red-200 text-red-600 text-sm rounded-xl px-4 py-3">{adminError}</div>
-                )}
+                {adminError && <div className="bg-red-50 border border-red-200 text-red-600 text-sm rounded-xl px-4 py-3">{adminError}</div>}
                 <button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl transition-colors">
                   登录管理后台
                 </button>
@@ -641,12 +714,9 @@ export default function ReviewSection({ showAdminButton = true }) {
           </div>
         )}
 
-        {/* 评价详情弹窗 */}
+        {/* 评价详情弹窗（含回复） */}
         {selectedReview && (
-          <ReviewDetailModal
-            review={selectedReview}
-            onClose={() => setSelectedReview(null)}
-          />
+          <ReviewDetailModal review={selectedReview} onClose={() => setSelectedReview(null)} user={user} />
         )}
       </div>
     </section>
