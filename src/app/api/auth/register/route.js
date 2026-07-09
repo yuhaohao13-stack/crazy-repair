@@ -6,7 +6,7 @@ import { validatePhone } from '@/lib/phone'
 export async function POST(req) {
   try {
     const body = await req.json()
-    const { username, phone, password, birth_place, birth_date, bio, hobbies, address, captchaId, captchaValue } = body
+    const { username, phone, password, birth_place, birth_date, bio, hobbies, captchaId, captchaValue } = body
 
     // 验证必填
     if (!username?.trim()) return NextResponse.json({ error: '请输入用户名' }, { status: 400 })
@@ -49,7 +49,7 @@ export async function POST(req) {
     const existing = await checkUserExists(username.trim(), cleanPhone)
     if (existing.exists) {
       const field = existing.field === 'username' ? '用户名' : '手机号'
-      return NextResponse.json({ error: `${field}已被注册` }, { status: 409 })
+      return NextResponse.json({ error: field + '已被注册' }, { status: 409 })
     }
 
     // 加密密码
@@ -66,7 +66,6 @@ export async function POST(req) {
         birth_date: birth_date || null,
         bio: bio?.trim() || '',
         hobbies: hobbies?.trim() || '',
-        address: address?.trim() || '',
         is_admin: false,
       })
       .select('id, username, phone, is_admin')
@@ -76,7 +75,7 @@ export async function POST(req) {
       if (error.code === '23505') {
         return NextResponse.json({ error: '用户名或手机号已被注册' }, { status: 409 })
       }
-      throw error
+      return NextResponse.json({ error: '数据库错误: ' + error.message }, { status: 500 })
     }
 
     // 生成token
@@ -94,6 +93,6 @@ export async function POST(req) {
     })
   } catch (err) {
     console.error('Register error:', err)
-    return NextResponse.json({ error: '注册失败，请稍后重试' }, { status: 500 })
+    return NextResponse.json({ error: '注册失败: ' + err.message }, { status: 500 })
   }
 }
