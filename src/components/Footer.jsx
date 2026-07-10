@@ -35,6 +35,7 @@ export default function Footer() {
               <li><a href="/#reviews" className="hover:text-white transition-colors">{t('客户评价', 'Reviews')}</a></li>
               <li><a href="/board" className="hover:text-white transition-colors">{t('维修求助', 'Repair Help')}</a></li>
               <li><a href="/#faq" className="hover:text-white transition-colors">{t('常见问题', 'FAQ')}</a></li>
+              <li><a href="https://www.gudaoforum.com/games" target="_blank" rel="noopener" className="hover:text-white transition-colors">{t('休闲娱乐-小游戏', 'Mini Games')}</a></li>
             </ul>
           </div>
           <div>
