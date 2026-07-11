@@ -2,9 +2,9 @@
 import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import { Star, ChevronLeft, ChevronRight, MessageCircle, User, Shield, Sparkles } from 'lucide-react'
-import Navbar from '../../components/Navbar'
-import Breadcrumb from '../../components/Breadcrumb'
-import { useSite } from '../../lib/SiteContext'
+import Navbar from '@/components/Navbar'
+import Breadcrumb from '@/components/Breadcrumb'
+import { useSite } from '@/lib/SiteContext'
 
 export default function ReviewsPage() {
   const { lang } = useSite()
