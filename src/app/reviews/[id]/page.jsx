@@ -107,6 +107,7 @@ export default function ReviewDetailPage() {
       <Navbar />
       <Breadcrumb items={[
         { label: '首页', labelEn: 'Home', href: '/' },
+        { label: '客户评价', labelEn: 'Customer Reviews', href: '/reviews' },
         { label: '评价详情', labelEn: 'Review Detail' }
       ]} />
       <div className="max-w-3xl mx-auto px-4 py-8">

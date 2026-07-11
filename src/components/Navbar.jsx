@@ -1,5 +1,6 @@
 'use client'
 import { useState, useRef, useEffect } from 'react'
+import Link from 'next/link'
 import { Search as SearchIcon, X, User, LogOut, MessageSquare, Star, ChevronDown } from 'lucide-react'
 import modelDB from '../data/modelDB'
 import { useSite } from '../lib/SiteContext'
@@ -110,9 +111,9 @@ export default function Navbar() {
               </div>
             </div>
 
-            <a href="/#reviews" className="hover:text-blue-600 whitespace-nowrap flex items-center gap-0.5">
+            <Link href="/reviews" className="hover:text-blue-600 whitespace-nowrap flex items-center gap-0.5">
               <Star size={10} /> 客户评价
-            </a>
+            </Link>
             <a href="/board" className="hover:text-blue-600 whitespace-nowrap flex items-center gap-0.5">
               <MessageSquare size={10} /> 维修求助
             </a>
@@ -181,7 +182,7 @@ export default function Navbar() {
             <a href="/board" className="md:hidden text-xs text-gray-500 hover:text-blue-600 flex items-center gap-0.5" title="维修求助">
               <MessageSquare size={14} /><span className="sm:hidden">求助</span>
             </a>
-            <a href="/#reviews" className="md:hidden text-xs text-gray-500 hover:text-blue-600" title="客户评价">
+            <a href="/reviews" className="md:hidden text-xs text-gray-500 hover:text-blue-600" title="客户评价">
               <Star size={14} />
             </a>
             <a href="https://www.gudaoforum.com/games" target="_blank" rel="noopener" className="md:hidden text-xs text-gray-500 hover:text-blue-600" title="在线小游戏">
