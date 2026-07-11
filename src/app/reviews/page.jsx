@@ -54,7 +54,6 @@ export default function ReviewsPage() {
       ]} />
 
       <div className="max-w-4xl mx-auto px-4 py-8">
-        {/* 头部 */}
         <div className="mb-8">
           <h1 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
             <Star size={24} className="text-amber-400" />
@@ -71,30 +70,24 @@ export default function ReviewsPage() {
           <div className="text-center py-20 text-gray-400">{t('暂无评价', 'No reviews yet')}</div>
         ) : (
           <>
-            {/* 评价列表 */}
             <div className="space-y-4">
               {reviews.map((review) => (
                 <Link key={review.id} href={`/reviews/${review.id}`}
                   className="block bg-white rounded-2xl border border-gray-100 shadow-sm p-5 hover:shadow-md hover:border-blue-200 transition-all">
                   <div className="flex items-start gap-3">
-                    {/* 头像 */}
                     <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-sm shrink-0">
                       {(review.name || '?')[0]}
                     </div>
                     <div className="flex-1 min-w-0">
-                      {/* 第一行：名字 + 评分 + 日期 */}
                       <div className="flex items-center gap-2 flex-wrap">
                         <span className="font-medium text-gray-900 text-sm">{review.name}</span>
                         {renderStars(review.rating)}
                         <span className="text-xs text-gray-400 ml-auto">{formatDate(review.created_at)}</span>
                       </div>
-                      {/* 标题 */}
                       {review.title && (
                         <h3 className="font-semibold text-gray-800 text-base mt-1 line-clamp-1">{review.title}</h3>
                       )}
-                      {/* 内容摘要 */}
                       <p className="text-sm text-gray-600 mt-1 line-clamp-2">{review.content}</p>
-                      {/* 回复/助手标记 */}
                       <div className="flex items-center gap-3 mt-2 text-xs text-gray-400">
                         {review.replyCount > 0 && (
                           <span className="flex items-center gap-0.5">
@@ -115,7 +108,6 @@ export default function ReviewsPage() {
               ))}
             </div>
 
-            {/* 分页 */}
             {totalPages > 1 && (
               <div className="flex items-center justify-center gap-2 mt-8">
                 <button
@@ -126,15 +118,10 @@ export default function ReviewsPage() {
                   <ChevronLeft size={16} />
                 </button>
                 {Array.from({ length: totalPages }, (_, i) => i + 1).map(p => (
-                  <button
-                    key={p}
-                    onClick={() => setPage(p)}
+                  <button key={p} onClick={() => setPage(p)}
                     className={`w-8 h-8 rounded-lg text-xs font-medium transition-colors ${
                       p === page ? 'bg-blue-600 text-white' : 'text-gray-600 hover:bg-gray-100'
-                    }`}
-                  >
-                    {p}
-                  </button>
+                    }`}>{p}</button>
                 ))}
                 <button
                   onClick={() => setPage(p => Math.min(totalPages, p + 1))}
