@@ -2,10 +2,10 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import { ArrowLeft, Send, ImagePlus, X, User, Shield, Star, Sparkles } from 'lucide-react'
-import Navbar from '../../../components/Navbar'
-import Breadcrumb from '../../../components/Breadcrumb'
+import Navbar from '@/components/Navbar'
+import Breadcrumb from '@/components/Breadcrumb'
 import UserProfileModal from '@/components/UserProfileModal'
-import { useSite } from '../../../lib/SiteContext'
+import { useSite } from '@/lib/SiteContext'
 
 export default function ReviewDetailPage() {
   const { lang } = useSite()
