@@ -220,6 +220,11 @@ export async function POST(req) {
       return NextResponse.json({ error: '请输入留言内容' }, { status: 400 })
     }
 
+    // 内容长度限制
+    if (content.trim().length > 10000) {
+      return NextResponse.json({ error: '内容过长，最多10000字' }, { status: 400 })
+    }
+
     // 验证码
     if (!captchaId || !captchaValue) {
       return NextResponse.json({ error: '请完成验证码' }, { status: 400 })

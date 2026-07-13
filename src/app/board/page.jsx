@@ -232,7 +232,7 @@ export default function BoardPage() {
               placeholder={t('标题（选填）', 'Title (optional)')} maxLength={100}
               className="w-full border border-gray-300 rounded-xl px-3 py-2 text-sm mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
             <textarea value={content} onChange={e => setContent(e.target.value)}
-              placeholder={t('写下你想说的...', "Write what's on your mind...")} rows={4} required
+              placeholder={t('写下你想说的...', "Write what's on your mind...")} rows={4} required maxLength={5000}
               className="w-full border border-gray-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none mb-3" />
             <div className="flex flex-wrap items-center gap-2 mb-3">
               {images.map((img, i) => (
