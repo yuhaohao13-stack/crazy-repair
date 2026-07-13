@@ -93,39 +93,39 @@ export default function Navbar() {
 
             <div className="relative group">
               <a href="/#brands" className="hover:text-blue-600 whitespace-nowrap flex items-center gap-0.5">
-                维修品牌 <ChevronDown size={10} />
+                {t('维修品牌', 'Brands')} <ChevronDown size={10} />
               </a>
               <div className="absolute top-full left-0 mt-1 bg-white rounded-xl border border-gray-200 shadow-lg z-[60] py-1.5 min-w-[160px] hidden group-hover:block">
-                <div className="px-3 py-1 text-xs font-bold text-gray-400">📱 手机</div>
-                <a href="/iphone-repair" className="block px-3 py-1.5 text-xs text-gray-700 hover:bg-gray-50">iPhone 维修</a>
-                <a href="/samsung-repair" className="block px-3 py-1.5 text-xs text-gray-700 hover:bg-gray-50">Samsung 维修</a>
-                <a href="/huawei-repair" className="block px-3 py-1.5 text-xs text-gray-700 hover:bg-gray-50">Huawei 维修</a>
-                <a href="/xiaomi-repair" className="block px-3 py-1.5 text-xs text-gray-700 hover:bg-gray-50">Xiaomi 维修</a>
+                <div className="px-3 py-1 text-xs font-bold text-gray-400">{t('📱 手机', '📱 Phones')}</div>
+                <a href="/iphone-repair" className="block px-3 py-1.5 text-xs text-gray-700 hover:bg-gray-50">{t('iPhone 维修', 'iPhone Repair')}</a>
+                <a href="/samsung-repair" className="block px-3 py-1.5 text-xs text-gray-700 hover:bg-gray-50">{t('Samsung 维修', 'Samsung Repair')}</a>
+                <a href="/huawei-repair" className="block px-3 py-1.5 text-xs text-gray-700 hover:bg-gray-50">{t('Huawei 维修', 'Huawei Repair')}</a>
+                <a href="/xiaomi-repair" className="block px-3 py-1.5 text-xs text-gray-700 hover:bg-gray-50">{t('Xiaomi 维修', 'Xiaomi Repair')}</a>
                 <hr className="my-1 border-gray-50" />
-                <div className="px-3 py-1 text-xs font-bold text-gray-400">💻 电脑</div>
-                <a href="/macbook-repair" className="block px-3 py-1.5 text-xs text-gray-700 hover:bg-gray-50">MacBook 维修</a>
-                <a href="/lenovo-repair" className="block px-3 py-1.5 text-xs text-gray-700 hover:bg-gray-50">Lenovo 维修</a>
-                <a href="/dell-repair" className="block px-3 py-1.5 text-xs text-gray-700 hover:bg-gray-50">Dell 维修</a>
+                <div className="px-3 py-1 text-xs font-bold text-gray-400">{t('💻 电脑', '💻 Computers')}</div>
+                <a href="/macbook-repair" className="block px-3 py-1.5 text-xs text-gray-700 hover:bg-gray-50">{t('MacBook 维修', 'MacBook Repair')}</a>
+                <a href="/lenovo-repair" className="block px-3 py-1.5 text-xs text-gray-700 hover:bg-gray-50">{t('Lenovo 维修', 'Lenovo Repair')}</a>
+                <a href="/dell-repair" className="block px-3 py-1.5 text-xs text-gray-700 hover:bg-gray-50">{t('Dell 维修', 'Dell Repair')}</a>
                 <hr className="my-1 border-gray-50" />
-                <a href="/#brands" className="block px-3 py-1.5 text-xs text-blue-600 hover:bg-gray-50">查看全部品牌 →</a>
+                <a href="/#brands" className="block px-3 py-1.5 text-xs text-blue-600 hover:bg-gray-50">{t('查看全部品牌 →', 'View All Brands →')}</a>
               </div>
             </div>
 
             <Link href="/reviews" className="hover:text-blue-600 whitespace-nowrap flex items-center gap-0.5">
-              <Star size={10} /> 客户评价
+              <Star size={10} /> {t('客户评价', 'Reviews')}
             </Link>
             <a href="/board" className="hover:text-blue-600 whitespace-nowrap flex items-center gap-0.5">
-              <MessageSquare size={10} /> 维修求助
+              <MessageSquare size={10} /> {t('维修求助', 'Repair Help')}
             </a>
             <a href="https://www.gudaoforum.com/games" target="_blank" rel="noopener" className="hover:text-blue-600 whitespace-nowrap flex items-center gap-0.5">
-              🎮 在线小游戏
+              {t('🎮 在线小游戏', '🎮 Mini Games')}
             </a>
             <a href="https://www.gudaoforum.com/music" target="_blank" rel="noopener" className="hover:text-blue-600 whitespace-nowrap flex items-center gap-0.5">
-              🎵 音乐
+              {t('🎵 音乐', '🎵 Music')}
             </a>
 
             <span className="text-gray-300 mx-1">|</span>
-            <a href="https://www.gudaoforum.com" target="_blank" rel="noopener" className="hover:text-blue-600 whitespace-nowrap font-medium">古道维修论坛</a>
+            <a href="https://www.gudaoforum.com" target="_blank" rel="noopener" className="hover:text-blue-600 whitespace-nowrap font-medium">{t('古道维修论坛', 'Gudao Repair Forum')}</a>
             <span className="text-gray-300 mx-1">|</span>
 
             <div className="relative flex items-center">
@@ -173,8 +173,8 @@ export default function Navbar() {
             )}
             {showResults && query && results.length === 0 && (
               <div className="absolute top-full mt-1 right-0 bg-white rounded-xl border border-gray-200 shadow-xl z-[60] p-3 text-center" style={{width: '280px'}}>
-                <p className="text-gray-500 text-xs">{t('没找到？加微信问我', 'Not found? DM me')}</p>
-                <button onClick={() => { setShowContact(true); setShowResults(false) }} className="mt-1 bg-blue-600 text-white text-xs px-3 py-1 rounded-lg">{t('📱 微信咨询', '📱 WeChat')}</button>
+                <p className="text-gray-500 text-xs">{t('{t('没找到？加微信问我', 'Not found? DM me')}', 'Not found? DM me')}</p>
+                <button onClick={() => { setShowContact(true); setShowResults(false) }} className="mt-1 bg-blue-600 text-white text-xs px-3 py-1 rounded-lg">{t('{t('📱 微信咨询', '📱 WeChat')}', '📱 WeChat')}</button>
               </div>
             )}
           </div>
@@ -182,24 +182,24 @@ export default function Navbar() {
           {/* --- 右侧：操作按钮（桌面端+手机端） --- */}
           <div className="flex items-center gap-1.5 sm:gap-2">
             {/* 手机端：求助 + 客户评价(仅图标) + 小游戏 */}
-            <a href="/board" className="md:hidden text-xs text-gray-500 hover:text-blue-600 flex items-center gap-0.5" title="维修求助">
-              <MessageSquare size={14} /><span className="sm:hidden">求助</span>
+            <a href="/board" className="md:hidden text-xs text-gray-500 hover:text-blue-600 flex items-center gap-0.5" title={t('维修求助', 'Repair Help')}>
+              <MessageSquare size={14} /><span className="sm:hidden">{t('求助', 'Help')}</span>
             </a>
-            <a href="/reviews" className="md:hidden text-xs text-gray-500 hover:text-blue-600" title="客户评价">
+            <a href="/reviews" className="md:hidden text-xs text-gray-500 hover:text-blue-600" title={t('客户评价', 'Reviews')}>
               <Star size={14} />
             </a>
-            <a href="https://www.gudaoforum.com/games" target="_blank" rel="noopener" className="md:hidden text-xs text-gray-500 hover:text-blue-600" title="在线小游戏">
+            <a href="https://www.gudaoforum.com/games" target="_blank" rel="noopener" className="md:hidden text-xs text-gray-500 hover:text-blue-600" title={t('在线小游戏', 'Mini Games')}>
               🎮
             </a>
-            <a href="https://www.gudaoforum.com/music" target="_blank" rel="noopener" className="md:hidden text-xs text-gray-500 hover:text-blue-600" title="音乐频道">
+            <a href="https://www.gudaoforum.com/music" target="_blank" rel="noopener" className="md:hidden text-xs text-gray-500 hover:text-blue-600" title={t('音乐频道', 'Music')}>
               🎵
             </a>
 
             {/* 古道维修论坛 - 桌面端显示全文，手机端显示"古" */}
             <a href="https://www.gudaoforum.com" target="_blank" rel="noopener"
-              className="text-xs text-gray-500 hover:text-blue-600 hidden sm:inline-flex items-center">古道维修论坛</a>
+              className="text-xs text-gray-500 hover:text-blue-600 hidden sm:inline-flex items-center">{t('古道维修论坛', 'Gudao Forum')}</a>
             <a href="https://www.gudaoforum.com" target="_blank" rel="noopener"
-              className="text-xs text-gray-500 hover:text-blue-600 sm:hidden inline-flex items-center font-bold" title="古道维修论坛">古</a>
+              className="text-xs text-gray-500 hover:text-blue-600 sm:hidden inline-flex items-center font-bold" title={t('古道维修论坛', 'Gudao Forum')}>古</a>
 
             {/* 抖音 */}
             <a href="https://v.douyin.com/NvUr5C82ZDM/" target="_blank" rel="noopener"
@@ -208,7 +208,7 @@ export default function Navbar() {
               <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" className="shrink-0">
                 <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.88 2.89 2.89 0 0 1-2.88-2.88 2.89 2.89 0 0 1 2.88-2.88c.35 0 .69.06 1.01.18V8.48a6.34 6.34 0 0 0-1.01-.08C5.9 8.4 3 11.3 3 14.86c0 3.56 2.9 6.46 6.46 6.46 3.56 0 6.46-2.9 6.46-6.46V9.33a8.28 8.28 0 0 0 4.67 1.4v-3.4a4.84 4.84 0 0 1-1-.64z"/>
               </svg>
-              <span className="hidden sm:inline">浩哥维修实录 → 抖音</span>
+              <span className="hidden sm:inline">{t('浩哥维修实录 → 抖音', 'HaoGe Repairs → TikTok')}</span>
             </a>
 
             {/* 手机端搜索 */}
@@ -233,20 +233,20 @@ export default function Navbar() {
                 {showUserMenu && (
                   <div className="absolute top-full right-0 mt-1 bg-white rounded-xl border border-gray-200 shadow-lg z-[60] py-1 min-w-[120px]">
                     <a href="/profile" className="block px-3 py-2 text-xs text-gray-700 hover:bg-gray-50 flex items-center gap-1.5">
-                      <User size={12} /> 个人中心
+                      <User size={12} /> {t('个人中心', 'Profile')}
                     </a>
                     <a href="/board" className="block px-3 py-2 text-xs text-gray-700 hover:bg-gray-50 flex items-center gap-1.5">
-                      <MessageSquare size={12} /> 维修求助
+                      <MessageSquare size={12} /> {t('维修求助', 'Repair Help')}
                     </a>
                     {user.is_admin && (
                       <a href="/admin" className="block px-3 py-2 text-xs text-amber-600 hover:bg-gray-50 flex items-center gap-1.5">
-                        <Star size={12} /> 管理后台
+                        <Star size={12} /> {t('管理后台', 'Admin Panel')}
                       </a>
                     )}
                     <hr className="my-1 border-gray-100" />
                     <button onClick={handleLogout}
                       className="w-full text-left px-3 py-2 text-xs text-red-500 hover:bg-gray-50 flex items-center gap-1.5">
-                      <LogOut size={12} /> 退出登录
+                      <LogOut size={12} /> {t('退出登录', 'Log Out')}
                     </button>
                   </div>
                 )}
@@ -257,7 +257,7 @@ export default function Navbar() {
             {!user && (
               <a href="/login"
                 className="text-xs border border-blue-300 text-blue-600 hover:bg-blue-50 font-medium px-3 py-1.5 rounded-lg transition-colors">
-                登录
+                {t('登录', 'Login')}
               </a>
             )}
           </div>

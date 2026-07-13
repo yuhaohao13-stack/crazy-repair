@@ -103,7 +103,7 @@ export default function AdminPage() {
   useEffect(() => { if (tab === 'reviews') loadReviews() }, [loadReviews, tab])
 
   const handleDelete = async (id) => {
-    if (!confirm('确定要删除这条评价吗？')) return
+    if (!confirm(t('确定要删除这条评价吗？', 'Are you sure you want to delete this review?'))) return
     setDeleting(id)
     try {
       const res = await fetch('/api/messages/admin/delete', {
@@ -128,7 +128,7 @@ export default function AdminPage() {
       const res = await fetch('/api/reviews/admin/export', {
         headers: { Authorization: `Bearer ${token}` },
       })
-      if (!res.ok) throw new Error('导出失败')
+      if (!res.ok) throw new Error(t('导出失败', 'Export failed'))
       const blob = await res.blob()
       const url = URL.createObjectURL(blob)
       const a = document.createElement('a')
@@ -151,7 +151,7 @@ export default function AdminPage() {
       const res = await fetch('/api/users/export', {
         headers: { Authorization: `Bearer ${token}` },
       })
-      if (!res.ok) throw new Error('加载用户失败')
+      if (!res.ok) throw new Error(t('加载用户失败', 'Failed to load users'))
       const data = await res.json()
       setUsers(data.users || [])
     } catch (err) {
@@ -167,10 +167,10 @@ export default function AdminPage() {
     if (users.length === 0) return
     setExportUsersLoading(true)
     try {
-      const headers = ['用户名', '手机号', '出生地', '出生年月', '个人简介', '爱好', '管理员', '注册时间']
+      const headers = [t('用户名', 'Username'), t('手机号', 'Phone'), t('出生地', 'Birthplace'), t('出生年月', 'Birth Date'), t('个人简介', 'Bio'), t('爱好', 'Hobbies'), t('管理员', 'Admin'), t('注册时间', 'Registered')]
       const rows = users.map(u => [
         u.username, u.phone, u.birth_place || '', u.birth_date || '', u.bio || '', u.hobbies || '',
-        u.is_admin ? '是' : '否', new Date(u.created_at).toLocaleString('zh-CN'),
+        u.is_admin ? (lang === 'zh' ? '是' : 'Yes') : (lang === 'zh' ? '否' : 'No'), new Date(u.created_at).toLocaleString(lang === 'zh' ? 'zh-CN' : 'en-US'),
       ])
       const csv = [headers.join(','), ...rows.map(r => r.map(c => `"${c}"`).join(','))].join('\n')
       const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8' })
@@ -205,7 +205,7 @@ export default function AdminPage() {
   useEffect(() => { if (tab === 'messages') loadMessages() }, [loadMessages, tab])
 
   const handleDeleteMessage = async (id) => {
-    if (!confirm('确定要删除这条留言吗？（包括所有回复）')) return
+    if (!confirm(t('确定要删除这条留言吗？（包括所有回复）', 'Delete this message (including all replies)?'))) return
     try {
       const res = await fetch('/api/messages/admin/delete', {
         method: 'POST',
@@ -231,7 +231,7 @@ export default function AdminPage() {
       if (!res.ok) throw new Error(data.error)
       loadMessages()
     } catch (err) {
-      alert('操作失败: ' + err.message)
+      alert(t('操作失败: ', 'Operation failed: ') + err.message)
     }
   }
 
@@ -483,10 +483,10 @@ export default function AdminPage() {
                 {msgTotalPages > 1 && (
                   <div className="flex items-center justify-center gap-2 mt-6">
                     <button onClick={() => setMsgPage(p => Math.max(1, p - 1))} disabled={msgPage <= 1}
-                      className="px-4 py-2 text-sm border border-gray-200 rounded-xl disabled:opacity-50 hover:bg-gray-50">上一页</button>
+                      className="px-4 py-2 text-sm border border-gray-200 rounded-xl disabled:opacity-50 hover:bg-gray-50">{t('上一页', 'Previous')}</button>
                     <span className="text-sm text-gray-500 px-3">{msgPage} / {msgTotalPages}</span>
                     <button onClick={() => setMsgPage(p => Math.min(msgTotalPages, p + 1))} disabled={msgPage >= msgTotalPages}
-                      className="px-4 py-2 text-sm border border-gray-200 rounded-xl disabled:opacity-50 hover:bg-gray-50">下一页</button>
+                      className="px-4 py-2 text-sm border border-gray-200 rounded-xl disabled:opacity-50 hover:bg-gray-50">{t('下一页', 'Next')}</button>
                   </div>
                 )}
               </div>

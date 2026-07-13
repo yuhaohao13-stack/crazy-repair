@@ -355,7 +355,7 @@ export default function FloatingContact() {
                 </div>
                 <div className="text-left flex-1">
                   <p className="text-[11px] font-medium text-gray-900">{t('抖音', 'TikTok')}</p>
-                  <p className="text-[9px] text-gray-400">@Crazy维修 浩哥维修实录</p>
+                  <p className="text-[9px] text-gray-400">{t('@Crazy维修 浩哥维修实录', '@Crazy Repair')}</p>
                 </div>
               </a>
 

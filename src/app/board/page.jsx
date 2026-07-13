@@ -172,7 +172,7 @@ export default function BoardPage() {
               <div className="flex items-center gap-1 mb-0.5">
                 <span className="font-medium text-xs text-gray-700">{reply.user?.username}</span>
                 {reply.is_pinned && <span className="text-xs bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded">{t('置顶', 'Pinned')}</span>}
-                {reply.is_admin_reply && !reply.is_pinned && <span className="text-xs bg-blue-100 text-blue-600 px-1.5 py-0.5 rounded">官方</span>}
+                {reply.is_admin_reply && !reply.is_pinned && <span className="text-xs bg-blue-100 text-blue-600 px-1.5 py-0.5 rounded">{t('官方', 'Admin')}</span>}
               </div>
               <p className="text-xs text-gray-600 line-clamp-2">{reply.content}</p>
             </div>

@@ -240,7 +240,7 @@ export default function ContactModal() {
                     <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.88 2.89 2.89 0 0 1-2.88-2.88 2.89 2.89 0 0 1 2.88-2.88c.35 0 .69.06 1.01.18V8.48a6.34 6.34 0 0 0-1.01-.08C5.9 8.4 3 11.3 3 14.86c0 3.56 2.9 6.46 6.46 6.46 3.56 0 6.46-2.9 6.46-6.46V9.33a8.28 8.28 0 0 0 4.67 1.4v-3.4a4.84 4.84 0 0 1-1-.64z"/>
                   </svg>
                 </div>
-                <div className="flex-1"><p className="font-medium text-xs text-gray-900">抖音</p><p className="text-[9px] text-gray-400">@Crazy维修 浩哥维修实录</p></div>
+                <div className="flex-1"><p className="font-medium text-xs text-gray-900">{t('抖音', 'TikTok')}</p><p className="text-[9px] text-gray-400">{t('@Crazy维修 浩哥维修实录', '@Crazy Repair')}</p></div>
                 <ChevronRight size={13} className="text-gray-300" />
               </a>
 
