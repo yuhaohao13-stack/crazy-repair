@@ -12,6 +12,7 @@ export async function POST(req) {
     const body = await req.json()
     const { gender, birth_place, birth_date, bio, hobbies } = body
 
+    // 更新 profiles 表（users 是 auth 表，自定义数据应存 profiles）
     const updates = {}
     if (gender !== undefined) updates.gender = gender
     if (birth_place !== undefined) updates.birth_place = birth_place.trim()
@@ -24,20 +25,20 @@ export async function POST(req) {
     }
 
     const { data, error } = await supabase
-      .from('users')
+      .from('profiles')
       .update(updates)
       .eq('id', user.id)
-      .select('id, username, phone, gender, birth_place, birth_date, bio, hobbies, is_admin')
+      .select('*')
       .single()
 
     if (error) {
-      console.error('Update user Supabase error:', JSON.stringify(error))
+      console.error('Update profile error:', JSON.stringify(error))
       return NextResponse.json({ error: '修改失败: ' + error.message }, { status: 500 })
     }
 
     return NextResponse.json({ success: true, user: data })
   } catch (err) {
-    console.error('Update user catch error:', err)
+    console.error('Update catch error:', err)
     return NextResponse.json({ error: '修改失败: ' + err.message }, { status: 500 })
   }
 }
