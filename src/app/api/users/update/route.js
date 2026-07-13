@@ -12,7 +12,6 @@ export async function POST(req) {
     const body = await req.json()
     const { gender, birth_place, birth_date, bio, hobbies } = body
 
-    // 只允许修改这些字段（用户名和手机号不可修改）
     const updates = {}
     if (gender !== undefined) updates.gender = gender
     if (birth_place !== undefined) updates.birth_place = birth_place.trim()
@@ -31,11 +30,14 @@ export async function POST(req) {
       .select('id, username, phone, gender, birth_place, birth_date, bio, hobbies, is_admin')
       .single()
 
-    if (error) throw error
+    if (error) {
+      console.error('Update user Supabase error:', JSON.stringify(error))
+      return NextResponse.json({ error: '修改失败: ' + error.message }, { status: 500 })
+    }
 
     return NextResponse.json({ success: true, user: data })
   } catch (err) {
-    console.error('Update user error:', err)
-    return NextResponse.json({ error: '修改失败，请稍后重试' }, { status: 500 })
+    console.error('Update user catch error:', err)
+    return NextResponse.json({ error: '修改失败: ' + err.message }, { status: 500 })
   }
 }

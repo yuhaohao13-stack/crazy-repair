@@ -11,10 +11,35 @@ export default function ProfilePage() {
   const t = (zh, en) => lang === 'zh' ? zh : en
   const router = useRouter()
   const [user, setUser] = useState(null)
-  const [form, setForm] = useState({ birth_place: '', birth_date: '', bio: '', hobbies: '', gender: 'male' })
+  const [form, setForm] = useState({
+    birth_place: '',
+    birth_year: '',
+    birth_month: '',
+    bio: '',
+    hobbies: '',
+    gender: 'male'
+  })
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [message, setMessage] = useState({ type: '', text: '' })
+
+  // Generate year options (1950 to current year)
+  const currentYear = new Date().getFullYear()
+  const years = Array.from({ length: currentYear - 1949 }, (_, i) => (currentYear - i).toString())
+  const months = [
+    { value: '01', label: t('1月', 'Jan') },
+    { value: '02', label: t('2月', 'Feb') },
+    { value: '03', label: t('3月', 'Mar') },
+    { value: '04', label: t('4月', 'Apr') },
+    { value: '05', label: t('5月', 'May') },
+    { value: '06', label: t('6月', 'Jun') },
+    { value: '07', label: t('7月', 'Jul') },
+    { value: '08', label: t('8月', 'Aug') },
+    { value: '09', label: t('9月', 'Sep') },
+    { value: '10', label: t('10月', 'Oct') },
+    { value: '11', label: t('11月', 'Nov') },
+    { value: '12', label: t('12月', 'Dec') },
+  ]
 
   useEffect(() => {
     const token = localStorage.getItem('crazy_user_token')
@@ -22,7 +47,6 @@ export default function ProfilePage() {
       router.push('/login')
       return
     }
-
     fetch('/api/auth/me', {
       headers: { Authorization: `Bearer ${token}` },
     })
@@ -37,16 +61,25 @@ export default function ProfilePage() {
       .then(data => {
         if (data && data.user) {
           setUser(data.user)
+          // Parse birth_date (could be YYYY-MM-DD or just YYYY)
+          let birthYear = ''
+          let birthMonth = ''
+          if (data.user.birth_date) {
+            const parts = data.user.birth_date.split('-')
+            birthYear = parts[0] || ''
+            birthMonth = parts[1] || ''
+          }
           setForm({
             birth_place: data.user.birth_place || '',
-            birth_date: data.user.birth_date || '',
+            birth_year: birthYear,
+            birth_month: birthMonth,
             bio: data.user.bio || '',
             hobbies: data.user.hobbies || '',
             gender: data.user.gender || 'male',
           })
         }
       })
-      .catch(() => { /* ignore */ })
+      .catch(() => {})
       .finally(() => setLoading(false))
   }, [router])
 
@@ -61,25 +94,37 @@ export default function ProfilePage() {
 
     try {
       const token = localStorage.getItem('crazy_user_token')
+      // Build birth_date: YYYY or YYYY-MM or empty
+      let birthDate = form.birth_year || ''
+      if (form.birth_year && form.birth_month) {
+        birthDate = `${form.birth_year}-${form.birth_month}`
+      }
+
       const res = await fetch('/api/users/update', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          birth_place: form.birth_place,
+          birth_date: birthDate,
+          bio: form.bio,
+          hobbies: form.hobbies,
+          gender: form.gender,
+        }),
       })
       const data = await res.json()
 
       if (!res.ok) {
-        setMessage({ type: 'error', text: data.error })
+        setMessage({ type: 'error', text: data.error || t('修改失败', 'Save failed') })
         return
       }
 
       setMessage({ type: 'success', text: t('保存成功', 'Saved') })
       setTimeout(() => setMessage({ type: '', text: '' }), 3000)
-    } catch {
-      setMessage({ type: 'error', text: t('保存失败', 'Save failed') })
+    } catch (err) {
+      setMessage({ type: 'error', text: t('修改失败，请稍后重试', 'Save failed, try again') })
     } finally {
       setSaving(false)
     }
@@ -150,12 +195,6 @@ export default function ProfilePage() {
               <div className="text-sm font-medium text-gray-800">{user.phone}</div>
               <div className="text-xs text-gray-400 mt-0.5">{t('不可修改', 'Cannot be changed')}</div>
             </div>
-            {user.gender && (
-            <div className="bg-gray-50 rounded-xl p-3">
-              <div className="flex items-center gap-1.5 text-xs text-gray-400 mb-1">性别</div>
-              <div className="text-sm font-medium text-gray-800">{user.gender === 'male' ? '♂ 男' : '♀ 女'}</div>
-            </div>
-            )}
           </div>
 
           {/* 可修改表单 */}
@@ -166,7 +205,7 @@ export default function ProfilePage() {
                   <MapPin size={12} /> {t('出生地', 'Birthplace')}
                 </label>
                 <input type="text" name="birth_place" value={form.birth_place} onChange={handleChange}
-                  placeholder={t('如：山东威海', 'e.g. Weihai, Shandong')}
+                  placeholder={t('如：山东威海', 'e.g. Weihai')}
                   className="w-full border border-gray-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
               </div>
               <div>
@@ -194,12 +233,27 @@ export default function ProfilePage() {
               </div>
             </div>
 
+            {/* 出生年月 - 年份和月份分开选 */}
             <div>
-              <label className="flex items-center gap-1 text-xs font-medium text-gray-700 mb-1">
+              <label className="flex items-center gap-1 text-xs font-medium text-gray-700 mb-1.5">
                 <Cake size={12} /> {t('出生年月', 'Birth Date')}
               </label>
-              <input type="date" name="birth_date" value={form.birth_date} onChange={handleChange}
-                className="w-full border border-gray-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              <div className="flex gap-2">
+                <select name="birth_year" value={form.birth_year} onChange={handleChange}
+                  className="flex-1 border border-gray-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white">
+                  <option value="">{t('选择年', 'Year')}</option>
+                  {years.map(y => (
+                    <option key={y} value={y}>{y} {t('年', '')}</option>
+                  ))}
+                </select>
+                <select name="birth_month" value={form.birth_month} onChange={handleChange}
+                  className="flex-1 border border-gray-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white">
+                  <option value="">{t('选择月', 'Month')}</option>
+                  {months.map(m => (
+                    <option key={m.value} value={m.value}>{m.label}</option>
+                  ))}
+                </select>
+              </div>
             </div>
 
             <div>
@@ -216,7 +270,7 @@ export default function ProfilePage() {
                 <Heart size={12} /> {t('个人爱好', 'Hobbies')}
               </label>
               <input type="text" name="hobbies" value={form.hobbies} onChange={handleChange}
-                placeholder={t('如：数码、摄影、游戏', 'e.g. tech, photography, gaming')}
+                placeholder={t('如：数码、摄影', 'e.g. tech, photography')}
                 className="w-full border border-gray-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
             </div>
 
@@ -227,7 +281,6 @@ export default function ProfilePage() {
             </button>
           </form>
 
-          {/* 注册时间 */}
           <p className="text-xs text-gray-400 text-center mt-6">
             {t('注册时间：', 'Registered: ')}{user.created_at ? new Date(user.created_at).toLocaleDateString(lang === 'zh' ? 'zh-CN' : 'en-US') : t('未知', 'Unknown')}
           </p>
