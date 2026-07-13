@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase-server'
 
-// 处理 GET 请求 — 获取个人资料
 export async function GET(request) {
   try {
     const authHeader = request.headers.get('authorization')
@@ -24,7 +23,6 @@ export async function GET(request) {
   }
 }
 
-// 处理 PUT 请求 — 更新个人资料
 export async function PUT(request) {
   try {
     const authHeader = request.headers.get('authorization')
