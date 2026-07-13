@@ -56,21 +56,34 @@ export async function POST(req) {
     const passwordHash = await hashPassword(password)
 
     // 插入用户
-    const { data, error } = await supabase
+    // 尝试先包含 gender，如果列不存在则去掉 gender 重试
+    let insertPayload = {
+      username: username.trim(),
+      phone: cleanPhone,
+      password_hash: passwordHash,
+      birth_place: birth_place?.trim() || '',
+      birth_date: birth_date || null,
+      bio: bio?.trim() || '',
+      hobbies: hobbies?.trim() || '',
+      is_admin: false,
+    }
+
+    let { data, error } = await supabase
       .from('users')
-      .insert({
-        username: username.trim(),
-        phone: cleanPhone,
-        password_hash: passwordHash,
-        gender: gender || 'male',
-        birth_place: birth_place?.trim() || '',
-        birth_date: birth_date || null,
-        bio: bio?.trim() || '',
-        hobbies: hobbies?.trim() || '',
-        is_admin: false,
-      })
+      .insert({ ...insertPayload, gender: gender || 'male' })
       .select('id, username, phone, is_admin')
       .single()
+
+    // 如果 gender 列不存在，去掉 gender 字段重试
+    if (error && (error.message?.includes('gender') || error.code === 'PGRST204')) {
+      const { data: retryData, error: retryError } = await supabase
+        .from('users')
+        .insert(insertPayload)
+        .select('id, username, phone, is_admin')
+        .single()
+      data = retryData
+      error = retryError
+    }
 
     if (error) {
       if (error.code === '23505') {

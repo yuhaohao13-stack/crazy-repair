@@ -91,23 +91,37 @@ export async function POST(req) {
     // 消息回复需要关联 parent_id，评价回复用 target_type/target_id
     const parentId = targetType === 'message' ? parseInt(targetId) : null
 
-    const { data, error } = await supabase
-      .from('messages')
-      .insert({
-        user_id: user.id,
-        content: content.trim(),
-        images: finalImages,
-        parent_id: parentId,
-        target_type: targetType,
-        target_id: parseInt(targetId),
-        is_admin_reply: isAdminReply,
-        is_pinned: isPinned,
-      })
-      .select(`
-        *,
-        user:user_id (id, username, is_admin)
-      `)
-      .single()
+    // 插入回复，重试3次处理 sequence 不同步问题（duplicate key violations）
+    let data, error
+    for (let attempt = 0; attempt < 3; attempt++) {
+      const result = await supabase
+        .from('messages')
+        .insert({
+          user_id: user.id,
+          content: content.trim(),
+          images: finalImages,
+          parent_id: parentId,
+          target_type: targetType,
+          target_id: parseInt(targetId),
+          is_admin_reply: isAdminReply,
+          is_pinned: isPinned,
+        })
+        .select(`
+          *,
+          user:user_id (id, username, is_admin)
+        `)
+        .single()
+
+      data = result.data
+      error = result.error
+
+      // 唯一约束冲突重试（sequence落后于实际ID）
+      if (error && error.code === '23505') {
+        console.error('Reply retry attempt', attempt + 1, 'due to sequence conflict:', error.message)
+        continue
+      }
+      break
+    }
 
     if (error) throw error
 

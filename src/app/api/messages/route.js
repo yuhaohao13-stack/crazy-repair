@@ -265,23 +265,38 @@ export async function POST(req) {
       finalImages = uploaded.filter(Boolean)
     }
 
-    const { data, error } = await supabase
-      .from('messages')
-      .insert({
-        user_id: user.id,
-        title: title?.trim() || '',
-        content: content.trim(),
-        images: finalImages,
-        parent_id: null,
-        target_type: 'message',
-        is_admin_reply: user.is_admin,
-        is_pinned: false,
-      })
-      .select(`
-        *,
-        user:user_id (id, username, is_admin)
-      `)
-      .single()
+    // 插入留言，重试3次处理 sequence 不同步问题（duplicate key violations）
+    let data, error
+    for (let attempt = 0; attempt < 3; attempt++) {
+      const result = await supabase
+        .from('messages')
+        .insert({
+          user_id: user.id,
+          title: title?.trim() || '',
+          content: content.trim(),
+          images: finalImages,
+          parent_id: null,
+          target_type: 'message',
+          is_admin_reply: user.is_admin,
+          is_pinned: false,
+        })
+        .select(`
+          *,
+          user:user_id (id, username, is_admin)
+        `)
+        .single()
+
+      data = result.data
+      error = result.error
+
+      // 如果是唯一约束冲突 (sequence 落后于实际 ID)，重试即可
+      // 每次重试 sequence.nextval() 会前进，最终找到可用 ID
+      if (error && error.code === '23505') {
+        console.error('Retry attempt', attempt + 1, 'due to sequence conflict:', error.message)
+        continue
+      }
+      break
+    }
 
     if (error) throw error
 
