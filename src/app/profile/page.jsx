@@ -15,6 +15,7 @@ export default function ProfilePage() {
     birth_place: '',
     birth_year: '',
     birth_month: '',
+    birth_day: '',
     bio: '',
     hobbies: '',
     gender: 'male'
@@ -23,23 +24,16 @@ export default function ProfilePage() {
   const [saving, setSaving] = useState(false)
   const [message, setMessage] = useState({ type: '', text: '' })
 
-  // Generate year options (1950 to current year)
   const currentYear = new Date().getFullYear()
   const years = Array.from({ length: currentYear - 1949 }, (_, i) => (currentYear - i).toString())
-  const months = [
-    { value: '01', label: t('1月', 'Jan') },
-    { value: '02', label: t('2月', 'Feb') },
-    { value: '03', label: t('3月', 'Mar') },
-    { value: '04', label: t('4月', 'Apr') },
-    { value: '05', label: t('5月', 'May') },
-    { value: '06', label: t('6月', 'Jun') },
-    { value: '07', label: t('7月', 'Jul') },
-    { value: '08', label: t('8月', 'Aug') },
-    { value: '09', label: t('9月', 'Sep') },
-    { value: '10', label: t('10月', 'Oct') },
-    { value: '11', label: t('11月', 'Nov') },
-    { value: '12', label: t('12月', 'Dec') },
-  ]
+  const months = Array.from({ length: 12 }, (_, i) => ({
+    value: String(i + 1).padStart(2, '0'),
+    label: t(`${i + 1}月`, `${i + 1}`)
+  }))
+  const days = Array.from({ length: 31 }, (_, i) => ({
+    value: String(i + 1).padStart(2, '0'),
+    label: t(`${i + 1}日`, `${i + 1}`)
+  }))
 
   useEffect(() => {
     const token = localStorage.getItem('crazy_user_token')
@@ -61,18 +55,18 @@ export default function ProfilePage() {
       .then(data => {
         if (data && data.user) {
           setUser(data.user)
-          // Parse birth_date (could be YYYY-MM-DD or just YYYY)
-          let birthYear = ''
-          let birthMonth = ''
+          let birthYear = '', birthMonth = '', birthDay = ''
           if (data.user.birth_date) {
             const parts = data.user.birth_date.split('-')
             birthYear = parts[0] || ''
             birthMonth = parts[1] || ''
+            birthDay = parts[2] || ''
           }
           setForm({
             birth_place: data.user.birth_place || '',
             birth_year: birthYear,
             birth_month: birthMonth,
+            birth_day: birthDay,
             bio: data.user.bio || '',
             hobbies: data.user.hobbies || '',
             gender: data.user.gender || 'male',
@@ -94,10 +88,15 @@ export default function ProfilePage() {
 
     try {
       const token = localStorage.getItem('crazy_user_token')
-      // Build birth_date: YYYY or YYYY-MM or empty
-      let birthDate = form.birth_year || ''
-      if (form.birth_year && form.birth_month) {
-        birthDate = `${form.birth_year}-${form.birth_month}`
+      let birthDate = ''
+      if (form.birth_year) {
+        birthDate = form.birth_year
+        if (form.birth_month) {
+          birthDate += '-' + form.birth_month
+          if (form.birth_day) {
+            birthDate += '-' + form.birth_day
+          }
+        }
       }
 
       const res = await fetch('/api/users/update', {
@@ -154,7 +153,6 @@ export default function ProfilePage() {
         <Breadcrumb items={[{ label: '个人中心', labelEn: 'Profile' }]} />
 
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8">
-          {/* 用户信息头 */}
           <div className="flex items-center gap-4 mb-6 pb-6 border-b border-gray-100">
             <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center">
               <User size={28} className="text-blue-600" />
@@ -179,7 +177,6 @@ export default function ProfilePage() {
             </div>
           )}
 
-          {/* 只读信息 */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
             <div className="bg-gray-50 rounded-xl p-3">
               <div className="flex items-center gap-1.5 text-xs text-gray-400 mb-1">
@@ -197,7 +194,6 @@ export default function ProfilePage() {
             </div>
           </div>
 
-          {/* 可修改表单 */}
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
@@ -233,24 +229,31 @@ export default function ProfilePage() {
               </div>
             </div>
 
-            {/* 出生年月 - 年份和月份分开选 */}
+            {/* 出生年月日：年 + 月 + 日 三个下拉框 */}
             <div>
               <label className="flex items-center gap-1 text-xs font-medium text-gray-700 mb-1.5">
-                <Cake size={12} /> {t('出生年月', 'Birth Date')}
+                <Cake size={12} /> {t('出生年月日', 'Birth Date')}
               </label>
               <div className="flex gap-2">
                 <select name="birth_year" value={form.birth_year} onChange={handleChange}
                   className="flex-1 border border-gray-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white">
-                  <option value="">{t('选择年', 'Year')}</option>
+                  <option value="">{t('年', 'Y')}</option>
                   {years.map(y => (
-                    <option key={y} value={y}>{y} {t('年', '')}</option>
+                    <option key={y} value={y}>{y}</option>
                   ))}
                 </select>
                 <select name="birth_month" value={form.birth_month} onChange={handleChange}
                   className="flex-1 border border-gray-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white">
-                  <option value="">{t('选择月', 'Month')}</option>
+                  <option value="">{t('月', 'M')}</option>
                   {months.map(m => (
                     <option key={m.value} value={m.value}>{m.label}</option>
+                  ))}
+                </select>
+                <select name="birth_day" value={form.birth_day} onChange={handleChange}
+                  className="flex-1 border border-gray-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white">
+                  <option value="">{t('日', 'D')}</option>
+                  {days.map(d => (
+                    <option key={d.value} value={d.value}>{d.label}</option>
                   ))}
                 </select>
               </div>
