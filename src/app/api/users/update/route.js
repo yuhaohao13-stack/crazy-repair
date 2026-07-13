@@ -23,19 +23,33 @@ export async function POST(req) {
       return NextResponse.json({ error: '没有要修改的内容' }, { status: 400 })
     }
 
-    const { data, error } = await supabase
+    // Try update with all fields. If gender column is missing, retry without it.
+    let result = await supabase
       .from('users')
       .update(updates)
       .eq('id', user.id)
       .select('id, username, phone, gender, birth_place, birth_date, bio, hobbies, is_admin')
       .single()
 
-    if (error) {
-      console.error('Update user error:', JSON.stringify(error))
-      return NextResponse.json({ error: '修改失败: ' + error.message }, { status: 500 })
+    // If gender column doesn't exist, retry without gender
+    if (result.error && result.error.message?.includes('gender')) {
+      delete updates.gender
+      if (Object.keys(updates).length > 0) {
+        result = await supabase
+          .from('users')
+          .update(updates)
+          .eq('id', user.id)
+          .select('id, username, phone, birth_place, birth_date, bio, hobbies, is_admin')
+          .single()
+      }
     }
 
-    return NextResponse.json({ success: true, user: data })
+    if (result.error) {
+      console.error('Update user error:', JSON.stringify(result.error))
+      return NextResponse.json({ error: '修改失败: ' + result.error.message }, { status: 500 })
+    }
+
+    return NextResponse.json({ success: true, user: result.data })
   } catch (err) {
     console.error('Update catch error:', err)
     return NextResponse.json({ error: '修改失败: ' + err.message }, { status: 500 })
