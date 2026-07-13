@@ -9,9 +9,8 @@ export async function GET(req) {
       return NextResponse.json({ error: '未登录' }, { status: 401 })
     }
 
-    // 从 auth.users + profiles 获取完整用户信息
-    const { data: profile } = await supabase
-      .from('profiles')
+    const { data: fullUser } = await supabase
+      .from('users')
       .select('*')
       .eq('id', user.id)
       .single()
@@ -19,7 +18,7 @@ export async function GET(req) {
     return NextResponse.json({
       user: {
         ...user,
-        ...(profile || {}),
+        ...(fullUser || {}),
       }
     })
   } catch (err) {
