@@ -173,8 +173,8 @@ export default function Navbar() {
             )}
             {showResults && query && results.length === 0 && (
               <div className="absolute top-full mt-1 right-0 bg-white rounded-xl border border-gray-200 shadow-xl z-[60] p-3 text-center" style={{width: '280px'}}>
-                <p className="text-gray-500 text-xs">{t('{t('没找到？加微信问我', 'Not found? DM me')}', 'Not found? DM me')}</p>
-                <button onClick={() => { setShowContact(true); setShowResults(false) }} className="mt-1 bg-blue-600 text-white text-xs px-3 py-1 rounded-lg">{t('{t('📱 微信咨询', '📱 WeChat')}', '📱 WeChat')}</button>
+                <p className="text-gray-500 text-xs">{t('没找到？加微信问我', 'Not found? DM me')}</p>
+                <button onClick={() => { setShowContact(true); setShowResults(false) }} className="mt-1 bg-blue-600 text-white text-xs px-3 py-1 rounded-lg">{t('📱 微信咨询', '📱 WeChat')}</button>
               </div>
             )}
           </div>
