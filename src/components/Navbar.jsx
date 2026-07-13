@@ -120,6 +120,9 @@ export default function Navbar() {
             <a href="https://www.gudaoforum.com/games" target="_blank" rel="noopener" className="hover:text-blue-600 whitespace-nowrap flex items-center gap-0.5">
               🎮 在线小游戏
             </a>
+            <a href="https://www.gudaoforum.com/music" target="_blank" rel="noopener" className="hover:text-blue-600 whitespace-nowrap flex items-center gap-0.5">
+              🎵 音乐
+            </a>
 
             <span className="text-gray-300 mx-1">|</span>
             <a href="https://www.gudaoforum.com" target="_blank" rel="noopener" className="hover:text-blue-600 whitespace-nowrap font-medium">古道维修论坛</a>
@@ -187,6 +190,9 @@ export default function Navbar() {
             </a>
             <a href="https://www.gudaoforum.com/games" target="_blank" rel="noopener" className="md:hidden text-xs text-gray-500 hover:text-blue-600" title="在线小游戏">
               🎮
+            </a>
+            <a href="https://www.gudaoforum.com/music" target="_blank" rel="noopener" className="md:hidden text-xs text-gray-500 hover:text-blue-600" title="音乐频道">
+              🎵
             </a>
 
             {/* 古道维修论坛 - 桌面端显示全文，手机端显示"古" */}
