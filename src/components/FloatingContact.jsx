@@ -9,6 +9,7 @@ export default function FloatingContact() {
   const [expanded, setExpanded] = useState(false)
   const [showDonate, setShowDonate] = useState(false)
   const [showWechatQR, setShowWechatQR] = useState(false)
+  const [showAlipayQR, setShowAlipayQR] = useState(false)
   const [showPayNowQR, setShowPayNowQR] = useState(false)
 
   // 微信弹窗
@@ -122,6 +123,11 @@ export default function FloatingContact() {
     setTimeout(() => setShowWechatQR(true), 200)
   }
 
+  const openDonateAlipay = () => {
+    setShowDonate(false)
+    setTimeout(() => setShowAlipayQR(true), 200)
+  }
+
   const openDonatePayNow = () => {
     setShowDonate(false)
     setTimeout(() => setShowPayNowQR(true), 200)
@@ -226,6 +232,15 @@ export default function FloatingContact() {
                 </div>
                 <span className="text-green-600 text-sm">→</span>
               </button>
+              <button onClick={openDonateAlipay}
+                className="flex items-center gap-4 p-4 rounded-xl border border-gray-200 hover:border-blue-300 hover:bg-blue-50 transition-all w-full text-left">
+                <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center shrink-0 text-xl">💰</div>
+                <div className="flex-1">
+                  <div className="font-semibold text-sm text-gray-900">{t('支付宝', 'Alipay')}</div>
+                  <div className="text-xs text-gray-400">{t('扫描二维码支付', 'Scan QR code to pay')}</div>
+                </div>
+                <span className="text-blue-600 text-sm">→</span>
+              </button>
               <button onClick={openDonatePayNow}
                 className="flex items-center gap-4 p-4 rounded-xl border border-gray-200 hover:border-green-300 hover:bg-green-50 transition-all w-full text-left">
                 <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center shrink-0 text-xl">🇸🇬</div>
@@ -255,6 +270,24 @@ export default function FloatingContact() {
             <img src="/images/wechat-pay-qr.jpg" alt="WeChat Pay QR"
               className="w-full max-w-[15rem] mx-auto rounded-xl border border-gray-200 shadow-sm" />
             <p className="text-[10px] text-gray-300 mt-3">{t('截图保存到相册，在微信中扫码', 'Save and scan in WeChat')}</p>
+          </div>
+        </div>
+      )}
+
+      {/* 支付宝二维码 */}
+      {showAlipayQR && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          style={{ backgroundColor: 'rgba(0,0,0,0.35)', backdropFilter: 'blur(4px)' }}
+          onClick={() => setShowAlipayQR(false)}
+        >
+          <div className="bg-white rounded-2xl shadow-2xl max-w-xs w-full p-6 text-center" onClick={e => e.stopPropagation()}
+            style={{ animation: 'scaleIn 0.3s ease-out both' }}>
+            <div className="text-lg font-bold font-serif text-gray-900 mb-1">💰 {t('支付宝', 'Alipay')}</div>
+            <p className="text-xs text-gray-400 mb-4">{t('打开支付宝扫描二维码支付', 'Open Alipay and scan')}</p>
+            <img src="/images/alipay-qr.jpg" alt="Alipay QR"
+              className="w-full max-w-[15rem] mx-auto rounded-xl border border-gray-200 shadow-sm" />
+            <p className="text-[10px] text-gray-300 mt-3">{t('截图保存到相册，在支付宝中扫码', 'Save and scan in Alipay')}</p>
           </div>
         </div>
       )}
