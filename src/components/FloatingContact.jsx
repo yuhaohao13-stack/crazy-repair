@@ -335,9 +335,12 @@ export default function FloatingContact() {
               {/* 📧 QQ邮箱 */}
               <button onClick={() => {
                 if (navigator.clipboard && navigator.clipboard.writeText) {
-                  navigator.clipboard.writeText(EMAIL_QQ)
+                  navigator.clipboard.writeText(EMAIL_QQ).then(() => {
+                    setWechatCopied(false);
+                    setCopied('qq');
+                    setTimeout(() => setCopied(''), 2500)
+                  }).catch(() => {})
                 }
-                setExpanded(false)
               }}
                 className="w-full flex items-center gap-2 px-2.5 py-2 rounded-lg hover:bg-blue-50 transition-colors">
                 <div className="w-7 h-7 rounded-full bg-blue-100 flex items-center justify-center shrink-0">
@@ -345,16 +348,19 @@ export default function FloatingContact() {
                 </div>
                 <div className="text-left flex-1 min-w-0">
                   <p className="text-[11px] font-medium text-gray-900">{t('📧 QQ邮箱', '📧 QQ Email')}</p>
-                  <p className="text-[9px] text-gray-400 truncate">{EMAIL_QQ}</p>
+                  <p className="text-[9px] text-gray-400 truncate">{copied === 'qq' ? '✅ 已复制' : EMAIL_QQ}</p>
                 </div>
               </button>
 
               {/* 📧 谷歌邮箱 */}
               <button onClick={() => {
                 if (navigator.clipboard && navigator.clipboard.writeText) {
-                  navigator.clipboard.writeText(EMAIL_GMAIL)
+                  navigator.clipboard.writeText(EMAIL_GMAIL).then(() => {
+                    setWechatCopied(false);
+                    setCopied('gmail');
+                    setTimeout(() => setCopied(''), 2500)
+                  }).catch(() => {})
                 }
-                setExpanded(false)
               }}
                 className="w-full flex items-center gap-2 px-2.5 py-2 rounded-lg hover:bg-red-50 transition-colors">
                 <div className="w-7 h-7 rounded-full bg-red-100 flex items-center justify-center shrink-0">
@@ -362,7 +368,7 @@ export default function FloatingContact() {
                 </div>
                 <div className="text-left flex-1 min-w-0">
                   <p className="text-[11px] font-medium text-gray-900">{t('📧 谷歌邮箱', '📧 Gmail')}</p>
-                  <p className="text-[9px] text-gray-400 truncate">{EMAIL_GMAIL}</p>
+                  <p className="text-[9px] text-gray-400 truncate">{copied === 'gmail' ? '✅ 已复制' : EMAIL_GMAIL}</p>
                 </div>
               </button>
 
