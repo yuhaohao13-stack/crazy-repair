@@ -1,13 +1,11 @@
 'use client'
 import { useState, useRef, useEffect } from 'react'
-import { MessageCircle, Phone, Heart, X, MessageSquare } from 'lucide-react'
-import { usePathname } from 'next/navigation'
+import { MessageCircle, Heart, X, Copy } from 'lucide-react'
 import { useSite } from '../lib/SiteContext'
-import { WECHAT_ID, PHONE_CHINA, PHONE_SG, getSmsBody, smsUrl } from '../lib/contactData'
+import { WECHAT_ID, EMAIL_QQ, EMAIL_GMAIL } from '../lib/contactData'
 
 export default function FloatingContact() {
   const { lang } = useSite()
-  const pathname = usePathname()
   const [expanded, setExpanded] = useState(false)
   const [showDonate, setShowDonate] = useState(false)
   const [showWechatQR, setShowWechatQR] = useState(false)
@@ -117,13 +115,6 @@ export default function FloatingContact() {
       setTimeout(() => setQrSaved(false), 3000)
     }
     setSavingQr(false)
-  }
-
-  // 短信：直接跳转
-  const handleSms = () => {
-    const body = getSmsBody(pathname)
-    window.location.href = smsUrl(PHONE_CHINA, body)
-    setExpanded(false)
   }
 
   const openDonateWechat = () => {
@@ -296,18 +287,6 @@ export default function FloatingContact() {
               <p className="text-[9px] text-gray-400">{t('选择联系方式', 'Choose a way')}</p>
             </div>
             <div className="space-y-1">
-              {/* 📱 短信咨询 */}
-              <button onClick={handleSms}
-                className="w-full flex items-center gap-2 px-2.5 py-2 rounded-lg hover:bg-blue-50 transition-colors">
-                <div className="w-7 h-7 rounded-full bg-blue-100 flex items-center justify-center shrink-0">
-                  <MessageSquare size={13} className="text-blue-600" />
-                </div>
-                <div className="text-left flex-1 min-w-0">
-                  <p className="text-[11px] font-medium text-gray-900">{t('📱 短信咨询', '📱 SMS')}</p>
-                  <p className="text-[9px] text-gray-400 truncate">{t('点击发送短信，一键咨询', 'Send SMS with pre-filled message')}</p>
-                </div>
-              </button>
-
               {/* 💚 微信 */}
               <button onClick={handleWechat}
                 className="w-full flex items-center gap-2 px-2.5 py-2 rounded-lg hover:bg-green-50 transition-colors">
@@ -320,29 +299,39 @@ export default function FloatingContact() {
                 </div>
               </button>
 
-              {/* 电话 */}
-              <a href="tel:+8613573735550"
+              {/* 📧 QQ邮箱 */}
+              <button onClick={() => {
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                  navigator.clipboard.writeText(EMAIL_QQ)
+                }
+                setExpanded(false)
+              }}
                 className="w-full flex items-center gap-2 px-2.5 py-2 rounded-lg hover:bg-blue-50 transition-colors">
                 <div className="w-7 h-7 rounded-full bg-blue-100 flex items-center justify-center shrink-0">
-                  <Phone size={13} className="text-blue-600" />
+                  <Copy size={13} className="text-blue-600" />
                 </div>
-                <div className="text-left flex-1">
-                  <p className="text-[11px] font-medium text-gray-900">{t('📞 电话咨询', '📞 Phone')}</p>
-                  <p className="text-[9px] text-gray-400">+86 13573735550</p>
+                <div className="text-left flex-1 min-w-0">
+                  <p className="text-[11px] font-medium text-gray-900">{t('📧 QQ邮箱', '📧 QQ Email')}</p>
+                  <p className="text-[9px] text-gray-400 truncate">{EMAIL_QQ}</p>
                 </div>
-              </a>
+              </button>
 
-              {/* WhatsApp */}
-              <a href="https://wa.me/6596146709?text=我想咨询维修事宜" target="_blank" rel="noopener noreferrer"
-                className="w-full flex items-center gap-2 px-2.5 py-2 rounded-lg hover:bg-green-50 transition-colors">
-                <div className="w-7 h-7 rounded-full bg-green-100 flex items-center justify-center shrink-0">
-                  <Phone size={13} className="text-green-600" />
+              {/* 📧 谷歌邮箱 */}
+              <button onClick={() => {
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                  navigator.clipboard.writeText(EMAIL_GMAIL)
+                }
+                setExpanded(false)
+              }}
+                className="w-full flex items-center gap-2 px-2.5 py-2 rounded-lg hover:bg-red-50 transition-colors">
+                <div className="w-7 h-7 rounded-full bg-red-100 flex items-center justify-center shrink-0">
+                  <Copy size={13} className="text-red-600" />
                 </div>
-                <div className="text-left flex-1">
-                  <p className="text-[11px] font-medium text-gray-900">WhatsApp</p>
-                  <p className="text-[9px] text-gray-400">+65 96146709</p>
+                <div className="text-left flex-1 min-w-0">
+                  <p className="text-[11px] font-medium text-gray-900">{t('📧 谷歌邮箱', '📧 Gmail')}</p>
+                  <p className="text-[9px] text-gray-400 truncate">{EMAIL_GMAIL}</p>
                 </div>
-              </a>
+              </button>
 
               {/* 抖音 */}
               <a href="https://v.douyin.com/NvUr5C82ZDM/" target="_blank" rel="noopener noreferrer"

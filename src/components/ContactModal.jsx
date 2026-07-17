@@ -1,13 +1,11 @@
 'use client'
 import { useState } from 'react'
-import { ChevronRight, MessageCircle, Phone, MapPin, MessageSquare } from 'lucide-react'
-import { usePathname } from 'next/navigation'
+import { ChevronRight, MessageCircle, MapPin, Copy } from 'lucide-react'
 import { useSite } from '../lib/SiteContext'
-import { WECHAT_ID, PHONE_CHINA, getSmsBody, smsUrl } from '../lib/contactData'
+import { WECHAT_ID, EMAIL_QQ, EMAIL_GMAIL } from '../lib/contactData'
 
 export default function ContactModal() {
   const { showContact: show, setShowContact: setShow, lang } = useSite()
-  const pathname = usePathname()
   const t = (zh, en) => lang === 'zh' ? zh : en
 
   // 微信引导弹窗
@@ -98,10 +96,13 @@ export default function ContactModal() {
     setSavingQr(false)
   }
 
-  // 短信：直接跳转
-  const handleSms = () => {
-    const body = getSmsBody(pathname)
-    window.location.href = smsUrl(PHONE_CHINA, body)
+  // 复制邮箱
+  const copyEmail = (email) => {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(email).then(() => {
+        // 可加 toast 提示
+      }).catch(() => {})
+    }
   }
 
   return (
@@ -184,20 +185,6 @@ export default function ContactModal() {
             </div>
             <div className="space-y-1.5">
 
-              {/* 📱 短信咨询 */}
-              <button onClick={handleSms}
-                className="w-full flex items-center gap-2 p-2 rounded-lg border border-gray-200 hover:border-blue-300 hover:bg-blue-50 cursor-pointer transition-all text-left"
-              >
-                <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center shrink-0"><MessageSquare size={14} className="text-blue-600" /></div>
-                <div className="flex-1 min-w-0">
-                  <p className="font-medium text-xs text-gray-900">{t('📱 短信咨询', '📱 SMS')}</p>
-                  <p className="text-[9px] text-gray-400 truncate">
-                    {t('一键发送短信，自动填写咨询内容', 'Pre-filled message, one tap to send')}
-                  </p>
-                </div>
-                <ChevronRight size={13} className="text-gray-300 shrink-0" />
-              </button>
-
               {/* 💚 微信 */}
               <button onClick={handleWechat}
                 className="w-full flex items-center gap-2 p-2 rounded-lg border border-gray-200 hover:border-green-300 hover:bg-green-50 cursor-pointer transition-all text-left"
@@ -212,23 +199,29 @@ export default function ContactModal() {
                 <ChevronRight size={13} className="text-gray-300 shrink-0" />
               </button>
 
-              {/* 📞 中国电话 */}
-              <a href="tel:+8613573735550"
-                className="flex items-center gap-2 p-2 rounded-lg border border-gray-200 hover:border-blue-300 hover:bg-blue-50 cursor-pointer transition-all"
+              {/* 📧 QQ邮箱 */}
+              <button onClick={() => copyEmail(EMAIL_QQ)}
+                className="w-full flex items-center gap-2 p-2 rounded-lg border border-gray-200 hover:border-blue-300 hover:bg-blue-50 cursor-pointer transition-all text-left"
               >
-                <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center shrink-0"><Phone size={14} className="text-blue-600" /></div>
-                <div className="flex-1"><p className="font-medium text-xs text-gray-900">{t('📞 中国电话', '📞 China Phone')}</p><p className="text-[9px] text-gray-400">+86 13573735550</p></div>
-                <ChevronRight size={13} className="text-gray-300" />
-              </a>
+                <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center shrink-0"><Copy size={14} className="text-blue-600" /></div>
+                <div className="flex-1 min-w-0">
+                  <p className="font-medium text-xs text-gray-900">{t('📧 QQ邮箱', '📧 QQ Email')}</p>
+                  <p className="text-[9px] text-gray-400 truncate">{EMAIL_QQ}</p>
+                </div>
+                <ChevronRight size={13} className="text-gray-300 shrink-0" />
+              </button>
 
-              {/* WhatsApp */}
-              <a href="https://wa.me/6596146709?text=我想咨询手机电脑维修事宜" target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-2 p-2 rounded-lg border border-gray-200 hover:border-green-300 hover:bg-green-50 cursor-pointer transition-all"
+              {/* 📧 谷歌邮箱 */}
+              <button onClick={() => copyEmail(EMAIL_GMAIL)}
+                className="w-full flex items-center gap-2 p-2 rounded-lg border border-gray-200 hover:border-red-300 hover:bg-red-50 cursor-pointer transition-all text-left"
               >
-                <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center shrink-0"><Phone size={14} className="text-green-600" /></div>
-                <div className="flex-1"><p className="font-medium text-xs text-gray-900">WhatsApp</p><p className="text-[9px] text-gray-400">+65 96146709</p></div>
-                <ChevronRight size={13} className="text-gray-300" />
-              </a>
+                <div className="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center shrink-0"><Copy size={14} className="text-red-600" /></div>
+                <div className="flex-1 min-w-0">
+                  <p className="font-medium text-xs text-gray-900">{t('📧 谷歌邮箱', '📧 Gmail')}</p>
+                  <p className="text-[9px] text-gray-400 truncate">{EMAIL_GMAIL}</p>
+                </div>
+                <ChevronRight size={13} className="text-gray-300 shrink-0" />
+              </button>
 
               {/* 抖音 */}
               <a href="https://v.douyin.com/NvUr5C82ZDM/" target="_blank" rel="noopener noreferrer"

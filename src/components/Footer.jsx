@@ -43,8 +43,8 @@ export default function Footer() {
             <h4 className="font-semibold text-white mb-3">{t('联系方式', 'Contact')}</h4>
             <ul className="space-y-2 text-sm">
               <li>{t('微信: crazy-repair', 'WeChat: crazy-repair')}</li>
-              <li>{t('手机: ', 'Phone: ')}<a href="tel:+8613573735550" className="hover:text-white transition-colors">{t('+86 13573735550', '+86 13573735550')}</a></li>
-              <li>{t('WhatsApp: +65 96146709', 'WhatsApp: +65 96146709')}</li>
+              <li>{t('QQ邮箱: 994730969@qq.com', 'QQ Email: 994730969@qq.com')}</li>
+              <li>{t('谷歌邮箱: yuhaohao13@gmail.com', 'Gmail: yuhaohao13@gmail.com')}</li>
               <li>{t('地址: 威海环翠区西门31号', 'Address: No.31 Ximen, Huancui Dist., Weihai')}</li>
               <li>{t('营业时间: 周一至周日 8:00-19:00', 'Hours: Mon-Sun 8:00-19:00')}</li>
             </ul>

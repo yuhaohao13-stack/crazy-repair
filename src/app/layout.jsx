@@ -42,7 +42,7 @@ export default function RootLayout({ children }) {
     foundingDate: '2007',
     foundingLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', addressLocality: '威海', addressRegion: '山东', addressCountry: 'CN' } },
     address: { '@type': 'PostalAddress', streetAddress: '西门31号', addressLocality: '环翠区', addressRegion: '威海', addressCountry: 'CN' },
-    telephone: '+65 96146709',
+    email: 'yuhaohao13@gmail.com',
     openingHours: 'Mo-Su 08:00-19:00',
     url: 'https://www.crazy-repair.com',
     image: 'https://www.crazy-repair.com/favicon.svg',

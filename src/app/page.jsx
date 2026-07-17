@@ -1,6 +1,6 @@
 'use client'
 import { useState, useMemo } from 'react'
-import { Smartphone, Monitor, Tablet, Wrench, ShieldCheck, Clock, ChevronDown, Award, MapPin, MessageCircle, Phone, Search } from 'lucide-react'
+import { Smartphone, Monitor, Tablet, Wrench, ShieldCheck, Clock, ChevronDown, Award, MapPin, MessageCircle, Search } from 'lucide-react'
 
 function SearchCheck(props) {
   return (<svg xmlns="http://www.w3.org/2000/svg" width={props.size||24} height={props.size||24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="m9 11 2 2 4-4"/></svg>)
@@ -360,8 +360,6 @@ export default function Home() {
               <div className="space-y-4">
                 <div className="flex items-start gap-3"><MapPin size={20} className="text-blue-600 shrink-0 mt-0.5" /><div><p className="font-medium text-gray-900">{t('地址', 'Address')}</p><p className="text-sm text-gray-500">{t('威海市环翠区西门31号', 'No.31 West Gate, Huancui, Weihai')}</p></div></div>
                 <div className="flex items-start gap-3"><MessageCircle size={20} className="text-green-500 shrink-0 mt-0.5" /><div><p className="font-medium text-gray-900">{t('微信', 'WeChat')}</p><p className="text-sm text-gray-500">crazy-repair</p></div></div>
-                <div className="flex items-start gap-3"><Phone size={20} className="text-red-500 shrink-0 mt-0.5" /><div><p className="font-medium text-gray-900">{t('手机', 'Phone')}</p><p className="text-sm text-gray-500"><a href="tel:+8613573735550" className="hover:text-blue-600">+86 13573735550</a></p></div></div>
-                <div className="flex items-start gap-3"><Phone size={20} className="text-green-500 shrink-0 mt-0.5" /><div><p className="font-medium text-gray-900">WhatsApp</p><p className="text-sm text-gray-500">+65 96146709</p></div></div>
                 <div className="flex items-start gap-3"><Clock size={20} className="text-gray-400 shrink-0 mt-0.5" /><div><p className="font-medium text-gray-900">{t('营业时间', 'Hours')}</p><p className="text-sm text-gray-500">{t('周一至周日 8:00-19:00', 'Mon-Sun 8:00-19:00')}</p></div></div>
               </div>
               <button onClick={() => setShowContact(true)} className="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-xl transition-colors">{t('💬 联系我咨询', '💬 Contact for Help')}</button>
