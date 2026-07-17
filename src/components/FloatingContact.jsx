@@ -14,6 +14,7 @@ export default function FloatingContact() {
 
   // 微信弹窗
   const [showWechatPrompt, setShowWechatPrompt] = useState(false)
+  const [copied, setCopied] = useState('')
   const [wechatCopied, setWechatCopied] = useState(false)
 
   const t = (zh, en) => lang === 'zh' ? zh : en
