@@ -285,7 +285,7 @@ export default function FloatingContact() {
             style={{ animation: 'scaleIn 0.3s ease-out both' }}>
             <div className="text-lg font-bold font-serif text-gray-900 mb-1">💰 {t('支付宝', 'Alipay')}</div>
             <p className="text-xs text-gray-400 mb-4">{t('打开支付宝扫描二维码支付', 'Open Alipay and scan')}</p>
-            <img src="/images/alipay-qr.jpg" alt="Alipay QR"
+            <img src="/images/alipay.jpg" alt="Alipay QR"
               className="w-full max-w-[15rem] mx-auto rounded-xl border border-gray-200 shadow-sm" />
             <p className="text-[10px] text-gray-300 mt-3">{t('截图保存到相册，在支付宝中扫码', 'Save and scan in Alipay')}</p>
           </div>
