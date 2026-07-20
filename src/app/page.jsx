@@ -125,11 +125,21 @@ export default function Home() {
                 <span className="flex items-center gap-1"><MessageCircle size={14} />WeChat: crazy-repair</span>
               </div>
             </div>
-            <div className="hidden sm:flex justify-center">
-              <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20 text-center">
+            <div className="hidden sm:flex items-stretch gap-4 justify-center">
+              <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20 text-center flex flex-col justify-center">
                 <div className="text-7xl mb-4">🔧</div>
                 <p className="text-xl font-semibold">{t('专业维修', 'Pro Repair')}</p>
                 <p className="text-blue-200 text-sm mt-1">{t('手机 · 电脑 · 平板 · 数码', 'Phone · PC · Tablet · Gadgets')}</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-3xl border border-white/20 overflow-hidden flex flex-col text-center" style={{ width: '200px' }}>
+                <div className="py-2 text-xs font-medium text-white/80 tracking-wider border-b border-white/10">
+                  🧑 站长浩哥风采
+                </div>
+                <img
+                  src="/images/hao-tiananmen.jpg"
+                  alt="站长浩哥风采"
+                  className="w-full flex-1 object-cover"
+                />
               </div>
             </div>
           </div>
