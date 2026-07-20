@@ -1,6 +1,19 @@
 # Crazy维修 - 爬虫规则
-# 允许搜索引擎索引公开内容
+# 允许搜索引擎索引公开内容，增加曝光引流
 
+# === 百度 ===
+User-agent: Baiduspider
+Allow: /
+
+# === 头条 / 字节跳动 ===
+User-agent: Bytespider
+Allow: /
+
+# === 谷歌 ===
+User-agent: Googlebot
+Allow: /
+
+# === 通用规则 ===
 User-agent: *
 Allow: /
 Disallow: /images/
@@ -21,13 +34,23 @@ Disallow: /
 User-agent: DataForSeoBot
 Disallow: /
 
+User-agent: BLEXBot
+Disallow: /
+
+# 禁止违规爬虫
+User-agent: PetalBot
+Disallow: /
+
+User-agent: AspiegelBot
+Disallow: /
+
+# AI 爬虫屏蔽（不影响搜索索引，仅阻止AI训练抓取）
 User-agent: GPTBot
 Disallow: /
 
 User-agent: CCBot
 Disallow: /
 
-# 屏蔽AI爬虫
 User-agent: Claude-Web
 Disallow: /
 
@@ -35,9 +58,6 @@ User-agent: ClaudeBot
 Disallow: /
 
 User-agent: cohere-ai
-Disallow: /
-
-User-agent: Bytespider
 Disallow: /
 
 User-agent: PerplexityBot
