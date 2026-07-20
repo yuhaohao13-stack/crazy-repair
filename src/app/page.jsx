@@ -102,7 +102,14 @@ export default function Home() {
       <Navbar />
 
       {/* ===== Hero ===== */}
-      <section className="bg-gradient-to-br from-blue-700 via-blue-600 to-blue-500 text-white">
+      <section className="bg-gradient-to-br from-blue-700 via-blue-600 to-blue-500 text-white relative">
+        {/* 手机端右上角站长照片 */}
+        <div className="sm:hidden absolute top-3 right-3 flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 overflow-hidden" style={{ maxWidth: '140px' }}>
+          <div className="flex flex-col">
+            <span className="text-[9px] text-white/70 tracking-wider px-2 pt-1 leading-tight">🧑 站长浩哥风采</span>
+            <img src="/images/hao-tiananmen.jpg" alt="站长浩哥风采" className="w-full object-cover" style={{ maxHeight: '60px' }} />
+          </div>
+        </div>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
           <div className="grid sm:grid-cols-2 gap-10 items-center">
             <div className="space-y-6">
