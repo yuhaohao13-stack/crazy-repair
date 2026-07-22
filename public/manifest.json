@@ -1,0 +1,17 @@
+{
+  "name": "Crazy维修 - 威海手机电脑维修",
+  "short_name": "Crazy维修",
+  "description": "威海手机电脑维修，2007年至今。免费检测，30天质保。",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
