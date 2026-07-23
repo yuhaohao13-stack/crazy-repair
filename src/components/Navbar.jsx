@@ -112,21 +112,6 @@ export default function Navbar() {
             </div>
 
             <Link href="/reviews" className="hover:text-blue-600 whitespace-nowrap flex items-center gap-0.5">
-              <Star size={10} /> {t('客户评价', 'Reviews')}
-            </Link>
-            <a href="/board" className="hover:text-blue-600 whitespace-nowrap flex items-center gap-0.5">
-              <MessageSquare size={10} /> {t('维修求助', 'Repair Help')}
-            </a>
-            <a href="https://www.gudaoforum.com/games" target="_blank" rel="noopener" className="hover:text-blue-600 whitespace-nowrap flex items-center gap-0.5">
-              {t('🎮 在线小游戏', '🎮 Mini Games')}
-            </a>
-            <a href="https://www.gudaoforum.com/music" target="_blank" rel="noopener" className="hover:text-blue-600 whitespace-nowrap flex items-center gap-0.5">
-              {t('🎵 音乐', '🎵 Music')}
-            </a>
-
-            <span className="text-gray-300 mx-1">|</span>
-            <a href="https://www.gudaoforum.com" target="_blank" rel="noopener" className="hover:text-blue-600 whitespace-nowrap font-medium">{t('古道维修论坛', 'Gudao Repair Forum')}</a>
-            <span className="text-gray-300 mx-1">|</span>
 
             <div className="relative flex items-center">
               {showSearch ? (
