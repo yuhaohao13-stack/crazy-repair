@@ -133,14 +133,14 @@ export default function Home() {
               </div>
             </div>
             <div className="hidden sm:flex flex-col gap-3 justify-center">
-              {/* 视频 - 高度固定，宽度按比例自动，居中 */}
-              <div className="bg-black rounded-2xl overflow-hidden shadow-lg mx-auto" style={{height:'155px', width:'auto'}}>
+              {/* 视频 - 宽度与下框一致，高度自动按比例 */}
+              <div className="bg-black rounded-2xl overflow-hidden shadow-lg">
                 <video 
                   src="/videos/crazy-repair.mp4"
                   controls poster="/videos/crazy-repair-poster.jpg"
                   playsInline
                   preload="metadata"
-                  className="h-full w-auto mx-auto"
+                  className="w-full h-auto"
                 />
               </div>
               {/* 下层：两框并排 */}
@@ -168,13 +168,13 @@ export default function Home() {
 
       {/* 手机端视频 - 放在介绍与品牌之间 */}
       <div className="sm:hidden px-4 py-4 bg-gradient-to-br from-blue-700 via-blue-600 to-blue-500">
-        <div className="bg-black rounded-xl overflow-hidden shadow-lg mx-auto" style={{height:'120px', width:'auto'}}>
+        <div className="bg-black rounded-xl overflow-hidden shadow-lg">
           <video 
             src="/videos/crazy-repair.mp4"
             controls poster="/videos/crazy-repair-poster.jpg"
             playsInline
             preload="metadata"
-            className="h-full w-auto mx-auto"
+            className="w-full h-auto"
           />
         </div>
       </div>
