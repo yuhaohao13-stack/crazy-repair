@@ -166,6 +166,19 @@ export default function Home() {
         </div>
       </section>
 
+      {/* 手机端视频 - 放在介绍与品牌之间 */}
+      <div className="sm:hidden px-4 py-4 bg-gradient-to-br from-blue-700 via-blue-600 to-blue-500">
+        <div className="bg-black rounded-xl overflow-hidden shadow-lg" style={{aspectRatio:'16/9'}}>
+          <video 
+            src="/videos/crazy-repair.mp4"
+            controls
+            playsInline
+            preload="metadata"
+            className="w-full h-full object-contain"
+          />
+        </div>
+      </div>
+
       <section id="brands" className="py-12 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <h3 className="text-sm font-semibold text-gray-500 mb-8 text-center uppercase tracking-wider">{t('支持品牌（部分）', 'Brands We Support (partial)')}</h3>
