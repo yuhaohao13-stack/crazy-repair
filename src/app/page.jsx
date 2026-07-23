@@ -140,7 +140,7 @@ export default function Home() {
                   controls poster="/videos/crazy-repair-poster.jpg"
                   playsInline
                   preload="metadata"
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-cover"
                 />
               </div>
               {/* 下层：两框并排 */}
@@ -174,7 +174,7 @@ export default function Home() {
             controls poster="/videos/crazy-repair-poster.jpg"
             playsInline
             preload="metadata"
-            className="w-full h-full object-contain"
+            className="w-full h-full object-cover"
           />
         </div>
       </div>
