@@ -131,6 +131,9 @@ export default function Home() {
                 <span className="flex items-center gap-1"><MapPin size={14} />{t('环翠区西门31号', 'Huancui Dist, West Gate #31')}</span>
                 <span className="flex items-center gap-1"><MessageCircle size={14} />WeChat: crazy-repair</span>
               </div>
+              <div className="mt-3 text-xs text-blue-200/70 bg-blue-600/30 rounded-lg px-3 py-2 inline-block">
+                {t('⚠️ 本人目前在新加坡工作，暂未开设实体店，所有服务以线上咨询为主。点击上方「立即咨询」按钮联系。', '⚠️ Currently working in Singapore. No physical store yet. All services are online-based. Click "Contact Now" above.')}
+              </div>
             </div>
             <div className="hidden sm:flex flex-col gap-3 justify-center">
               {/* 视频 - 宽度与下框一致，高度自动按比例 */}
