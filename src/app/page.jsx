@@ -101,6 +101,15 @@ export default function Home() {
     <div className="min-h-screen bg-white">
       <Navbar />
 
+      {/* 公告条 */}
+      <div className="bg-amber-50 border-b border-amber-200 overflow-hidden">
+        <div className="whitespace-nowrap animate-marquee text-xs sm:text-sm text-amber-800 py-1.5">
+          <span className="mx-4">⚠️ 本人目前在新加坡工作，威海暂未开设实体店，所有维修服务以线上咨询为主。点击上方「立即咨询」按钮联系。</span>
+          <span className="mx-4">⚠️ 本人目前在新加坡工作，威海暂未开设实体店，所有维修服务以线上咨询为主。点击上方「立即咨询」按钮联系。</span>
+          <span className="mx-4">⚠️ 本人目前在新加坡工作，威海暂未开设实体店，所有维修服务以线上咨询为主。点击上方「立即咨询」按钮联系。</span>
+        </div>
+      </div>
+
       {/* ===== Hero ===== */}
       <section className="bg-gradient-to-br from-blue-700 via-blue-600 to-blue-500 text-white relative">
         {/* 手机端右上角站长照片 */}
