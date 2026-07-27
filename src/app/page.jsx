@@ -118,15 +118,15 @@ export default function Home() {
             <span className="text-[10px] text-white/70 tracking-wider px-2.5 pt-1.5 pb-0.5 leading-tight">🧑 站长浩哥风采</span>
             <div className="flex">
               <img src="/images/hao-tiananmen.jpg?v=2" alt="站长浩哥风采" className="object-cover" style={{ height:'120px', width:'auto' }} />
-              <div className="flex-1 flex items-center justify-center p-1.5 relative overflow-hidden">
+              <div className="flex-1 flex flex-col p-1.5 relative overflow-hidden">
                 <img
                   src="/images/hao-tiananmen.jpg?v=2"
                   alt=""
                   aria-hidden
-                  className="absolute opacity-60 object-fill"
+                  className="absolute opacity-60 object-fill z-0"
                   style={{ filter: 'blur(8px)', top:'-50%', left:'-50%', width:'200%', height:'200%' }}
                 />
-                <div className="relative rounded-lg px-2 py-1.5 text-center" style={{background:'linear-gradient(135deg, rgba(255,248,235,0.12) 0%, rgba(255,240,220,0.08) 100%)', backdropFilter:'blur(4px)'}}>
+                <div className="flex-1 flex items-center justify-center rounded-lg z-10" style={{background:'linear-gradient(135deg, rgba(255,248,235,0.12) 0%, rgba(255,240,220,0.08) 100%)', backdropFilter:'blur(4px)'}}>
                   <div className="text-[9px] font-medium text-white/90 leading-relaxed whitespace-nowrap">
                     祝站长浩哥<br />
                     身体健康 · 日日暴富<br />
@@ -192,16 +192,16 @@ export default function Home() {
                       alt="站长浩哥风采"
                       style={{ height:'140px', width:'auto' }}
                     />
-                    <div className="flex-1 flex items-center justify-center p-2 relative overflow-hidden">
+                    <div className="flex-1 flex flex-col p-2 relative overflow-hidden">
                       {/* 虚影背景 */}
                       <img
                         src="/images/hao-tiananmen.jpg?v=2"
                         alt=""
                         aria-hidden
-                        className="absolute opacity-60 object-fill"
+                        className="absolute opacity-60 object-fill z-0"
                         style={{ filter: 'blur(10px)', top:'-50%', left:'-50%', width:'200%', height:'200%' }}
                       />
-                      <div className="relative rounded-xl px-3 py-2.5 text-center" style={{background:'linear-gradient(135deg, rgba(255,248,235,0.15) 0%, rgba(255,240,220,0.1) 100%)', backdropFilter:'blur(4px)'}}>
+                      <div className="flex-1 flex items-center justify-center rounded-xl z-10" style={{background:'linear-gradient(135deg, rgba(255,248,235,0.15) 0%, rgba(255,240,220,0.1) 100%)', backdropFilter:'blur(4px)'}}>
                         <div className="text-[11px] font-medium text-white/90 leading-relaxed whitespace-nowrap">
                           祝站长浩哥<br />
                           身体健康 · 日日暴富<br />
