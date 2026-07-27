@@ -123,7 +123,7 @@ export default function Home() {
                   src="/images/hao-tiananmen.jpg?v=2"
                   alt=""
                   aria-hidden
-                  className="absolute inset-0 w-full h-full object-cover object-left opacity-25"
+                  className="absolute inset-0 w-full h-full object-fill opacity-25"
                   style={{ filter: 'blur(8px)', transform: 'scale(1.15)' }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-50/20 to-amber-100/10" />
@@ -199,7 +199,7 @@ export default function Home() {
                         src="/images/hao-tiananmen.jpg?v=2"
                         alt=""
                         aria-hidden
-                        className="absolute inset-0 w-full h-full object-cover object-left opacity-30"
+                        className="absolute inset-0 w-full h-full object-fill opacity-30"
                         style={{ filter: 'blur(10px)', transform: 'scale(1.15)' }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-50/20 to-amber-100/10" />
