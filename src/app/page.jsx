@@ -118,7 +118,17 @@ export default function Home() {
             <span className="text-[10px] text-white/70 tracking-wider px-2.5 pt-1.5 pb-0.5 leading-tight">🧑 站长浩哥风采</span>
             <div className="flex">
               <img src="/images/hao-tiananmen.jpg?v=2" alt="站长浩哥风采" className="object-cover" style={{ height:'120px', width:'auto' }} />
-              <div className="flex-1 flex items-center justify-center p-1.5 relative overflow-hidden" style={{background:'linear-gradient(to right, rgba(255,237,200,0.25) 0%, rgba(255,215,160,0.15) 60%, rgba(255,195,120,0.08) 100%)'}}>
+              <div className="flex-1 flex items-center justify-center p-1.5 relative overflow-hidden">
+                {/* 虚影背景：同一张图，绝对定位铺满，左对齐，模糊 + 半透明 */}
+                <img
+                  src="/images/hao-tiananmen.jpg?v=2"
+                  alt=""
+                  aria-hidden
+                  className="absolute inset-0 w-full h-full object-cover object-left opacity-25"
+                  style={{ filter: 'blur(8px)', transform: 'scale(1.15)' }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-50/20 to-amber-100/10" />
+                <div className="relative rounded-lg px-2 py-1.5 text-center" style={{background:'linear-gradient(135deg, rgba(255,248,235,0.12) 0%, rgba(255,240,220,0.08) 100%)', backdropFilter:'blur(4px)'}}>
                 <div className="relative rounded-lg px-2 py-1.5 text-center" style={{background:'linear-gradient(135deg, rgba(255,248,235,0.15) 0%, rgba(255,240,220,0.12) 100%)', backdropFilter:'blur(4px)'}}>
                   <div className="text-[9px] font-medium text-white/90 leading-relaxed">
                     今天也要<br />加油鸭！🚀
@@ -183,7 +193,17 @@ export default function Home() {
                       alt="站长浩哥风采"
                       style={{ height:'140px', width:'auto' }}
                     />
-                    <div className="flex-1 flex items-center justify-center p-2 relative overflow-hidden" style={{background:'linear-gradient(to right, rgba(255,237,200,0.25) 0%, rgba(255,215,160,0.15) 60%, rgba(255,195,120,0.08) 100%)'}}>
+                    <div className="flex-1 flex items-center justify-center p-2 relative overflow-hidden">
+                      {/* 虚影背景 */}
+                      <img
+                        src="/images/hao-tiananmen.jpg?v=2"
+                        alt=""
+                        aria-hidden
+                        className="absolute inset-0 w-full h-full object-cover object-left opacity-30"
+                        style={{ filter: 'blur(10px)', transform: 'scale(1.15)' }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-50/20 to-amber-100/10" />
+                      <div className="relative rounded-xl px-3 py-2.5 text-center" style={{background:'linear-gradient(135deg, rgba(255,248,235,0.15) 0%, rgba(255,240,220,0.1) 100%)', backdropFilter:'blur(4px)'}}>
                       <div className="relative rounded-xl px-3 py-2.5 text-center" style={{background:'linear-gradient(135deg, rgba(255,248,235,0.15) 0%, rgba(255,240,220,0.12) 100%)', backdropFilter:'blur(4px)'}}>
                         <div className="text-[11px] font-medium text-white/90 leading-relaxed">
                           今天也要<br />加油鸭！🚀
