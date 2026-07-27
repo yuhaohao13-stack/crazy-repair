@@ -126,8 +126,8 @@ export default function Home() {
                   className="absolute opacity-60 object-fill z-0"
                   style={{ filter: 'blur(8px)', top:'-50%', left:'-50%', width:'200%', height:'200%' }}
                 />
-                <div className="flex-1 flex items-center justify-center rounded-lg z-10" style={{background:'linear-gradient(135deg, rgba(255,248,235,0.12) 0%, rgba(255,240,220,0.08) 100%)', backdropFilter:'blur(4px)'}}>
-                  <div className="text-[9px] font-medium text-white/90 leading-relaxed whitespace-nowrap">
+                <div className="flex-1 flex items-center justify-center rounded-lg z-10 bg-white/70 backdrop-blur-md">
+                  <div className="text-[9px] font-medium text-[#333] leading-relaxed whitespace-nowrap">
                     祝站长浩哥<br />
                     身体健康 · 日日暴富<br />
                     顺风顺水 · 天天开心 🎉
@@ -201,8 +201,8 @@ export default function Home() {
                         className="absolute opacity-60 object-fill z-0"
                         style={{ filter: 'blur(10px)', top:'-50%', left:'-50%', width:'200%', height:'200%' }}
                       />
-                      <div className="flex-1 flex items-center justify-center rounded-xl z-10" style={{background:'linear-gradient(135deg, rgba(255,248,235,0.15) 0%, rgba(255,240,220,0.1) 100%)', backdropFilter:'blur(4px)'}}>
-                        <div className="text-[11px] font-medium text-white/90 leading-relaxed whitespace-nowrap">
+                      <div className="flex-1 flex items-center justify-center rounded-xl z-10 bg-white/70 backdrop-blur-md">
+                        <div className="text-[11px] font-medium text-[#333] leading-relaxed whitespace-nowrap">
                           祝站长浩哥<br />
                           身体健康 · 日日暴富<br />
                           顺风顺水 · 天天开心 🎉
