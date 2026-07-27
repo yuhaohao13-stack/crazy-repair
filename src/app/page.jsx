@@ -112,11 +112,25 @@ export default function Home() {
 
       {/* ===== Hero ===== */}
       <section className="bg-gradient-to-br from-blue-700 via-blue-600 to-blue-500 text-white relative">
-        {/* 手机端右上角站长照片 */}
-        <div className="sm:hidden absolute top-16 right-3 flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 overflow-hidden" style={{ maxWidth: '280px' }}>
+        {/* 手机端右上角站长风采 — 带对话气泡 */}
+        <div className="sm:hidden absolute top-16 right-3 flex bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 overflow-hidden" style={{ maxWidth: '320px' }}>
           <div className="flex flex-col">
             <span className="text-[10px] text-white/70 tracking-wider px-2.5 pt-1.5 pb-0.5 leading-tight">🧑 站长浩哥风采</span>
-            <img src="/images/hao-tiananmen.jpg?v=2" alt="站长浩哥风采" className="w-full object-cover" style={{ maxHeight: '120px' }} />
+            <div className="flex">
+              <img src="/images/hao-tiananmen.jpg?v=2" alt="站长浩哥风采" className="object-cover" style={{ height:'120px', width:'auto' }} />
+              <div className="flex-1 flex items-center justify-center p-1.5 relative overflow-hidden" style={{background:'linear-gradient(to right, rgba(255,237,200,0.25) 0%, rgba(255,215,160,0.15) 60%, rgba(255,195,120,0.08) 100%)'}}>
+                <div className="relative rounded-lg px-2 py-1.5 text-center" style={{background:'linear-gradient(135deg, rgba(255,248,235,0.15) 0%, rgba(255,240,220,0.12) 100%)', backdropFilter:'blur(4px)'}}>
+                  <div className="text-[9px] font-medium text-white/90 leading-relaxed">
+                    今天也要<br />加油鸭！🚀
+                  </div>
+                  <div className="mt-0.5 flex justify-center gap-1">
+                    <span className="text-[8px]">🎨</span>
+                    <span className="text-[8px]">💪</span>
+                    <span className="text-[8px]">💰</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
@@ -159,15 +173,29 @@ export default function Home() {
                   <p className="text-base font-semibold">{t('专业维修', 'Pro Repair')}</p>
                   <p className="text-blue-200 text-xs mt-0.5">{t('手机 · 电脑 · 平板 · 数码', 'Phone · PC · Tablet · Gadgets')}</p>
                 </div>
-                <div className="flex-1 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 overflow-hidden flex flex-col text-center" style={{ width: '180px' }}>
+                <div className="flex-1 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 overflow-hidden" style={{ width: '280px' }}>
                   <div className="py-1.5 text-[10px] font-medium text-white/80 tracking-wider border-b border-white/10">
                     🧑 站长浩哥风采
                   </div>
-                  <img
-                    src="/images/hao-tiananmen.jpg?v=2"
-                    alt="站长浩哥风采"
-                    className="w-full flex-1 object-cover"
-                  />
+                  <div className="flex">
+                    <img
+                      src="/images/hao-tiananmen.jpg?v=2"
+                      alt="站长浩哥风采"
+                      style={{ height:'140px', width:'auto' }}
+                    />
+                    <div className="flex-1 flex items-center justify-center p-2 relative overflow-hidden" style={{background:'linear-gradient(to right, rgba(255,237,200,0.25) 0%, rgba(255,215,160,0.15) 60%, rgba(255,195,120,0.08) 100%)'}}>
+                      <div className="relative rounded-xl px-3 py-2.5 text-center" style={{background:'linear-gradient(135deg, rgba(255,248,235,0.15) 0%, rgba(255,240,220,0.12) 100%)', backdropFilter:'blur(4px)'}}>
+                        <div className="text-[11px] font-medium text-white/90 leading-relaxed">
+                          今天也要<br />加油鸭！🚀
+                        </div>
+                        <div className="mt-1 flex justify-center gap-1.5">
+                          <span className="text-[10px]">🎨</span>
+                          <span className="text-[10px]">💪</span>
+                          <span className="text-[10px]">💰</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
