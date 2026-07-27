@@ -118,21 +118,23 @@ export default function Home() {
             <span className="text-[10px] text-white/70 tracking-wider px-2.5 pt-1.5 pb-0.5 leading-tight">🧑 站长浩哥风采</span>
             <div className="flex">
               <img src="/images/hao-tiananmen.jpg?v=2" alt="站长浩哥风采" className="object-cover" style={{ height:'120px', width:'auto' }} />
-              <div className="flex-1 flex flex-col p-1.5 relative overflow-hidden">
+              <div className="flex-1 flex items-center justify-center p-1.5 relative overflow-hidden">
+                {/* 虚影背景 */}
                 <img
                   src="/images/hao-tiananmen.jpg?v=2"
                   alt=""
                   aria-hidden
-                  className="absolute opacity-60 object-fill z-0"
-                  style={{ filter: 'blur(8px)', top:'-50%', left:'-50%', width:'200%', height:'200%' }}
+                  className="absolute inset-0 w-full h-full object-cover object-left opacity-30"
+                  style={{ filter: 'blur(8px)', transform: 'scale(1.15)' }}
                 />
-                <div className="flex-1 flex items-center justify-center rounded-lg z-10 bg-white/70 backdrop-blur-md">
-                  <div className="text-[9px] font-medium text-[#333] leading-relaxed whitespace-nowrap">
-                    祝站长浩哥<br />
-                    身体健康 · 日日暴富<br />
-                    顺风顺水 · 天天开心 🎉
+                {/* 暖色渐变过渡 */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-50/20 to-amber-100/10" />
+                <div className="relative bg-white/85 backdrop-blur-md rounded-lg px-2 py-1.5 text-center shadow-sm z-10">
+                  <div className="text-[9px] font-medium text-[#333] leading-relaxed">
+                    今天也要<br />
+                    加油鸭！🚀
                   </div>
-                  <div className="mt-0.5 flex flex-col items-center gap-0.5">
+                  <div className="mt-0.5 flex justify-center gap-1">
                     <span className="text-[8px]">🎨</span>
                     <span className="text-[8px]">💪</span>
                     <span className="text-[8px]">💰</span>
@@ -192,22 +194,23 @@ export default function Home() {
                       alt="站长浩哥风采"
                       style={{ height:'140px', width:'auto' }}
                     />
-                    <div className="flex-1 flex flex-col p-2 relative overflow-hidden">
+                    <div className="flex-1 flex items-center justify-center p-2 relative overflow-hidden">
                       {/* 虚影背景 */}
                       <img
                         src="/images/hao-tiananmen.jpg?v=2"
                         alt=""
                         aria-hidden
-                        className="absolute opacity-60 object-fill z-0"
-                        style={{ filter: 'blur(10px)', top:'-50%', left:'-50%', width:'200%', height:'200%' }}
+                        className="absolute inset-0 w-full h-full object-cover object-left opacity-30"
+                        style={{ filter: 'blur(10px)', transform: 'scale(1.15)' }}
                       />
-                      <div className="flex-1 flex items-center justify-center rounded-xl z-10 bg-white/70 backdrop-blur-md">
-                        <div className="text-[11px] font-medium text-[#333] leading-relaxed whitespace-nowrap">
-                          祝站长浩哥<br />
-                          身体健康 · 日日暴富<br />
-                          顺风顺水 · 天天开心 🎉
+                      {/* 暖色渐变过渡 */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-50/20 to-amber-100/10" />
+                      <div className="relative bg-white/85 backdrop-blur-md rounded-xl px-3 py-2.5 text-center shadow-sm z-10">
+                        <div className="text-[11px] font-medium text-[#333] leading-relaxed">
+                          今天也要<br />
+                          加油鸭！🚀
                         </div>
-                        <div className="mt-1 flex flex-col items-center gap-0.5">
+                        <div className="mt-1 flex justify-center gap-1.5">
                           <span className="text-[10px]">🎨</span>
                           <span className="text-[10px]">💪</span>
                           <span className="text-[10px]">💰</span>
