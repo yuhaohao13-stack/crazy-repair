@@ -116,7 +116,7 @@ export default function Home() {
         <div className="sm:hidden absolute top-16 right-3 flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 overflow-hidden" style={{ maxWidth: '280px' }}>
           <div className="flex flex-col">
             <span className="text-[10px] text-white/70 tracking-wider px-2.5 pt-1.5 pb-0.5 leading-tight">🧑 站长浩哥风采</span>
-            <img src="/images/hao-tiananmen.jpg" alt="站长浩哥风采" className="w-full object-cover" style={{ maxHeight: '120px' }} />
+            <img src="/images/hao-tiananmen.jpg?v=2" alt="站长浩哥风采" className="w-full object-cover" style={{ maxHeight: '120px' }} />
           </div>
         </div>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
@@ -164,7 +164,7 @@ export default function Home() {
                     🧑 站长浩哥风采
                   </div>
                   <img
-                    src="/images/hao-tiananmen.jpg"
+                    src="/images/hao-tiananmen.jpg?v=2"
                     alt="站长浩哥风采"
                     className="w-full flex-1 object-cover"
                   />
