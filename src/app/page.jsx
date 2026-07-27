@@ -123,8 +123,8 @@ export default function Home() {
                   src="/images/hao-tiananmen.jpg?v=2"
                   alt=""
                   aria-hidden
-                  className="absolute inset-0 w-full h-full object-fill opacity-25"
-                  style={{ filter: 'blur(8px)', transform: 'scale(1.15)' }}
+                  className="absolute opacity-25 object-fill"
+                  style={{ filter: 'blur(8px)', top:'-15%', left:'-15%', width:'130%', height:'130%' }}
                 />
                 <div className="relative rounded-lg px-2 py-1.5 text-center" style={{background:'linear-gradient(135deg, rgba(255,248,235,0.12) 0%, rgba(255,240,220,0.08) 100%)', backdropFilter:'blur(4px)'}}>
                   <div className="text-[9px] font-medium text-white/90 leading-relaxed whitespace-nowrap">
@@ -198,8 +198,8 @@ export default function Home() {
                         src="/images/hao-tiananmen.jpg?v=2"
                         alt=""
                         aria-hidden
-                        className="absolute inset-0 w-full h-full object-fill opacity-30"
-                        style={{ filter: 'blur(10px)', transform: 'scale(1.15)' }}
+                        className="absolute opacity-30 object-fill"
+                        style={{ filter: 'blur(10px)', top:'-15%', left:'-15%', width:'130%', height:'130%' }}
                       />
                       <div className="relative rounded-xl px-3 py-2.5 text-center" style={{background:'linear-gradient(135deg, rgba(255,248,235,0.15) 0%, rgba(255,240,220,0.1) 100%)', backdropFilter:'blur(4px)'}}>
                         <div className="text-[11px] font-medium text-white/90 leading-relaxed whitespace-nowrap">
