@@ -123,7 +123,7 @@ export default function Home() {
                   src="/images/hao-tiananmen.jpg?v=2"
                   alt=""
                   aria-hidden
-                  className="absolute opacity-25 object-fill"
+                  className="absolute opacity-60 object-fill"
                   style={{ filter: 'blur(8px)', top:'-50%', left:'-50%', width:'200%', height:'200%' }}
                 />
                 <div className="relative rounded-lg px-2 py-1.5 text-center" style={{background:'linear-gradient(135deg, rgba(255,248,235,0.12) 0%, rgba(255,240,220,0.08) 100%)', backdropFilter:'blur(4px)'}}>
@@ -198,7 +198,7 @@ export default function Home() {
                         src="/images/hao-tiananmen.jpg?v=2"
                         alt=""
                         aria-hidden
-                        className="absolute opacity-30 object-fill"
+                        className="absolute opacity-60 object-fill"
                         style={{ filter: 'blur(10px)', top:'-50%', left:'-50%', width:'200%', height:'200%' }}
                       />
                       <div className="relative rounded-xl px-3 py-2.5 text-center" style={{background:'linear-gradient(135deg, rgba(255,248,235,0.15) 0%, rgba(255,240,220,0.1) 100%)', backdropFilter:'blur(4px)'}}>
