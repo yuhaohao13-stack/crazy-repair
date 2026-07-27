@@ -126,7 +126,6 @@ export default function Home() {
                   className="absolute inset-0 w-full h-full object-fill opacity-25"
                   style={{ filter: 'blur(8px)', transform: 'scale(1.15)' }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-50/20 to-amber-100/10" />
                 <div className="relative rounded-lg px-2 py-1.5 text-center" style={{background:'linear-gradient(135deg, rgba(255,248,235,0.12) 0%, rgba(255,240,220,0.08) 100%)', backdropFilter:'blur(4px)'}}>
                   <div className="text-[9px] font-medium text-white/90 leading-relaxed whitespace-nowrap">
                     祝站长浩哥<br />
@@ -202,7 +201,6 @@ export default function Home() {
                         className="absolute inset-0 w-full h-full object-fill opacity-30"
                         style={{ filter: 'blur(10px)', transform: 'scale(1.15)' }}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-50/20 to-amber-100/10" />
                       <div className="relative rounded-xl px-3 py-2.5 text-center" style={{background:'linear-gradient(135deg, rgba(255,248,235,0.15) 0%, rgba(255,240,220,0.1) 100%)', backdropFilter:'blur(4px)'}}>
                         <div className="text-[11px] font-medium text-white/90 leading-relaxed whitespace-nowrap">
                           祝站长浩哥<br />
