@@ -113,12 +113,12 @@ export default function Home() {
       {/* ===== Hero ===== */}
       <section className="bg-gradient-to-br from-blue-700 via-blue-600 to-blue-500 text-white relative">
         {/* 手机端右上角站长风采 — 虚影气泡 */}
-        <div className="sm:hidden absolute top-16 right-3 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 overflow-hidden" style={{ maxWidth: '320px' }}>
+        <div className="sm:hidden absolute top-14 right-2 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 overflow-hidden" style={{ maxWidth: '260px' }}>
           <div className="flex flex-col">
-            <span className="text-[10px] text-white/70 tracking-wider px-2.5 pt-1.5 pb-0.5 leading-tight">🧑 站长浩哥风采</span>
+            <span className="text-[9px] text-white/70 tracking-wider px-2 pt-1 pb-0.5 leading-tight">🧑 站长浩哥风采</span>
             <div className="flex">
-              <img src="/images/hao-tiananmen.jpg?v=2" alt="站长浩哥风采" className="object-cover" style={{ height:'120px', width:'auto' }} />
-              <div className="flex-1 flex items-center justify-center p-2 relative overflow-hidden">
+              <img src="/images/hao-tiananmen.jpg?v=2" alt="站长浩哥风采" className="object-cover" style={{ height:'90px', width:'auto' }} />
+              <div className="flex-1 flex items-center justify-center p-1.5 relative overflow-hidden">
                 {/* 虚影背景 */}
                 <img
                   src="/images/hao-tiananmen.jpg?v=2"
@@ -129,17 +129,17 @@ export default function Home() {
                 />
                 {/* 暖色渐变过渡 */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-50/20 to-amber-100/10" />
-                <div className="relative bg-white/85 backdrop-blur-md rounded-xl px-3 py-2.5 text-center shadow-sm z-10">
-                  <div className="text-[11px] font-medium text-[#333] leading-relaxed">
+                <div className="relative bg-white/85 backdrop-blur-md rounded-xl px-2 py-1.5 text-center shadow-sm z-10">
+                  <div className="text-[10px] font-medium text-[#333] leading-tight">
                     祝站长浩哥<br />
                     身体健康 · 日日暴富<br />
                     顺风顺水 · 天天开心<br />
                     🎉
                   </div>
-                  <div className="mt-1 flex justify-center gap-1.5">
-                    <span className="text-[10px]">🎨</span>
-                    <span className="text-[10px]">💪</span>
-                    <span className="text-[10px]">💰</span>
+                  <div className="mt-0.5 flex justify-center gap-1">
+                    <span className="text-[9px]">🎨</span>
+                    <span className="text-[9px]">💪</span>
+                    <span className="text-[9px]">💰</span>
                   </div>
                 </div>
               </div>
