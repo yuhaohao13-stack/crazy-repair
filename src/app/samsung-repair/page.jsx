@@ -1,4 +1,5 @@
 'use client'
+import Seo from '@/components/Seo'
 import { useSite } from '../../lib/SiteContext'
 import { useState } from 'react'
 import { ArrowLeft, Smartphone, Battery, Droplets, Cpu, Camera, ChevronDown } from 'lucide-react'
@@ -32,6 +33,7 @@ export default function SamsungRepair() {
   ]
 
   return (
+      <Seo title="Samsung手机维修 - 换屏换电池主板维修 | Crazy维修威海" description="威海Samsung手机维修，换屏、换电池、主板维修、进水维修、摄像头维修。Crazy维修2007年至今，免费检测30天质保。" />
     <div className="min-h-screen bg-white">
       <Navbar />
       <Breadcrumb items={[{label:"手机维修",labelEn:"Phone Repair",href:"/phone-repair"},{label:"Samsung 维修",labelEn:"Samsung Repair"}]} />

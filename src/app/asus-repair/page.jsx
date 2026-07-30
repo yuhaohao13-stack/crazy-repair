@@ -1,4 +1,5 @@
 'use client'
+import Seo from '@/components/Seo'
 import { useSite } from '../../lib/SiteContext'
 import { useState } from 'react'
 import { ArrowLeft } from 'lucide-react'
@@ -9,6 +10,7 @@ export default function ASUSRepair() {
   const { lang, setShowContact } = useSite();
   const t = (zh, en) => lang === 'zh' ? zh : en
   return (
+      <Seo title="Uasus维修 - 电脑维修主板维修数据恢复 | Crazy维修威海" description="威海Uasus维修，Crazy维修2007年至今。专业维修Uasus笔记本/台式机，主板维修、屏幕更换、清灰、数据恢复。免费检测30天质保。" />
     <div className="min-h-screen bg-white">
       <Navbar />
       <Breadcrumb items={[{label:"电脑维修",labelEn:"Computer Repair",href:"/computer-repair"},{label:"华硕 维修",labelEn:"ASUS Repair"}]} />

@@ -1,4 +1,5 @@
 'use client'
+import Seo from '@/components/Seo'
 import { useSite } from '../../lib/SiteContext'
 import { useState } from 'react'
 import { ArrowLeft } from 'lucide-react'
@@ -9,6 +10,7 @@ export default function CameraRepair() {
   const { lang, setShowContact } = useSite();
   const t = (zh, en) => lang === 'zh' ? zh : en
   return (
+      <Seo title="相机维修 - 换屏换电池主板维修 | Crazy维修威海" description="威海相机维修，Crazy维修2007年至今。专业维修相机，免费检测、价格透明、30天质保。环翠区西门31号。" />
     <div className="min-h-screen bg-white">
       <Navbar />
       <Breadcrumb items={[{label:"相机维修",labelEn:"Camera Repair"}]} />
