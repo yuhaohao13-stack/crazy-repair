@@ -22,7 +22,7 @@ export default function HonorRepair() {
   const models = [
     t('Magic 7 Pro / Magic 7 / Magic 7 Lite', 'Magic 7 Pro / Magic 7 / Magic 7 Lite'),
     t('Magic V4 / V3 / V2 / Vs / Vs2 (折叠屏)', 'Magic V4 / V3 / V2 / Vs / Vs2 (foldables)'),
-    t('Honor 300 Ultra / 300 Pro / 300 / 200 Pro / 200', 'Honor 300 Ultra / 300 Pro / 300 / 200 Pro / 200'),
+    t('Honor 600 Pro / 600 / 300 Ultra / 300 Pro / 300 / 200 Pro / 200', 'Honor 600 Pro / 600 / 300 Ultra / 300 Pro / 300 / 200 Pro / 200'),
     t('Honor X70 / X60 Pro / X60 / X50 Pro / X50', 'Honor X70 / X60 Pro / X60 / X50 Pro / X50'),
     t('Honor 90 GT / 80 GT / 100 / 90 / 80', 'Honor 90 GT / 80 GT / 100 / 90 / 80'),
     t('Honor Pad 9 / Pad X9 / Pad 8', 'Honor Pad 9 / Pad X9 / Pad 8'),

@@ -68,8 +68,8 @@ export default function XiaomiRepair() {
               {[
                 t('小米 16 / 15 Ultra / 15 Pro / 15', 'Xiaomi 16 / 15 Ultra / 15 Pro / 15'),
                 t('小米 14 Ultra / 14 Pro / 14 / 14T', 'Xiaomi 14 Ultra / 14 Pro / 14 / 14T'),
-                t('Redmi Note 14 Pro+ / Pro / 14', 'Redmi Note 14 Pro+ / Pro / 14'),
-                t('Redmi K80 Pro / K80 / K70 Ultra / K70', 'Redmi K80 Pro / K80 / K70 Ultra / K70'),
+                t('Redmi Note 17 Pro / 17 / Note 14 Pro+ / Pro / 14', 'Redmi Note 17 Pro / 17 / Note 14 Pro+ / Pro / 14'),
+                t('Redmi K90 Ultra / K80 Pro / K80 / K70 Ultra / K70', 'Redmi K90 Ultra / K80 Pro / K80 / K70 Ultra / K70'),
                 t('Redmi Turbo 4 / Turbo 3 / Note 13 Pro', 'Redmi Turbo 4 / Turbo 3 / Note 13 Pro'),
                 t('Poco F7 Pro / F7 / X7 Pro / M7 Pro', 'Poco F7 Pro / F7 / X7 Pro / M7 Pro'),
                 t('小米 Mix Flip / Fold 4 / Pad 7 Pro', 'Xiaomi Mix Flip / Fold 4 / Pad 7 Pro'),

@@ -22,7 +22,7 @@ export default function OPPORepair() {
   const models = [
     t('Find N5 / N4 / N3 Flip / N2 Flip', 'Find N5 / N4 / N3 Flip / N2 Flip'),
     t('Find X8 Pro / X8 / X7 Ultra / X7 / X6', 'Find X8 Pro / X8 / X7 Ultra / X7 / X6'),
-    t('Reno 14 / 14 Pro / 13 / 13 Pro / 12 / 12 Pro', 'Reno 14 / 14 Pro / 13 / 13 Pro / 12 / 12 Pro'),
+    t('Reno 16 / 16 F / 14 / 14 Pro / 13 / 13 Pro / 12 / 12 Pro', 'Reno 16 / 16 F / 14 / 14 Pro / 13 / 13 Pro / 12 / 12 Pro'),
     t('Reno 11 / 11 Pro / 10 / 10 Pro+', 'Reno 11 / 11 Pro / 10 / 10 Pro+'),
     t('A系列 A60 / A58 / A57 / A56 / A55', 'A series A60 / A58 / A57 / A56 / A55'),
     t('OPPO Pad / Pad 3 / Pad Air / Pad 2', 'OPPO Pad / Pad 3 / Pad Air / Pad 2'),

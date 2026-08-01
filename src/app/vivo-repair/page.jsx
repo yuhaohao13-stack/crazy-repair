@@ -22,11 +22,11 @@ export default function VIVORepair() {
   const models = [
     t('X200 Pro / X200 / X200 Pro Mini', 'X200 Pro / X200 / X200 Pro Mini'),
     t('X100 Pro / X100s / X100 / X90 Pro+ / X90', 'X100 Pro / X100s / X100 / X90 Pro+ / X90'),
-    t('iQOO 15 / 14 / 13 / 12 / Neo 10 / Neo 9', 'iQOO 15 / 14 / 13 / 12 / Neo 10 / Neo 9'),
+    t('iQOO 15 / 14 / 13 / 12 / Z11 / Neo 10 / Neo 9', 'iQOO 15 / 14 / 13 / 12 / Z11 / Neo 10 / Neo 9'),
     t('Y300 / Y200 / Y100 / Y36 / Y35', 'Y300 / Y200 / Y100 / Y36 / Y35'),
     t('V40 Pro / V40 / V30 Pro / V30', 'V40 Pro / V40 / V30 Pro / V30'),
     t('S20 / S19 / S18 / S17（自拍系列）', 'S20 / S19 / S18 / S17 (selfie series)'),
-    t('X Fold 5 / X Fold 3 Pro / X Flip', 'X Fold 5 / X Fold 3 Pro / X Flip'),
+    t('X Fold 6 / X Fold 5 / X Fold 3 Pro / X Flip', 'X Fold 6 / X Fold 5 / X Fold 3 Pro / X Flip'),
   ]
 
   return (

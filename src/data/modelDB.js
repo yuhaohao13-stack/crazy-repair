@@ -91,6 +91,8 @@ const modelDB = [
   { brand: 'Apple', model: 'iPad Mini 6', page: '/tablet-repair', issues: ['屏幕碎', '电池不耐用','果冻屏'] },
 
   // === Samsung ===
+  { brand: 'Samsung', model: 'Galaxy Z Fold 8 Ultra', page: '/samsung-repair', issues: ['内屏更换', '外屏更换', '铰链维修', '电池更换'] },
+  { brand: 'Samsung', model: 'Galaxy Z Fold 8', page: '/samsung-repair', issues: ['内屏更换', '外屏更换', '铰链维修', '电池更换'] },
   { brand: 'Samsung', model: 'Galaxy S25 Ultra', page: '/samsung-repair', issues: ['屏幕更换', 'AMOLED维修', '电池更换', '后盖更换', '摄像头维修'] },
   { brand: 'Samsung', model: 'Galaxy S25 Plus', page: '/samsung-repair', issues: ['屏幕更换', '电池更换', '后盖更换'] },
   { brand: 'Samsung', model: 'Galaxy S25', page: '/samsung-repair', issues: ['屏幕更换', '电池更换'] },
@@ -116,6 +118,7 @@ const modelDB = [
   { brand: 'Samsung', model: 'Galaxy S10 Plus', page: '/samsung-repair', issues: ['屏幕更换', '电池更换', '后盖更换'] },
   { brand: 'Samsung', model: 'Galaxy S10e', page: '/samsung-repair', issues: ['屏幕更换', '电池更换'] },
   { brand: 'Samsung', model: 'Galaxy Z Fold 7', page: '/samsung-repair', issues: ['内屏更换', '外屏更换', '铰链维修', '电池更换'] },
+  { brand: 'Samsung', model: 'Galaxy Z Flip 8', page: '/samsung-repair', issues: ['内屏更换', '外屏更换', '铰链维修', '电池更换'] },
   { brand: 'Samsung', model: 'Galaxy Z Flip 7', page: '/samsung-repair', issues: ['内屏更换', '外屏更换', '铰链维修', '电池更换'] },
   { brand: 'Samsung', model: 'Galaxy Z Fold 6', page: '/samsung-repair', issues: ['内屏更换', '外屏更换', '铰链维修', '电池更换'] },
   { brand: 'Samsung', model: 'Galaxy Z Flip 6', page: '/samsung-repair', issues: ['内屏更换', '外屏更换', '铰链维修'] },
@@ -127,6 +130,7 @@ const modelDB = [
   { brand: 'Samsung', model: 'Galaxy Z Flip 3', page: '/samsung-repair', issues: ['内屏更换', '外屏更换', '电池更换'] },
   { brand: 'Samsung', model: 'Galaxy Z Fold 2', page: '/samsung-repair', issues: ['内屏更换', '外屏更换', '铰链维修'] },
   { brand: 'Samsung', model: 'Galaxy Z Flip (初代)', page: '/samsung-repair', issues: ['内屏更换', '外屏更换', '铰链维修', '电池更换'] },
+  { brand: 'Samsung', model: 'Galaxy A27', page: '/samsung-repair', issues: ['屏幕更换', '电池更换'] },
   { brand: 'Samsung', model: 'Galaxy A56', page: '/samsung-repair', issues: ['屏幕更换', '电池更换'] },
   { brand: 'Samsung', model: 'Galaxy A36', page: '/samsung-repair', issues: ['屏幕更换', '电池更换'] },
   { brand: 'Samsung', model: 'Galaxy A55', page: '/samsung-repair', issues: ['屏幕更换', '电池更换'] },
@@ -212,9 +216,12 @@ const modelDB = [
   { brand: 'Huawei', model: 'MateBook D16', page: '/computer-repair', issues: ['屏幕更换', '电池更换'] },
 
   // === Xiaomi / Redmi ===
+  { brand: 'Xiaomi', model: 'Redmi K90 Ultra', page: '/xiaomi-repair', issues: ['屏幕更换', '电池更换', '主板维修', '刷机'] },
   { brand: 'Xiaomi', model: 'Xiaomi 15 Ultra', page: '/xiaomi-repair', issues: ['屏幕更换', '电池更换', '摄像头维修', '刷机'] },
   { brand: 'Xiaomi', model: 'Xiaomi 15 Pro', page: '/xiaomi-repair', issues: ['屏幕更换', '电池更换', '摄像头维修'] },
   { brand: 'Xiaomi', model: 'Xiaomi 15', page: '/xiaomi-repair', issues: ['屏幕更换', '电池更换'] },
+  { brand: 'Xiaomi', model: 'Redmi Note 17 Pro', page: '/xiaomi-repair', issues: ['屏幕更换', '电池更换', '后盖更换'] },
+  { brand: 'Xiaomi', model: 'Redmi Note 17', page: '/xiaomi-repair', issues: ['屏幕更换', '电池更换'] },
   { brand: 'Xiaomi', model: 'Redmi Note 14 Pro+', page: '/xiaomi-repair', issues: ['屏幕更换', '电池更换', '后盖更换', '主板维修'] },
   { brand: 'Xiaomi', model: 'Redmi Note 14 Pro', page: '/xiaomi-repair', issues: ['屏幕更换', '电池更换', '后盖更换'] },
   { brand: 'Xiaomi', model: 'Redmi Note 14', page: '/xiaomi-repair', issues: ['屏幕更换', '电池更换'] },
@@ -273,6 +280,8 @@ const modelDB = [
   { brand: 'Xiaomi', model: 'Redmi 9/10', page: '/xiaomi-repair', issues: ['屏幕更换', '电池更换', '刷机解锁'] },
 
   // === OPPO ===
+  { brand: 'OPPO', model: 'Reno 16', page: '/oppo-repair', issues: ['屏幕更换', '电池更换', '摄像头维修'] },
+  { brand: 'OPPO', model: 'Reno 16 F', page: '/oppo-repair', issues: ['屏幕更换', '电池更换'] },
   { brand: 'OPPO', model: 'Find N5', page: '/oppo-repair', issues: ['内屏更换', '外屏更换', '铰链维修', '电池更换'] },
   { brand: 'OPPO', model: 'Find X8 Pro', page: '/oppo-repair', issues: ['屏幕更换', '电池更换', '摄像头维修'] },
   { brand: 'OPPO', model: 'Find X8', page: '/oppo-repair', issues: ['屏幕更换', '电池更换'] },
@@ -310,9 +319,11 @@ const modelDB = [
   { brand: 'OPPO', model: 'OPPO A18', page: '/oppo-repair', issues: ['屏幕更换', '电池更换'] },
 
   // === VIVO / iQOO ===
+  { brand: 'VIVO', model: 'vivo X Fold6', page: '/vivo-repair', issues: ['内屏更换', '外屏更换', '铰链维修', '电池更换'] },
   { brand: 'VIVO', model: 'X200 Pro', page: '/vivo-repair', issues: ['屏幕更换', '电池更换', '摄像头维修'] },
   { brand: 'VIVO', model: 'X200 Pro Mini', page: '/vivo-repair', issues: ['屏幕更换', '电池更换', '摄像头维修'] },
   { brand: 'VIVO', model: 'X200', page: '/vivo-repair', issues: ['屏幕更换', '电池更换'] },
+  { brand: 'VIVO', model: 'iQOO Z11', page: '/vivo-repair', issues: ['屏幕更换', '电池更换'] },
   { brand: 'VIVO', model: 'iQOO 15 Pro', page: '/vivo-repair', issues: ['屏幕更换', '电池更换', '主板维修'] },
   { brand: 'VIVO', model: 'iQOO 15', page: '/vivo-repair', issues: ['屏幕更换', '电池更换', '主板维修'] },
   { brand: 'VIVO', model: 'iQOO 13', page: '/vivo-repair', issues: ['屏幕更换', '电池更换', '主板维修'] },
@@ -384,6 +395,8 @@ const modelDB = [
   { brand: 'Google', model: 'Pixel Fold', page: '/google-repair', issues: ['内屏更换', '外屏更换', '铰链维修', '电池更换'] },
 
   // === Honor ===
+  { brand: 'Honor', model: 'Honor 600 Pro', page: '/honor-repair', issues: ['屏幕更换', '电池更换', '摄像头维修'] },
+  { brand: 'Honor', model: 'Honor 600', page: '/honor-repair', issues: ['屏幕更换', '电池更换'] },
   { brand: 'Honor', model: 'Magic 7 Pro', page: '/honor-repair', issues: ['屏幕更换', '电池更换', '摄像头维修'] },
   { brand: 'Honor', model: 'Magic 7', page: '/honor-repair', issues: ['屏幕更换', '电池更换'] },
   { brand: 'Honor', model: 'Magic V4', page: '/honor-repair', issues: ['内屏更换', '外屏更换', '电池更换'] },
@@ -410,14 +423,17 @@ const modelDB = [
   { brand: 'Honor', model: 'Honor 80', page: '/honor-repair', issues: ['屏幕更换', '电池更换'] },
   { brand: 'Honor', model: 'Honor 70 Pro', page: '/honor-repair', issues: ['屏幕更换', '电池更换'] },
   { brand: 'Honor', model: 'Honor 70', page: '/honor-repair', issues: ['屏幕更换', '电池更换'] },
+  { brand: 'Honor', model: 'Honor X70', page: '/honor-repair', issues: ['屏幕更换', '电池更换', '后盖更换'] },
   { brand: 'Honor', model: 'Honor X50', page: '/honor-repair', issues: ['屏幕更换', '电池更换', '后盖更换'] },
   { brand: 'Honor', model: 'Honor X50 Pro', page: '/honor-repair', issues: ['屏幕更换', '电池更换'] },
   { brand: 'Honor', model: 'Honor X9b', page: '/honor-repair', issues: ['屏幕更换', '电池更换', '后盖更换'] },
   { brand: 'Honor', model: 'Honor X9a', page: '/honor-repair', issues: ['屏幕更换', '电池更换'] },
   { brand: 'Honor', model: 'Honor X7b', page: '/honor-repair', issues: ['屏幕更换', '电池更换'] },
   { brand: 'Honor', model: 'Honor X8b', page: '/honor-repair', issues: ['屏幕更换', '电池更换'] },
+  { brand: 'Honor', model: 'Honor Pad GT2 Pro', page: '/tablet-repair', issues: ['屏幕碎', '电池不耐用'] },
 
   // === Realme ===
+  { brand: 'Realme', model: 'Realme Note 80', page: '/realme-repair', issues: ['屏幕更换', '电池更换'] },
   { brand: 'Realme', model: 'Realme GT 8 Pro', page: '/realme-repair', issues: ['屏幕更换', '电池更换', '主板维修'] },
   { brand: 'Realme', model: 'Realme GT 8', page: '/realme-repair', issues: ['屏幕更换', '电池更换', '主板维修'] },
   { brand: 'Realme', model: 'Realme GT Neo 6 SE', page: '/realme-repair', issues: ['屏幕更换', '电池更换'] },
@@ -452,6 +468,7 @@ const modelDB = [
 
   // === 电脑品牌 ===
   // --- Lenovo ---
+  { brand: 'Lenovo', model: 'ThinkPad T14p Gen 4', page: '/lenovo-repair', issues: ['屏幕更换', '电池更换', '键盘更换', '系统重装'] },
   { brand: 'Lenovo', model: 'ThinkPad X1 Carbon Gen 13', page: '/lenovo-repair', issues: ['屏幕更换', '电池更换', '键盘更换', '系统重装'] },
   { brand: 'Lenovo', model: 'ThinkPad X1 Carbon Gen 12', page: '/lenovo-repair', issues: ['屏幕更换', '电池更换', '键盘更换', '系统重装'] },
   { brand: 'Lenovo', model: 'ThinkPad X1 Carbon Gen 11', page: '/lenovo-repair', issues: ['屏幕更换', '电池更换', '键盘更换', '系统重装'] },
@@ -637,6 +654,8 @@ const modelDB = [
   { brand: 'Apple', model: 'Apple Watch Series 8', page: '/watch-repair', issues: ['屏幕更换', '电池更换'] },
   { brand: 'Apple', model: 'Apple Watch Series 7', page: '/watch-repair', issues: ['屏幕更换', '电池更换'] },
   { brand: 'Apple', model: 'Apple Watch SE', page: '/watch-repair', issues: ['屏幕更换', '电池更换'] },
+  { brand: 'Samsung', model: 'Galaxy Watch 9', page: '/watch-repair', issues: ['屏幕更换', '电池更换'] },
+  { brand: 'Samsung', model: 'Galaxy Watch Ultra 2', page: '/watch-repair', issues: ['屏幕更换', '电池更换'] },
   { brand: 'Samsung', model: 'Galaxy Watch 7', page: '/watch-repair', issues: ['屏幕更换', '电池更换'] },
   { brand: 'Samsung', model: 'Galaxy Watch 6', page: '/watch-repair', issues: ['屏幕更换', '电池更换'] },
   { brand: 'Samsung', model: 'Galaxy Watch 5', page: '/watch-repair', issues: ['屏幕更换', '电池更换'] },
@@ -660,6 +679,8 @@ const modelDB = [
   { brand: 'Nothing', model: 'Phone 2', page: '/phone-repair', issues: ['屏幕更换', '电池更换'] },
   { brand: 'Nothing', model: 'Phone 1', page: '/phone-repair', issues: ['屏幕更换', '电池更换', '充电口维修'] },
   { brand: 'Nothing', model: 'CMF Phone 1', page: '/phone-repair', issues: ['屏幕更换', '电池更换'] },
+  { brand: 'Sharp', model: 'AQUOS R11', page: '/phone-repair', issues: ['屏幕更换', '电池更换', '摄像头维修'] },
+  { brand: 'Motorola', model: 'Moto g37', page: '/phone-repair', issues: ['屏幕更换', '电池更换'] },
 ]
 
 export default modelDB

@@ -26,9 +26,9 @@ export default function SamsungRepair() {
       t('Galaxy S22 Ultra / S22 Plus / S22', 'Galaxy S22 Ultra / S22 Plus / S22'),
       t('Galaxy S21 Ultra / S21 Plus / S21 / S21 FE', 'Galaxy S21 Ultra / S21 Plus / S21 / S21 FE'),
       t('Galaxy S20 Ultra / S20 Plus / S20', 'Galaxy S20 Ultra / S20 Plus / S20'),
-      t('Galaxy Z Fold 7 / Fold 6 / Fold 5', 'Galaxy Z Fold 7 / Fold 6 / Fold 5'),
-      t('Galaxy Z Flip 7 / Flip 6 / Flip 5', 'Galaxy Z Flip 7 / Flip 6 / Flip 5'),
-      t('Galaxy A56 / A55 / A54 / A36 / A35', 'Galaxy A56 / A55 / A54 / A36 / A35'),
+      t('Galaxy Z Fold 8 Ultra / Fold 8 / Fold 7 / Fold 6', 'Galaxy Z Fold 8 Ultra / Fold 8 / Fold 7 / Fold 6'),
+      t('Galaxy Z Flip 8 / Flip 7 / Flip 6 / Flip 5', 'Galaxy Z Flip 8 / Flip 7 / Flip 6 / Flip 5'),
+      t('Galaxy A56 / A55 / A54 / A36 / A35 / A27', 'Galaxy A56 / A55 / A54 / A36 / A35 / A27'),
       t('Galaxy Note 20 Ultra / Note 20 / Note 10', 'Galaxy Note 20 Ultra / Note 20 / Note 10')
   ]
 

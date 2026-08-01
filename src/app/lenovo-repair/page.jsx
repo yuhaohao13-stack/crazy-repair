@@ -22,7 +22,7 @@ export default function LenovoRepair() {
 
   const models = [
     t('ThinkPad X1 Carbon Gen 13 (2025) / Gen 12 / Gen 11', 'ThinkPad X1 Carbon Gen 13 (2025) / Gen 12 / Gen 11'),
-    t('ThinkPad T16 Gen 4 / T14s Gen 6 / T14 Gen 5', 'ThinkPad T16 Gen 4 / T14s Gen 6 / T14 Gen 5'),
+    t('ThinkPad T16 Gen 4 / T14p Gen 4 / T14s Gen 6 / T14 Gen 5', 'ThinkPad T16 Gen 4 / T14p Gen 4 / T14s Gen 6 / T14 Gen 5'),
     t('Yoga Pro 9i (2025) / Yoga 9i / Yoga Slim 7i', 'Yoga Pro 9i (2025) / Yoga 9i / Yoga Slim 7i'),
     t('拯救者 Legion 9i (2025) / Pro 7i / 5i / Slim 5', 'Legion 9i (2025) / Pro 7i / 5i / Slim 5'),
     t('小新 Pro 16 / Pro 14 / Air 15 / Air 14', 'Xiaoxin Pro 16 / Pro 14 / Air 15 / Air 14'),
