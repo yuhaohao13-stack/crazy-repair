@@ -31,6 +31,7 @@ export default function MSIRepair() {
   ]
 
   return (
+    <>
       <Seo title="Umsi维修 - 电脑维修主板维修数据恢复 | Crazy维修威海" description="威海Umsi维修，Crazy维修2007年至今。专业维修Umsi笔记本/台式机，主板维修、屏幕更换、清灰、数据恢复。免费检测30天质保。" />
     <div className="min-h-screen bg-white">
       <Navbar />
@@ -116,5 +117,6 @@ export default function MSIRepair() {
         </div>
       </section>
     </div>
+    </>
   )
 }

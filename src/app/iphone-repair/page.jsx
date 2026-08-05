@@ -33,6 +33,7 @@ export default function IphoneRepair() {
   ]
 
   return (
+    <>
       <Seo title="Iphone手机维修 - 换屏换电池主板维修 | Crazy维修威海" description="威海Iphone手机维修，换屏、换电池、主板维修、进水维修、摄像头维修。Crazy维修2007年至今，免费检测30天质保。" />
     <div className="min-h-screen bg-white">
       <Navbar />
@@ -102,5 +103,6 @@ export default function IphoneRepair() {
         </div>
       </section>
     </div>
+    </>
   )
 }

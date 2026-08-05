@@ -8,6 +8,7 @@ export default function HeadphonesRepair() {
   const { lang, setShowContact } = useSite();
   const t = (zh, en) => lang === 'zh' ? zh : en
   return (
+    <>
       <Seo title="耳机维修 - 换屏换电池主板维修 | Crazy维修威海" description="威海耳机维修，Crazy维修2007年至今。专业维修耳机，免费检测、价格透明、30天质保。环翠区西门31号。" />
     <div className="min-h-screen bg-white">
       <Navbar />
@@ -46,5 +47,6 @@ export default function HeadphonesRepair() {
         </div>
       </section>
     </div>
+    </>
   )
 }
