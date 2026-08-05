@@ -89,7 +89,6 @@ export default function Navbar() {
           {/* --- 桌面端导航 --- */}
           <div className="hidden md:flex items-center gap-2 text-xs text-gray-600">
             <a href="/#brands" className="hover:text-blue-600 whitespace-nowrap">{t('品牌', 'Brands')}</a>
-            <a href="/#services" className="hover:text-blue-600 whitespace-nowrap">{t('服务', 'Services')}</a>
 
             <div className="relative group">
               <a href="/#brands" className="hover:text-blue-600 whitespace-nowrap flex items-center gap-0.5">
