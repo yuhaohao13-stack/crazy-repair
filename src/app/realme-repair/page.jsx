@@ -20,6 +20,7 @@ export default function RealmeRepair() {
   ]
 
   const models = [
+    t('Realme 16 Pro / 16', 'Realme 16 Pro / 16'),
     t('Realme GT 8 / GT 7 Pro / GT 7', 'Realme GT 8 / GT 7 Pro / GT 7'),
     t('Realme Note 80（长续航系列）', 'Realme Note 80 (long battery series)'),
     t('Realme GT 6 / GT 6T / GT 5 Pro / GT 5', 'Realme GT 6 / GT 6T / GT 5 Pro / GT 5'),

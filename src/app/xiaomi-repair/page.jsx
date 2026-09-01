@@ -32,7 +32,7 @@ export default function XiaomiRepair() {
             <h1 className="text-3xl sm:text-5xl font-bold mb-4">{t('Xiaomi 维修', 'Xiaomi Repair')}</h1>
             <p className="text-xl text-orange-100 mb-4">{t('小米/Redmi 全系列专业维修 | 威海', 'Xiaomi/Redmi All Series | Weihai')}</p>
             <p className="text-orange-100 leading-relaxed">
-              {t('小米16/15 Ultra、Redmi Note 14、Poco全系列——屏幕、电池、主板、刷机解锁，统统搞定。比小米官方售后便宜，质量同样可靠。擅长小米主板芯片级维修和红米性价比维修。2007年至今奋斗在维修一线。', 'Xiaomi 16/15 Ultra, Redmi Note 14, Poco series — screens, batteries, boards, flashing, all covered. Cheaper than Xiaomi official, same quality. Specialized in Xiaomi motherboard repair and Redmi value repairs. On the job since 2007.')}
+              {t('小米17/17 Ultra、Redmi Note 17、K100 Pro、Poco全系列——屏幕、电池、主板、刷机解锁，统统搞定。比小米官方售后便宜，质量同样可靠。擅长小米主板芯片级维修和红米性价比维修。2007年至今奋斗在维修一线。', 'Xiaomi 17/17 Ultra, Redmi Note 17, K100 Pro, Poco series — screens, batteries, boards, flashing, all covered. Cheaper than Xiaomi official, same quality. Specialized in Xiaomi motherboard repair and Redmi value repairs. On the job since 2007.')}
             </p>
             <div className="flex flex-wrap gap-3 mt-6">
               <button onClick={() => setShowContact(true)} className="bg-white text-orange-600 font-semibold px-6 py-3 rounded-xl hover:bg-orange-50 transition-colors shadow-lg">

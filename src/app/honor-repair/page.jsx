@@ -20,10 +20,11 @@ export default function HonorRepair() {
   ]
 
   const models = [
-    t('Magic 7 Pro / Magic 7 / Magic 7 Lite', 'Magic 7 Pro / Magic 7 / Magic 7 Lite'),
-    t('Magic V4 / V3 / V2 / Vs / Vs2 (折叠屏)', 'Magic V4 / V3 / V2 / Vs / Vs2 (foldables)'),
-    t('Honor 600 Pro / 600 / 300 Ultra / 300 Pro / 300 / 200 Pro / 200', 'Honor 600 Pro / 600 / 300 Ultra / 300 Pro / 300 / 200 Pro / 200'),
-    t('Honor X70 / X60 Pro / X60 / X50 Pro / X50', 'Honor X70 / X60 Pro / X60 / X50 Pro / X50'),
+    t('Robot Phone（机器人手机）', 'Robot Phone'),
+    t('Magic 8 Pro / Magic 8 / Magic 8 Pro Air / Magic 7 Pro / Magic 7 / Magic 7 Lite', 'Magic 8 Pro / Magic 8 / Magic 8 Pro Air / Magic 7 Pro / Magic 7 / Magic 7 Lite'),
+    t('Magic V6 / V5 / V4 / V3 / V2 / Vs / Vs2 (折叠屏)', 'Magic V6 / V5 / V4 / V3 / V2 / Vs / Vs2 (foldables)'),
+    t('Honor 600 Pro / 600 / 600 超级版 / 300 Ultra / 300 Pro / 300 / 200 Pro / 200', 'Honor 600 Pro / 600 / 600 Super / 300 Ultra / 300 Pro / 300 / 200 Pro / 200'),
+    t('Honor X80 Pro Max / X70 / X60 Pro / X60 / X50 Pro / X50', 'Honor X80 Pro Max / X70 / X60 Pro / X60 / X50 Pro / X50'),
     t('Honor 90 GT / 80 GT / 100 / 90 / 80', 'Honor 90 GT / 80 GT / 100 / 90 / 80'),
     t('Honor Pad 9 / Pad X9 / Pad 8', 'Honor Pad 9 / Pad X9 / Pad 8'),
     t('Honor View / Play系列', 'Honor View / Play series'),

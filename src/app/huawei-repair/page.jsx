@@ -32,7 +32,7 @@ export default function HuaweiRepair() {
             <h1 className="text-3xl sm:text-5xl font-bold mb-4">{t('Huawei 维修', 'Huawei Repair')}</h1>
             <p className="text-xl text-red-100 mb-4">{t('华为 Mate/P/Nova 全系列专业维修 | 威海', 'Huawei Mate/P/Nova All Series | Weihai')}</p>
             <p className="text-red-100 leading-relaxed">
-              {t('华为Pura 80/Mate 70/nova 14 全系列维修。屏幕坏了、电池不耐用了、进水了、鸿蒙刷机卡LOGO了——都能搞定。擅长华为主板芯片级维修。2007年至今奋斗在维修一线。', 'Huawei Pura 80/Mate 70/nova 14 all series repair. Cracked screen, battery drain, water damage, HarmonyOS boot loop — we handle it all. Specialized in Huawei component-level board repair. On the job since 2007.')}
+              {t('华为Pura 90/Mate 80/nova 16 全系列维修。屏幕坏了、电池不耐用了、进水了、鸿蒙刷机卡LOGO了——都能搞定。擅长华为主板芯片级维修。2007年至今奋斗在维修一线。', 'Huawei Pura 90/Mate 80/nova 16 all series repair. Cracked screen, battery drain, water damage, HarmonyOS boot loop — we handle it all. Specialized in Huawei component-level board repair. On the job since 2007.')}
             </p>
             <div className="flex flex-wrap gap-3 mt-6">
               <button onClick={() => setShowContact(true)} className="bg-white text-red-600 font-semibold px-6 py-3 rounded-xl hover:bg-red-50 transition-colors shadow-lg">

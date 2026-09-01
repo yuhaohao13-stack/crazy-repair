@@ -14,12 +14,13 @@ export default function SamsungRepair() {
     {id:'screen-replacement', title:'屏幕更换', titleEn:'Screen Replacement', desc:'Samsung S/Z/A系列内外屏更换。AMOLED原装屏维修。含密封胶恢复防水。折叠屏内屏外屏都能做。', descEn:'Samsung S/Z/A series inner/outer screen replacement. AMOLED OEM repair. Waterproof sealant. Foldable screen repair available.'},
     {id:'battery-replacement', title:'电池更换', titleEn:'Battery Replacement', desc:'Samsung S/Z/A/Note系列电池更换。原装规格电池，健康度恢复100%。告别一天多充。', descEn:'Samsung S/Z/A/Note series battery swap. OEM spec, health restored to 100%. No more frequent charging.'},
     {id:'motherboard-repair', title:'主板维修', titleEn:'Motherboard Repair', desc:'三星主板芯片级维修：不开机、重启、充电IC、WiFi故障。比换主板省一半以上。', descEn:'Samsung board-level repair: no power, boot loop, charging IC, WiFi. 50%+ cheaper than board replacement.'},
-    {id:'charging-port', title:'充电口/尾插', titleEn:'Charging Port', desc:'Type-C充电口松动、接触不良、不充电。尾插小板更换。S23/S24/S25 Ultra系列。', descEn:'Type-C loose port, bad contact, not charging. Charging flex replacement. S23/S24/S25 Ultra series.'},
+    {id:'charging-port', title:'充电口/尾插', titleEn:'Charging Port', desc:'Type-C充电口松动、接触不良、不充电。尾插小板更换。S23-S26 Ultra系列。', descEn:'Type-C loose port, bad contact, not charging. Charging flex replacement. S23-S26 Ultra series.'},
     {id:'camera-repair', title:'摄像头维修', titleEn:'Camera Repair', desc:'拍照模糊、闪退、黑屏。S Ultra系列2亿像素摄像头维修更换。', descEn:'Blurry photos, crash, black screen. S Ultra 200MP camera module repair.'},
     {id:'back-glass', title:'后盖更换', titleEn:'Back Glass', desc:'Samsung玻璃后盖碎裂更换。S系列、Note系列。含背胶重新贴合。', descEn:'Samsung glass back replacement. S series, Note series. Includes new adhesive.'}
   ]
   
   const models = [
+      t('Galaxy S26 Ultra / S26 Plus / S26', 'Galaxy S26 Ultra / S26 Plus / S26'),
       t('Galaxy S25 Ultra / S25 Plus / S25', 'Galaxy S25 Ultra / S25 Plus / S25'),
       t('Galaxy S24 Ultra / S24 Plus / S24 / S24 FE', 'Galaxy S24 Ultra / S24 Plus / S24 / S24 FE'),
       t('Galaxy S23 Ultra / S23 Plus / S23 / S23 FE', 'Galaxy S23 Ultra / S23 Plus / S23 / S23 FE'),
@@ -28,7 +29,7 @@ export default function SamsungRepair() {
       t('Galaxy S20 Ultra / S20 Plus / S20', 'Galaxy S20 Ultra / S20 Plus / S20'),
       t('Galaxy Z Fold 8 Ultra / Fold 8 / Fold 7 / Fold 6', 'Galaxy Z Fold 8 Ultra / Fold 8 / Fold 7 / Fold 6'),
       t('Galaxy Z Flip 8 / Flip 7 / Flip 6 / Flip 5', 'Galaxy Z Flip 8 / Flip 7 / Flip 6 / Flip 5'),
-      t('Galaxy A56 / A55 / A54 / A36 / A35 / A27', 'Galaxy A56 / A55 / A54 / A36 / A35 / A27'),
+      t('Galaxy A57 / A56 / A55 / A54 / A37 / A36 / A35 / A27', 'Galaxy A57 / A56 / A55 / A54 / A37 / A36 / A35 / A27'),
       t('Galaxy Note 20 Ultra / Note 20 / Note 10', 'Galaxy Note 20 Ultra / Note 20 / Note 10')
   ]
 

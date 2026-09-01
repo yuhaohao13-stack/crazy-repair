@@ -24,7 +24,7 @@ export default function Home() {
       link: '/phone-repair',
       title: t('手机维修', 'Phone Repair'),
       summary: t('苹果/三星/华为/小米/OPPO/vivo/OnePlus/荣耀/Google Pixel 等全品牌', 'Apple/Samsung/Huawei/Xiaomi/OPPO/vivo/OnePlus/Honor/Google Pixel & more'),
-      brands: t('覆盖 iPhone 17/16/15/14/13 全系，三星 S/Z/A 系列，华为 Mate/P 系列，小米 Redmi 全系，OPPO Find/Reno，vivo X/iQOO，OnePlus，荣耀 Magic/数字/X 系列，Google Pixel 全系列', 'iPhone 17/16/15/14/13 all series, Samsung S/Z/A series, Huawei Mate/P series, Xiaomi/Redmi all models, OPPO Find/Reno, vivo X/iQOO, OnePlus, Honor Magic/Number/X series, Google Pixel all series'),
+      brands: t('覆盖 iPhone 17/16/15/14/13 全系，三星 S26/S/Z/A 系列，华为 Mate 80/Pura 90/nova 16，小米17/Redmi K100 全系，OPPO Find X9，vivo X300/iQOO，OnePlus 15，荣耀 Magic 8/Robot Phone，Google Pixel 11 全系列', 'iPhone 17/16/15/14/13 all series, Samsung S26/S/Z/A series, Huawei Mate 80/Pura 90/nova 16, Xiaomi 17/Redmi K100 all models, OPPO Find X9, vivo X300/iQOO, OnePlus 15, Honor Magic 8/Robot Phone, Google Pixel 11 all series'),
       details: [
         { name: t('屏幕更换', 'Screen Replacement'), desc: t('内外屏总成更换，原装品质/国产高性价比可选。含专业密封胶恢复防水性。iPhone OLED/三星AMOLED/各种屏幕都做。', 'Full assembly replacement. OEM quality or affordable options. Includes waterproof sealant. iPhone OLED, Samsung AMOLED, all screen types handled.') },
         { name: t('电池更换', 'Battery Replacement'), desc: t('原装品质电池，容量达标不虚标。更换后自动检测健康度，告别续航焦虑。iPhone/安卓全系列电池现货。', 'Quality batteries with accurate capacity. Health check after replacement. iPhone & Android batteries in stock.') },
@@ -41,7 +41,7 @@ export default function Home() {
       link: '/computer-repair',
       title: t('电脑维修', 'Computer Repair'),
       summary: t('台式机、笔记本、MacBook、iMac 各类故障', 'Desktop, laptop, MacBook & iMac repair'),
-      brands: t('联想/Lenovo/Dell/HP/华硕/ASUS/Apple MacBook(Pro/Air)/iMac/华为 MateBook 全系列 + Surface/小米笔记本', 'Lenovo/Dell/HP/ASUS/Apple MacBook (Pro/Air)/iMac/Huawei MateBook all series + Surface/Xiaomi laptops'),
+      brands: t('联想/Lenovo/Dell/HP/华硕/ASUS/Apple MacBook(Pro/Air)/iMac/华为 MateBook 全系列 + Surface/小米/荣耀笔记本', 'Lenovo/Dell/HP/ASUS/Apple MacBook (Pro/Air)/iMac/Huawei MateBook all series + Surface/Xiaomi/Honor laptops'),
       details: [
         { name: t('MacBook 维修', 'MacBook Repair'), desc: t('MacBook Pro/Air 全型号（A1278/A1466/A1706/A1989/A2141/A2337等）。屏幕、键盘、电池、进水、键盘粘滞、不充电通病。', 'MacBook Pro/Air all models (A1278/A1466/A1706/A1989/A2141/A2337 etc). Screen, keyboard, battery, water damage, sticky keys, no charging.') },
         { name: t('系统安装', 'OS Installation'), desc: t('Windows/Mac 系统重装、双系统安装、系统崩溃恢复、驱动安装、换固态硬盘后系统迁移。', 'Windows/Mac reinstall, dual boot, crash recovery, driver setup, SSD migration.') },

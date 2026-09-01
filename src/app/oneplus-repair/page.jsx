@@ -20,6 +20,7 @@ export default function OnePlusRepair() {
   ]
 
   const models = [
+    t('OnePlus 15 / 13 / 13R / 12 / 12R', 'OnePlus 15 / 13 / 13R / 12 / 12R'),
     t('OnePlus Open 2 / Open (折叠屏)', 'OnePlus Open 2 / Open (foldable)'),
     t('OnePlus 13 / 13R / 12 / 12R', 'OnePlus 13 / 13R / 12 / 12R'),
     t('OnePlus 11 / 11R / 10 Pro / 10T', 'OnePlus 11 / 11R / 10 Pro / 10T'),
