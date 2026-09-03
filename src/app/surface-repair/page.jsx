@@ -19,7 +19,7 @@ export default function SurfaceRepair() {
                   <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14">
           <h1 className="text-3xl sm:text-5xl font-bold mb-3">{t('Surface 维修', 'Surface Repair')}</h1>
           <p className="text-green-100 text-lg mb-4">{t('Surface 全系列专业维修 | 威海', 'Surface All Series | Weihai')}</p>
-          <p className="text-green-100 max-w-2xl">{t('Surface Find、Reno、A系列——屏幕碎了、电池不耐用了、充电口坏了，拿来给我看看。2007年至今奋斗在维修一线。', 'Surface Find, Reno, A series — cracked screen, battery drain, charging port issues. On the job since 2007.')}</p>
+          <p className="text-green-100 max-w-2xl">{t('Surface屏幕碎了、电池鼓包、键盘失灵、不开机、触屏没反应？Surface Pro/Go/Laptop都能修。2007年至今奋斗在维修一线。', 'Surface cracked screen, swollen battery, keyboard failure, no power, touch not responding? Surface Pro/Go/Laptop all repairable. On the job since 2007.')}</p>
           <div className="flex gap-3 mt-6">
             <button onClick={() => setShowContact(true)} className="bg-white text-gray-600 font-semibold px-5 py-2.5 rounded-xl hover:bg-gray-50 shadow-lg">
                 {t('📱 立即咨询', '📱 Contact Now')}

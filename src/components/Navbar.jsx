@@ -114,7 +114,7 @@ export default function Navbar() {
             <a href="/board" className="hover:text-blue-600 whitespace-nowrap flex items-center gap-0.5">
               <MessageSquare size={10} /> {t('维修求助', 'Repair Help')}
             </a>
-            <a href="https://www.gudaoforum.com/c/tech" target="_blank" rel="noopener" className="hover:text-blue-600 whitespace-nowrap flex items-center gap-0.5">
+            <a href="/cases" className="hover:text-blue-600 whitespace-nowrap flex items-center gap-0.5">
               <Wrench size={10} /> {t('维修案例', 'Repair Cases')}
             </a>
             <a href="https://www.gudaoforum.com/music" target="_blank" rel="noopener" className="hover:text-blue-600 whitespace-nowrap flex items-center gap-0.5">

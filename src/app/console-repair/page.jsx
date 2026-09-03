@@ -19,7 +19,7 @@ export default function GameConsoleRepair() {
                   <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14">
           <h1 className="text-3xl sm:text-5xl font-bold mb-3">{t('GameConsole 维修', 'GameConsole Repair')}</h1>
           <p className="text-green-100 text-lg mb-4">{t('GameConsole 全系列专业维修 | 威海', 'GameConsole All Series | Weihai')}</p>
-          <p className="text-green-100 max-w-2xl">{t('GameConsole Find、Reno、A系列——屏幕碎了、电池不耐用了、充电口坏了，拿来给我看看。2007年至今奋斗在维修一线。', 'GameConsole Find, Reno, A series — cracked screen, battery drain, charging port issues. On the job since 2007.')}</p>
+          <p className="text-green-100 max-w-2xl">{t('Switch、PS5、PS4、Xbox手柄漂移、不开机、花屏、充电口损坏？游戏机都能修。2007年至今奋斗在维修一线。', 'Switch, PS5/PS4, Xbox — joystick drift, no power, display issues, charging port damage? All repairable. On the job since 2007.')}</p>
           <div className="flex gap-3 mt-6">
             <button onClick={() => setShowContact(true)} className="bg-white text-red-600 font-semibold px-5 py-2.5 rounded-xl hover:bg-red-50 shadow-lg">
                 {t('📱 立即咨询', '📱 Contact Now')}
@@ -31,7 +31,7 @@ export default function GameConsoleRepair() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">{t('常见维修', 'Common Repairs')}</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {[{title:'游戏机维修',titleEn:'Screen',desc:'GameConsole Find/Reno/A系列游戏机维修，OLED/LCD。碎裂漏液触摸不灵。'},
+            {[{title:'游戏机维修',titleEn:'Screen',desc:'Switch/PS5/PS4/Xbox游戏机维修，屏幕碎裂、花屏、漏液。'},
               {title:'电池更换',titleEn:'Battery',desc:'GameConsole电池不耐用、鼓包、充不进电。原装规格电池。'},
               {title:'充电口维修',titleEn:'Charging Port',desc:'Type-C口松动、接触不良、只能慢充。'},
               {title:'主板维修',titleEn:'Motherboard',desc:'不开机、重启、充电IC故障、无服务。芯片级维修。'},

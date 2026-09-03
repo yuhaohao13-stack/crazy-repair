@@ -19,7 +19,7 @@ export default function ASUSRepair() {
                   <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14">
           <h1 className="text-3xl sm:text-5xl font-bold mb-3">{t('ASUS 维修', 'ASUS Repair')}</h1>
           <p className="text-green-100 text-lg mb-4">{t('ASUS 全系列专业维修 | 威海', 'ASUS All Series | Weihai')}</p>
-          <p className="text-green-100 max-w-2xl">{t('ASUS Find、Reno、A系列——屏幕碎了、电池不耐用了、充电口坏了，拿来给我看看。2007年至今奋斗在维修一线。', 'ASUS Find, Reno, A series — cracked screen, battery drain, charging port issues. On the job since 2007.')}</p>
+          <p className="text-green-100 max-w-2xl">{t('华硕笔记本/台式机屏幕碎了、电池不耐用了、键盘失灵、开机黑屏？灵耀、天选、ROG玩家国度都能修。2007年至今奋斗在维修一线。', 'ASUS laptop/desktop cracked screen, dead battery, keyboard failure, black screen? Zenbook, TUF, ROG all repairable. On the job since 2007.')}</p>
           <div className="flex gap-3 mt-6">
             <button onClick={() => setShowContact(true)} className="bg-white text-cyan-600 font-semibold px-5 py-2.5 rounded-xl hover:bg-cyan-50 shadow-lg">
                 {t('📱 立即咨询', '📱 Contact Now')}
