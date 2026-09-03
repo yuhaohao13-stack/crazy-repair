@@ -117,9 +117,6 @@ export default function Navbar() {
             <a href="/cases" className="hover:text-blue-600 whitespace-nowrap flex items-center gap-0.5">
               <Wrench size={10} /> {t('维修案例', 'Repair Cases')}
             </a>
-            <a href="https://www.gudaoforum.com/music" target="_blank" rel="noopener" className="hover:text-blue-600 whitespace-nowrap flex items-center gap-0.5">
-              {t('🎵 音乐', '🎵 Music')}
-            </a>
 
             <div className="relative flex items-center">
               {showSearch ? (
@@ -183,9 +180,6 @@ export default function Navbar() {
             </a>
             <a href="https://www.gudaoforum.com/c/tech" target="_blank" rel="noopener" className="md:hidden text-xs text-gray-500 hover:text-blue-600" title={t('维修案例', 'Repair Cases')}>
               <Wrench size={14} />
-            </a>
-            <a href="https://www.gudaoforum.com/music" target="_blank" rel="noopener" className="md:hidden text-xs text-gray-500 hover:text-blue-600" title={t('音乐频道', 'Music')}>
-              🎵
             </a>
 
             {/* 古道维修论坛 - 桌面端显示全文，手机端显示"古" */}

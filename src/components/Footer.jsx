@@ -37,7 +37,6 @@ export default function Footer() {
               <li><a href="/cases" className="hover:text-white transition-colors">{t('维修案例', 'Repair Cases')}</a></li>
               <li><a href="/#faq" className="hover:text-white transition-colors">{t('常见问题', 'FAQ')}</a></li>
               <li><a href="https://www.gudaoforum.com/games" target="_blank" rel="noopener" className="hover:text-white transition-colors">{t('休闲娱乐-小游戏', 'Mini Games')}</a></li>
-              <li><a href="https://www.gudaoforum.com/music" target="_blank" rel="noopener" className="hover:text-white transition-colors">{t('🎵 音乐频道', '🎵 Music')}</a></li>
             </ul>
           </div>
           <div>
