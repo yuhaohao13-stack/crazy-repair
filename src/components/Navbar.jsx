@@ -182,11 +182,9 @@ export default function Navbar() {
               <Wrench size={14} /><span className="sm:hidden">{t('案例', 'Cases')}</span>
             </a>
 
-            {/* 古道维修论坛 - 桌面端显示全文，手机端显示"古" */}
+            {/* 古道维修论坛 - 仅桌面端显示（手机端快捷栏已精简，2026-09-03 去古字） */}
             <a href="https://www.gudaoforum.com" target="_blank" rel="noopener"
               className="text-xs text-gray-500 hover:text-blue-600 hidden sm:inline-flex items-center">{t('古道维修论坛', 'Gudao Forum')}</a>
-            <a href="https://www.gudaoforum.com" target="_blank" rel="noopener"
-              className="text-xs text-gray-500 hover:text-blue-600 sm:hidden inline-flex items-center font-bold" title={t('古道维修论坛', 'Gudao Forum')}>古</a>
 
             {/* 抖音 */}
             <a href="https://v.douyin.com/NvUr5C82ZDM/" target="_blank" rel="noopener"
