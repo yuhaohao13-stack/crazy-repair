@@ -1,7 +1,8 @@
 import { generateServiceMetadata } from '../../../lib/service-metadata'
 
 export async function generateMetadata({ params }) {
-  return generateServiceMetadata("macbook-repair", params.service)
+  const { service } = await params
+  return generateServiceMetadata("macbook-repair", service)
 }
 
 export default function ServiceLayout({ children }) {

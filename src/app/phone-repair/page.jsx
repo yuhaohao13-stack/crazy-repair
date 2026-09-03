@@ -1,5 +1,4 @@
 'use client'
-import Seo from '@/components/Seo'
 import { useSite } from '../../lib/SiteContext'
 import { useState } from 'react'
 import Navbar from '../../components/Navbar'
@@ -42,7 +41,7 @@ export default function PhoneRepair() {
 
   return (
     <>
-      <Seo title="手机维修 - 换屏换电池主板维修 | Crazy维修威海" description="威海手机维修，Crazy维修2007年至今。专业维修手机，免费检测、价格透明、30天质保。环翠区西门31号。" />
+      
     <div className="min-h-screen bg-white">
       <Navbar />
       <Breadcrumb items={[{label:"手机维修",labelEn:"Phone Repair"}]} />

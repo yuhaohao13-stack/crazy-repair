@@ -46,15 +46,15 @@ export function generateServiceMetadata(brandDir, serviceId) {
   const service = serviceNames[serviceId]
   if (!brand || !service) {
     return {
-      title: 'Crazy维修 | 威海手机电脑维修',
+      title: '威海手机电脑维修',
       description: '威海手机维修、电脑维修、换屏、换电池、主板维修、数据恢复。免费检测，先报价后维修，30天质保。',
     }
   }
 
-  const titleZh = `${brand.brand} ${service.zh} — Crazy维修 | 威海手机电脑维修`
-  const titleEn = `${brand.brand} ${service.en} — Crazy Repair | Weihai Pro Repair`
-  const descZh = `威海${brand.zh}${service.zh}服务。${service.kw}，先免费检测后报价，价格透明不套路。2007年至今奋斗在维修一线，环翠区西门31号。`
-  const descEn = `Weihai ${brand.en} ${service.en.toLowerCase()}. Free diagnosis, transparent pricing. Since 2007 at Huancui, West Gate #31.`
+  const titleZh = `${brand.brand}${service.zh}_威海维修`
+  const titleEn = `${brand.brand} ${service.en} | Weihai Repair`
+  const descZh = `威海${brand.zh}${service.zh}服务。${service.kw}，先免费检测后报价，2007年至今奋斗在维修一线，环翠区西门31号，30天质保。`
+  const descEn = `Weihai ${brand.en} ${service.en.toLowerCase()}. Free diagnosis, since 2007 at Huancui, West Gate #31.`
 
   return {
     title: titleZh,

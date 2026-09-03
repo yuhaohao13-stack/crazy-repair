@@ -1,5 +1,4 @@
 'use client'
-import Seo from '@/components/Seo'
 import { useSite } from '../../lib/SiteContext'
 import { useState } from 'react'
 import { ArrowLeft, Monitor, Battery, Cpu, ChevronDown } from 'lucide-react'
@@ -32,7 +31,7 @@ export default function HPRepair() {
 
   return (
     <>
-      <Seo title="Uhp维修 - 电脑维修主板维修数据恢复 | Crazy维修威海" description="威海Uhp维修，Crazy维修2007年至今。专业维修Uhp笔记本/台式机，主板维修、屏幕更换、清灰、数据恢复。免费检测30天质保。" />
+      
     <div className="min-h-screen bg-white">
       <Navbar />
       <Breadcrumb items={[{label:"电脑维修",labelEn:"Computer Repair",href:"/computer-repair"},{label:"惠普 维修",labelEn:"HP Repair"}]} />

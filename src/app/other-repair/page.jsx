@@ -1,5 +1,4 @@
 'use client'
-import Seo from '@/components/Seo'
 import { useSite } from '../../lib/SiteContext'
 import { useState } from 'react'
 import Navbar from '../../components/Navbar'
@@ -10,7 +9,7 @@ export default function OtherRepair() {
 
   return (
     <>
-      <Seo title="其他设备维修 - 换屏换电池主板维修 | Crazy维修威海" description="威海其他设备维修，Crazy维修2007年至今。专业维修其他设备，免费检测、价格透明、30天质保。环翠区西门31号。" />
+      
     <div className="min-h-screen bg-white">
       <Navbar />
       <section className="bg-gradient-to-br from-amber-600 via-amber-500 to-yellow-500 text-white">
