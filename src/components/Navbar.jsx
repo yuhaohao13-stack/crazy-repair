@@ -178,8 +178,8 @@ export default function Navbar() {
             <a href="/reviews" className="md:hidden text-xs text-gray-500 hover:text-blue-600" title={t('客户评价', 'Reviews')}>
               <Star size={14} />
             </a>
-            <a href="https://www.gudaoforum.com/c/tech" target="_blank" rel="noopener" className="md:hidden text-xs text-gray-500 hover:text-blue-600" title={t('维修案例', 'Repair Cases')}>
-              <Wrench size={14} />
+            <a href="/cases" className="md:hidden text-xs text-gray-500 hover:text-blue-600 flex items-center gap-0.5" title={t('维修案例', 'Repair Cases')}>
+              <Wrench size={14} /><span className="sm:hidden">{t('案例', 'Cases')}</span>
             </a>
 
             {/* 古道维修论坛 - 桌面端显示全文，手机端显示"古" */}
