@@ -15,6 +15,19 @@ export default function Footer() {
               <span className="font-bold text-white text-lg">{t('Crazy维修', 'Crazy Repair')}</span>
             </div>
             <p className="text-sm leading-relaxed">{t('威海环翠区专业数码维修，诚信经营，先检测后维修。', 'Professional digital device repair in Huancui, Weihai — honest service, test before repair.')}</p>
+            <div className="mt-4">
+              <div className="text-xs font-semibold text-white mb-2">{t('关注我们 · 看维修视频', 'Follow Us')}</div>
+              <div className="flex flex-col gap-2 text-sm">
+                <a href="https://www.youtube.com/@crazyrepairsg" target="_blank" rel="noopener" className="inline-flex items-center gap-2 hover:text-white transition-colors">
+                  <span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#ff0000] text-white text-[10px] font-bold shrink-0">▶</span>
+                  <span>YouTube：@crazyrepairsg</span>
+                </a>
+                <a href="https://v.douyin.com/NvUr5C82ZDM/" target="_blank" rel="noopener" className="inline-flex items-center gap-2 hover:text-white transition-colors">
+                  <span className="inline-flex items-center justify-center w-5 h-5 rounded bg-gradient-to-br from-[#00f2fe] to-[#fe2c55] text-white text-[10px] font-bold shrink-0">♪</span>
+                  <span>抖音：Crazy维修（抖音号 326759381）</span>
+                </a>
+              </div>
+            </div>
           </div>
           <div>
             <h4 className="font-semibold text-white mb-3">{t('品牌维修', 'Brand Repairs')}</h4>

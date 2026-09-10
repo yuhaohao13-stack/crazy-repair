@@ -1,24 +1,32 @@
-import caseIndex from '../../../../data/case-articles-index'
+import { getAllCaseIndex } from '../../../../lib/case-store'
 import Navbar from '../../../../components/Navbar'
 import Breadcrumb from '../../../../components/Breadcrumb'
 import CaseSearchBox from '../../../../components/CaseSearchBox'
 import { slugTagMap } from '../../../../lib/caseTags'
 import { notFound } from 'next/navigation'
 
-// 该分类下所有文章（供搜索）
-function getTagArticles(tag) {
-  return caseIndex.filter(c => c.tag === tag)
+export const revalidate = 300
+
+// 该分类下所有文章（含管理员站内发布的动态案例）
+async function getTagArticles(tag) {
+  const all = await getAllCaseIndex()
+  return all.filter(c => c.tag === tag)
 }
 
 export function generateStaticParams() {
   return Object.keys(slugTagMap).map(slug => ({ slug }))
 }
 
+function resolveTag(slug) {
+  return slugTagMap[slug] || slugTagMap[String(slug).toLowerCase()]
+}
+
 export async function generateMetadata({ params }) {
   const { slug } = await params
-  const tag = slugTagMap[slug] || slugTagMap[String(slug).toLowerCase()]
+  const tag = resolveTag(slug)
   if (!tag) return { title: '分类不存在' }
-  const count = getTagArticles(tag).length
+  const articles = await getTagArticles(tag)
+  const count = articles.length
   return {
     title: `${tag}维修案例_${count}篇真实维修记录`,
     description: `Crazy维修${tag}维修案例${count}篇（含图文）：换屏、换电池、主板维修、进水处理等真实维修过程。威海手机电脑维修2007年至今，免费检测先报价，30天质保。`,
@@ -28,9 +36,9 @@ export async function generateMetadata({ params }) {
 
 export default async function CaseTagPage({ params }) {
   const { slug } = await params
-  const tag = slugTagMap[slug] || slugTagMap[String(slug).toLowerCase()]
+  const tag = resolveTag(slug)
   if (!tag) notFound()
-  const articles = getTagArticles(tag)
+  const articles = await getTagArticles(tag)
 
   return (
     <div className="min-h-screen bg-white">

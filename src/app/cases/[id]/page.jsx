@@ -1,7 +1,13 @@
 import caseArticles from '../../../data/repair-case-articles'
+import { getDynamicArticle } from '../../../lib/case-store'
 import { notFound } from 'next/navigation'
 import Navbar from '../../../components/Navbar'
 import Breadcrumb from '../../../components/Breadcrumb'
+
+// 静态案例优先，其次管理员站内发布的动态案例
+async function findArticle(id) {
+  return caseArticles.find(a => a.id === id) || await getDynamicArticle(id)
+}
 
 // 轻量 markdown 渲染：处理 **加粗**、行内链接、- 列表、数字列表、标题、分隔线
 // 先转义 HTML 再处理 markdown，防止 XSS
@@ -75,7 +81,7 @@ export const dynamic = 'force-dynamic'
 
 export async function generateMetadata({ params }) {
   const { id } = await params
-  const article = caseArticles.find(a => a.id === id)
+  const article = await findArticle(id)
   if (!article) return { title: '案例不存在' }
   const plain = (article.content || '').replace(/[#*`>\-━]/g, ' ').replace(/\s+/g, ' ').trim()
   return {
@@ -87,7 +93,7 @@ export async function generateMetadata({ params }) {
 
 export default async function CaseDetailPage({ params }) {
   const { id } = await params
-  const article = caseArticles.find(a => a.id === id)
+  const article = await findArticle(id)
   if (!article) notFound()
 
   return (
@@ -112,6 +118,23 @@ export default async function CaseDetailPage({ params }) {
                   <img src={img} alt={`${article.title} 维修过程图 ${i + 1}`} loading="lazy" className="rounded-xl border border-gray-100 w-full" />
                 </figure>
               ))}
+            </div>
+          )}
+
+          {(article.youtube_url || article.douyin_url) && (
+            <div className="mt-8 flex flex-wrap gap-3">
+              {article.youtube_url && (
+                <a href={article.youtube_url} target="_blank" rel="noopener"
+                  className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white text-sm font-semibold px-4 py-2.5 rounded-xl">
+                  ▶ 观看 YouTube 维修视频
+                </a>
+              )}
+              {article.douyin_url && (
+                <a href={article.douyin_url} target="_blank" rel="noopener"
+                  className="inline-flex items-center gap-2 bg-black hover:bg-gray-800 text-white text-sm font-semibold px-4 py-2.5 rounded-xl">
+                  ♪ 观看抖音维修视频
+                </a>
+              )}
             </div>
           )}
         </article>
