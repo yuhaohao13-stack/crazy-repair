@@ -152,7 +152,7 @@ export default function CaseAdminPanel() {
   }
 
   const inputCls =
-    'w-full rounded-xl border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-400'
+    'w-full rounded-xl border border-gray-200 bg-white text-gray-900 placeholder:text-gray-400 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-400'
 
   return (
     <>
@@ -164,7 +164,7 @@ export default function CaseAdminPanel() {
       </button>
 
       {open && (
-        <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/50 p-4 sm:p-8">
+        <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/50 p-4 sm:p-8 text-gray-900">
           <div className="w-full max-w-2xl bg-white rounded-2xl shadow-2xl">
             <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
               <h3 className="font-bold text-gray-900">🔐 管理员发布维修案例</h3>
