@@ -16,7 +16,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }) {
   const { slug } = await params
-  const tag = slugTagMap[slug]
+  const tag = slugTagMap[slug] || slugTagMap[String(slug).toLowerCase()]
   if (!tag) return { title: '分类不存在' }
   const count = getTagArticles(tag).length
   return {
@@ -28,7 +28,7 @@ export async function generateMetadata({ params }) {
 
 export default async function CaseTagPage({ params }) {
   const { slug } = await params
-  const tag = slugTagMap[slug]
+  const tag = slugTagMap[slug] || slugTagMap[String(slug).toLowerCase()]
   if (!tag) notFound()
   const articles = getTagArticles(tag)
 
