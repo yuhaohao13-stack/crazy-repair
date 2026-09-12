@@ -1,8 +1,9 @@
 import caseArticles from '../../../data/repair-case-articles'
-import { getDynamicArticle } from '../../../lib/case-store'
+import { getDynamicArticle, getLikeCounts } from '../../../lib/case-store'
 import { notFound } from 'next/navigation'
 import Navbar from '../../../components/Navbar'
 import Breadcrumb from '../../../components/Breadcrumb'
+import CaseLikeButton from '../../../components/CaseLikeButton'
 
 // 静态案例优先，其次管理员站内发布的动态案例
 async function findArticle(id) {
@@ -95,6 +96,7 @@ export default async function CaseDetailPage({ params }) {
   const { id } = await params
   const article = await findArticle(id)
   if (!article) notFound()
+  const likes = await getLikeCounts()
 
   return (
     <div className="min-h-screen bg-white">
@@ -138,7 +140,10 @@ export default async function CaseDetailPage({ params }) {
             </div>
           )}
         </article>
-        <div className="mt-10 bg-blue-50 rounded-2xl p-6 text-center">
+        <div className="mt-8 flex items-center justify-center">
+          <CaseLikeButton id={article.id} initialCount={likes[article.id] || 0} />
+        </div>
+        <div className="mt-8 bg-blue-50 rounded-2xl p-6 text-center">
           <p className="font-semibold text-gray-800 mb-2">你的设备也有类似问题？</p>
           <p className="text-sm text-gray-500 mb-4">免费检测，先报价后维修，修好才收费。30天质保。</p>
           <a href="/#contact" className="inline-block bg-blue-600 text-white font-semibold px-6 py-2.5 rounded-xl hover:bg-blue-700">📱 立即咨询</a>
