@@ -1,8 +1,8 @@
-import { getAllCaseIndex } from '../../lib/case-store'
+import { getAllCaseIndex, getLikeCounts } from '../../lib/case-store'
 import { tagOrder, tagSlugMap } from '../../lib/caseTags'
 import Navbar from '../../components/Navbar'
 import Breadcrumb from '../../components/Breadcrumb'
-import CaseSection from '../../components/CaseSection'
+import CaseBrowser from '../../components/CaseBrowser'
 import CaseAdminPanel from '../../components/CaseAdminPanel'
 
 export const revalidate = 300
@@ -10,15 +10,12 @@ export const revalidate = 300
 const slugForTag = (tag) => tagSlugMap[tag] || tag
 
 export default async function CasesPage() {
-  const allCases = await getAllCaseIndex()
+  const [allCases, likes] = await Promise.all([getAllCaseIndex(), getLikeCounts()])
 
-  // 按标签分组
-  const groups = {}
-  for (const c of allCases) {
-    if (!groups[c.tag]) groups[c.tag] = []
-    groups[c.tag].push(c)
-  }
-  const sortedTags = tagOrder.filter(t => groups[t]).concat(Object.keys(groups).filter(t => !tagOrder.includes(t)))
+  // 品牌标签（用于顶部入口，点击进对应分类页）
+  const tagCounts = {}
+  for (const c of allCases) tagCounts[c.tag] = (tagCounts[c.tag] || 0) + 1
+  const sortedTags = tagOrder.filter(t => tagCounts[t]).concat(Object.keys(tagCounts).filter(t => !tagOrder.includes(t)))
 
   return (
     <div className="min-h-screen bg-white">
@@ -30,7 +27,7 @@ export default async function CasesPage() {
             <div className="max-w-3xl">
               <h1 className="text-3xl sm:text-4xl font-bold mb-3">维修案例库</h1>
               <p className="text-blue-100 leading-relaxed">
-                {allCases.length}+ 篇真实维修案例文章——换屏、换电池、不开机、进水、主板维修、扩容、清灰……全部来自 Crazy维修 实战记录（含图文过程）。点击分类或搜索关键词，找到你设备对应的维修案例。
+                {allCases.length}+ 篇真实维修案例文章——换屏、换电池、不开机、进水、主板维修、扩容、清灰……全部来自 Crazy维修 实战记录（含图文过程）。可按最新/热帖浏览、搜索关键词，或点品牌看分类案例。
               </p>
             </div>
             <div className="shrink-0 pt-1">
@@ -40,7 +37,7 @@ export default async function CasesPage() {
           <div className="flex flex-wrap gap-2 mt-5">
             {sortedTags.map(tag => (
               <a key={tag} href={`/cases/tag/${slugForTag(tag)}`} className="bg-white/15 hover:bg-white/25 backdrop-blur px-3 py-1 rounded-full text-sm transition-colors">
-                {tag}（{groups[tag].length}）
+                {tag}（{tagCounts[tag]}）
               </a>
             ))}
           </div>
@@ -48,15 +45,7 @@ export default async function CasesPage() {
       </section>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10">
-        {sortedTags.map(tag => (
-          <CaseSection
-            key={tag}
-            tag={tag}
-            count={groups[tag].length}
-            articles={groups[tag]}
-            slug={slugForTag(tag)}
-          />
-        ))}
+        <CaseBrowser cases={allCases} initialLikes={likes} />
       </div>
     </div>
   )

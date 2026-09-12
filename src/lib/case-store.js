@@ -42,3 +42,38 @@ export async function getDynamicArticle(id) {
 }
 
 export { staticIndex }
+
+// ─── 点赞 ───
+const LIKES_PATH = 'likes.json'
+
+// 全部点赞数 { caseId: count }
+export async function getLikeCounts() {
+  const obj = await readStoreJson(LIKES_PATH)
+  return obj && typeof obj === 'object' && !Array.isArray(obj) ? obj : {}
+}
+
+// 点赞 +1，返回最新数量
+const likeLocks = new Map()
+export async function bumpLike(id) {
+  // 同一实例内串行化，减小读改写竞争
+  const prev = likeLocks.get('chain') || Promise.resolve()
+  let release
+  const next = new Promise(r => { release = r })
+  likeLocks.set('chain', prev.then(() => next))
+  await prev
+  try {
+    const counts = await getLikeCounts()
+    const value = (parseInt(counts[id], 10) || 0) + 1
+    const merged = { ...counts, [id]: value }
+    const { error } = await supabase.storage
+      .from(BUCKET)
+      .upload(LIKES_PATH, Buffer.from(JSON.stringify(merged), 'utf8'), {
+        contentType: 'application/json',
+        upsert: true,
+      })
+    if (error) throw error
+    return value
+  } finally {
+    release()
+  }
+}
