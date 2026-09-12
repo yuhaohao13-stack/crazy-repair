@@ -24,6 +24,11 @@ export default function CaseBrowser({ cases = [], initialLikes = {} }) {
       const raw = localStorage.getItem(LS_KEY)
       if (raw) setLikedIds(JSON.parse(raw))
     } catch {}
+    // 列表页是缓存的，挂载后拉一次最新点赞数，避免与详情页不一致
+    fetch('/api/cases/likes')
+      .then(r => (r.ok ? r.json() : null))
+      .then(j => { if (j && j.counts) setLikes(prev => ({ ...j.counts, ...prev })) })
+      .catch(() => {})
   }, [])
 
   const list = useMemo(() => {
