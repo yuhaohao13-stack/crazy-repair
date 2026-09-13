@@ -45,11 +45,7 @@ export default function CaseLikeButton({ id, initialCount = 0, className = '' })
       onClick={like}
       disabled={liked || busy}
       title={liked ? '已点赞' : '给这个案例点个赞'}
-      className={`inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold border transition-colors ${
-        liked
-          ? 'bg-blue-600 border-blue-600 text-white cursor-default'
-          : 'bg-white border-gray-200 text-gray-600 hover:border-blue-400 hover:text-blue-600'
-      } disabled:opacity-90 ${className}`}
+      className={`inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold border border-gray-200 bg-white text-gray-600 transition-colors hover:bg-gray-50 disabled:cursor-default disabled:opacity-70 ${className}`}
     >
       👍 {liked ? '已点赞' : '点赞'} <span className="font-bold">{count}</span>
     </button>

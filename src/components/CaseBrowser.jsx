@@ -154,11 +154,7 @@ export default function CaseBrowser({ cases = [], initialLikes = {} }) {
                     onClick={() => like(c.id)}
                     disabled={liked || busyId === c.id}
                     title={liked ? '已点赞' : '点赞'}
-                    className={`ml-auto inline-flex items-center gap-1 rounded-full px-2.5 py-1 border transition-colors ${
-                      liked
-                        ? 'bg-blue-600 border-blue-600 text-white cursor-default'
-                        : 'bg-white border-gray-200 text-gray-500 hover:border-blue-400 hover:text-blue-600'
-                    } disabled:opacity-80`}
+                    className="ml-auto inline-flex items-center gap-1 rounded-full px-2.5 py-1 border border-gray-200 bg-white text-gray-500 transition-colors hover:bg-gray-50 disabled:cursor-default disabled:opacity-70"
                   >
                     👍 {likes[c.id] || 0}
                   </button>
