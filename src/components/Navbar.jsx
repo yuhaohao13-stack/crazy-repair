@@ -90,9 +90,12 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-2 text-xs text-gray-600">
             <div className="relative group">
               <a href="/#brands" className="hover:text-blue-600 whitespace-nowrap flex items-center gap-0.5">
-                {t('维修品牌', 'Brands')} <ChevronDown size={10} />
+                {t('服务项目', 'Services')} <ChevronDown size={10} />
               </a>
-              <div className="absolute top-full left-0 mt-1 bg-white rounded-xl border border-gray-200 shadow-lg z-[60] py-1.5 min-w-[160px] hidden group-hover:block">
+              {/* pt-1 把「按钮→菜单」之间的间隙纳入悬停区，鼠标下移时不会丢 hover；
+                  鼠标离开按钮+菜单整体后才缩回；进入菜单内会一直展开到点击跳转 */}
+              <div className="absolute top-full left-0 pt-1 z-[60] hidden group-hover:block">
+              <div className="bg-white rounded-xl border border-gray-200 shadow-lg py-1.5 min-w-[160px]">
                 <div className="px-3 py-1 text-xs font-bold text-gray-400">{t('📱 手机', '📱 Phones')}</div>
                 <a href="/iphone-repair" className="block px-3 py-1.5 text-xs text-gray-700 hover:bg-gray-50">{t('iPhone 维修', 'iPhone Repair')}</a>
                 <a href="/samsung-repair" className="block px-3 py-1.5 text-xs text-gray-700 hover:bg-gray-50">{t('Samsung 维修', 'Samsung Repair')}</a>
@@ -104,7 +107,8 @@ export default function Navbar() {
                 <a href="/lenovo-repair" className="block px-3 py-1.5 text-xs text-gray-700 hover:bg-gray-50">{t('Lenovo 维修', 'Lenovo Repair')}</a>
                 <a href="/dell-repair" className="block px-3 py-1.5 text-xs text-gray-700 hover:bg-gray-50">{t('Dell 维修', 'Dell Repair')}</a>
                 <hr className="my-1 border-gray-50" />
-                <a href="/#brands" className="block px-3 py-1.5 text-xs text-blue-600 hover:bg-gray-50">{t('查看全部品牌 →', 'View All Brands →')}</a>
+                <a href="/#brands" className="block px-3 py-1.5 text-xs text-blue-600 hover:bg-gray-50">{t('查看全部服务 →', 'View All Services →')}</a>
+              </div>
               </div>
             </div>
 
