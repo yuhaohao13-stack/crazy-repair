@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import Navbar from '../../../components/Navbar'
 import Breadcrumb from '../../../components/Breadcrumb'
 import CaseLikeButton from '../../../components/CaseLikeButton'
+import ShareButton from '../../../components/ShareButton'
 
 // 静态案例优先，其次管理员站内发布的动态案例
 async function findArticle(id) {
@@ -108,7 +109,12 @@ export default async function CaseDetailPage({ params }) {
         </nav>
         <article>
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">{article.title}</h1>
-          {article.date && <p className="text-sm text-gray-400 mb-6">📅 {article.date} · Crazy维修真实案例</p>}
+          {article.date && (
+            <div className="text-sm text-gray-400 mb-6 flex items-center gap-4">
+              <span>📅 {article.date} · Crazy维修真实案例</span>
+              <ShareButton title={article.title} />
+            </div>
+          )}
           <div className="prose prose-gray max-w-none">
             {renderContent(article.content)}
           </div>
@@ -140,8 +146,9 @@ export default async function CaseDetailPage({ params }) {
             </div>
           )}
         </article>
-        <div className="mt-8 flex items-center justify-center">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <CaseLikeButton id={article.id} initialCount={likes[article.id] || 0} />
+          <ShareButton title={article.title} />
         </div>
         <div className="mt-8 bg-blue-50 rounded-2xl p-6 text-center">
           <p className="font-semibold text-gray-800 mb-2">你的设备也有类似问题？</p>
