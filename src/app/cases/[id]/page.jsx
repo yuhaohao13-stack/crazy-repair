@@ -81,15 +81,55 @@ export function generateStaticParams() {
 
 export const dynamic = 'force-dynamic'
 
+// ─── SEO：每篇案例自己的关键词 / 描述 / alt ───
+function extractWords(text) {
+  return (text || '')
+    .replace(/[｜|·【】\[\]（）()，。,.!！?？:：、#\-—_/]/g, ' ')
+    .split(/\s+/)
+    .map(w => w.trim())
+    .filter(w => w.length >= 2)
+}
+
+// 关键词 = 标题里的机型/故障词 + 品牌 + 维修动作 + 地域/服务词
+function buildKeywords(article) {
+  const words = extractWords(article.title).slice(0, 8)
+  const tag = article.tag || ''
+  const list = [
+    ...words,
+    tag && `${tag}维修`,
+    tag && `${tag}维修案例`,
+    '新加坡手机维修',
+    '新加坡电脑维修',
+    '手机维修案例',
+    'Crazy维修',
+  ].filter(Boolean)
+  return [...new Set(list)].slice(0, 16).join(',')
+}
+
+// 描述：机型+故障标题 + 正文摘要（100 字）+ 服务词（手写式，非机器截断）
+function buildDescription(article) {
+  const plain = (article.content || '').replace(/[#*`>\-━◆]/g, ' ').replace(/\s+/g, ' ').trim()
+  const head = (article.title || '').replace(/（维修案例）|\(维修案例\)/g, '').trim()
+  const digest = plain.slice(0, 100)
+  return `${head}。${digest}${plain.length > 100 ? '…' : ''}｜Crazy维修 新加坡/威海手机电脑维修，免费检测先报价，修好才收费，30天质保。`
+}
+
 export async function generateMetadata({ params }) {
   const { id } = await params
   const article = await findArticle(id)
   if (!article) return { title: '案例不存在' }
-  const plain = (article.content || '').replace(/[#*`>\-━]/g, ' ').replace(/\s+/g, ' ').trim()
+  const desc = buildDescription(article)
   return {
     title: article.title.slice(0, 60),
-    description: (plain.slice(0, 150) || article.title) + ' | Crazy维修 威海手机电脑维修',
+    description: desc.slice(0, 300),
+    keywords: buildKeywords(article),
     alternates: { canonical: `https://www.crazy-repair.com/cases/${id}` },
+    openGraph: {
+      title: article.title.slice(0, 60),
+      description: desc.slice(0, 150),
+      type: 'article',
+      url: `https://www.crazy-repair.com/cases/${id}`,
+    },
   }
 }
 
@@ -123,7 +163,7 @@ export default async function CaseDetailPage({ params }) {
               {article.images.map((img, i) => (
                 <figure key={i}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={img} alt={`${article.title} 维修过程图 ${i + 1}`} loading="lazy" className="rounded-xl border border-gray-100 w-full" />
+                  <img src={img} alt={`${article.tag} ${article.title.slice(0, 40)} - 维修过程图 ${i + 1}`} loading="lazy" className="rounded-xl border border-gray-100 w-full" />
                 </figure>
               ))}
             </div>
