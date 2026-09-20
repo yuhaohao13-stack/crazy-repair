@@ -81,7 +81,36 @@ export function generateStaticParams() {
 
 export const dynamic = 'force-dynamic'
 
-// ─── SEO：每篇案例自己的关键词 / 描述 / alt ───
+// ─── SEO：每篇案例自己的中英文关键词 / 描述 / alt ───
+// 品牌 中→英
+const TAG_EN = {
+  'iPhone': 'iPhone', 'iPad': 'iPad', 'MacBook': 'MacBook', '三星': 'Samsung', '华为': 'Huawei',
+  '小米': 'Xiaomi', 'OPPO': 'OPPO', 'vivo': 'vivo', '一加': 'OnePlus', '荣耀': 'Honor',
+  '摩托罗拉': 'Motorola', '华硕': 'ASUS', '联想': 'Lenovo', '戴尔': 'Dell', '惠普': 'HP',
+  '游戏机': 'game console', '相机': 'camera', '手表': 'smartwatch', '耳机': 'headphones',
+  'Kobo电子书': 'Kobo eReader', 'Sharp': 'Sharp', '电脑/笔记本': 'laptop', '手机通用': 'phone', '其他': 'device',
+}
+
+// 故障/维修动作 中→英（命中就加英文关键词）
+const FAULT_EN = [
+  [/换屏|屏幕更换|换屏幕|屏碎/, 'screen replacement'],
+  [/换电池|电池更换|电池不耐用/, 'battery replacement'],
+  [/不开机|无法开机|开不了机/, 'no power won\'t boot'],
+  [/反复重启|重启循环|自动重启/, 'restart loop fix'],
+  [/进水|进液/, 'water damage repair'],
+  [/主板|芯片级|飞线|短接/, 'motherboard repair board level'],
+  [/触摸|断触|触控/, 'touch not working'],
+  [/不充电|充电口|尾插/, 'charging port repair'],
+  [/摄像头|相机/, 'camera repair'],
+  [/无服务|没信号|无信号/, 'no service fix'],
+  [/清灰|析热|磰脂/, 'cleaning thermal paste'],
+  [/扩容|升级内存|加装/, 'storage upgrade'],
+  [/面容|指纹/, 'face id fingerprint repair'],
+  [/数据恢复|保资料/, 'data recovery'],
+  [/烧毁|烧糊|短路/, 'burnt board short circuit'],
+  [/花屏|黑屏|白屏|线条/, 'display issue fix'],
+]
+
 function extractWords(text) {
   return (text || '')
     .replace(/[｜|·【】\[\]（）()，。,.!！?？:：、#\-—_/]/g, ' ')
@@ -90,20 +119,29 @@ function extractWords(text) {
     .filter(w => w.length >= 2)
 }
 
-// 关键词 = 标题里的机型/故障词 + 品牌 + 维修动作 + 地域/服务词
+// 关键词 = 中文（标题型号/故障词 + 品牌 + 地域服务词） + 英文（型号 + repair/fix + 故障英文 + Singapore 服务词）
 function buildKeywords(article) {
-  const words = extractWords(article.title).slice(0, 8)
+  const title = article.title || ''
+  const body = (article.content || '').slice(0, 400)
   const tag = article.tag || ''
-  const list = [
-    ...words,
-    tag && `${tag}维修`,
-    tag && `${tag}维修案例`,
-    '新加坡手机维修',
-    '新加坡电脑维修',
-    '手机维修案例',
-    'Crazy维修',
-  ].filter(Boolean)
-  return [...new Set(list)].slice(0, 16).join(',')
+
+  const cn = [...extractWords(title).slice(0, 8)]
+  if (tag) cn.push(tag, `${tag}维修`, `${tag}维修案例`)
+  cn.push('新加坡手机维修', '新加坡电脑维修', '手机维修案例', 'Crazy维修')
+
+  const tagEn = TAG_EN[tag]
+  const latin = (title.match(/[A-Za-z][A-Za-z0-9 .+\-]{1,20}/g) || []).map(s => s.trim()).filter(s => s.length >= 2)
+  const model = latin.slice(0, 2).join(' ').trim()
+
+  const en = []
+  if (tagEn) en.push(tagEn, `${tagEn} repair`, `${tagEn} repair Singapore`)
+  if (model) en.push(`${model} repair`, `${model} fix`)
+  for (const [re, word] of FAULT_EN) {
+    if (re.test(title) || re.test(body)) en.push(word)
+  }
+  en.push('phone repair Singapore', 'laptop repair Singapore', 'board level repair', 'Crazy Repair')
+
+  return [...new Set([...cn, ...en])].slice(0, 26).join(',')
 }
 
 // 描述：机型+故障标题 + 正文摘要（100 字）+ 服务词（手写式，非机器截断）
