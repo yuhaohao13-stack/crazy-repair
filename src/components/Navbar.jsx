@@ -1,7 +1,7 @@
 'use client'
 import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
-import { Search as SearchIcon, X, User, LogOut, MessageSquare, Star, ChevronDown, Wrench } from 'lucide-react'
+import { Search as SearchIcon, X, User, LogOut, MessageSquare, Star, ChevronDown, Wrench, Monitor } from 'lucide-react'
 import modelDB from '../data/modelDB'
 import { useSite } from '../lib/SiteContext'
 
@@ -122,24 +122,10 @@ export default function Navbar() {
               <Wrench size={10} /> {t('维修案例', 'Repair Cases')}
             </a>
 
-            <div className="relative flex items-center">
-              {showSearch ? (
-                <div className="flex items-center gap-1">
-                  <input ref={inputRef} type="text" value={query}
-                    onChange={(e) => { setQuery(e.target.value); setShowResults(true) }}
-                    onFocus={() => setShowResults(true)}
-                    placeholder={t('搜索型号', 'Search model')}
-                    className="w-36 border border-gray-300 rounded px-2 py-1 text-xs focus:outline-none focus:border-blue-400" autoFocus />
-                  <button onClick={() => { setShowSearch(false); setQuery(''); setShowResults(false) }}
-                    className="text-gray-400 hover:text-gray-600"><X size={14} /></button>
-                </div>
-              ) : (
-                <button onClick={() => setShowSearch(true)}
-                  className="flex items-center gap-1 text-blue-600 hover:text-blue-700 whitespace-nowrap font-medium">
-                  <SearchIcon size={14} /> {t('搜索', 'Search')}
-                </button>
-              )}
-            </div>
+            <Link href="/lcd"
+              className="flex items-center gap-1 text-blue-600 hover:text-blue-700 whitespace-nowrap font-medium">
+              <Monitor size={14} /> {t('电脑液晶通用查询', 'LCD Lookup')}
+            </Link>
 
             {showResults && query && results.length > 0 && (
               <div ref={resultsRef} className="absolute top-full mt-1 right-0 bg-white rounded-xl border border-gray-200 shadow-xl z-[60] max-h-80 overflow-y-auto" style={{width: '380px'}}>
@@ -210,10 +196,10 @@ export default function Navbar() {
               <span className="hidden sm:inline">{t('维修视频 → YouTube', 'Repair Videos → YouTube')}</span>
             </a>
 
-            {/* 手机端搜索 */}
-            <button onClick={() => setShowSearch(!showSearch)} className="md:hidden text-gray-500 hover:text-gray-700">
-              <SearchIcon size={16} />
-            </button>
+            {/* 手机端：液晶通用查询入口 */}
+            <Link href="/lcd" className="md:hidden text-gray-500 hover:text-blue-600" title={t('电脑液晶通用查询', 'LCD Lookup')}>
+              <Monitor size={16} />
+            </Link>
 
             {/* 语言切换 */}
             <button onClick={() => setLang(lang === 'zh' ? 'en' : 'zh')}
