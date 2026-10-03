@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Navbar from '@/components/Navbar'
 import { Search, Monitor, Lock, Loader2, Cpu, CheckCircle2 } from 'lucide-react'
 import { search, brandOf, groupKey, groupMachines } from '@/lib/lcd'
 import db from '@/data/lcd-panels.json'
@@ -44,7 +45,9 @@ export default function LcdQueryPage() {
   const samples = ['NV156FHM-N4V', 'LP140WH2', 'N156HCE-EAB', 'Inspiron 15 5510', '联想小新 15']
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
+    <>
+      <Navbar />
+      <div className="max-w-4xl mx-auto px-4 py-8">
       <div className="text-center mb-6">
         <div className="inline-flex items-center gap-2 text-blue-600 font-semibold text-sm mb-2">
           <Monitor size={16} /> LCD Panel Cross-Reference
@@ -91,7 +94,8 @@ export default function LcdQueryPage() {
           {res && <Result res={res} />}
         </>
       )}
-    </div>
+      </div>
+    </>
   )
 }
 
