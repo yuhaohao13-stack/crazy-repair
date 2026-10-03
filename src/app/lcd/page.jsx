@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Search, Monitor, Lock, Loader2, Cpu, CheckCircle2 } from 'lucide-react'
-import { search, brandOf, groupKey } from '@/lib/lcd'
+import { search, brandOf, groupKey, groupMachines } from '@/lib/lcd'
 import db from '@/data/lcd-panels.json'
 
 const SERIES = db.series || {}
@@ -134,6 +134,17 @@ function Result({ res }) {
               </div>
             ))}
           </div>
+        </div>
+
+        <div className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm">
+          <div className="font-bold text-gray-900 text-sm mb-1">适用电脑品牌 / 机型</div>
+          <div className="text-[11px] text-gray-400 mb-3">同规格机型均可使用（系列级参考，装机前核对实物）</div>
+          <ul className="space-y-1.5">
+            {groupMachines(p.group).map((m, i) => (
+              <li key={i} className="flex gap-2 text-sm text-gray-700"><span className="text-blue-500">▪</span><span>{m}</span></li>
+            ))}
+          </ul>
+          {groupMachines(p.group).length === 0 && <div className="text-sm text-gray-400">机型数据补充中，可把电脑型号发客服反查。</div>}
         </div>
       </div>
     )
