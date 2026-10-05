@@ -15,6 +15,7 @@ const tagSlugMap = {
   '联想': 'lenovo',
   '戴尔': 'dell',
   '惠普': 'hp',
+  'HP': 'hp',
   '游戏机': 'console',
   '相机': 'camera',
   '手表': 'watch',
@@ -31,6 +32,6 @@ const tagSlugMap = {
 const slugTagMap = Object.fromEntries(Object.entries(tagSlugMap).map(([k, v]) => [v, k]))
 
 // 分类展示顺序（手机品牌优先）
-const tagOrder = ['iPhone','iPad','MacBook','三星','华为','小米','OPPO','vivo','一加','荣耀','摩托罗拉','红魔','华硕','联想','戴尔','惠普','游戏机','相机','手表','耳机','Kobo电子书','Sharp','电脑/笔记本','手机通用','其他']
+const tagOrder = ['iPhone','iPad','MacBook','三星','华为','小米','OPPO','vivo','一加','荣耀','摩托罗拉','红魔','华硕','联想','戴尔','惠普','HP','游戏机','相机','手表','耳机','Kobo电子书','Sharp','电脑/笔记本','手机通用','其他']
 
 export { tagSlugMap, slugTagMap, tagOrder }
