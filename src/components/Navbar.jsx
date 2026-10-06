@@ -112,9 +112,6 @@ export default function Navbar() {
               </div>
             </div>
 
-            <Link href="/reviews" className="hover:text-blue-600 whitespace-nowrap flex items-center gap-0.5">
-              <Star size={10} /> {t('客户评价', 'Reviews')}
-            </Link>
             <a href="/board" className="hover:text-blue-600 whitespace-nowrap flex items-center gap-0.5">
               <MessageSquare size={10} /> {t('维修求助', 'Repair Help')}
             </a>
@@ -164,9 +161,6 @@ export default function Navbar() {
             {/* 手机端：求助 + 客户评价(仅图标) + 小游戏 */}
             <a href="/board" className="md:hidden text-xs text-gray-500 hover:text-blue-600 flex items-center gap-0.5" title={t('维修求助', 'Repair Help')}>
               <MessageSquare size={14} /><span className="sm:hidden">{t('求助', 'Help')}</span>
-            </a>
-            <a href="/reviews" className="md:hidden text-xs text-gray-500 hover:text-blue-600" title={t('客户评价', 'Reviews')}>
-              <Star size={14} />
             </a>
             <a href="/cases" className="md:hidden text-xs text-gray-500 hover:text-blue-600 flex items-center gap-0.5" title={t('维修案例', 'Repair Cases')}>
               <Wrench size={14} /><span className="sm:hidden">{t('案例', 'Cases')}</span>
