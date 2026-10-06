@@ -89,7 +89,7 @@ export default function Navbar() {
           {/* --- 桌面端导航 --- */}
           <div className="hidden md:flex items-center gap-2 text-xs text-gray-600">
             <div className="relative group">
-              <a href="/#brands" className="hover:text-blue-600 whitespace-nowrap flex items-center gap-0.5">
+              <a href="/services" className="hover:text-blue-600 whitespace-nowrap flex items-center gap-0.5">
                 {t('服务项目', 'Services')} <ChevronDown size={10} />
               </a>
               {/* pt-1 把「按钮→菜单」之间的间隙纳入悬停区，鼠标下移时不会丢 hover；
@@ -107,7 +107,7 @@ export default function Navbar() {
                 <a href="/lenovo-repair" className="block px-3 py-1.5 text-xs text-gray-700 hover:bg-gray-50">{t('Lenovo 维修', 'Lenovo Repair')}</a>
                 <a href="/dell-repair" className="block px-3 py-1.5 text-xs text-gray-700 hover:bg-gray-50">{t('Dell 维修', 'Dell Repair')}</a>
                 <hr className="my-1 border-gray-50" />
-                <a href="/#brands" className="block px-3 py-1.5 text-xs text-blue-600 hover:bg-gray-50">{t('查看全部服务 →', 'View All Services →')}</a>
+                <a href="/services" className="block px-3 py-1.5 text-xs text-blue-600 hover:bg-gray-50">{t('查看全部服务 →', 'View All Services →')}</a>
               </div>
               </div>
             </div>
