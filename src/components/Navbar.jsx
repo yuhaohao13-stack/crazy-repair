@@ -41,11 +41,11 @@ export default function Navbar() {
     let cancelled = false
     const compute = async () => {
       try {
-        const rs = new Set(JSON.parse(localStorage.getItem('crazy_board_read') || '[]'))
+        const rs = new Set(JSON.parse(localStorage.getItem('crazy_board_read') || '[]').map(String))
         const res = await fetch('/api/messages?ids=1')
         const d = await res.json()
         const ids = d.ids || []
-        if (!cancelled) setUnread(ids.filter(id => !rs.has(id)).length)
+        if (!cancelled) setUnread(ids.filter(id => !rs.has(String(id))).length)
       } catch { /* ignore */ }
     }
     compute()

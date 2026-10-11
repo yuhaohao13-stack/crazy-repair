@@ -67,9 +67,9 @@ export default function MessageDetailPage() {
   useEffect(() => {
     if (!messageId) return
     try {
-      const rs = new Set(JSON.parse(localStorage.getItem('crazy_board_read') || '[]'))
-      if (!rs.has(messageId)) {
-        rs.add(messageId)
+      const rs = new Set(JSON.parse(localStorage.getItem('crazy_board_read') || '[]').map(String))
+      if (!rs.has(String(messageId))) {
+        rs.add(String(messageId))
         localStorage.setItem('crazy_board_read', JSON.stringify([...rs]))
       }
       window.dispatchEvent(new Event('board-read-changed'))

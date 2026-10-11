@@ -54,9 +54,11 @@ export async function GET(req) {
         .from('messages')
         .select('id')
         .is('parent_id', null)
+        .is('target_id', null)
+        .eq('target_type', 'message')
         .order('created_at', { ascending: false })
         .limit(1000)
-      return NextResponse.json({ ids: (data || []).map(m => m.id) })
+      return NextResponse.json({ ids: (data || []).map(m => String(m.id)) })
     }
 
     // 如果指定了 messageId，返回单条留言详情
