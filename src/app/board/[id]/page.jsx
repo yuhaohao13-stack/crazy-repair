@@ -63,6 +63,19 @@ export default function MessageDetailPage() {
 
   useEffect(() => { loadMessage() }, [loadMessage])
 
+  // 标记该求助为已读（未读角标用）
+  useEffect(() => {
+    if (!messageId) return
+    try {
+      const rs = new Set(JSON.parse(localStorage.getItem('crazy_board_read') || '[]'))
+      if (!rs.has(messageId)) {
+        rs.add(messageId)
+        localStorage.setItem('crazy_board_read', JSON.stringify([...rs]))
+      }
+      window.dispatchEvent(new Event('board-read-changed'))
+    } catch { /* ignore */ }
+  }, [messageId])
+
   const handleReply = async (e) => {
     e.preventDefault()
     if (!replyContent.trim()) return

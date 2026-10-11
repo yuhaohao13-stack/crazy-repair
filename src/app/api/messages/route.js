@@ -48,6 +48,17 @@ export async function GET(req) {
     const page = parseInt(url.searchParams.get('page') || '1')
     const pageSize = parseInt(url.searchParams.get('pageSize') || '20')
 
+    // ─── 仅返回顶层留言 id 列表（用于未读角标）───
+    if (url.searchParams.get('ids') === '1') {
+      const { data } = await supabase
+        .from('messages')
+        .select('id')
+        .is('parent_id', null)
+        .order('created_at', { ascending: false })
+        .limit(1000)
+      return NextResponse.json({ ids: (data || []).map(m => m.id) })
+    }
+
     // 如果指定了 messageId，返回单条留言详情
     if (messageId) {
       // 并行查消息 + 回复

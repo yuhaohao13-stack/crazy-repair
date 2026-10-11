@@ -12,6 +12,7 @@ export default function Navbar() {
   const [showSearch, setShowSearch] = useState(false)
   const [user, setUser] = useState(null)
   const [showUserMenu, setShowUserMenu] = useState(false)
+  const [unread, setUnread] = useState(0)
   const inputRef = useRef(null)
   const resultsRef = useRef(null)
   const userMenuRef = useRef(null)
@@ -33,6 +34,30 @@ export default function Navbar() {
     setUser(null)
     setShowUserMenu(false)
   }
+
+  // 维修求助未读数（仅管理员）：本地记录已读 id，未读 = 全部 id - 已读
+  useEffect(() => {
+    if (!user?.is_admin) { setUnread(0); return }
+    let cancelled = false
+    const compute = async () => {
+      try {
+        const rs = new Set(JSON.parse(localStorage.getItem('crazy_board_read') || '[]'))
+        const res = await fetch('/api/messages?ids=1')
+        const d = await res.json()
+        const ids = d.ids || []
+        if (!cancelled) setUnread(ids.filter(id => !rs.has(id)).length)
+      } catch { /* ignore */ }
+    }
+    compute()
+    const onEvt = () => compute()
+    window.addEventListener('board-read-changed', onEvt)
+    window.addEventListener('storage', onEvt)
+    return () => {
+      cancelled = true
+      window.removeEventListener('board-read-changed', onEvt)
+      window.removeEventListener('storage', onEvt)
+    }
+  }, [user])
 
   const results = (() => {
     if (!query || query.length < 1) return []
@@ -207,6 +232,9 @@ export default function Navbar() {
                   className="flex items-center gap-1 text-xs bg-blue-50 text-blue-700 hover:bg-blue-100 px-2 py-1 rounded-lg transition-colors">
                   <User size={12} />
                   <span className="max-w-[50px] sm:max-w-[60px] truncate">{user.username}</span>
+                  {user.is_admin && (
+                    <span className={`min-w-[16px] h-4 px-1 rounded-full text-[10px] leading-4 text-center font-semibold ${unread > 0 ? 'bg-red-500 text-white' : 'bg-gray-200 text-gray-500'}`}>{unread}</span>
+                  )}
                   <ChevronDown size={10} />
                 </button>
                 {showUserMenu && (
@@ -216,6 +244,9 @@ export default function Navbar() {
                     </a>
                     <a href="/board" className="block px-3 py-2 text-xs text-gray-700 hover:bg-gray-50 flex items-center gap-1.5">
                       <MessageSquare size={12} /> {t('维修求助', 'Repair Help')}
+                      {user.is_admin && (
+                        <span className={`ml-auto min-w-[16px] h-4 px-1 rounded-full text-[10px] leading-4 text-center font-semibold ${unread > 0 ? 'bg-red-500 text-white' : 'bg-gray-200 text-gray-500'}`}>{unread}</span>
+                      )}
                     </a>
                     {user.is_admin && (
                       <a href="/admin" className="block px-3 py-2 text-xs text-amber-600 hover:bg-gray-50 flex items-center gap-1.5">
