@@ -5,6 +5,7 @@ const tagSlugMap = {
   'iPad': 'ipad',
   'MacBook': 'macbook',
   '三星': 'samsung',
+  'Samsung': 'samsung',
   '华为': 'huawei',
   '小米': 'xiaomi',
   'OPPO': 'oppo',
