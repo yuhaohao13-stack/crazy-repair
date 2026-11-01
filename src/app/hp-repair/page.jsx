@@ -20,6 +20,7 @@ export default function HPRepair() {
   ]
 
   const models = [
+    t('OmniBook Ultra 14 (2026, Panther Lake / Snapdragon X2)', 'OmniBook Ultra 14 (2026, Panther Lake / Snapdragon X2)'),
     t('Spectre x360 16 / x360 14 (2024)', 'Spectre x360 16 / x360 14 (2024)'),
     t('Envy 16 / Envy 15 / Envy x360 (2025系列)', 'Envy 16 / Envy 15 / Envy x360 (2025 series)'),
     t('Pavilion Plus 16 / 15 / Aero 13 (2025)', 'Pavilion Plus 16 / 15 / Aero 13 (2025)'),

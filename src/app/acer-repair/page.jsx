@@ -25,7 +25,7 @@ export default function AcerRepair() {
     t('Swift Go 14 / Swift Go 16 (2024-2025)', 'Swift Go 14 / Swift Go 16 (2024-2025)'),
     t('Swift 14 / Swift Edge 16', 'Swift 14 / Swift Edge 16'),
     t('Nitro V 16 / V 15 / 17', 'Nitro V 16 / V 15 / 17'),
-    t('Aspire 5 / Aspire 3 / Aspire Vero 16 2025系列', 'Aspire 5 / Aspire 3 / Aspire Vero 16 2025 series'),
+    t('Aspire 16 AI (2026) / Aspire 5 / Aspire 3 / Aspire Vero 16', 'Aspire 16 AI (2026) / Aspire 5 / Aspire 3 / Aspire Vero 16'),
     t('TravelMate / Spin 5 / Spin 3', 'TravelMate / Spin 5 / Spin 3'),
     t('ConceptD 创作者系列', 'ConceptD creator series'),
     t('Acer台式机 / 一体机', 'Acer desktop / all-in-one'),

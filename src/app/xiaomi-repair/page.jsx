@@ -66,6 +66,8 @@ export default function XiaomiRepair() {
           <div className="max-w-xl mx-auto bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
             <div className="grid grid-cols-2 gap-3">
               {[
+                t('小米 18 Pro Max / 18 Pro', 'Xiaomi 18 Pro Max / 18 Pro'),
+                t('小米 17 Ultra / 17 Pro Max / 17 Pro / 17 / 17T', 'Xiaomi 17 Ultra / 17 Pro Max / 17 Pro / 17 / 17T'),
                 t('小米 16 / 15 Ultra / 15 Pro / 15', 'Xiaomi 16 / 15 Ultra / 15 Pro / 15'),
                 t('小米 14 Ultra / 14 Pro / 14 / 14T', 'Xiaomi 14 Ultra / 14 Pro / 14 / 14T'),
                 t('Redmi Note 17 Pro / 17 / Note 14 Pro+ / Pro / 14', 'Redmi Note 17 Pro / 17 / Note 14 Pro+ / Pro / 14'),

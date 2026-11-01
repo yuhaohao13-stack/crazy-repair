@@ -24,7 +24,7 @@ export default function Home() {
       link: '/phone-repair',
       title: t('手机维修', 'Phone Repair'),
       summary: t('苹果/三星/华为/小米/OPPO/vivo/OnePlus/荣耀/Google Pixel 等全品牌', 'Apple/Samsung/Huawei/Xiaomi/OPPO/vivo/OnePlus/Honor/Google Pixel & more'),
-      brands: t('覆盖 iPhone 17/16/15/14/13 全系，三星 S26/S/Z/A 系列，华为 Mate 80/Pura 90/nova 16，小米17/Redmi K100 全系，OPPO Find X9，vivo X300/iQOO，OnePlus 15，荣耀 Magic 8/Robot Phone，Google Pixel 11 全系列', 'iPhone 17/16/15/14/13 all series, Samsung S26/S/Z/A series, Huawei Mate 80/Pura 90/nova 16, Xiaomi 17/Redmi K100 all models, OPPO Find X9, vivo X300/iQOO, OnePlus 15, Honor Magic 8/Robot Phone, Google Pixel 11 all series'),
+      brands: t('覆盖 iPhone 18 Pro/Pro Max/iPhone Duo（折叠）/17/16/15 全系，三星 S26/Z Flip 8/Z/A 系列，华为 Mate 90/Mate 80/Pura 90/畅享100/nova 16，小米 18 Pro/小米 17/Redmi K100 全系，OPPO Find X10，vivo X500/iQOO 16，OnePlus 16，荣耀 Magic9/600S/Robot Phone，Google Pixel 11 全系列', 'iPhone 18 Pro/Pro Max/iPhone Duo (foldable)/17/16/15 all series, Samsung S26/Z Flip 8/Z/A series, Huawei Mate 90/Mate 80/Pura 90/Enjoy 100/nova 16, Xiaomi 18 Pro/17/Redmi K100 all models, OPPO Find X10, vivo X500/iQOO 16, OnePlus 16, Honor Magic9/600S/Robot Phone, Google Pixel 11 all series'),
       details: [
         { name: t('屏幕更换', 'Screen Replacement'), desc: t('内外屏总成更换，原装品质/国产高性价比可选。含专业密封胶恢复防水性。iPhone OLED/三星AMOLED/各种屏幕都做。', 'Full assembly replacement. OEM quality or affordable options. Includes waterproof sealant. iPhone OLED, Samsung AMOLED, all screen types handled.') },
         { name: t('电池更换', 'Battery Replacement'), desc: t('原装品质电池，容量达标不虚标。更换后自动检测健康度，告别续航焦虑。iPhone/安卓全系列电池现货。', 'Quality batteries with accurate capacity. Health check after replacement. iPhone & Android batteries in stock.') },
@@ -372,7 +372,8 @@ export default function Home() {
             <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
               <h3 className="font-bold text-blue-600 mb-3 text-sm uppercase tracking-wider">{t('📱 iPhone 全系列', '📱 iPhone Series')}</h3>
               <ul className="space-y-1.5 text-sm text-gray-600">
-                {[t('iPhone 17 Pro Max / Pro / 17 / 17 Air / 16e', 'iPhone 17 Pro Max / Pro / 17 / 17 Air / 16e'),
+                {[t('iPhone 18 Pro Max / 18 Pro / iPhone Duo（折叠）', 'iPhone 18 Pro Max / 18 Pro / iPhone Duo (foldable)'),
+                  t('iPhone 17 Pro Max / Pro / 17 / 17 Air / 16e', 'iPhone 17 Pro Max / Pro / 17 / 17 Air / 16e'),
                   t('iPhone 16 Pro Max / Pro / Plus / 16', 'iPhone 16 Pro Max / Pro / Plus / 16'),
                   t('iPhone 15 Pro Max / Pro / Plus / 15', 'iPhone 15 Pro Max / Pro / Plus / 15'),
                   t('iPhone 14 Pro Max / Pro / Plus / 14', 'iPhone 14 Pro Max / Pro / Plus / 14'),
@@ -389,7 +390,7 @@ export default function Home() {
               <ul className="space-y-1.5 text-sm text-gray-600">
                 <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/iphone-repair" className="hover:text-blue-600 transition-colors">{t('iPad Pro 12.9 (1-7代) / Pro 11 (1-5代)', 'iPad Pro 12.9 (1st-7th) / Pro 11 (1st-5th)')}</a></li>
                 <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/iphone-repair" className="hover:text-blue-600 transition-colors">{t('iPad 数字系列 (5-11代)', 'iPad digital (5th-11th)')}</a></li>
-                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/iphone-repair" className="hover:text-blue-600 transition-colors">{t('iPad Air / iPad Mini 全系', 'iPad Air / iPad Mini all')}</a></li>
+                <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/iphone-repair" className="hover:text-blue-600 transition-colors">{t('iPad Air / iPad mini 8 (A20 Pro, OLED) 全系', 'iPad Air / iPad mini 8 (A20 Pro, OLED) all')}</a></li>
                 <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/samsung-repair" className="hover:text-blue-600 transition-colors">{t('三星 Galaxy Tab 全系', 'Samsung Galaxy Tab')}</a></li>
                 <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/huawei-repair" className="hover:text-blue-600 transition-colors">{t('华为 MatePad', 'Huawei MatePad')}</a></li>
                 <li className="flex items-start gap-2"><span className="text-blue-400 mt-0.5">▸</span><a href="/xiaomi-repair" className="hover:text-blue-600 transition-colors">{t('小米 Pad', 'Xiaomi Pad')}</a></li>

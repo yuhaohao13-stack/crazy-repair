@@ -20,7 +20,7 @@ export default function DellRepair() {
   ]
 
   const models = [
-    t('XPS 16 (2024) / XPS 15 / XPS 14 (2024) / XPS 13', 'XPS 16 (2024) / XPS 15 / XPS 14 (2024) / XPS 13'),
+    t('XPS 13 (2026) / XPS 16 (2024) / XPS 15 / XPS 14 (2024)', 'XPS 13 (2026) / XPS 16 (2024) / XPS 15 / XPS 14 (2024)'),
     t('Inspiron 16 Plus / 16 / 15 / 14 (2025系列)', 'Inspiron 16 Plus / 16 / 15 / 14 (2025 series)'),
     t('Latitude 7650 / 7550 / 7450 / 7350 (2025)', 'Latitude 7650 / 7550 / 7450 / 7350 (2025)'),
     t('Alienware M18 R2 / M16 R2 / X16 R2 / X14', 'Alienware M18 R2 / M16 R2 / X16 R2 / X14'),

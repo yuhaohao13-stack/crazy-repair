@@ -10,15 +10,16 @@ export default function IphoneRepair() {
   const t = (zh, en) => lang === 'zh' ? zh : en
   
   const services = [
-    {id:'screen-replacement', title:'屏幕更换', titleEn:'Screen Replacement', desc:'iPhone 17/16/15/14/13/12/11/X系列全兼容。OLED原装屏/LCD高性价比屏可选。含专业密封胶恢复防水性。30分钟快修。', descEn:'iPhone 17/16/15/14/13/12/11/X series. OEM OLED or LCD options. Waterproof sealant restored. 30min.'},
-    {id:'battery-replacement', title:'电池更换', titleEn:'Battery Replacement', desc:'原装规格电池，容量达标不虚标。iPhone 6到17全系列电池现货。更换后检测健康度。告别一天三充。', descEn:'OEM spec batteries. iPhone 6 through 17 in stock. Health check after swap.'},
+    {id:'screen-replacement', title:'屏幕更换', titleEn:'Screen Replacement', desc:'iPhone 18/17/16/15/14/13/12/11/X系列全兼容，含 iPhone Duo 折叠内屏/外屏。OLED原装屏/LCD高性价比屏可选。含专业密封胶恢复防水性。30分钟快修。', descEn:'iPhone 18/17/16/15/14/13/12/11/X series, incl. iPhone Duo inner/outer foldable screens. OEM OLED or LCD options. Waterproof sealant restored. 30min.'},
+    {id:'battery-replacement', title:'电池更换', titleEn:'Battery Replacement', desc:'原装规格电池，容量达标不虚标。iPhone 6到18全系列电池现货。更换后检测健康度。告别一天三充。', descEn:'OEM spec batteries. iPhone 6 through 18 in stock. Health check after swap.'},
     {id:'water-damage', title:'进水维修', titleEn:'Water Damage', desc:'超声波清洗+主板烘干+腐蚀修复。进水越早送来越好，切勿插电充电！丰富的iPhone进水处理经验。', descEn:'Ultrasonic cleaning + board dry + corrosion repair. Bring ASAP, do NOT charge! Extensive water damage experience.'},
     {id:'motherboard-repair', title:'主板维修', titleEn:'Motherboard Repair', desc:'不开机、重启循环、无服务、WiFi蓝牙打不开、面容不可用。芯片级维修，CPU重焊、基带修复、硬盘扩容。', descEn:'No power, boot loop, no service, WiFi/BT dead, Face ID gone. Component-level repair.'},
-    {id:'camera-repair', title:'摄像头维修', titleEn:'Camera Repair', desc:'拍照模糊、闪退、黑屏、对焦失灵。前后摄像头更换。iPhone 17/16/15/14/13/12/11/X全系。', descEn:'Blurry photos, app crash, black screen, autofocus fail. Front & back camera replacement for all iPhone models.'},
+    {id:'camera-repair', title:'摄像头维修', titleEn:'Camera Repair', desc:'拍照模糊、闪退、黑屏、对焦失灵。前后摄像头更换。iPhone 18/17/16/15/14/13/12/11/X全系。', descEn:'Blurry photos, app crash, black screen, autofocus fail. Front & back camera replacement for all iPhone models.'},
     {id:'face-id', title:'面容/指纹修复', titleEn:'Face ID/Touch ID', desc:'面容ID点阵修复、前置摄像头排线。换屏后面容不能用也可修复。iPhone X及以上面容，SE/8及以下指纹。', descEn:'Face ID dot matrix repair. Works after screen swap. iPhone X+, SE/8 and below.'}
   ]
   
   const models = [
+      t('iPhone 18 Pro Max / 18 Pro / iPhone Duo（折叠）', 'iPhone 18 Pro Max / 18 Pro / iPhone Duo (foldable)'),
       t('iPhone 17 Pro Max / Pro / 17 / 17 Air', 'iPhone 17 Pro Max / Pro / 17 / 17 Air'),
       t('iPhone 16 Pro Max / Pro / Plus / 16 / 16e', 'iPhone 16 Pro Max / Pro / Plus / 16 / 16e'),
       t('iPhone 15 Pro Max / Pro / Plus / 15', 'iPhone 15 Pro Max / Pro / Plus / 15'),
@@ -44,7 +45,7 @@ export default function IphoneRepair() {
             <h1 className="text-3xl sm:text-5xl font-bold mb-4">{t('iPhone 维修', 'iPhone Repair')}</h1>
             <p className="text-blue-200 text-xl mb-4">{t('苹果 iPhone 全系列专业维修 | 威海环翠区', 'Professional iPhone Repair for All Models | Weihai')}</p>
             <p className="text-blue-100 leading-relaxed">
-              {t('iPhone换屏、换电池、修主板、修面容、处理进水——所有iPhone型号都能修。2007年至今奋斗在维修一线，经验丰富。先检测后报价，价格透明，30天质保。', 'iPhone screen replacement, battery swap, motherboard repair, Face ID fix, water damage — all models iPhone 6 through 17. Since 2007. Free diagnosis, 30-day warranty.')}
+              {t('iPhone换屏、换电池、修主板、修面容、处理进水——所有iPhone型号都能修，包括最新 iPhone 18 与折叠屏 iPhone Duo。2007年至今奋斗在维修一线，经验丰富。先检测后报价，价格透明，30天质保。', 'iPhone screen replacement, battery swap, motherboard repair, Face ID fix, water damage — all models iPhone 6 through 18, including the foldable iPhone Duo. Since 2007. Free diagnosis, 30-day warranty.')}
             </p>
             <div className="flex flex-wrap gap-3 mt-6">
               <button onClick={() => setShowContact(true)} className="bg-white text-blue-600 font-semibold px-6 py-3 rounded-xl hover:bg-blue-50 transition-colors shadow-lg">

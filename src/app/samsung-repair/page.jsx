@@ -19,7 +19,7 @@ export default function SamsungRepair() {
   ]
   
   const models = [
-      t('Galaxy S26 Ultra / S26 Plus / S26', 'Galaxy S26 Ultra / S26 Plus / S26'),
+      t('Galaxy S26 Ultra / S26 Plus / S26 / S26 FE', 'Galaxy S26 Ultra / S26 Plus / S26 / S26 FE'),
       t('Galaxy S25 Ultra / S25 Plus / S25', 'Galaxy S25 Ultra / S25 Plus / S25'),
       t('Galaxy S24 Ultra / S24 Plus / S24 / S24 FE', 'Galaxy S24 Ultra / S24 Plus / S24 / S24 FE'),
       t('Galaxy S23 Ultra / S23 Plus / S23 / S23 FE', 'Galaxy S23 Ultra / S23 Plus / S23 / S23 FE'),

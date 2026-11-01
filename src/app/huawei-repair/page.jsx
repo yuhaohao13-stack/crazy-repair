@@ -66,13 +66,17 @@ export default function HuaweiRepair() {
           <div className="max-w-xl mx-auto bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
             <div className="grid grid-cols-2 gap-3">
               {[
+                t('Mate 90 Pro Max / 90 Pro / 90 / 90 RS 非凡大师', 'Mate 90 Pro Max / 90 Pro / 90 / 90 RS Ultimate'),
+                t('Pura 90 Plus / 90 Pro Max / 90 Pro / 90', 'Pura 90 Plus / 90 Pro Max / 90 Pro / 90'),
+                t('Mate 80 Pro Max / Pro / 80', 'Mate 80 Pro Max / Pro / 80'),
+                t('畅享100 Pro Max / 100 Pro / 100m / 100', 'Enjoy 100 Pro Max / 100 Pro / 100m / 100'),
+                t('nova 16 Ultra / Pro / 16', 'nova 16 Ultra / Pro / 16'),
                 t('Pura 80 Ultra / Pro / 80', 'Pura 80 Ultra / Pro / 80'),
                 t('Mate 70 Pro+ / Pro / 70 / XT', 'Mate 70 Pro+ / Pro / 70 / XT'),
                 t('Pura 70 Ultra / Pro / 70', 'Pura 70 Ultra / Pro / 70'),
-                t('nova 14 Ultra / Pro / 14', 'nova 14 Ultra / Pro / 14'),
                 t('Mate 60 Pro+ / Pro / 60 / X5 (折叠)', 'Mate 60 Pro+ / Pro / 60 / X5 (foldable)'),
                 t('P60 Pro / P60 / P50 Pro / P50', 'P60 Pro / P60 / P50 Pro / P50'),
-                t('nova 13 / 12 / 11 / 12 Ultra', 'nova 13 / 12 / 11 / 12 Ultra'),
+                t('nova 15 Ultra / 14 Ultra / Pro / 14 / 13 / 12', 'nova 15 Ultra / 14 Ultra / Pro / 14 / 13 / 12'),
                 t('MatePad Pro / Air / SE 全系', 'MatePad Pro / Air / SE series'),
               ].map((m, i) => (
                 <div key={i} className="flex items-center gap-2 text-sm">

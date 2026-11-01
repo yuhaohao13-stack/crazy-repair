@@ -19,6 +19,7 @@ export default function OPPORepair() {
   ]
 
   const models = [
+    t('Find X10 Pro Max / Find X10', 'Find X10 Pro Max / Find X10'),
     t('Find X9 Ultra / X9s Pro / X9 / X9 Pro', 'Find X9 Ultra / X9s Pro / X9 / X9 Pro'),
     t('Find N6 / N5 / N4 / N3 Flip / N2 Flip', 'Find N6 / N5 / N4 / N3 Flip / N2 Flip'),
     t('Find X8 Pro / X8 / X7 Ultra / X7 / X6', 'Find X8 Pro / X8 / X7 Ultra / X7 / X6'),
