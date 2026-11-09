@@ -62,12 +62,21 @@ export default function sitemap() {
     priority: p === '' ? 1.0 : p === '/cases' ? 0.9 : 0.7,
   }))
 
-  const caseEntries = (caseArticles || []).map((c) => ({
-    url: `${BASE}/cases/${c.id}`,
-    lastModified: safeDate(c.date),
-    changeFrequency: 'monthly',
-    priority: 0.8,
-  }))
+  // 2026-11-09 SEO 调整：只提交近 36 个月的案例（约 487 条），其余靠内链被发现。
+  // 原因：1,388 条同构案例全量提交 → Search Console 显示 906/1516 未收录，
+  //       Google 判定「已抓取 - 尚未编入索引」402 条，属于模板重复度过高。
+  const CUTOFF_MONTHS = 36
+  const cutoff = new Date()
+  cutoff.setMonth(cutoff.getMonth() - CUTOFF_MONTHS)
+
+  const caseEntries = (caseArticles || [])
+    .filter((c) => safeDate(c.date) >= cutoff)
+    .map((c) => ({
+      url: `${BASE}/cases/${c.id}`,
+      lastModified: safeDate(c.date),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    }))
 
   const tagEntries = Object.keys(slugTagMap || {}).map((slug) => ({
     url: `${BASE}/cases/tag/${slug}`,
