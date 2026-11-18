@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react'
-import { ChevronRight, MessageCircle, MapPin, Copy } from 'lucide-react'
+import { Phone, ChevronRight, MessageCircle, MapPin, Copy } from 'lucide-react'
 import { useSite } from '../lib/SiteContext'
 import { WECHAT_ID, EMAIL_QQ, EMAIL_GMAIL } from '../lib/contactData'
 
@@ -198,6 +198,18 @@ export default function ContactModal() {
                 </div>
                 <ChevronRight size={13} className="text-gray-300 shrink-0" />
               </button>
+
+              {/* WhatsApp / 电话（2026-11-18 新增） */}
+              <a href="https://wa.me/6586208789" target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-2 p-2 rounded-lg border border-gray-200 hover:border-green-300 hover:bg-green-50 cursor-pointer transition-all"
+              >
+                <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center shrink-0"><Phone size={14} className="text-green-600" /></div>
+                <div className="flex-1 min-w-0">
+                  <p className="font-medium text-xs text-gray-900">{t('📞 WhatsApp / 电话', '📞 WhatsApp / Phone')}</p>
+                  <p className="text-[9px] text-gray-400 truncate">+65 8620 8789</p>
+                </div>
+                <ChevronRight size={13} className="text-gray-300 shrink-0" />
+              </a>
 
               {/* 📧 QQ邮箱 */}
               <button onClick={() => copyEmail(EMAIL_QQ)}
