@@ -261,7 +261,7 @@ ${modelsCode}  ]
               <button onClick={() => setShowContact(true)} className="bg-white text-${colors.accent}-600 font-semibold px-6 py-3 rounded-xl hover:bg-${colors.accent}-50 transition-colors shadow-lg">
                 {t('📱 微信咨询维修', '📱 WeChat for Repair')}
               </button>
-              <a href="https://wa.me/6596146709?text=我的${brandTitle}需要维修" target="_blank" className="bg-green-500 text-white font-semibold px-6 py-3 rounded-xl hover:bg-green-600 transition-colors shadow-lg">
+              <a href="https://wa.me/6586208789?text=我的${brandTitle}需要维修" target="_blank" className="bg-green-500 text-white font-semibold px-6 py-3 rounded-xl hover:bg-green-600 transition-colors shadow-lg">
                 {t('💬 WhatsApp咨询', '💬 WhatsApp')}
               </a>
             </div>
@@ -341,7 +341,7 @@ ${faqCode}            ].map((faqItem, i) => (
           <p className="text-${colors.accent}-200 mb-8">{t('免费检测，先报价后维修。添加微信发张照片就能初步判断。', 'Free diagnosis. Add WeChat, send a photo for a quick assessment.')}</p>
           <div className="flex flex-wrap justify-center gap-4">
             <button onClick={() => setShowContact(true)} className="bg-white text-${colors.accent}-600 font-semibold px-8 py-4 rounded-xl hover:bg-${colors.accent}-50 transition-colors shadow-lg text-lg">{t('📱 微信咨询', '📱 WeChat')}</button>
-            <a href="https://wa.me/6596146709?text=我的${brandTitle}需要维修" target="_blank" className="bg-green-500 text-white font-semibold px-8 py-4 rounded-xl hover:bg-green-600 transition-colors shadow-lg text-lg">{t('💬 WhatsApp咨询', '💬 WhatsApp')}</a>
+            <a href="https://wa.me/6586208789?text=我的${brandTitle}需要维修" target="_blank" className="bg-green-500 text-white font-semibold px-8 py-4 rounded-xl hover:bg-green-600 transition-colors shadow-lg text-lg">{t('💬 WhatsApp咨询', '💬 WhatsApp')}</a>
           </div>
         </div>
       </section>
